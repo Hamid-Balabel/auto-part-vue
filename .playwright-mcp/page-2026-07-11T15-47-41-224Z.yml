@@ -1,0 +1,30 @@
+- generic [ref=f23e32]:
+  - complementary [ref=f23e33]:
+    - generic [ref=f23e38]:
+      - paragraph [ref=f23e39]: إدارة قطع الغيار
+      - paragraph [ref=f23e40]: المخزون والمبيعات
+    - navigation [ref=f23e41]:
+      - link "لوحة التحكم" [ref=f23e42] [cursor=pointer]:
+        - /url: /
+      - button "إدخال البيانات" [ref=f23e47] [cursor=pointer]
+      - button "المبيعات" [ref=f23e56] [cursor=pointer]
+      - button "المستخدمين" [ref=f23e65] [cursor=pointer]
+      - button "الإعدادات" [ref=f23e75] [cursor=pointer]
+  - generic [ref=f23e82]:
+    - banner [ref=f23e83]:
+      - generic [ref=f23e84]:
+        - generic [ref=f23e85]: الفلاتر المدعومة من الخلفية تظهر داخل كل شاشة.
+        - generic "اللغة" [ref=f23e90]:
+          - button "العربية" [ref=f23e95] [cursor=pointer]
+          - button "English" [ref=f23e96] [cursor=pointer]
+        - generic [ref=f23e97]:
+          - paragraph [ref=f23e98]: root
+          - paragraph [ref=f23e99]: root@jervis.com
+        - button "تسجيل الخروج" [ref=f23e100] [cursor=pointer]
+    - main [ref=f23e101]:
+      - generic [ref=f23e102]:
+        - generic [ref=f23e103]:
+          - heading "الأدوار" [level=1] [ref=f23e104]
+          - paragraph [ref=f23e105]: إدارة الأدوار وربطها بالصلاحيات المسجلة في الخلفية.
+        - generic [ref=f23e106]: إنشاء دور
+      - generic [ref=f23e108]: جار تحميل البيانات...

@@ -1,0 +1,165 @@
+- generic [ref=e3]:
+  - complementary [ref=e4]:
+    - generic [ref=e9]:
+      - paragraph [ref=e10]: Auto Part Admin
+      - paragraph [ref=e11]: Inventory and sales
+    - navigation [ref=e12]:
+      - link "Dashboard" [ref=e13] [cursor=pointer]:
+        - /url: /
+      - button "إدخال البيانات" [ref=e18] [cursor=pointer]
+      - generic [ref=e26]:
+        - button "Sales" [expanded] [ref=e27] [cursor=pointer]
+        - generic [ref=e35]:
+          - link "Carts" [ref=e36] [cursor=pointer]:
+            - /url: /cart
+          - link "Orders" [ref=e42] [cursor=pointer]:
+            - /url: /orders
+          - link "Installments" [ref=e47] [cursor=pointer]:
+            - /url: /modules/installments
+      - button "المستخدمين" [ref=e52] [cursor=pointer]
+      - button "الإعدادات" [ref=e62] [cursor=pointer]
+  - generic [ref=e69]:
+    - banner [ref=e70]:
+      - generic [ref=e71]:
+        - generic [ref=e72]: Backend-supported filters appear inside each module.
+        - generic "Language" [ref=e77]:
+          - button "العربية" [ref=e82] [cursor=pointer]
+          - button "English" [ref=e83] [cursor=pointer]
+        - generic [ref=e84]:
+          - paragraph [ref=e85]: root
+          - paragraph [ref=e86]: root@jervis.com
+        - button "Logout" [ref=e87] [cursor=pointer]
+    - main [ref=e88]:
+      - generic [ref=e341]:
+        - heading "Orders" [level=1] [ref=e342]
+        - paragraph [ref=e343]: Orders, backend-authoritative totals, payments, and available workflow actions.
+      - generic [ref=e344]:
+        - generic [ref=e345]:
+          - searchbox "The backend currently supports pagination and sorting only; order filters are unavailable." [disabled] [ref=e346]
+          - generic [ref=e347]:
+            - button "Search" [disabled] [ref=e348]
+            - button "Clear" [disabled] [ref=e349]
+        - button "Refresh" [ref=e350] [cursor=pointer]
+      - table [ref=e353]:
+        - rowgroup [ref=e354]:
+          - row [ref=e355]:
+            - columnheader [ref=e356]:
+              - button "Invoice number" [ref=e358] [cursor=pointer]
+            - columnheader "Customer" [ref=e360]
+            - columnheader [ref=e362]:
+              - button "Order date" [ref=e364] [cursor=pointer]
+            - columnheader "Items" [ref=e366]
+            - columnheader [ref=e368]:
+              - button "Total" [ref=e370] [cursor=pointer]
+            - columnheader "Payment method" [ref=e372]
+            - columnheader "Payment status" [ref=e374]
+            - columnheader "Order status" [ref=e376]
+            - columnheader "Actions" [ref=e378]
+        - rowgroup [ref=e380]:
+          - row [ref=e381]:
+            - cell "QA-20260718-1606" [ref=e382]
+            - cell [ref=e384]:
+              - generic [ref=e386]:
+                - paragraph [ref=e387]: custmoer 11
+                - paragraph [ref=e388]: "01012255454"
+            - cell "Jul 18, 2026, 7:07 PM" [ref=e389]
+            - cell "1" [ref=e391]
+            - cell "EGP 310.00" [ref=e393]
+            - cell "Cash" [ref=e395]
+            - cell "Pending" [ref=e397]
+            - cell "Pending" [ref=e400]
+            - cell [ref=e403]:
+              - generic [ref=e405]:
+                - button "View" [ref=e406] [cursor=pointer]
+                - button "Cancel order" [ref=e411] [cursor=pointer]
+                - button "Delete" [ref=e415] [cursor=pointer]
+          - row [ref=e419]:
+            - cell "MANUAL-20260714-1726" [ref=e420]
+            - cell [ref=e422]:
+              - generic [ref=e424]:
+                - paragraph [ref=e425]: custmoer 11
+                - paragraph [ref=e426]: "01012255477"
+            - cell "Jul 14, 2026, 8:27 PM" [ref=e427]
+            - cell "1" [ref=e429]
+            - cell "EGP 200.00" [ref=e431]
+            - cell "Cash" [ref=e433]
+            - cell "Paid" [ref=e435]
+            - cell "Completed" [ref=e438]
+            - cell [ref=e441]:
+              - button "View" [ref=e444] [cursor=pointer]
+          - row [ref=e449]:
+            - cell "INV-1005" [ref=e450]
+            - cell [ref=e452]:
+              - generic [ref=e454]:
+                - paragraph [ref=e455]: custmoer 11
+                - paragraph [ref=e456]: "01012255477"
+            - cell "Feb 21, 2026, 3:00 PM" [ref=e457]
+            - cell "2" [ref=e459]
+            - cell "EGP 2,500.00" [ref=e461]
+            - cell "Cash" [ref=e463]
+            - cell "Paid" [ref=e465]
+            - cell "Paid" [ref=e468]
+            - cell [ref=e471]:
+              - button "View" [ref=e474] [cursor=pointer]
+          - row [ref=e479]:
+            - cell "INV-1004" [ref=e480]
+            - cell [ref=e482]:
+              - generic [ref=e484]:
+                - paragraph [ref=e485]: custmoer 11
+                - paragraph [ref=e486]: "01012255477"
+            - cell "Feb 21, 2026, 2:49 PM" [ref=e487]
+            - cell "2" [ref=e489]
+            - cell "EGP 2,500.00" [ref=e491]
+            - cell "Cash" [ref=e493]
+            - cell "Paid" [ref=e495]
+            - cell "Paid" [ref=e498]
+            - cell [ref=e501]:
+              - button "View" [ref=e504] [cursor=pointer]
+          - row [ref=e509]:
+            - cell "INV-1003" [ref=e510]
+            - cell [ref=e512]:
+              - generic [ref=e514]:
+                - paragraph [ref=e515]: custmoer 11
+                - paragraph [ref=e516]: "01012255477"
+            - cell "Feb 21, 2026, 2:29 PM" [ref=e517]
+            - cell "2" [ref=e519]
+            - cell "EGP 2,500.00" [ref=e521]
+            - cell "Cash" [ref=e523]
+            - cell "Paid" [ref=e525]
+            - cell "Paid" [ref=e528]
+            - cell [ref=e531]:
+              - button "View" [ref=e534] [cursor=pointer]
+          - row [ref=e539]:
+            - cell "INV-1002" [ref=e540]
+            - cell [ref=e542]:
+              - generic [ref=e544]:
+                - paragraph [ref=e545]: custmoer 11
+                - paragraph [ref=e546]: "01012255477"
+            - cell "Feb 21, 2026, 2:26 PM" [ref=e547]
+            - cell "2" [ref=e549]
+            - cell "EGP 2,500.00" [ref=e551]
+            - cell "Cash" [ref=e553]
+            - cell "Paid" [ref=e555]
+            - cell "Paid" [ref=e558]
+            - cell [ref=e561]:
+              - button "View" [ref=e564] [cursor=pointer]
+          - row [ref=e569]:
+            - cell "INV-1001" [ref=e570]
+            - cell [ref=e572]:
+              - generic [ref=e574]:
+                - paragraph [ref=e575]: custmoer 11
+                - paragraph [ref=e576]: "01012255477"
+            - cell "Feb 21, 2026, 2:20 PM" [ref=e577]
+            - cell "2" [ref=e579]
+            - cell "EGP 1,000.00" [ref=e581]
+            - cell "Cash" [ref=e583]
+            - cell "Paid" [ref=e585]
+            - cell "Paid" [ref=e588]
+            - cell [ref=e591]:
+              - button "View" [ref=e594] [cursor=pointer]
+      - generic [ref=e599]:
+        - paragraph [ref=e600]: Showing 1 to 7 of 7 records
+        - generic [ref=e601]:
+          - button "Previous" [disabled] [ref=e602]
+          - generic [ref=e603]: Page 1 of 1
+          - button "Next" [disabled] [ref=e604]

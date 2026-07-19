@@ -1,0 +1,125 @@
+- generic [ref=f167e172]:
+  - complementary [ref=f167e173]:
+    - generic [ref=f167e178]:
+      - paragraph [ref=f167e179]: Auto Part Admin
+      - paragraph [ref=f167e180]: Inventory and sales
+    - navigation [ref=f167e181]:
+      - link "Dashboard" [ref=f167e263] [cursor=pointer]:
+        - /url: /
+      - button "إدخال البيانات" [ref=f167e187] [cursor=pointer]
+      - button "Sales" [ref=f167e264] [cursor=pointer]
+      - button "المستخدمين" [ref=f167e205] [cursor=pointer]
+      - button "الإعدادات" [ref=f167e215] [cursor=pointer]
+  - generic [ref=f167e222]:
+    - banner [ref=f167e223]:
+      - generic [ref=f167e224]:
+        - generic [ref=f167e225]: Backend-supported filters appear inside each module.
+        - generic "Language" [ref=f167e265]:
+          - button "العربية" [ref=f167e235] [cursor=pointer]
+          - button "English" [active] [ref=f167e236] [cursor=pointer]
+        - generic [ref=f167e237]:
+          - paragraph [ref=f167e238]: root
+          - paragraph [ref=f167e239]: root@jervis.com
+        - button "Logout" [ref=f167e266] [cursor=pointer]
+    - main [ref=f167e241]:
+      - generic [ref=f167e242]:
+        - generic [ref=f167e243]:
+          - heading "Products" [level=1] [ref=f167e267]
+          - paragraph [ref=f167e245]: Product master records are linked to backend categories and brands.
+        - link "Create" [ref=f167e268] [cursor=pointer]:
+          - /url: /products/create
+      - generic [ref=f167e248]:
+        - generic [ref=f167e249]:
+          - searchbox "Search is not supported reliably by this backend endpoint." [disabled] [ref=f167e269]
+          - generic [ref=f167e251]:
+            - button "Search" [disabled] [ref=f167e270]
+            - button "Clear" [disabled] [ref=f167e271]
+        - button "Refresh" [ref=f167e272] [cursor=pointer]
+      - table [ref=f167e3]:
+        - rowgroup [ref=f167e4]:
+          - row [ref=f167e273]:
+            - columnheader [ref=f167e274]:
+              - button "ID" [ref=f167e275] [cursor=pointer]:
+                - generic [ref=f167e10]: DESC
+            - columnheader "Name" [ref=f167e276]
+            - columnheader "Category" [ref=f167e277]
+            - columnheader "Brand" [ref=f167e278]
+            - columnheader "Status" [ref=f167e279]
+            - columnheader "Actions" [ref=f167e280]
+        - rowgroup [ref=f167e21]:
+          - row [ref=f167e281]:
+            - cell "8" [ref=f167e23]
+            - cell "الاسم بالعربية *" [ref=f167e25]
+            - cell "test ars21" [ref=f167e27]
+            - cell "test ars21e" [ref=f167e29]
+            - cell [ref=f167e282]:
+              - switch "Active" [checked] [ref=f167e283] [cursor=pointer]
+            - cell [ref=f167e284]:
+              - generic [ref=f167e38]:
+                - button "View" [ref=f167e285] [cursor=pointer]
+                - generic [ref=f167e44]:
+                  - link "Edit" [ref=f167e286] [cursor=pointer]:
+                    - /url: /products/8/edit
+                  - button "Delete" [ref=f167e287] [cursor=pointer]
+          - row [ref=f167e288]:
+            - cell "7" [ref=f167e53]
+            - cell "منتج تجريبي" [ref=f167e55]
+            - cell "test ars21" [ref=f167e57]
+            - cell "test ars21e" [ref=f167e59]
+            - cell [ref=f167e289]:
+              - switch "Active" [checked] [ref=f167e290] [cursor=pointer]
+            - cell [ref=f167e291]:
+              - generic [ref=f167e68]:
+                - button "View" [ref=f167e292] [cursor=pointer]
+                - generic [ref=f167e74]:
+                  - link "Edit" [ref=f167e293] [cursor=pointer]:
+                    - /url: /products/7/edit
+                  - button "Delete" [ref=f167e294] [cursor=pointer]
+          - row [ref=f167e295]:
+            - cell "6" [ref=f167e83]
+            - cell "منتج تجريبي" [ref=f167e85]
+            - cell "test ars21" [ref=f167e87]
+            - cell "test ars21e" [ref=f167e89]
+            - cell [ref=f167e296]:
+              - switch "Inactive" [ref=f167e297] [cursor=pointer]
+            - cell [ref=f167e298]:
+              - generic [ref=f167e98]:
+                - button "View" [ref=f167e299] [cursor=pointer]
+                - generic [ref=f167e104]:
+                  - link "Edit" [ref=f167e300] [cursor=pointer]:
+                    - /url: /products/6/edit
+                  - button "Delete" [ref=f167e301] [cursor=pointer]
+          - row [ref=f167e302]:
+            - cell "2" [ref=f167e113]
+            - cell "test ars21s" [ref=f167e115]
+            - cell "test ars21" [ref=f167e117]
+            - cell "test ars21e" [ref=f167e119]
+            - cell [ref=f167e303]:
+              - switch "Active" [checked] [ref=f167e304] [cursor=pointer]
+            - cell [ref=f167e305]:
+              - generic [ref=f167e128]:
+                - button "View" [ref=f167e306] [cursor=pointer]
+                - generic [ref=f167e134]:
+                  - link "Edit" [ref=f167e307] [cursor=pointer]:
+                    - /url: /products/2/edit
+                  - button "Delete" [ref=f167e308] [cursor=pointer]
+          - row [ref=f167e309]:
+            - cell "1" [ref=f167e143]
+            - cell "test ars21" [ref=f167e145]
+            - cell "test ars21" [ref=f167e147]
+            - cell "test ars21e" [ref=f167e149]
+            - cell [ref=f167e310]:
+              - switch "Active" [checked] [ref=f167e311] [cursor=pointer]
+            - cell [ref=f167e312]:
+              - generic [ref=f167e158]:
+                - button "View" [ref=f167e313] [cursor=pointer]
+                - generic [ref=f167e164]:
+                  - link "Edit" [ref=f167e314] [cursor=pointer]:
+                    - /url: /products/1/edit
+                  - button "Delete" [ref=f167e315] [cursor=pointer]
+      - generic [ref=f167e257]:
+        - paragraph [ref=f167e258]: Showing 1 to 5 of 5 records
+        - generic [ref=f167e259]:
+          - button "Previous" [disabled] [ref=f167e316]
+          - generic [ref=f167e261]: Page 1 of 1
+          - button "Next" [disabled] [ref=f167e317]

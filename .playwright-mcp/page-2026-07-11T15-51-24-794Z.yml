@@ -1,0 +1,102 @@
+- generic [ref=f23e32]:
+  - complementary [ref=f23e33]:
+    - generic [ref=f23e38]:
+      - paragraph [ref=f23e39]: Auto Part Admin
+      - paragraph [ref=f23e40]: Inventory and sales
+    - navigation [ref=f23e41]:
+      - link "Dashboard" [ref=f23e1704] [cursor=pointer]:
+        - /url: /
+      - button "إدخال البيانات" [ref=f23e47] [cursor=pointer]
+      - button "Sales" [ref=f23e1705] [cursor=pointer]
+      - button "المستخدمين" [ref=f23e65] [cursor=pointer]
+      - button "الإعدادات" [ref=f23e75] [cursor=pointer]
+  - generic [ref=f23e82]:
+    - banner [ref=f23e83]:
+      - generic [ref=f23e84]:
+        - generic [ref=f23e85]: Backend-supported filters appear inside each module.
+        - generic "Language" [ref=f23e1706]:
+          - button "العربية" [ref=f23e95] [cursor=pointer]
+          - button "English" [ref=f23e96] [cursor=pointer]
+        - generic [ref=f23e97]:
+          - paragraph [ref=f23e98]: root
+          - paragraph [ref=f23e99]: root@jervis.com
+        - button "Logout" [ref=f23e1707] [cursor=pointer]
+    - main [ref=f23e101]:
+      - generic [ref=f23e152]:
+        - heading "Create role" [level=1] [ref=f23e1708]
+        - paragraph [ref=f23e154]: Permissions are submitted by name exactly as RoleRequest requires.
+      - generic [ref=f23e155]:
+        - generic [ref=f23e1745]: Call to undefined function App\Http\Requests\User\detectPermissionGuard()
+        - generic [ref=f23e156]:
+          - heading "Basic information" [level=2] [ref=f23e1709]
+          - generic [ref=f23e159]:
+            - generic [ref=f23e160]:
+              - generic [ref=f23e161]: Key *
+              - textbox "Key *" [ref=f23e1710]: design_system_temp_role_202607111550
+            - generic [ref=f23e163]:
+              - generic [ref=f23e164]: Display name Arabic *
+              - textbox "Display name Arabic *" [ref=f23e1711]: دور نظام التصميم مؤقت
+            - generic [ref=f23e166]:
+              - generic [ref=f23e167]: Display name English
+              - textbox "Display name English" [ref=f23e1712]: Design System Temporary Role
+        - generic [ref=f23e169]:
+          - heading "Role Permissions" [level=2] [ref=f23e1713]
+          - generic [ref=f23e172]:
+            - paragraph [ref=f23e174]: 8 / 127 selected
+            - generic [ref=f23e175]:
+              - searchbox "Search Permissions" [ref=f23e1714]: User
+              - button "Clear selected" [active] [ref=f23e1789] [cursor=pointer]
+          - generic [ref=f23e259]:
+            - generic [ref=f23e260]:
+              - button "⌄ المستخدم 8 / 8" [expanded] [ref=f23e1790] [cursor=pointer]:
+                - generic [ref=f23e262]: ⌄
+                - generic [ref=f23e263]:
+                  - generic [ref=f23e264]: المستخدم
+                  - generic [ref=f23e265]: 8 / 8
+              - generic [ref=f23e268] [cursor=pointer]:
+                - checkbox "Clear group" [checked] [ref=f23e1791]
+                - text: Clear group
+            - generic [ref=f23e270]:
+              - button "User (toggle-active) toggle-active-user" [pressed] [ref=f23e271] [cursor=pointer]:
+                - checkbox [checked] [ref=f23e272]
+                - generic [ref=f23e273]:
+                  - text: User (toggle-active)
+                  - generic [ref=f23e274]: toggle-active-user
+              - button "User (force-delete) force-delete-user" [pressed] [ref=f23e275] [cursor=pointer]:
+                - checkbox [checked] [ref=f23e276]
+                - generic [ref=f23e277]:
+                  - text: User (force-delete)
+                  - generic [ref=f23e278]: force-delete-user
+              - button "User (restore) restore-user" [pressed] [ref=f23e279] [cursor=pointer]:
+                - checkbox [checked] [ref=f23e280]
+                - generic [ref=f23e281]:
+                  - text: User (restore)
+                  - generic [ref=f23e282]: restore-user
+              - button "User (view-own) view-own-user" [pressed] [ref=f23e283] [cursor=pointer]:
+                - checkbox [checked] [ref=f23e284]
+                - generic [ref=f23e285]:
+                  - text: User (view-own)
+                  - generic [ref=f23e286]: view-own-user
+              - button "User (view-all) view-all-user" [pressed] [ref=f23e287] [cursor=pointer]:
+                - checkbox [checked] [ref=f23e288]
+                - generic [ref=f23e289]:
+                  - text: User (view-all)
+                  - generic [ref=f23e290]: view-all-user
+              - button "User (delete) delete-user" [pressed] [ref=f23e291] [cursor=pointer]:
+                - checkbox [checked] [ref=f23e292]
+                - generic [ref=f23e293]:
+                  - text: User (delete)
+                  - generic [ref=f23e294]: delete-user
+              - button "User (update) update-user" [pressed] [ref=f23e295] [cursor=pointer]:
+                - checkbox [checked] [ref=f23e296]
+                - generic [ref=f23e297]:
+                  - text: User (update)
+                  - generic [ref=f23e298]: update-user
+              - button "User (create) create-user" [pressed] [ref=f23e299] [cursor=pointer]:
+                - checkbox [checked] [ref=f23e300]
+                - generic [ref=f23e301]:
+                  - text: User (create)
+                  - generic [ref=f23e302]: create-user
+        - generic [ref=f23e939]:
+          - generic [ref=f23e940]: Cancel
+          - button "Save" [ref=f23e1737] [cursor=pointer]

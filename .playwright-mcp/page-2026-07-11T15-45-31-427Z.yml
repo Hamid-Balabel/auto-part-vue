@@ -1,0 +1,30 @@
+- generic [ref=f22e32]:
+  - complementary [ref=f22e33]:
+    - generic [ref=f22e38]:
+      - paragraph [ref=f22e39]: إدارة قطع الغيار
+      - paragraph [ref=f22e40]: المخزون والمبيعات
+    - navigation [ref=f22e41]:
+      - link "لوحة التحكم" [ref=f22e42] [cursor=pointer]:
+        - /url: /
+      - button "إدخال البيانات" [ref=f22e47] [cursor=pointer]
+      - button "المبيعات" [ref=f22e56] [cursor=pointer]
+      - button "المستخدمين" [ref=f22e65] [cursor=pointer]
+      - button "الإعدادات" [ref=f22e75] [cursor=pointer]
+  - generic [ref=f22e82]:
+    - banner [ref=f22e83]:
+      - generic [ref=f22e84]:
+        - generic [ref=f22e85]: الفلاتر المدعومة من الخلفية تظهر داخل كل شاشة.
+        - generic "اللغة" [ref=f22e90]:
+          - button "العربية" [ref=f22e95] [cursor=pointer]
+          - button "English" [ref=f22e96] [cursor=pointer]
+        - generic [ref=f22e97]:
+          - paragraph [ref=f22e98]: root
+          - paragraph [ref=f22e99]: root@jervis.com
+        - button "تسجيل الخروج" [ref=f22e100] [cursor=pointer]
+    - main [ref=f22e101]:
+      - generic [ref=f22e102]:
+        - generic [ref=f22e103]:
+          - heading "المستخدمون" [level=1] [ref=f22e104]
+          - paragraph [ref=f22e105]: إدارة مستخدمي النظام حسب قواعد وصلاحيات Laravel.
+        - generic [ref=f22e106]: إنشاء مستخدم
+      - generic [ref=f22e108]: جار تحميل البيانات...

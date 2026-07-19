@@ -1,0 +1,85 @@
+- generic [ref=f5e32]:
+  - complementary [ref=f5e33]:
+    - generic [ref=f5e38]:
+      - paragraph [ref=f5e39]: إدارة قطع الغيار
+      - paragraph [ref=f5e40]: المخزون والمبيعات
+    - navigation [ref=f5e41]:
+      - link "لوحة التحكم" [ref=f5e42] [cursor=pointer]:
+        - /url: /
+      - button "إدخال البيانات" [ref=f5e47] [cursor=pointer]
+      - button "المبيعات" [ref=f5e56] [cursor=pointer]
+      - button "المستخدمين" [ref=f5e65] [cursor=pointer]
+      - button "الإعدادات" [ref=f5e75] [cursor=pointer]
+  - generic [ref=f5e82]:
+    - banner [ref=f5e83]:
+      - generic [ref=f5e84]:
+        - generic [ref=f5e85]: الفلاتر المدعومة من الخلفية تظهر داخل كل شاشة.
+        - generic "اللغة" [ref=f5e90]:
+          - button "العربية" [ref=f5e95] [cursor=pointer]
+          - button "English" [ref=f5e96] [cursor=pointer]
+        - generic [ref=f5e97]:
+          - paragraph [ref=f5e98]: root
+          - paragraph [ref=f5e99]: root@jervis.com
+        - button "تسجيل الخروج" [ref=f5e100] [cursor=pointer]
+    - main [ref=f5e101]:
+      - generic [ref=f5e3070]:
+        - generic [ref=f5e3072]:
+          - heading "تعديل مستخدم" [level=1] [ref=f5e3073]
+          - paragraph [ref=f5e3074]: الأدوار مطلوبة، وكلمة المرور مطلوبة عند إنشاء مستخدم جديد.
+        - generic [ref=f5e3075]:
+          - generic [ref=f5e3076]:
+            - heading "البيانات الأساسية" [level=2] [ref=f5e3078]
+            - generic [ref=f5e3079]:
+              - generic [ref=f5e3080]:
+                - generic [ref=f5e3081]: الاسم *
+                - textbox "الاسم *" [ref=f5e3082]: Phone Layout Temporary User
+              - generic [ref=f5e3083]:
+                - generic [ref=f5e3084]: البريد الإلكتروني *
+                - textbox "البريد الإلكتروني *" [ref=f5e3085]: phone.layout.temp.202607141022@jervis.com
+              - generic [ref=f5e3086]:
+                - generic [ref=f5e3087]: الجنس *
+                - combobox "الجنس *" [ref=f5e3088]:
+                  - option "اختر..."
+                  - option "ذكر" [selected]
+                  - option "أنثى"
+              - generic [ref=f5e3089]:
+                - generic [ref=f5e3090]: حالة المستخدم
+                - combobox "حالة المستخدم" [ref=f5e3091]:
+                  - option "اختر..."
+                  - option "نشط" [selected]
+                  - option "غير نشط"
+            - generic [ref=f5e3093]:
+              - paragraph [ref=f5e3094]: الهاتف
+              - generic [ref=f5e3095]:
+                - generic [ref=f5e3096]:
+                  - generic [ref=f5e3097]: كود الدولة
+                  - button "كود الدولة" [ref=f5e3099] [cursor=pointer]:
+                    - generic [ref=f5e3100]: 🇪🇬 مصر (+20)
+                    - generic [ref=f5e3101]: ⌄
+                - generic [ref=f5e3102]:
+                  - text: الهاتف
+                  - textbox "الهاتف رقم الهاتف يجب أن يتكون من 10 أرقام." [ref=f5e3103]: "1234567890"
+                  - generic [ref=f5e3104]: رقم الهاتف يجب أن يتكون من 10 أرقام.
+          - generic [ref=f5e3105]:
+            - heading "بيانات الأمان" [level=2] [ref=f5e3107]
+            - generic [ref=f5e3108]:
+              - generic [ref=f5e3109]:
+                - generic [ref=f5e3110]: كلمة المرور
+                - textbox "كلمة المرور" [ref=f5e3111]
+              - generic [ref=f5e3112]:
+                - generic [ref=f5e3113]: تأكيد كلمة المرور
+                - textbox "تأكيد كلمة المرور" [ref=f5e3114]
+          - generic [ref=f5e3115]:
+            - heading "الأدوار" [level=2] [ref=f5e3117]
+            - generic [ref=f5e3118]:
+              - button "default_role" [ref=f5e3119] [cursor=pointer]
+              - button "admin" [ref=f5e3120] [cursor=pointer]
+          - generic [ref=f5e3121]:
+            - heading "الصورة الشخصية" [level=2] [ref=f5e3123]
+            - generic [ref=f5e3124]:
+              - text: الصورة الشخصية
+              - button "الصورة الشخصية" [ref=f5e3125]
+          - generic [ref=f5e3126]:
+            - link "إلغاء" [ref=f5e3127] [cursor=pointer]:
+              - /url: /users
+            - button "حفظ" [ref=f5e3128] [cursor=pointer]

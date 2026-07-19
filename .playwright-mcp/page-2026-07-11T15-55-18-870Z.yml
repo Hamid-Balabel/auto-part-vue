@@ -1,0 +1,84 @@
+- generic [ref=f24e32]:
+  - complementary [ref=f24e33]:
+    - generic [ref=f24e38]:
+      - paragraph [ref=f24e39]: Auto Part Admin
+      - paragraph [ref=f24e40]: Inventory and sales
+    - navigation [ref=f24e41]:
+      - link "Dashboard" [ref=f24e42] [cursor=pointer]:
+        - /url: /
+      - button "إدخال البيانات" [ref=f24e47] [cursor=pointer]
+      - button "Sales" [ref=f24e56] [cursor=pointer]
+      - generic [ref=f24e64]:
+        - button "المستخدمين" [expanded] [ref=f24e65] [cursor=pointer]
+        - generic [ref=f24e995]:
+          - link "Users" [ref=f24e996] [cursor=pointer]:
+            - /url: /users
+          - link "Roles" [ref=f24e1003] [cursor=pointer]:
+            - /url: /roles
+      - button "الإعدادات" [ref=f24e75] [cursor=pointer]
+  - generic [ref=f24e82]:
+    - banner [ref=f24e83]:
+      - generic [ref=f24e84]:
+        - generic [ref=f24e85]: Backend-supported filters appear inside each module.
+        - generic "Language" [ref=f24e90]:
+          - button "العربية" [ref=f24e95] [cursor=pointer]
+          - button "English" [ref=f24e96] [cursor=pointer]
+        - generic [ref=f24e97]:
+          - paragraph [ref=f24e98]: root
+          - paragraph [ref=f24e99]: root@jervis.com
+        - button "Logout" [ref=f24e100] [cursor=pointer]
+    - main [ref=f24e101]:
+      - generic [ref=f24e1242]:
+        - heading "Create user" [level=1] [ref=f24e1243]
+        - paragraph [ref=f24e1244]: Roles are required. Password is required when creating a new user.
+      - generic [ref=f24e1245]:
+        - generic [ref=f24e1246]:
+          - heading "Basic information" [level=2] [ref=f24e1248]
+          - generic [ref=f24e1249]:
+            - generic [ref=f24e1250]:
+              - generic [ref=f24e1251]: Name *
+              - textbox "Name *" [ref=f24e1252]: Design System Temporary User
+            - generic [ref=f24e1253]:
+              - generic [ref=f24e1254]: Email *
+              - textbox "Email *" [ref=f24e1255]: design.system.temp.202607111555@jervis.com
+            - generic [ref=f24e1256]:
+              - generic [ref=f24e1257]: Gender *
+              - combobox "Gender *" [ref=f24e1258]:
+                - option "Select..."
+                - option "Male" [selected]
+                - option "Female"
+            - generic [ref=f24e1259]:
+              - generic [ref=f24e1260]: Phone code ID
+              - spinbutton "Phone code ID" [ref=f24e1261]
+            - generic [ref=f24e1262]:
+              - generic [ref=f24e1263]: Phone
+              - textbox "Phone" [ref=f24e1264]
+            - generic [ref=f24e1265]:
+              - generic [ref=f24e1266]: User Status
+              - combobox "User Status" [ref=f24e1267]:
+                - option "Select..."
+                - option "Active" [selected]
+                - option "Inactive"
+        - generic [ref=f24e1268]:
+          - heading "Security information" [level=2] [ref=f24e1270]
+          - generic [ref=f24e1271]:
+            - generic [ref=f24e1272]:
+              - generic [ref=f24e1273]: Password *
+              - textbox "Password *" [ref=f24e1274]: Password123!
+            - generic [ref=f24e1275]:
+              - generic [ref=f24e1276]: Password confirmation *
+              - textbox "Password confirmation *" [ref=f24e1277]: Password123!
+        - generic [ref=f24e1278]:
+          - heading "Roles" [level=2] [ref=f24e1280]
+          - generic [ref=f24e1281]:
+            - button "default_role" [ref=f24e1282] [cursor=pointer]
+            - button "admin" [active] [ref=f24e1283] [cursor=pointer]
+        - generic [ref=f24e1284]:
+          - heading "Avatar" [level=2] [ref=f24e1286]
+          - generic [ref=f24e1287]:
+            - text: Avatar
+            - button "Avatar" [ref=f24e1288]
+        - generic [ref=f24e1289]:
+          - link "Cancel" [ref=f24e1290] [cursor=pointer]:
+            - /url: /users
+          - button "Save" [ref=f24e1291] [cursor=pointer]

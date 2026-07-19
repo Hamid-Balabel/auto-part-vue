@@ -1,0 +1,95 @@
+- generic [ref=f62e1]:
+  - generic [ref=f62e3]:
+    - complementary [ref=f62e4]:
+      - generic [ref=f62e5]:
+        - generic [ref=f62e9]:
+          - paragraph [ref=f62e10]: Auto Part Admin
+          - paragraph [ref=f62e11]: Inventory and sales
+        - button "Close sidebar" [ref=f62e12] [cursor=pointer]
+      - navigation [ref=f62e16]:
+        - link "Dashboard" [ref=f62e17] [cursor=pointer]:
+          - /url: /
+        - generic [ref=f62e21]:
+          - button "إدخال البيانات" [expanded] [ref=f62e22] [cursor=pointer]
+          - generic [ref=f62e30]:
+            - link "Products" [ref=f62e31] [cursor=pointer]:
+              - /url: /products
+            - link "Product Items" [ref=f62e39] [cursor=pointer]:
+              - /url: /product-items
+            - link "Categories" [ref=f62e51] [cursor=pointer]:
+              - /url: /categories
+            - link "Brands" [ref=f62e57] [cursor=pointer]:
+              - /url: /brands
+            - link "Customers" [ref=f62e62] [cursor=pointer]:
+              - /url: /customers
+            - link "Warehouses" [ref=f62e69] [cursor=pointer]:
+              - /url: /warehouses
+            - link "Stocks" [ref=f62e74] [cursor=pointer]:
+              - /url: /stocks
+            - link "Countries" [ref=f62e80] [cursor=pointer]:
+              - /url: /countries
+        - button "Sales" [ref=f62e85] [cursor=pointer]
+        - button "المستخدمين" [ref=f62e94] [cursor=pointer]
+        - button "الإعدادات" [ref=f62e104] [cursor=pointer]
+    - generic [ref=f62e111]:
+      - banner [ref=f62e112]:
+        - generic [ref=f62e113]:
+          - button "Open sidebar" [ref=f62e114] [cursor=pointer]
+          - generic "Language" [ref=f62e116]:
+            - button "العربية" [ref=f62e121] [cursor=pointer]
+            - button "English" [ref=f62e122] [cursor=pointer]
+          - button "Logout" [ref=f62e123] [cursor=pointer]
+      - main [ref=f62e124]:
+        - generic [ref=f62e125]:
+          - generic [ref=f62e127]:
+            - heading "Create product item" [level=1] [ref=f62e128]
+            - paragraph [ref=f62e129]: Barcode is required in the UI because the database column is unique and non-nullable.
+          - generic [ref=f62e130]:
+            - generic [ref=f62e131]:
+              - generic [ref=f62e132]:
+                - generic [ref=f62e133]: SKU *
+                - textbox "SKU *" [ref=f62e134]
+              - generic [ref=f62e135]:
+                - generic [ref=f62e136]: Barcode *
+                - textbox "Barcode *" [ref=f62e137]
+              - generic [ref=f62e138]:
+                - generic [ref=f62e139]: Product *
+                - combobox "Product *" [expanded] [ref=f62e142] [cursor=pointer]:
+                  - generic [ref=f62e143]: Select...
+              - generic [ref=f62e146]:
+                - generic [ref=f62e147]: Price *
+                - spinbutton "Price *" [ref=f62e148]: "0"
+              - generic [ref=f62e149]:
+                - generic [ref=f62e150]: Status
+                - switch "Status" [checked] [ref=f62e152] [cursor=pointer]:
+                  - generic [ref=f62e154]: Active
+              - generic [ref=f62e155]:
+                - generic [ref=f62e156]: Option values
+                - generic [ref=f62e158]:
+                  - generic [ref=f62e159]: test ens21
+                  - combobox "test ens21" [ref=f62e162] [cursor=pointer]:
+                    - generic [ref=f62e163]: Select...
+              - generic [ref=f62e166]:
+                - text: Warehouse quantities
+                - generic [ref=f62e167]:
+                  - generic [ref=f62e168]:
+                    - generic [ref=f62e169]: test ens87
+                    - spinbutton "test ens87" [ref=f62e170]: "0"
+                  - generic [ref=f62e171]:
+                    - generic [ref=f62e172]: test ens21
+                    - spinbutton "test ens21" [ref=f62e173]: "0"
+              - generic [ref=f62e174]:
+                - text: Images
+                - button "Images" [ref=f62e175]
+            - generic [ref=f62e176]:
+              - link "Cancel" [ref=f62e177] [cursor=pointer]:
+                - /url: /product-items
+              - button "Save" [ref=f62e178] [cursor=pointer]
+  - listbox [ref=f62e179]:
+    - searchbox [active] [ref=f62e181]
+    - generic [ref=f62e182]:
+      - option "الاسم بالإنجليزية" [ref=f62e183] [cursor=pointer]
+      - option "Test Product" [ref=f62e186] [cursor=pointer]
+      - option "Test Product" [ref=f62e189] [cursor=pointer]
+      - option "test ens21s" [ref=f62e192] [cursor=pointer]
+      - option "test ens21" [ref=f62e195] [cursor=pointer]

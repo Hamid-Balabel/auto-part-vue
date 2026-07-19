@@ -1,0 +1,57 @@
+- generic [ref=f1e3]:
+  - complementary [ref=f1e4]:
+    - generic [ref=f1e9]:
+      - paragraph [ref=f1e10]: إدارة قطع الغيار
+      - paragraph [ref=f1e11]: المخزون والمبيعات
+    - navigation [ref=f1e12]:
+      - link "لوحة التحكم" [ref=f1e13] [cursor=pointer]:
+        - /url: /
+      - button "إدخال البيانات" [ref=f1e18] [cursor=pointer]
+      - generic [ref=f1e26]:
+        - button "المبيعات" [expanded] [ref=f1e27] [cursor=pointer]
+        - generic [ref=f1e35]:
+          - link "السلات" [ref=f1e36] [cursor=pointer]:
+            - /url: /cart
+          - link "الطلبات" [ref=f1e42] [cursor=pointer]:
+            - /url: /orders
+          - link "الأقساط" [ref=f1e47] [cursor=pointer]:
+            - /url: /modules/installments
+      - button "المستخدمين" [ref=f1e52] [cursor=pointer]
+      - button "الإعدادات" [ref=f1e62] [cursor=pointer]
+  - generic [ref=f1e69]:
+    - banner [ref=f1e70]:
+      - generic [ref=f1e71]:
+        - generic [ref=f1e72]: الفلاتر المدعومة من الخلفية تظهر داخل كل شاشة.
+        - generic "اللغة" [ref=f1e77]:
+          - button "العربية" [ref=f1e82] [cursor=pointer]
+          - button "English" [ref=f1e83] [cursor=pointer]
+        - generic [ref=f1e84]:
+          - paragraph [ref=f1e85]: root
+          - paragraph [ref=f1e86]: root@jervis.com
+        - button "تسجيل الخروج" [ref=f1e87] [cursor=pointer]
+    - main [ref=f1e88]:
+      - generic [ref=f1e90]:
+        - heading "السلة الحالية" [level=1] [ref=f1e91]
+        - paragraph [ref=f1e92]: إدارة عناصر سلتك. تعيد الخلفية التحقق من الأسعار والمخزون عند إتمام الطلب.
+      - generic [ref=f1e94]:
+        - generic [ref=f1e95]:
+          - generic [ref=f1e96]: عنصر المنتج *
+          - button "عنصر المنتج *" [expanded] [active] [ref=f1e98] [cursor=pointer]:
+            - generic [ref=f1e99]: ⌄
+          - generic [ref=f1e116]:
+            - searchbox [ref=f1e117]
+            - generic [ref=f1e118]:
+              - button "منتج تجريبي · TEST-SKU-012" [ref=f1e119] [cursor=pointer]
+              - button "منتج تجريبي · TEST-SKU-041" [ref=f1e122] [cursor=pointer]
+              - button "test ars21 · TEST-SKU-030" [ref=f1e125] [cursor=pointer]
+              - button "test ars21 · TEST-SKU-038" [ref=f1e128] [cursor=pointer]
+              - button "test ars21 · TEST-SKU-034" [ref=f1e131] [cursor=pointer]
+              - button "test ars21 · TEST-SKU-037" [ref=f1e134] [cursor=pointer]
+              - button "test ars21 · TEST-SKU-035" [ref=f1e137] [cursor=pointer]
+        - generic [ref=f1e100]:
+          - generic [ref=f1e101]: الكمية *
+          - spinbutton "الكمية *" [ref=f1e102]: "1"
+        - button "إضافة للسلة" [disabled] [ref=f1e103]
+      - generic [ref=f1e108]:
+        - paragraph [ref=f1e114]: سلتك فارغة
+        - paragraph [ref=f1e115]: أضف عنصر منتج متاحًا لبدء طلب جديد.

@@ -1,0 +1,23 @@
+- main [ref=f166e3]:
+  - generic [ref=f166e4]:
+    - generic [ref=f166e5]: منصة عمليات قطع الغيار
+    - generic [ref=f166e6]:
+      - heading "تحكم واضح في المخزون والمبيعات والطلبات." [level=1] [ref=f166e7]
+      - paragraph [ref=f166e8]: تسجيل دخول مباشر بالبريد الإلكتروني وكلمة المرور. تبقى الصلاحيات والتحقق وقواعد العمل من الخلفية.
+    - paragraph [ref=f166e9]: واجهة Vue 3 + TypeScript + Sanctum API
+  - generic [ref=f166e11]:
+    - generic "اللغة" [ref=f166e13]:
+      - button "العربية" [ref=f166e18] [cursor=pointer]
+      - button "English" [ref=f166e19] [cursor=pointer]
+    - generic [ref=f166e20]:
+      - paragraph [ref=f166e21]: تسجيل دخول الإدارة
+      - heading "مرحباً بعودتك" [level=2] [ref=f166e22]
+      - paragraph [ref=f166e23]: سجّل الدخول مباشرة ببيانات الخلفية.
+    - generic [ref=f166e24]:
+      - generic [ref=f166e25]:
+        - generic [ref=f166e26]: البريد الإلكتروني *
+        - textbox "البريد الإلكتروني *" [ref=f166e27]
+      - generic [ref=f166e28]:
+        - generic [ref=f166e29]: كلمة المرور *
+        - textbox "كلمة المرور *" [ref=f166e30]
+    - button "تسجيل الدخول" [ref=f166e31] [cursor=pointer]

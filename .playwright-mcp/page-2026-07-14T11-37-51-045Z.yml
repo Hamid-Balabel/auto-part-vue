@@ -1,0 +1,807 @@
+- generic [ref=e3]:
+  - complementary [ref=e4]:
+    - generic [ref=e9]:
+      - paragraph [ref=e10]: Auto Part Admin
+      - paragraph [ref=e11]: Inventory and sales
+    - navigation [ref=e12]:
+      - link "Dashboard" [ref=e1795] [cursor=pointer]:
+        - /url: /
+      - button "إدخال البيانات" [ref=e18] [cursor=pointer]
+      - button "Sales" [ref=e1796] [cursor=pointer]
+      - button "المستخدمين" [ref=e36] [cursor=pointer]
+      - button "الإعدادات" [ref=e46] [cursor=pointer]
+  - generic [ref=e53]:
+    - banner [ref=e54]:
+      - generic [ref=e55]:
+        - generic [ref=e56]: Backend-supported filters appear inside each module.
+        - generic "Language" [ref=e1797]:
+          - button "العربية" [ref=e66] [cursor=pointer]
+          - button "English" [active] [ref=e67] [cursor=pointer]
+        - generic [ref=e68]:
+          - paragraph [ref=e69]: root
+          - paragraph [ref=e70]: root@jervis.com
+        - button "Logout" [ref=e1798] [cursor=pointer]
+    - main [ref=e72]:
+      - generic [ref=e73]:
+        - generic [ref=e74]:
+          - heading "System Settings" [level=1] [ref=e1799]
+          - paragraph [ref=e76]: Update backend-exposed settings using the settings[] request shape.
+        - generic [ref=e77]:
+          - button "Reset changes" [disabled] [ref=e1800]
+          - button "Save settings" [ref=e1801] [cursor=pointer]
+      - generic [ref=e80]:
+        - generic [ref=e868]: Settings saved successfully.
+        - generic [ref=e869]:
+          - generic [ref=e870]:
+            - generic [ref=e871]:
+              - generic [ref=e872]:
+                - generic [ref=e873]: G
+                - generic [ref=e874]:
+                  - heading "General" [level=2] [ref=e1802]
+                  - paragraph [ref=e876]: 13 settings
+              - generic [ref=e877]: general
+            - generic [ref=e878]:
+              - generic [ref=e879]:
+                - generic [ref=e880]:
+                  - generic [ref=e881]:
+                    - generic [ref=e882]: I
+                    - generic [ref=e883]:
+                      - heading "Info" [level=2] [ref=e1803]
+                      - paragraph [ref=e885]: 5 settings
+                  - generic [ref=e886]: info
+                - generic [ref=e888]:
+                  - generic [ref=e889]:
+                    - generic [ref=e890]:
+                      - generic [ref=e891]: text
+                      - button "Reset" [ref=e1804] [cursor=pointer]
+                    - generic [ref=e893]:
+                      - paragraph [ref=e894]: Company name
+                      - generic [ref=e895]:
+                        - generic [ref=e896]:
+                          - text: AR
+                          - textbox "AR" [ref=e897]:
+                            - /placeholder: "Example: Company name"
+                            - text: حارفيس
+                        - generic [ref=e898]:
+                          - text: EN
+                          - textbox "EN" [ref=e899]:
+                            - /placeholder: "Example: Company name"
+                            - text: Jervis
+                      - generic [ref=e900]: "Example: Company name"
+                  - generic [ref=e901]:
+                    - generic [ref=e902]:
+                      - generic [ref=e903]: text
+                      - button "Reset" [ref=e1805] [cursor=pointer]
+                    - generic [ref=e905]:
+                      - paragraph [ref=e906]: Copyright name
+                      - generic [ref=e907]:
+                        - generic [ref=e908]:
+                          - text: AR
+                          - textbox "AR" [ref=e909]:
+                            - /placeholder: "Example: © 2024 Company"
+                        - generic [ref=e910]:
+                          - text: EN
+                          - textbox "EN" [ref=e911]:
+                            - /placeholder: "Example: © 2024 Company"
+                      - generic [ref=e912]: "Example: © 2024 Company"
+                  - generic [ref=e913]:
+                    - generic [ref=e914]:
+                      - generic [ref=e915]: text
+                      - button "Reset" [ref=e1806] [cursor=pointer]
+                    - generic [ref=e917]:
+                      - paragraph [ref=e918]: Website URL
+                      - 'textbox "Example: https://example.com" [ref=e1807]'
+                      - generic [ref=e920]: "Example: https://example.com"
+                  - generic [ref=e921]:
+                    - generic [ref=e922]:
+                      - generic [ref=e923]: textarea
+                      - button "Reset" [ref=e1808] [cursor=pointer]
+                    - generic [ref=e925]:
+                      - paragraph [ref=e926]: Website description
+                      - generic [ref=e927]:
+                        - generic [ref=e928]:
+                          - text: AR
+                          - textbox "AR" [ref=e929]:
+                            - /placeholder: "Example: We are a company specialized in..."
+                        - generic [ref=e930]:
+                          - text: EN
+                          - textbox "EN" [ref=e931]:
+                            - /placeholder: "Example: We are a company specialized in..."
+                      - generic [ref=e932]: "Example: We are a company specialized in..."
+                  - generic [ref=e933]:
+                    - generic [ref=e934]:
+                      - generic [ref=e935]: textarea
+                      - button "Reset" [ref=e1809] [cursor=pointer]
+                    - generic [ref=e937]:
+                      - paragraph [ref=e938]: Meta description
+                      - generic [ref=e939]:
+                        - generic [ref=e940]:
+                          - text: AR
+                          - textbox "AR" [ref=e941]:
+                            - /placeholder: "Example: Short description for SEO (160 chars)"
+                        - generic [ref=e942]:
+                          - text: EN
+                          - textbox "EN" [ref=e943]:
+                            - /placeholder: "Example: Short description for SEO (160 chars)"
+                      - generic [ref=e944]: "Example: Short description for SEO (160 chars)"
+              - generic [ref=e945]:
+                - generic [ref=e946]:
+                  - generic [ref=e947]:
+                    - generic [ref=e948]: C
+                    - generic [ref=e949]:
+                      - heading "Contact" [level=2] [ref=e1810]
+                      - paragraph [ref=e951]: 3 settings
+                  - generic [ref=e952]: contact
+                - generic [ref=e954]:
+                  - generic [ref=e955]:
+                    - generic [ref=e956]:
+                      - generic [ref=e957]: text
+                      - button "Reset" [ref=e1811] [cursor=pointer]
+                    - generic [ref=e959]:
+                      - paragraph [ref=e960]: Email
+                      - 'textbox "Example: support@example.com" [ref=e1812]'
+                      - generic [ref=e962]: "Example: support@example.com"
+                  - generic [ref=e963]:
+                    - generic [ref=e964]:
+                      - generic [ref=e965]: text
+                      - button "Reset" [ref=e1813] [cursor=pointer]
+                    - generic [ref=e967]:
+                      - paragraph [ref=e968]: Phone
+                      - 'textbox "Example: +966 (12) 3456-789" [ref=e1814]'
+                      - generic [ref=e970]: "Example: +966 (12) 3456-789"
+                  - generic [ref=e971]:
+                    - generic [ref=e972]:
+                      - generic [ref=e973]: text
+                      - button "Reset" [ref=e1815] [cursor=pointer]
+                    - generic [ref=e975]:
+                      - paragraph [ref=e976]: Address
+                      - generic [ref=e977]:
+                        - generic [ref=e978]:
+                          - text: AR
+                          - textbox "AR" [ref=e979]:
+                            - /placeholder: "Example: King Street, City"
+                        - generic [ref=e980]:
+                          - text: EN
+                          - textbox "EN" [ref=e981]:
+                            - /placeholder: "Example: King Street, City"
+                      - generic [ref=e982]: "Example: King Street, City"
+              - generic [ref=e983]:
+                - generic [ref=e984]:
+                  - generic [ref=e985]:
+                    - generic [ref=e986]: S
+                    - generic [ref=e987]:
+                      - heading "Social" [level=2] [ref=e1816]
+                      - paragraph [ref=e989]: 5 settings
+                  - generic [ref=e990]: social
+                - generic [ref=e992]:
+                  - generic [ref=e993]:
+                    - generic [ref=e994]:
+                      - generic [ref=e995]: text
+                      - button "Reset" [ref=e1817] [cursor=pointer]
+                    - generic [ref=e997]:
+                      - paragraph [ref=e998]: Instagram
+                      - 'textbox "Example: https://instagram.com/username" [ref=e1818]'
+                      - generic [ref=e1000]: "Example: https://instagram.com/username"
+                  - generic [ref=e1001]:
+                    - generic [ref=e1002]:
+                      - generic [ref=e1003]: text
+                      - button "Reset" [ref=e1819] [cursor=pointer]
+                    - generic [ref=e1005]:
+                      - paragraph [ref=e1006]: Facebook
+                      - 'textbox "Example: https://facebook.com/pagename" [ref=e1820]'
+                      - generic [ref=e1008]: "Example: https://facebook.com/pagename"
+                  - generic [ref=e1009]:
+                    - generic [ref=e1010]:
+                      - generic [ref=e1011]: text
+                      - button "Reset" [ref=e1821] [cursor=pointer]
+                    - generic [ref=e1013]:
+                      - paragraph [ref=e1014]: LinkedIn
+                      - 'textbox "Example: https://linkedin.com/company/name" [ref=e1822]'
+                      - generic [ref=e1016]: "Example: https://linkedin.com/company/name"
+                  - generic [ref=e1017]:
+                    - generic [ref=e1018]:
+                      - generic [ref=e1019]: text
+                      - button "Reset" [ref=e1823] [cursor=pointer]
+                    - generic [ref=e1021]:
+                      - paragraph [ref=e1022]: Twitter
+                      - 'textbox "Example: https://twitter.com/username" [ref=e1824]'
+                      - generic [ref=e1024]: "Example: https://twitter.com/username"
+                  - generic [ref=e1025]:
+                    - generic [ref=e1026]:
+                      - generic [ref=e1027]: text
+                      - button "Reset" [ref=e1825] [cursor=pointer]
+                    - generic [ref=e1029]:
+                      - paragraph [ref=e1030]: Youtube
+                      - 'textbox "Example: https://youtube.com/c/channelname" [ref=e1826]'
+                      - generic [ref=e1032]: "Example: https://youtube.com/c/channelname"
+          - generic [ref=e1033]:
+            - generic [ref=e1034]:
+              - generic [ref=e1035]:
+                - generic [ref=e1036]: P
+                - generic [ref=e1037]:
+                  - heading "Properties" [level=2] [ref=e1827]
+                  - paragraph [ref=e1039]: 5 settings
+              - generic [ref=e1040]: properties
+            - generic [ref=e1042]:
+              - generic [ref=e1043]:
+                - generic [ref=e1044]:
+                  - generic [ref=e1045]: imageUploader
+                  - button "Reset" [ref=e1828] [cursor=pointer]
+                - generic [ref=e1048]:
+                  - text: Large logo
+                  - generic [ref=e1049]:
+                    - button "Large logo Large website logo" [ref=e1829]
+                    - paragraph [ref=e1051]: Large website logo
+              - generic [ref=e1052]:
+                - generic [ref=e1053]:
+                  - generic [ref=e1054]: imageUploader
+                  - button "Reset" [ref=e1830] [cursor=pointer]
+                - generic [ref=e1057]:
+                  - text: Large dark logo
+                  - generic [ref=e1058]:
+                    - button "Large dark logo Large dark logo" [ref=e1831]
+                    - paragraph [ref=e1060]: Large dark logo
+              - generic [ref=e1061]:
+                - generic [ref=e1062]:
+                  - generic [ref=e1063]: imageUploader
+                  - button "Reset" [ref=e1832] [cursor=pointer]
+                - generic [ref=e1066]:
+                  - text: Small logo
+                  - generic [ref=e1067]:
+                    - button "Small logo Small website logo" [ref=e1833]
+                    - paragraph [ref=e1069]: Small website logo
+              - generic [ref=e1070]:
+                - generic [ref=e1071]:
+                  - generic [ref=e1072]: imageUploader
+                  - button "Reset" [ref=e1834] [cursor=pointer]
+                - generic [ref=e1075]:
+                  - text: Small dark logo
+                  - generic [ref=e1076]:
+                    - button "Small dark logo Small dark logo" [ref=e1835]
+                    - paragraph [ref=e1078]: Small dark logo
+              - generic [ref=e1079]:
+                - generic [ref=e1080]:
+                  - generic [ref=e1081]: imageUploader
+                  - button "Reset" [ref=e1836] [cursor=pointer]
+                - generic [ref=e1084]:
+                  - text: Favicon
+                  - generic [ref=e1085]:
+                    - button "Favicon Favicon icon" [ref=e1837]
+                    - paragraph [ref=e1087]: Favicon icon
+          - generic [ref=e1088]:
+            - generic [ref=e1089]:
+              - generic [ref=e1090]:
+                - generic [ref=e1091]: "N"
+                - generic [ref=e1092]:
+                  - heading "Notifications" [level=2] [ref=e1838]
+                  - paragraph [ref=e1094]: 4 settings
+              - generic [ref=e1095]: notifications
+            - generic [ref=e1097]:
+              - generic [ref=e1098]:
+                - generic [ref=e1099]:
+                  - generic [ref=e1100]: switchbox
+                  - button "Reset" [ref=e1839] [cursor=pointer]
+                - generic [ref=e1103]:
+                  - generic [ref=e1104]:
+                    - paragraph [ref=e1105]: Email notifications
+                    - paragraph [ref=e1106]: Enable email notifications
+                  - switch "Email notifications" [checked] [ref=e1840] [cursor=pointer]:
+                    - generic [ref=e1109]: Enabled
+              - generic [ref=e1110]:
+                - generic [ref=e1111]:
+                  - generic [ref=e1112]: switchbox
+                  - button "Reset" [ref=e1841] [cursor=pointer]
+                - generic [ref=e1115]:
+                  - generic [ref=e1116]:
+                    - paragraph [ref=e1117]: SMS notifications
+                    - paragraph [ref=e1118]: Enable SMS notifications
+                  - switch "SMS notifications" [ref=e1842] [cursor=pointer]:
+                    - generic [ref=e1121]: Disabled
+              - generic [ref=e1122]:
+                - generic [ref=e1123]:
+                  - generic [ref=e1124]: switchbox
+                  - button "Reset" [ref=e1843] [cursor=pointer]
+                - generic [ref=e1127]:
+                  - generic [ref=e1128]:
+                    - paragraph [ref=e1129]: Push notifications
+                    - paragraph [ref=e1130]: Enable push notifications
+                  - switch "Push notifications" [ref=e1844] [cursor=pointer]:
+                    - generic [ref=e1133]: Disabled
+              - generic [ref=e1134]:
+                - generic [ref=e1135]:
+                  - generic [ref=e1136]: switchbox
+                  - button "Reset" [ref=e1845] [cursor=pointer]
+                - generic [ref=e1139]:
+                  - generic [ref=e1140]:
+                    - paragraph [ref=e1141]: Realtime notifications
+                    - paragraph [ref=e1142]: Enable realtime notifications
+                  - switch "Realtime notifications" [ref=e1846] [cursor=pointer]:
+                    - generic [ref=e1145]: Disabled
+          - generic [ref=e1146]:
+            - generic [ref=e1147]:
+              - generic [ref=e1148]:
+                - generic [ref=e1149]: T
+                - generic [ref=e1150]:
+                  - heading "Theme" [level=2] [ref=e1847]
+                  - paragraph [ref=e1152]: 7 settings
+              - generic [ref=e1153]: theme
+            - generic [ref=e1154]:
+              - generic [ref=e1155]:
+                - generic [ref=e1156]:
+                  - generic [ref=e1157]:
+                    - generic [ref=e1158]: C
+                    - generic [ref=e1159]:
+                      - heading "Colors" [level=2] [ref=e1848]
+                      - paragraph [ref=e1161]: 4 settings
+                  - generic [ref=e1162]: colors
+                - generic [ref=e1164]:
+                  - generic [ref=e1165]:
+                    - generic [ref=e1166]:
+                      - generic [ref=e1167]: text
+                      - button "Reset" [ref=e1849] [cursor=pointer]
+                    - generic [ref=e1169]:
+                      - paragraph [ref=e1170]: Primary color
+                      - 'textbox "Example: #000000" [ref=e1850]'
+                      - generic [ref=e1172]: "Example: #000000"
+                  - generic [ref=e1173]:
+                    - generic [ref=e1174]:
+                      - generic [ref=e1175]: text
+                      - button "Reset" [ref=e1851] [cursor=pointer]
+                    - generic [ref=e1177]:
+                      - paragraph [ref=e1178]: Secondary color
+                      - 'textbox "Example: #FFFFFF" [ref=e1852]'
+                      - generic [ref=e1180]: "Example: #FFFFFF"
+                  - generic [ref=e1181]:
+                    - generic [ref=e1182]:
+                      - generic [ref=e1183]: text
+                      - button "Reset" [ref=e1853] [cursor=pointer]
+                    - generic [ref=e1185]:
+                      - paragraph [ref=e1186]: Text color
+                      - 'textbox "Example: #333333" [ref=e1854]'
+                      - generic [ref=e1188]: "Example: #333333"
+                  - generic [ref=e1189]:
+                    - generic [ref=e1190]:
+                      - generic [ref=e1191]: text
+                      - button "Reset" [ref=e1855] [cursor=pointer]
+                    - generic [ref=e1193]:
+                      - paragraph [ref=e1194]: Muted color
+                      - 'textbox "Example: #999999" [ref=e1856]'
+                      - generic [ref=e1196]: "Example: #999999"
+              - generic [ref=e1197]:
+                - generic [ref=e1198]:
+                  - generic [ref=e1199]:
+                    - generic [ref=e1200]: F
+                    - generic [ref=e1201]:
+                      - heading "Font" [level=2] [ref=e1857]
+                      - paragraph [ref=e1203]: 3 settings
+                  - generic [ref=e1204]: font
+                - generic [ref=e1206]:
+                  - generic [ref=e1207]:
+                    - generic [ref=e1208]:
+                      - generic [ref=e1209]: select
+                      - button "Reset" [ref=e1858] [cursor=pointer]
+                    - generic [ref=e1212]:
+                      - generic [ref=e1213]:
+                        - text: Arabic font
+                        - textbox "Arabic font" [ref=e1859]:
+                          - /placeholder: Select Arabic font
+                      - paragraph [ref=e1215]: Select Arabic font
+                  - generic [ref=e1216]:
+                    - generic [ref=e1217]:
+                      - generic [ref=e1218]: select
+                      - button "Reset" [ref=e1860] [cursor=pointer]
+                    - generic [ref=e1221]:
+                      - generic [ref=e1222]:
+                        - text: English font
+                        - textbox "English font" [ref=e1861]:
+                          - /placeholder: Select English font
+                      - paragraph [ref=e1224]: Select English font
+                  - generic [ref=e1225]:
+                    - generic [ref=e1226]:
+                      - generic [ref=e1227]: select
+                      - button "Reset" [ref=e1862] [cursor=pointer]
+                    - generic [ref=e1230]:
+                      - generic [ref=e1231]:
+                        - text: Font size
+                        - textbox "Font size" [ref=e1863]:
+                          - /placeholder: Select font size
+                      - paragraph [ref=e1233]: Select font size
+          - generic [ref=e1234]:
+            - generic [ref=e1235]:
+              - generic [ref=e1236]:
+                - generic [ref=e1237]: M
+                - generic [ref=e1238]:
+                  - heading "Mail Templates" [level=2] [ref=e1864]
+                  - paragraph [ref=e1240]: 11 settings
+              - generic [ref=e1241]: mail_templates
+            - generic [ref=e1242]:
+              - generic [ref=e1243]:
+                - generic [ref=e1244]:
+                  - generic [ref=e1245]:
+                    - generic [ref=e1246]: O
+                    - generic [ref=e1247]:
+                      - heading "Otp" [level=2] [ref=e1865]
+                      - paragraph [ref=e1249]: 5 settings
+                  - generic [ref=e1250]: otp
+                - generic [ref=e1252]:
+                  - generic [ref=e1253]:
+                    - generic [ref=e1254]:
+                      - generic [ref=e1255]: text
+                      - button "Reset" [ref=e1866] [cursor=pointer]
+                    - generic [ref=e1257]:
+                      - paragraph [ref=e1258]: OTP background
+                      - 'textbox "Example: #F4F4F5" [ref=e1867]'
+                      - generic [ref=e1260]: "Example: #F4F4F5"
+                  - generic [ref=e1261]:
+                    - generic [ref=e1262]:
+                      - generic [ref=e1263]: text
+                      - button "Reset" [ref=e1868] [cursor=pointer]
+                    - generic [ref=e1265]:
+                      - paragraph [ref=e1266]: OTP border
+                      - 'textbox "Example: #D1D5DB" [ref=e1869]'
+                      - generic [ref=e1268]: "Example: #D1D5DB"
+                  - generic [ref=e1269]:
+                    - generic [ref=e1270]:
+                      - generic [ref=e1271]: text
+                      - button "Reset" [ref=e1870] [cursor=pointer]
+                    - generic [ref=e1273]:
+                      - paragraph [ref=e1274]: OTP font size
+                      - 'textbox "Example: 18px" [ref=e1871]'
+                      - generic [ref=e1276]: "Example: 18px"
+                  - generic [ref=e1277]:
+                    - generic [ref=e1278]:
+                      - generic [ref=e1279]: text
+                      - button "Reset" [ref=e1872] [cursor=pointer]
+                    - generic [ref=e1281]:
+                      - paragraph [ref=e1282]: OTP letter spacing
+                      - 'textbox "Example: 4px" [ref=e1873]'
+                      - generic [ref=e1284]: "Example: 4px"
+                  - generic [ref=e1285]:
+                    - generic [ref=e1286]:
+                      - generic [ref=e1287]: text
+                      - button "Reset" [ref=e1874] [cursor=pointer]
+                    - generic [ref=e1289]:
+                      - paragraph [ref=e1290]: OTP text color
+                      - 'textbox "Example: #111827" [ref=e1875]'
+                      - generic [ref=e1292]: "Example: #111827"
+              - generic [ref=e1293]:
+                - generic [ref=e1294]:
+                  - generic [ref=e1295]:
+                    - generic [ref=e1296]: T
+                    - generic [ref=e1297]:
+                      - heading "Theme" [level=2] [ref=e1876]
+                      - paragraph [ref=e1299]: 6 settings
+                  - generic [ref=e1300]: theme
+                - generic [ref=e1302]:
+                  - generic [ref=e1303]:
+                    - generic [ref=e1304]:
+                      - generic [ref=e1305]: text
+                      - button "Reset" [ref=e1877] [cursor=pointer]
+                    - generic [ref=e1307]:
+                      - paragraph [ref=e1308]: Button background
+                      - 'textbox "Example: #000000" [ref=e1878]'
+                      - generic [ref=e1310]: "Example: #000000"
+                  - generic [ref=e1311]:
+                    - generic [ref=e1312]:
+                      - generic [ref=e1313]: text
+                      - button "Reset" [ref=e1879] [cursor=pointer]
+                    - generic [ref=e1315]:
+                      - paragraph [ref=e1316]: Button text color
+                      - 'textbox "Example: #FFFFFF" [ref=e1880]'
+                      - generic [ref=e1318]: "Example: #FFFFFF"
+                  - generic [ref=e1319]:
+                    - generic [ref=e1320]:
+                      - generic [ref=e1321]: imageUploader
+                      - button "Reset" [ref=e1881] [cursor=pointer]
+                    - generic [ref=e1324]:
+                      - text: Header image
+                      - generic [ref=e1325]:
+                        - button "Header image Header image" [ref=e1882]
+                        - paragraph [ref=e1327]: Header image
+                  - generic [ref=e1328]:
+                    - generic [ref=e1329]:
+                      - generic [ref=e1330]: textarea
+                      - button "Reset" [ref=e1883] [cursor=pointer]
+                    - generic [ref=e1332]:
+                      - paragraph [ref=e1333]: Header text
+                      - generic [ref=e1334]:
+                        - generic [ref=e1335]:
+                          - text: AR
+                          - textbox "AR" [ref=e1336]:
+                            - /placeholder: Header text
+                        - generic [ref=e1337]:
+                          - text: EN
+                          - textbox "EN" [ref=e1338]:
+                            - /placeholder: Header text
+                      - generic [ref=e1339]: Header text
+                  - generic [ref=e1340]:
+                    - generic [ref=e1341]:
+                      - generic [ref=e1342]: imageUploader
+                      - button "Reset" [ref=e1884] [cursor=pointer]
+                    - generic [ref=e1345]:
+                      - text: Footer image
+                      - generic [ref=e1346]:
+                        - button "Footer image Footer image" [ref=e1885]
+                        - paragraph [ref=e1348]: Footer image
+                  - generic [ref=e1349]:
+                    - generic [ref=e1350]:
+                      - generic [ref=e1351]: textarea
+                      - button "Reset" [ref=e1886] [cursor=pointer]
+                    - generic [ref=e1353]:
+                      - paragraph [ref=e1354]: Footer text
+                      - generic [ref=e1355]:
+                        - generic [ref=e1356]:
+                          - text: AR
+                          - textbox "AR" [ref=e1357]:
+                            - /placeholder: Footer text
+                        - generic [ref=e1358]:
+                          - text: EN
+                          - textbox "EN" [ref=e1359]:
+                            - /placeholder: Footer text
+                      - generic [ref=e1360]: Footer text
+          - generic [ref=e1361]:
+            - generic [ref=e1362]:
+              - generic [ref=e1363]:
+                - generic [ref=e1364]: C
+                - generic [ref=e1365]:
+                  - heading "Config" [level=2] [ref=e1887]
+                  - paragraph [ref=e1367]: 24 settings
+              - generic [ref=e1368]: config
+            - generic [ref=e1369]:
+              - generic [ref=e1370]:
+                - generic [ref=e1371]:
+                  - generic [ref=e1372]:
+                    - generic [ref=e1373]: M
+                    - generic [ref=e1374]:
+                      - heading "Mail" [level=2] [ref=e1888]
+                      - paragraph [ref=e1376]: 8 settings
+                  - generic [ref=e1377]: mail
+                - generic [ref=e1379]:
+                  - generic [ref=e1380]:
+                    - generic [ref=e1381]:
+                      - generic [ref=e1382]: select
+                      - button "Reset" [ref=e1889] [cursor=pointer]
+                    - generic [ref=e1385]:
+                      - generic [ref=e1386]: Mail driver
+                      - button "Mail driver" [ref=e1890] [cursor=pointer]:
+                        - generic [ref=e1389]: smtp
+                        - generic [ref=e1390]: ⌄
+                      - generic [ref=e1391]: "Options: smtp, sendmail, mailgun, ses, postmark, resend"
+                  - generic [ref=e1392]:
+                    - generic [ref=e1393]:
+                      - generic [ref=e1394]: text
+                      - button "Reset" [ref=e1891] [cursor=pointer]
+                    - generic [ref=e1396]:
+                      - paragraph [ref=e1397]: Mail host
+                      - 'textbox "Example: smtp.gmail.com, smtp.office365.com" [ref=e1892]'
+                      - generic [ref=e1399]: "Example: smtp.gmail.com, smtp.office365.com"
+                  - generic [ref=e1400]:
+                    - generic [ref=e1401]:
+                      - generic [ref=e1402]: select
+                      - button "Reset" [ref=e1893] [cursor=pointer]
+                    - generic [ref=e1405]:
+                      - generic [ref=e1406]: Mail port
+                      - button "Mail port" [ref=e1894] [cursor=pointer]:
+                        - generic [ref=e1409]: Select a value
+                        - generic [ref=e1410]: ⌄
+                      - generic [ref=e1411]: "Options: 25, 465, 587, 2525"
+                  - generic [ref=e1412]:
+                    - generic [ref=e1413]:
+                      - generic [ref=e1414]: text
+                      - button "Reset" [ref=e1895] [cursor=pointer]
+                    - generic [ref=e1416]:
+                      - paragraph [ref=e1417]: Mail username
+                      - 'textbox "Example: your-email@gmail.com" [ref=e1896]'
+                      - generic [ref=e1419]: "Example: your-email@gmail.com"
+                  - generic [ref=e1420]:
+                    - generic [ref=e1421]:
+                      - generic [ref=e1422]: text
+                      - button "Reset" [ref=e1897] [cursor=pointer]
+                    - generic [ref=e1424]:
+                      - paragraph [ref=e1425]: Mail password
+                      - 'textbox "Example: your-app-password" [ref=e1898]'
+                      - generic [ref=e1427]: "Example: your-app-password"
+                  - generic [ref=e1428]:
+                    - generic [ref=e1429]:
+                      - generic [ref=e1430]: select
+                      - button "Reset" [ref=e1899] [cursor=pointer]
+                    - generic [ref=e1433]:
+                      - generic [ref=e1434]: Mail encryption
+                      - button "Mail encryption" [ref=e1900] [cursor=pointer]:
+                        - generic [ref=e1437]: Select a value
+                        - generic [ref=e1438]: ⌄
+                      - generic [ref=e1439]: "Options: null, tls, ssl"
+                  - generic [ref=e1440]:
+                    - generic [ref=e1441]:
+                      - generic [ref=e1442]: text
+                      - button "Reset" [ref=e1901] [cursor=pointer]
+                    - generic [ref=e1444]:
+                      - paragraph [ref=e1445]: From address
+                      - 'textbox "Example: noreply@example.com" [ref=e1902]'
+                      - generic [ref=e1447]: "Example: noreply@example.com"
+                  - generic [ref=e1448]:
+                    - generic [ref=e1449]:
+                      - generic [ref=e1450]: text
+                      - button "Reset" [ref=e1903] [cursor=pointer]
+                    - generic [ref=e1452]:
+                      - paragraph [ref=e1453]: From name
+                      - generic [ref=e1454]:
+                        - generic [ref=e1455]:
+                          - text: AR
+                          - textbox "AR" [ref=e1456]:
+                            - /placeholder: "Example: Company name"
+                        - generic [ref=e1457]:
+                          - text: EN
+                          - textbox "EN" [ref=e1458]:
+                            - /placeholder: "Example: Company name"
+                      - generic [ref=e1459]: "Example: Company name"
+              - generic [ref=e1460]:
+                - generic [ref=e1461]:
+                  - generic [ref=e1462]:
+                    - generic [ref=e1463]: S
+                    - generic [ref=e1464]:
+                      - heading "Sms" [level=2] [ref=e1904]
+                      - paragraph [ref=e1466]: 4 settings
+                  - generic [ref=e1467]: sms
+                - generic [ref=e1469]:
+                  - generic [ref=e1470]:
+                    - generic [ref=e1471]:
+                      - generic [ref=e1472]: select
+                      - button "Reset" [ref=e1905] [cursor=pointer]
+                    - generic [ref=e1475]:
+                      - generic [ref=e1476]: SMS gateway
+                      - button "SMS gateway" [ref=e1906] [cursor=pointer]:
+                        - generic [ref=e1479]: Select a value
+                        - generic [ref=e1480]: ⌄
+                      - generic [ref=e1481]: "Options: twilio, nexmo, aws-sns, custom"
+                  - generic [ref=e1482]:
+                    - generic [ref=e1483]:
+                      - generic [ref=e1484]: text
+                      - button "Reset" [ref=e1907] [cursor=pointer]
+                    - generic [ref=e1486]:
+                      - paragraph [ref=e1487]: Username
+                      - 'textbox "Example: your-account-sid" [ref=e1908]'
+                      - generic [ref=e1489]: "Example: your-account-sid"
+                  - generic [ref=e1490]:
+                    - generic [ref=e1491]:
+                      - generic [ref=e1492]: text
+                      - button "Reset" [ref=e1909] [cursor=pointer]
+                    - generic [ref=e1494]:
+                      - paragraph [ref=e1495]: Password
+                      - 'textbox "Example: your-auth-token" [ref=e1910]'
+                      - generic [ref=e1497]: "Example: your-auth-token"
+                  - generic [ref=e1498]:
+                    - generic [ref=e1499]:
+                      - generic [ref=e1500]: text
+                      - button "Reset" [ref=e1911] [cursor=pointer]
+                    - generic [ref=e1502]:
+                      - paragraph [ref=e1503]: Sender ID
+                      - 'textbox "Example: YourBrand or 1234567890" [ref=e1912]'
+                      - generic [ref=e1505]: "Example: YourBrand or 1234567890"
+              - generic [ref=e1506]:
+                - generic [ref=e1507]:
+                  - generic [ref=e1508]:
+                    - generic [ref=e1509]: L
+                    - generic [ref=e1510]:
+                      - heading "Ldap" [level=2] [ref=e1913]
+                      - paragraph [ref=e1512]: 5 settings
+                  - generic [ref=e1513]: ldap
+                - generic [ref=e1515]:
+                  - generic [ref=e1516]:
+                    - generic [ref=e1517]:
+                      - generic [ref=e1518]: text
+                      - button "Reset" [ref=e1914] [cursor=pointer]
+                    - generic [ref=e1520]:
+                      - paragraph [ref=e1521]: LDAP host
+                      - 'textbox "Example: ldap.example.com" [ref=e1915]'
+                      - generic [ref=e1523]: "Example: ldap.example.com"
+                  - generic [ref=e1524]:
+                    - generic [ref=e1525]:
+                      - generic [ref=e1526]: select
+                      - button "Reset" [ref=e1916] [cursor=pointer]
+                    - generic [ref=e1529]:
+                      - generic [ref=e1530]: LDAP port
+                      - button "LDAP port" [ref=e1917] [cursor=pointer]:
+                        - generic [ref=e1533]: Select a value
+                        - generic [ref=e1534]: ⌄
+                      - generic [ref=e1535]: "Options: 389 (standard), 636 (SSL)"
+                  - generic [ref=e1536]:
+                    - generic [ref=e1537]:
+                      - generic [ref=e1538]: text
+                      - button "Reset" [ref=e1918] [cursor=pointer]
+                    - generic [ref=e1540]:
+                      - paragraph [ref=e1541]: LDAP Base DN
+                      - 'textbox "Example: dc=example,dc=com" [ref=e1919]'
+                      - generic [ref=e1543]: "Example: dc=example,dc=com"
+                  - generic [ref=e1544]:
+                    - generic [ref=e1545]:
+                      - generic [ref=e1546]: text
+                      - button "Reset" [ref=e1920] [cursor=pointer]
+                    - generic [ref=e1548]:
+                      - paragraph [ref=e1549]: LDAP username
+                      - 'textbox "Example: cn=admin,dc=example,dc=com" [ref=e1921]'
+                      - generic [ref=e1551]: "Example: cn=admin,dc=example,dc=com"
+                  - generic [ref=e1552]:
+                    - generic [ref=e1553]:
+                      - generic [ref=e1554]: text
+                      - button "Reset" [ref=e1922] [cursor=pointer]
+                    - generic [ref=e1556]:
+                      - paragraph [ref=e1557]: LDAP password
+                      - 'textbox "Example: ldap-password" [ref=e1923]'
+                      - generic [ref=e1559]: "Example: ldap-password"
+              - generic [ref=e1560]:
+                - generic [ref=e1561]:
+                  - generic [ref=e1562]:
+                    - generic [ref=e1563]: R
+                    - generic [ref=e1564]:
+                      - heading "Reverb" [level=2] [ref=e1924]
+                      - paragraph [ref=e1566]: 7 settings
+                  - generic [ref=e1567]: reverb
+                - generic [ref=e1569]:
+                  - generic [ref=e1570]:
+                    - generic [ref=e1571]:
+                      - generic [ref=e1572]: switchbox
+                      - button "Reset" [ref=e1925] [cursor=pointer]
+                    - generic [ref=e1575]:
+                      - generic [ref=e1576]:
+                        - paragraph [ref=e1577]: Enable Realtime
+                        - paragraph [ref=e1578]: Enable/Disable
+                      - switch "Enable Realtime" [ref=e1926] [cursor=pointer]:
+                        - generic [ref=e1581]: Disabled
+                  - generic [ref=e1582]:
+                    - generic [ref=e1583]:
+                      - generic [ref=e1584]: text
+                      - button "Reset" [ref=e1927] [cursor=pointer]
+                    - generic [ref=e1586]:
+                      - paragraph [ref=e1587]: App ID
+                      - 'textbox "Example: 1080194" [ref=e1928]'
+                      - generic [ref=e1589]: "Example: 1080194"
+                  - generic [ref=e1590]:
+                    - generic [ref=e1591]:
+                      - generic [ref=e1592]: text
+                      - button "Reset" [ref=e1929] [cursor=pointer]
+                    - generic [ref=e1594]:
+                      - paragraph [ref=e1595]: App Key
+                      - 'textbox "Example: bae3160ce349d284eace" [ref=e1930]'
+                      - generic [ref=e1597]: "Example: bae3160ce349d284eace"
+                  - generic [ref=e1598]:
+                    - generic [ref=e1599]:
+                      - generic [ref=e1600]: text
+                      - button "Reset" [ref=e1931] [cursor=pointer]
+                    - generic [ref=e1602]:
+                      - paragraph [ref=e1603]: App Secret
+                      - 'textbox "Example: 976e5b64127df42af8b6" [ref=e1932]'
+                      - generic [ref=e1605]: "Example: 976e5b64127df42af8b6"
+                  - generic [ref=e1606]:
+                    - generic [ref=e1607]:
+                      - generic [ref=e1608]: text
+                      - button "Reset" [ref=e1933] [cursor=pointer]
+                    - generic [ref=e1610]:
+                      - paragraph [ref=e1611]: Host
+                      - 'textbox "Example: reverb.example.com or localhost" [ref=e1934]'
+                      - generic [ref=e1613]: "Example: reverb.example.com or localhost"
+                  - generic [ref=e1614]:
+                    - generic [ref=e1615]:
+                      - generic [ref=e1616]: select
+                      - button "Reset" [ref=e1935] [cursor=pointer]
+                    - generic [ref=e1619]:
+                      - generic [ref=e1620]: Port
+                      - button "Port" [ref=e1936] [cursor=pointer]:
+                        - generic [ref=e1623]: Select a value
+                        - generic [ref=e1624]: ⌄
+                      - generic [ref=e1625]: "Options: 8080, 9000, 3000"
+                  - generic [ref=e1626]:
+                    - generic [ref=e1627]:
+                      - generic [ref=e1628]: select
+                      - button "Reset" [ref=e1937] [cursor=pointer]
+                    - generic [ref=e1631]:
+                      - generic [ref=e1632]: Scheme
+                      - button "Scheme" [ref=e1938] [cursor=pointer]:
+                        - generic [ref=e1635]: Select a value
+                        - generic [ref=e1636]: ⌄
+                      - generic [ref=e1637]: "Options: http, https, ws, wss"
+          - generic [ref=e1638]:
+            - paragraph [ref=e1639]: 64 settings
+            - generic [ref=e1640]:
+              - button "Reset changes" [disabled] [ref=e1939]
+              - button "Save settings" [ref=e1940] [cursor=pointer]

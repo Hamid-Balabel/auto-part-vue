@@ -1,0 +1,87 @@
+- generic [ref=f68e3]:
+  - complementary [ref=f68e4]:
+    - generic [ref=f68e9]:
+      - paragraph [ref=f68e10]: Auto Part Admin
+      - paragraph [ref=f68e11]: Inventory and sales
+    - navigation [ref=f68e12]:
+      - link "Dashboard" [ref=f68e13] [cursor=pointer]:
+        - /url: /
+      - button "إدخال البيانات" [ref=f68e18] [cursor=pointer]
+      - button "Sales" [ref=f68e27] [cursor=pointer]
+      - generic [ref=f68e35]:
+        - button "المستخدمين" [expanded] [ref=f68e36] [cursor=pointer]
+        - generic [ref=f68e45]:
+          - link "Users" [ref=f68e46] [cursor=pointer]:
+            - /url: /users
+          - link "Roles" [ref=f68e53] [cursor=pointer]:
+            - /url: /roles
+      - button "الإعدادات" [ref=f68e59] [cursor=pointer]
+  - generic [ref=f68e66]:
+    - banner [ref=f68e67]:
+      - generic [ref=f68e68]:
+        - generic [ref=f68e69]: Backend-supported filters appear inside each module.
+        - generic "Language" [ref=f68e74]:
+          - button "العربية" [ref=f68e79] [cursor=pointer]
+          - button "English" [ref=f68e80] [cursor=pointer]
+        - generic [ref=f68e81]:
+          - paragraph [ref=f68e82]: root
+          - paragraph [ref=f68e83]: root@jervis.com
+        - button "Logout" [ref=f68e84] [cursor=pointer]
+    - main [ref=f68e85]:
+      - generic [ref=f68e86]:
+        - generic [ref=f68e88]:
+          - heading "Edit user" [level=1] [ref=f68e89]
+          - paragraph [ref=f68e90]: Roles are required. Password is required when creating a new user.
+        - generic [ref=f68e91]:
+          - generic [ref=f68e92]:
+            - heading "Basic information" [level=2] [ref=f68e94]
+            - generic [ref=f68e95]:
+              - generic [ref=f68e96]:
+                - generic [ref=f68e97]: Name *
+                - textbox "Name *" [ref=f68e98]: QA Active User
+              - generic [ref=f68e99]:
+                - generic [ref=f68e100]: Email *
+                - textbox "Email *" [ref=f68e101]: qa.active.20260718@example.com
+              - generic [ref=f68e102]:
+                - generic [ref=f68e103]: Gender *
+                - combobox "Gender *" [ref=f68e106] [cursor=pointer]:
+                  - generic [ref=f68e107]: Male
+              - generic [ref=f68e110]:
+                - generic [ref=f68e111]: User Status
+                - switch "User Status" [checked] [ref=f68e113] [cursor=pointer]:
+                  - generic [ref=f68e115]: Active
+            - generic [ref=f68e117]:
+              - paragraph [ref=f68e118]: Phone
+              - generic [ref=f68e119]:
+                - generic [ref=f68e120]:
+                  - generic [ref=f68e121]: Country code
+                  - combobox "Country code" [ref=f68e124] [cursor=pointer]:
+                    - generic [ref=f68e125]: Select a country code.
+                - generic [ref=f68e128]:
+                  - text: Phone
+                  - textbox "Phone" [ref=f68e129]
+          - generic [ref=f68e130]:
+            - heading "Security information" [level=2] [ref=f68e132]
+            - generic [ref=f68e133]:
+              - generic [ref=f68e134]:
+                - generic [ref=f68e135]: Password
+                - textbox "Password" [ref=f68e136]
+              - generic [ref=f68e137]:
+                - generic [ref=f68e138]: Password confirmation
+                - textbox "Password confirmation" [ref=f68e139]
+          - generic [ref=f68e140]:
+            - heading "Roles" [level=2] [ref=f68e142]
+            - generic [ref=f68e143]:
+              - generic [ref=f68e144]: Roles *
+              - combobox "Roles *" [ref=f68e147] [cursor=pointer]:
+                - generic [ref=f68e148]: admin
+                - button "Clear" [ref=f68e149]
+          - generic [ref=f68e155]:
+            - heading "Avatar" [level=2] [ref=f68e157]
+            - generic [ref=f68e158]:
+              - text: Avatar
+              - button "Avatar" [ref=f68e159]
+          - generic [ref=f68e160]:
+            - link "Cancel" [ref=f68e161] [cursor=pointer]:
+              - /url: /users
+            - button "Save" [ref=f68e162] [cursor=pointer]

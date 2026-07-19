@@ -1,0 +1,47 @@
+- generic [ref=e33]:
+  - complementary [ref=e34]:
+    - generic [ref=e39]:
+      - paragraph [ref=e40]: إدارة قطع الغيار
+      - paragraph [ref=e41]: المخزون والمبيعات
+    - navigation [ref=e42]:
+      - link "لوحة التحكم" [ref=e43] [cursor=pointer]:
+        - /url: /
+      - button "إدخال البيانات" [ref=e48] [cursor=pointer]
+      - button "المبيعات" [ref=e57] [cursor=pointer]
+      - generic [ref=e65]:
+        - button "المستخدمين" [expanded] [active] [ref=e66] [cursor=pointer]
+        - generic [ref=e139]:
+          - link "المستخدمون" [ref=e140] [cursor=pointer]:
+            - /url: /users
+          - link "الأدوار" [ref=e147] [cursor=pointer]:
+            - /url: /roles
+      - button "الإعدادات" [ref=e76] [cursor=pointer]
+  - generic [ref=e83]:
+    - banner [ref=e84]:
+      - generic [ref=e85]:
+        - generic [ref=e86]: الفلاتر المدعومة من الخلفية تظهر داخل كل شاشة.
+        - generic "اللغة" [ref=e91]:
+          - button "العربية" [ref=e96] [cursor=pointer]
+          - button "English" [ref=e97] [cursor=pointer]
+        - generic [ref=e98]:
+          - paragraph [ref=e99]: root
+          - paragraph [ref=e100]: root@jervis.com
+        - button "تسجيل الخروج" [ref=e101] [cursor=pointer]
+    - main [ref=e102]:
+      - generic [ref=e104]:
+        - heading "لوحة التحكم" [level=1] [ref=e105]
+        - paragraph [ref=e106]: واجهة إدارة احترافية متصلة بعقد Laravel API الذي تم فحصه.
+      - generic [ref=e107]:
+        - generic [ref=e108]:
+          - paragraph [ref=e120]: وحدات المخزون
+          - paragraph [ref=e121]: المنتجات، العناصر، المخزون
+        - generic [ref=e122]:
+          - paragraph [ref=e126]: وحدات المبيعات
+          - paragraph [ref=e127]: السلات، الطلبات، الأقساط
+        - generic [ref=e128]:
+          - paragraph [ref=e133]: وحدات الإدارة
+          - paragraph [ref=e134]: المستخدمون، الأدوار، الإعدادات
+      - generic [ref=e135]:
+        - heading "الجلسة" [level=2] [ref=e136]
+        - paragraph [ref=e137]: تم تسجيل الدخول باسم root.
+        - paragraph [ref=e138]: إذا كانت الصلاحيات مشفرة من إعدادات الخلفية، ستبقى رؤية القائمة محافظة حتى تعرض الخلفية أسماء الصلاحيات.

@@ -1,0 +1,56 @@
+- generic [ref=f4e40]:
+  - complementary [ref=f4e41]:
+    - generic [ref=f4e46]:
+      - paragraph [ref=f4e47]: إدارة قطع الغيار
+      - paragraph [ref=f4e48]: المخزون والمبيعات
+    - navigation [ref=f4e49]:
+      - link "لوحة التحكم" [ref=f4e50] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f4e54]:
+        - button "إدخال البيانات" [expanded] [ref=f4e55] [cursor=pointer]
+        - generic [ref=f4e63]:
+          - link "المنتجات" [ref=f4e64] [cursor=pointer]:
+            - /url: /products
+          - link "عناصر المنتجات" [ref=f4e72] [cursor=pointer]:
+            - /url: /product-items
+          - link "التصنيفات" [ref=f4e84] [cursor=pointer]:
+            - /url: /categories
+          - link "العلامات التجارية" [ref=f4e90] [cursor=pointer]:
+            - /url: /brands
+          - link "العملاء" [ref=f4e95] [cursor=pointer]:
+            - /url: /customers
+          - link "المستودعات" [ref=f4e102] [cursor=pointer]:
+            - /url: /warehouses
+          - link "المخزون" [ref=f4e107] [cursor=pointer]:
+            - /url: /stocks
+          - link "الدول" [ref=f4e113] [cursor=pointer]:
+            - /url: /countries
+      - button "المبيعات" [ref=f4e118] [cursor=pointer]
+      - button "المستخدمين" [ref=f4e127] [cursor=pointer]
+      - button "الإعدادات" [ref=f4e137] [cursor=pointer]
+  - generic [ref=f4e144]:
+    - banner [ref=f4e145]:
+      - generic [ref=f4e146]:
+        - generic [ref=f4e147]: الفلاتر المدعومة من الخلفية تظهر داخل كل شاشة.
+        - generic "اللغة" [ref=f4e152]:
+          - button "العربية" [ref=f4e157] [cursor=pointer]
+          - button "English" [ref=f4e158] [cursor=pointer]
+        - generic [ref=f4e159]:
+          - paragraph [ref=f4e160]: root
+          - paragraph [ref=f4e161]: root@jervis.com
+        - button "تسجيل الخروج" [ref=f4e162] [cursor=pointer]
+    - main [ref=f4e3]:
+      - generic [ref=f4e163]:
+        - generic [ref=f4e164]:
+          - heading "التصنيفات" [level=1] [ref=f4e165]
+          - paragraph [ref=f4e166]: حقول الاسم والوصف متعددة اللغات مطابقة لموارد Laravel.
+        - link "إنشاء" [ref=f4e168] [cursor=pointer]:
+          - /url: /categories/create
+      - generic [ref=f4e169]:
+        - generic [ref=f4e170]:
+          - searchbox "البحث غير مدعوم بشكل موثوق في نقطة الخلفية هذه." [disabled] [ref=f4e171]
+          - generic [ref=f4e172]:
+            - button "بحث" [disabled] [ref=f4e173]
+            - button "مسح" [disabled] [ref=f4e174]
+        - button "تحديث" [disabled] [ref=f4e175]
+      - generic [ref=f4e177]: جار تحميل البيانات...

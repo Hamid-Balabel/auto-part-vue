@@ -1,0 +1,74 @@
+- generic [ref=e32]:
+  - complementary [ref=e33]:
+    - generic [ref=e38]:
+      - paragraph [ref=e39]: Auto Part Admin
+      - paragraph [ref=e40]: Inventory and sales
+    - navigation [ref=e41]:
+      - link "Dashboard" [ref=e42] [cursor=pointer]:
+        - /url: /
+      - button "إدخال البيانات" [ref=e47] [cursor=pointer]
+      - button "Sales" [ref=e56] [cursor=pointer]
+      - button "المستخدمين" [ref=e65] [cursor=pointer]
+      - button "الإعدادات" [ref=e75] [cursor=pointer]
+  - generic [ref=e82]:
+    - banner [ref=e83]:
+      - generic [ref=e84]:
+        - generic [ref=e85]: Backend-supported filters appear inside each module.
+        - generic "Language" [ref=e90]:
+          - button "العربية" [ref=e95] [cursor=pointer]
+          - button "English" [ref=e96] [cursor=pointer]
+        - generic [ref=e97]:
+          - paragraph [ref=e98]: root
+          - paragraph [ref=e99]: root@jervis.com
+        - button "Logout" [ref=e100] [cursor=pointer]
+    - main [ref=e101]:
+      - generic [ref=e103]:
+        - heading "Create user" [level=1] [ref=e104]
+        - paragraph [ref=e105]: Roles are required. Password is required when creating a new user.
+      - generic [ref=e106]:
+        - generic [ref=e107]:
+          - heading "Basic information" [level=2] [ref=e109]
+          - generic [ref=e110]:
+            - generic [ref=e111]:
+              - generic [ref=e112]: Name *
+              - textbox "Name *" [ref=e113]
+            - generic [ref=e114]:
+              - generic [ref=e115]: Email *
+              - textbox "Email *" [ref=e116]: root@jervis.com
+            - generic [ref=e117]:
+              - generic [ref=e118]: Gender *
+              - combobox "Gender *" [ref=e119]:
+                - option "Select..."
+                - option "Male" [selected]
+                - option "Female"
+            - generic [ref=e120]:
+              - generic [ref=e121]: Phone code ID
+              - spinbutton "Phone code ID" [ref=e122]
+            - generic [ref=e123]:
+              - generic [ref=e124]: Phone
+              - textbox "Phone" [ref=e125]
+            - generic [ref=e126]:
+              - generic [ref=e127]: User Status
+              - combobox "User Status" [ref=e128]:
+                - option "Select..."
+                - option "Active" [selected]
+                - option "Inactive"
+        - generic [ref=e129]:
+          - heading "Security information" [level=2] [ref=e131]
+          - generic [ref=e132]:
+            - generic [ref=e133]:
+              - generic [ref=e134]: Password *
+              - textbox "Password *" [ref=e135]: "123456"
+            - generic [ref=e136]:
+              - generic [ref=e137]: Password confirmation *
+              - textbox "Password confirmation *" [ref=e138]
+        - heading "Roles" [level=2] [ref=e141]
+        - generic [ref=e142]:
+          - heading "Avatar" [level=2] [ref=e144]
+          - generic [ref=e145]:
+            - text: Avatar
+            - button "Avatar" [ref=e146]
+        - generic [ref=e147]:
+          - link "Cancel" [ref=e148] [cursor=pointer]:
+            - /url: /users
+          - button "Save" [ref=e149] [cursor=pointer]

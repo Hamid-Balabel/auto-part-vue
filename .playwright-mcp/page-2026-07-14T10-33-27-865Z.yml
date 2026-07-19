@@ -1,0 +1,54 @@
+- generic [ref=f8e32]:
+  - complementary [ref=f8e33]:
+    - generic [ref=f8e38]:
+      - paragraph [ref=f8e39]: إدارة قطع الغيار
+      - paragraph [ref=f8e40]: المخزون والمبيعات
+    - navigation [ref=f8e41]:
+      - link "لوحة التحكم" [ref=f8e42] [cursor=pointer]:
+        - /url: /
+      - button "إدخال البيانات" [ref=f8e47] [cursor=pointer]
+      - button "المبيعات" [ref=f8e56] [cursor=pointer]
+      - button "المستخدمين" [ref=f8e65] [cursor=pointer]
+      - button "الإعدادات" [ref=f8e75] [cursor=pointer]
+  - generic [ref=f8e82]:
+    - banner [ref=f8e83]:
+      - generic [ref=f8e84]:
+        - generic [ref=f8e85]: الفلاتر المدعومة من الخلفية تظهر داخل كل شاشة.
+        - generic "اللغة" [ref=f8e90]:
+          - button "العربية" [ref=f8e95] [cursor=pointer]
+          - button "English" [ref=f8e96] [cursor=pointer]
+        - generic [ref=f8e97]:
+          - paragraph [ref=f8e98]: root
+          - paragraph [ref=f8e99]: root@jervis.com
+        - button "تسجيل الخروج" [ref=f8e100] [cursor=pointer]
+    - main [ref=f8e101]:
+      - generic [ref=f8e102]:
+        - generic [ref=f8e104]:
+          - heading "تعديل دور" [level=1] [ref=f8e105]
+          - paragraph [ref=f8e106]: الصلاحيات ترسل إلى الخلفية بأسمائها كما يتطلب RoleRequest.
+        - generic [ref=f8e107]:
+          - generic [ref=f8e108]: جار تحميل الدور...
+          - generic [ref=f8e109]:
+            - heading "البيانات الأساسية" [level=2] [ref=f8e111]
+            - generic [ref=f8e112]:
+              - generic [ref=f8e113]:
+                - generic [ref=f8e114]: المفتاح *
+                - textbox "المفتاح *" [ref=f8e115]
+              - generic [ref=f8e116]:
+                - generic [ref=f8e117]: الاسم المعروض بالعربية *
+                - textbox "الاسم المعروض بالعربية *" [ref=f8e118]
+              - generic [ref=f8e119]:
+                - generic [ref=f8e120]: الاسم المعروض بالإنجليزية
+                - textbox "الاسم المعروض بالإنجليزية" [ref=f8e121]
+          - generic [ref=f8e122]:
+            - heading "صلاحيات الدور" [level=2] [ref=f8e124]
+            - generic [ref=f8e125]:
+              - paragraph [ref=f8e127]: 0 / 0 محدد
+              - generic [ref=f8e128]:
+                - searchbox "ابحث في الصلاحيات" [ref=f8e129]
+                - button "تحديد كل الصلاحيات" [disabled] [ref=f8e130]
+            - generic [ref=f8e131]: جار تحميل البيانات...
+          - generic [ref=f8e132]:
+            - link "إلغاء" [ref=f8e133] [cursor=pointer]:
+              - /url: /roles
+            - button "حفظ" [ref=f8e134] [cursor=pointer]

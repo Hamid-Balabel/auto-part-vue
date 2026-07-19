@@ -1,0 +1,216 @@
+- generic [ref=f24e32]:
+  - complementary [ref=f24e33]:
+    - generic [ref=f24e38]:
+      - paragraph [ref=f24e39]: Auto Part Admin
+      - paragraph [ref=f24e40]: Inventory and sales
+    - navigation [ref=f24e41]:
+      - link "Dashboard" [ref=f24e42] [cursor=pointer]:
+        - /url: /
+      - button "إدخال البيانات" [ref=f24e47] [cursor=pointer]
+      - button "Sales" [ref=f24e56] [cursor=pointer]
+      - generic [ref=f24e64]:
+        - button "المستخدمين" [expanded] [ref=f24e65] [cursor=pointer]
+        - generic [ref=f24e995]:
+          - link "Users" [active] [ref=f24e996] [cursor=pointer]:
+            - /url: /users
+          - link "Roles" [ref=f24e1003] [cursor=pointer]:
+            - /url: /roles
+      - button "الإعدادات" [ref=f24e75] [cursor=pointer]
+  - generic [ref=f24e82]:
+    - banner [ref=f24e83]:
+      - generic [ref=f24e84]:
+        - generic [ref=f24e85]: Backend-supported filters appear inside each module.
+        - generic "Language" [ref=f24e90]:
+          - button "العربية" [ref=f24e95] [cursor=pointer]
+          - button "English" [ref=f24e96] [cursor=pointer]
+        - generic [ref=f24e97]:
+          - paragraph [ref=f24e98]: root
+          - paragraph [ref=f24e99]: root@jervis.com
+        - button "Logout" [ref=f24e100] [cursor=pointer]
+    - main [ref=f24e101]:
+      - generic [ref=f24e1008]:
+        - generic [ref=f24e1009]:
+          - heading "Users" [level=1] [ref=f24e1010]
+          - paragraph [ref=f24e1011]: Manage system users according to Laravel policies and permissions.
+        - link "Create user" [ref=f24e1013] [cursor=pointer]:
+          - /url: /users/create
+      - table [ref=f24e1016]:
+        - rowgroup [ref=f24e1017]:
+          - row [ref=f24e1018]:
+            - columnheader "Name" [ref=f24e1019]
+            - columnheader "Email" [ref=f24e1020]
+            - columnheader "Roles" [ref=f24e1021]
+            - columnheader "User Status" [ref=f24e1022]
+            - columnheader "Actions" [ref=f24e1023]
+        - rowgroup [ref=f24e1024]:
+          - row [ref=f24e1025]:
+            - cell "Jon O'Connell" [ref=f24e1026]
+            - cell "jon.o'connell.8992@jervis.com" [ref=f24e1027]
+            - cell "admin" [ref=f24e1028]
+            - cell [ref=f24e1031]:
+              - switch "Active" [checked] [ref=f24e1032] [cursor=pointer]
+            - cell [ref=f24e1035]:
+              - generic [ref=f24e1036]:
+                - link "Edit" [ref=f24e1037] [cursor=pointer]:
+                  - /url: /users/32/edit
+                - button "Delete" [ref=f24e1038] [cursor=pointer]
+          - row [ref=f24e1039]:
+            - cell "Callie Runolfsdottir" [ref=f24e1040]
+            - cell "callie.runolfsdottir.2786@jervis.com" [ref=f24e1041]
+            - cell "admin" [ref=f24e1042]
+            - cell [ref=f24e1045]:
+              - switch "Inactive" [ref=f24e1046] [cursor=pointer]
+            - cell [ref=f24e1049]:
+              - generic [ref=f24e1050]:
+                - link "Edit" [ref=f24e1051] [cursor=pointer]:
+                  - /url: /users/31/edit
+                - button "Delete" [ref=f24e1052] [cursor=pointer]
+          - row [ref=f24e1053]:
+            - cell "Francesca Anderson" [ref=f24e1054]
+            - cell "francesca.anderson.8663@jervis.com" [ref=f24e1055]
+            - cell "admin" [ref=f24e1056]
+            - cell [ref=f24e1059]:
+              - switch "Active" [checked] [ref=f24e1060] [cursor=pointer]
+            - cell [ref=f24e1063]:
+              - generic [ref=f24e1064]:
+                - link "Edit" [ref=f24e1065] [cursor=pointer]:
+                  - /url: /users/30/edit
+                - button "Delete" [ref=f24e1066] [cursor=pointer]
+          - row [ref=f24e1067]:
+            - cell "Kamryn Hodkiewicz" [ref=f24e1068]
+            - cell "kamryn.hodkiewicz.5493@jervis.com" [ref=f24e1069]
+            - cell "admin" [ref=f24e1070]
+            - cell [ref=f24e1073]:
+              - switch "Active" [checked] [ref=f24e1074] [cursor=pointer]
+            - cell [ref=f24e1077]:
+              - generic [ref=f24e1078]:
+                - link "Edit" [ref=f24e1079] [cursor=pointer]:
+                  - /url: /users/29/edit
+                - button "Delete" [ref=f24e1080] [cursor=pointer]
+          - row [ref=f24e1081]:
+            - cell "Shaniya Halvorson" [ref=f24e1082]
+            - cell "shaniya.halvorson.637@jervis.com" [ref=f24e1083]
+            - cell "admin" [ref=f24e1084]
+            - cell [ref=f24e1087]:
+              - switch "Active" [checked] [ref=f24e1088] [cursor=pointer]
+            - cell [ref=f24e1091]:
+              - generic [ref=f24e1092]:
+                - link "Edit" [ref=f24e1093] [cursor=pointer]:
+                  - /url: /users/28/edit
+                - button "Delete" [ref=f24e1094] [cursor=pointer]
+          - row [ref=f24e1095]:
+            - cell "Bettye Schneider" [ref=f24e1096]
+            - cell "bettye.schneider.9638@jervis.com" [ref=f24e1097]
+            - cell "admin" [ref=f24e1098]
+            - cell [ref=f24e1101]:
+              - switch "Active" [checked] [ref=f24e1102] [cursor=pointer]
+            - cell [ref=f24e1105]:
+              - generic [ref=f24e1106]:
+                - link "Edit" [ref=f24e1107] [cursor=pointer]:
+                  - /url: /users/27/edit
+                - button "Delete" [ref=f24e1108] [cursor=pointer]
+          - row [ref=f24e1109]:
+            - cell "Ashlynn Kilback" [ref=f24e1110]
+            - cell "ashlynn.kilback.1494@jervis.com" [ref=f24e1111]
+            - cell "admin" [ref=f24e1112]
+            - cell [ref=f24e1115]:
+              - switch "Active" [checked] [ref=f24e1116] [cursor=pointer]
+            - cell [ref=f24e1119]:
+              - generic [ref=f24e1120]:
+                - link "Edit" [ref=f24e1121] [cursor=pointer]:
+                  - /url: /users/26/edit
+                - button "Delete" [ref=f24e1122] [cursor=pointer]
+          - row [ref=f24e1123]:
+            - cell "Hiram Bogisich" [ref=f24e1124]
+            - cell "hiram.bogisich.9289@jervis.com" [ref=f24e1125]
+            - cell "admin" [ref=f24e1126]
+            - cell [ref=f24e1129]:
+              - switch "Active" [checked] [ref=f24e1130] [cursor=pointer]
+            - cell [ref=f24e1133]:
+              - generic [ref=f24e1134]:
+                - link "Edit" [ref=f24e1135] [cursor=pointer]:
+                  - /url: /users/25/edit
+                - button "Delete" [ref=f24e1136] [cursor=pointer]
+          - row [ref=f24e1137]:
+            - cell "Roy Wyman" [ref=f24e1138]
+            - cell "roy.wyman.2521@jervis.com" [ref=f24e1139]
+            - cell "admin" [ref=f24e1140]
+            - cell [ref=f24e1143]:
+              - switch "Active" [checked] [ref=f24e1144] [cursor=pointer]
+            - cell [ref=f24e1147]:
+              - generic [ref=f24e1148]:
+                - link "Edit" [ref=f24e1149] [cursor=pointer]:
+                  - /url: /users/24/edit
+                - button "Delete" [ref=f24e1150] [cursor=pointer]
+          - row [ref=f24e1151]:
+            - cell "Emily Zieme" [ref=f24e1152]
+            - cell "emily.zieme.2761@jervis.com" [ref=f24e1153]
+            - cell "admin" [ref=f24e1154]
+            - cell [ref=f24e1157]:
+              - switch "Active" [checked] [ref=f24e1158] [cursor=pointer]
+            - cell [ref=f24e1161]:
+              - generic [ref=f24e1162]:
+                - link "Edit" [ref=f24e1163] [cursor=pointer]:
+                  - /url: /users/23/edit
+                - button "Delete" [ref=f24e1164] [cursor=pointer]
+          - row [ref=f24e1165]:
+            - cell "Elna Anderson" [ref=f24e1166]
+            - cell "elna.anderson.5754@jervis.com" [ref=f24e1167]
+            - cell "admin" [ref=f24e1168]
+            - cell [ref=f24e1171]:
+              - switch "Active" [checked] [ref=f24e1172] [cursor=pointer]
+            - cell [ref=f24e1175]:
+              - generic [ref=f24e1176]:
+                - link "Edit" [ref=f24e1177] [cursor=pointer]:
+                  - /url: /users/22/edit
+                - button "Delete" [ref=f24e1178] [cursor=pointer]
+          - row [ref=f24e1179]:
+            - cell "Amari Padberg" [ref=f24e1180]
+            - cell "amari.padberg.9286@jervis.com" [ref=f24e1181]
+            - cell "admin" [ref=f24e1182]
+            - cell [ref=f24e1185]:
+              - switch "Active" [checked] [ref=f24e1186] [cursor=pointer]
+            - cell [ref=f24e1189]:
+              - generic [ref=f24e1190]:
+                - link "Edit" [ref=f24e1191] [cursor=pointer]:
+                  - /url: /users/21/edit
+                - button "Delete" [ref=f24e1192] [cursor=pointer]
+          - row [ref=f24e1193]:
+            - cell "Leora Ryan" [ref=f24e1194]
+            - cell "leora.ryan.4932@jervis.com" [ref=f24e1195]
+            - cell "admin" [ref=f24e1196]
+            - cell [ref=f24e1199]:
+              - switch "Active" [checked] [ref=f24e1200] [cursor=pointer]
+            - cell [ref=f24e1203]:
+              - generic [ref=f24e1204]:
+                - link "Edit" [ref=f24e1205] [cursor=pointer]:
+                  - /url: /users/20/edit
+                - button "Delete" [ref=f24e1206] [cursor=pointer]
+          - row [ref=f24e1207]:
+            - cell "Carole Braun" [ref=f24e1208]
+            - cell "carole.braun.1595@jervis.com" [ref=f24e1209]
+            - cell "admin" [ref=f24e1210]
+            - cell [ref=f24e1213]:
+              - switch "Active" [checked] [ref=f24e1214] [cursor=pointer]
+            - cell [ref=f24e1217]:
+              - generic [ref=f24e1218]:
+                - link "Edit" [ref=f24e1219] [cursor=pointer]:
+                  - /url: /users/19/edit
+                - button "Delete" [ref=f24e1220] [cursor=pointer]
+          - row [ref=f24e1221]:
+            - cell "Maiya Boehm" [ref=f24e1222]
+            - cell "maiya.boehm.8661@jervis.com" [ref=f24e1223]
+            - cell "admin" [ref=f24e1224]
+            - cell [ref=f24e1227]:
+              - switch "Active" [checked] [ref=f24e1228] [cursor=pointer]
+            - cell [ref=f24e1231]:
+              - generic [ref=f24e1232]:
+                - link "Edit" [ref=f24e1233] [cursor=pointer]:
+                  - /url: /users/18/edit
+                - button "Delete" [ref=f24e1234] [cursor=pointer]
+      - generic [ref=f24e1235]:
+        - paragraph [ref=f24e1236]: Showing 1 to 15 of 32 records
+        - generic [ref=f24e1237]:
+          - button "Previous" [disabled] [ref=f24e1238]
+          - generic [ref=f24e1239]: Page 1 of 3
+          - button "Next" [ref=f24e1240] [cursor=pointer]

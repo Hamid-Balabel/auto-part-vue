@@ -1,0 +1,83 @@
+- generic [ref=f57e3]:
+  - complementary [ref=f57e4]:
+    - generic [ref=f57e9]:
+      - paragraph [ref=f57e10]: Auto Part Admin
+      - paragraph [ref=f57e11]: Inventory and sales
+    - navigation [ref=f57e12]:
+      - link "Dashboard" [ref=f57e1103] [cursor=pointer]:
+        - /url: /
+      - button "إدخال البيانات" [ref=f57e18] [cursor=pointer]
+      - generic [ref=f57e26]:
+        - button "Sales" [expanded] [ref=f57e1104] [cursor=pointer]
+        - generic [ref=f57e35]:
+          - link "Orders" [ref=f57e1105] [cursor=pointer]:
+            - /url: /orders
+          - link "Installments" [ref=f57e1106] [cursor=pointer]:
+            - /url: /modules/installments
+      - button "المستخدمين" [ref=f57e46] [cursor=pointer]
+      - button "الإعدادات" [ref=f57e56] [cursor=pointer]
+  - generic [ref=f57e63]:
+    - banner [ref=f57e64]:
+      - generic [ref=f57e65]:
+        - generic [ref=f57e66]: Backend-supported filters appear inside each module.
+        - generic "Language" [ref=f57e1107]:
+          - button "العربية" [ref=f57e76] [cursor=pointer]
+          - button "English" [active] [ref=f57e77] [cursor=pointer]
+        - generic [ref=f57e78]:
+          - paragraph [ref=f57e79]: root
+          - paragraph [ref=f57e80]: root@jervis.com
+        - button "Logout" [ref=f57e1108] [cursor=pointer]
+    - main [ref=f57e82]:
+      - generic [ref=f57e83]:
+        - generic [ref=f57e84]:
+          - heading "Quick Sale" [level=1] [ref=f57e1109]
+          - paragraph [ref=f57e86]: Find products, set quantities, collect payment, and finish the sale from one screen.
+        - link "Back to orders" [ref=f57e1110] [cursor=pointer]:
+          - /url: /orders
+      - generic [ref=f57e91]:
+        - generic [ref=f57e92]:
+          - generic [ref=f57e93]:
+            - generic [ref=f57e94]:
+              - text: Product search
+              - searchbox "Product search" [ref=f57e1111]
+            - paragraph [ref=f57e97]: Search runs over product items returned by the backend. Prices shown here are previews until the order is created.
+          - generic [ref=f57e98]:
+            - paragraph [ref=f57e104]: No products selected
+            - paragraph [ref=f57e105]: Search for a product above and select it to add it to this sale.
+        - complementary [ref=f57e106]:
+          - generic [ref=f57e107]:
+            - heading "Sale information" [level=2] [ref=f57e1112]
+            - generic [ref=f57e109]:
+              - generic [ref=f57e110]:
+                - generic [ref=f57e111]: Invoice number *
+                - textbox "Invoice number *" [ref=f57e1113]: SALE-1784407223718
+              - generic [ref=f57e113]:
+                - generic [ref=f57e114]:
+                  - generic [ref=f57e115]: Customer *
+                  - combobox "Customer *" [ref=f57e1114] [cursor=pointer]:
+                    - generic [ref=f57e119]: Select...
+                - button "Quick customer" [ref=f57e1115] [cursor=pointer]
+              - group "Payment method" [ref=f57e1116]:
+                - generic [ref=f57e126]:
+                  - button "Cash" [ref=f57e1117] [cursor=pointer]
+                  - button "Card" [ref=f57e1118] [cursor=pointer]
+                  - button "Partial payment" [ref=f57e1119] [cursor=pointer]
+          - generic [ref=f57e143]:
+            - heading "Order summary" [level=2] [ref=f57e1120]
+            - generic [ref=f57e145]:
+              - generic [ref=f57e146]:
+                - term [ref=f57e147]: Subtotal
+                - definition [ref=f57e148]: EGP 0.00
+              - generic [ref=f57e149]:
+                - term [ref=f57e150]: Paid amount
+                - definition [ref=f57e151]: EGP 0.00
+              - generic [ref=f57e152]:
+                - term [ref=f57e153]: Remaining amount
+                - definition [ref=f57e154]: EGP 0.00
+              - generic [ref=f57e155]:
+                - term [ref=f57e156]: Total
+                - definition [ref=f57e157]: EGP 0.00
+            - paragraph [ref=f57e158]: Prices and totals are confirmed by the backend. Tax, discount, and shipping amounts are not available in the current API.
+          - button "Complete sale · EGP 0.00" [disabled] [ref=f57e1121]:
+            - text: Complete sale ·
+            - generic [ref=f57e160]: EGP 0.00

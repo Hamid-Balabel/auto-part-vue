@@ -1,0 +1,47 @@
+{
+  "http://auto-part.test/api/products/1": {
+    "status": 401,
+    "body": {
+      "status": false,
+      "code": 401,
+      "message": "غير مصرح لك بالوصول",
+      "data": []
+    }
+  },
+  "http://auto-part.test/api/product-items/1": {
+    "status": 401,
+    "body": {
+      "status": false,
+      "code": 401,
+      "message": "غير مصرح لك بالوصول",
+      "data": []
+    }
+  },
+  "http://auto-part.test/api/stocks/1": {
+    "status": 401,
+    "body": {
+      "status": false,
+      "code": 401,
+      "message": "غير مصرح لك بالوصول",
+      "data": []
+    }
+  },
+  "http://auto-part.test/api/products?page=1&per_page=2&sort_column=id&sort_direction=desc": {
+    "status": 401,
+    "body": {
+      "status": false,
+      "code": 401,
+      "message": "غير مصرح لك بالوصول",
+      "data": []
+    }
+  },
+  "http://auto-part.test/api/stocks?page=1&per_page=2&sort_column=id&sort_direction=desc": {
+    "status": 401,
+    "body": {
+      "status": false,
+      "code": 401,
+      "message": "غير مصرح لك بالوصول",
+      "data": []
+    }
+  }
+}

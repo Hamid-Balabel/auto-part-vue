@@ -1,0 +1,65 @@
+- generic [ref=f7e32]:
+  - complementary [ref=f7e33]:
+    - generic [ref=f7e38]:
+      - paragraph [ref=f7e39]: إدارة قطع الغيار
+      - paragraph [ref=f7e40]: المخزون والمبيعات
+    - navigation [ref=f7e41]:
+      - link "لوحة التحكم" [ref=f7e42] [cursor=pointer]:
+        - /url: /
+      - button "إدخال البيانات" [ref=f7e47] [cursor=pointer]
+      - button "المبيعات" [ref=f7e56] [cursor=pointer]
+      - button "المستخدمين" [ref=f7e65] [cursor=pointer]
+      - button "الإعدادات" [ref=f7e75] [cursor=pointer]
+  - generic [ref=f7e82]:
+    - banner [ref=f7e83]:
+      - generic [ref=f7e84]:
+        - generic [ref=f7e85]: الفلاتر المدعومة من الخلفية تظهر داخل كل شاشة.
+        - generic "اللغة" [ref=f7e90]:
+          - button "العربية" [ref=f7e95] [cursor=pointer]
+          - button "English" [ref=f7e96] [cursor=pointer]
+        - generic [ref=f7e97]:
+          - paragraph [ref=f7e98]: root
+          - paragraph [ref=f7e99]: root@jervis.com
+        - button "تسجيل الخروج" [ref=f7e100] [cursor=pointer]
+    - main [ref=f7e101]:
+      - generic [ref=f7e1934]:
+        - generic [ref=f7e1935]:
+          - heading "الأدوار" [level=1] [ref=f7e1936]
+          - paragraph [ref=f7e1937]: إدارة الأدوار وربطها بالصلاحيات المسجلة في الخلفية.
+        - link "إنشاء دور" [ref=f7e1939] [cursor=pointer]:
+          - /url: /roles/create
+      - table [ref=f7e1942]:
+        - rowgroup [ref=f7e1943]:
+          - row [ref=f7e1944]:
+            - columnheader "الاسم المعروض" [ref=f7e1945]
+            - columnheader "المفتاح" [ref=f7e1946]
+            - columnheader "الصلاحيات" [ref=f7e1947]
+            - columnheader "الحالة" [ref=f7e1948]
+            - columnheader "الإجراءات" [ref=f7e1949]
+        - rowgroup [ref=f7e1950]:
+          - row [ref=f7e1951]:
+            - cell "default_role" [ref=f7e1952]
+            - cell "default_role" [ref=f7e1953]
+            - cell "1" [ref=f7e1954]
+            - cell "نشط" [ref=f7e1955]
+            - cell [ref=f7e1957]:
+              - generic [ref=f7e1958]:
+                - link "تعديل" [ref=f7e1959] [cursor=pointer]:
+                  - /url: /roles/3/edit
+                - button "حذف" [ref=f7e1960] [cursor=pointer]
+          - row [ref=f7e1961]:
+            - cell "admin" [ref=f7e1962]
+            - cell "admin" [ref=f7e1963]
+            - cell "127" [ref=f7e1964]
+            - cell "نشط" [ref=f7e1965]
+            - cell [ref=f7e1967]:
+              - generic [ref=f7e1968]:
+                - link "تعديل" [ref=f7e1969] [cursor=pointer]:
+                  - /url: /roles/2/edit
+                - button "حذف" [ref=f7e1970] [cursor=pointer]
+      - generic [ref=f7e1971]:
+        - paragraph [ref=f7e1972]: عرض 1 إلى 2 من 2 سجل
+        - generic [ref=f7e1973]:
+          - button "السابق" [disabled] [ref=f7e1974]
+          - generic [ref=f7e1975]: صفحة 1 من 1
+          - button "التالي" [disabled] [ref=f7e1976]

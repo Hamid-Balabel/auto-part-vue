@@ -1,0 +1,42 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - complementary [ref=e4]:
+      - generic [ref=e9]:
+        - paragraph [ref=e10]: Auto Part Admin
+        - paragraph [ref=e11]: Inventory and sales
+      - navigation [ref=e12]:
+        - link "Dashboard" [ref=e13] [cursor=pointer]:
+          - /url: /
+        - button "إدخال البيانات" [ref=e18] [cursor=pointer]
+        - generic [ref=e26]:
+          - button "Sales" [expanded] [ref=e27] [cursor=pointer]
+          - generic [ref=e35]:
+            - link "Carts" [ref=e36] [cursor=pointer]:
+              - /url: /cart
+            - link "Orders" [ref=e42] [cursor=pointer]:
+              - /url: /orders
+            - link "Installments" [ref=e47] [cursor=pointer]:
+              - /url: /modules/installments
+        - button "المستخدمين" [ref=e52] [cursor=pointer]
+        - button "الإعدادات" [ref=e62] [cursor=pointer]
+    - generic [ref=e69]:
+      - banner [ref=e70]:
+        - generic [ref=e71]:
+          - generic [ref=e72]: Backend-supported filters appear inside each module.
+          - generic "Language" [ref=e77]:
+            - button "العربية" [ref=e82] [cursor=pointer]
+            - button "English" [ref=e83] [cursor=pointer]
+          - generic [ref=e84]:
+            - paragraph [ref=e85]: root
+            - paragraph [ref=e86]: root@jervis.com
+          - button "Logout" [ref=e87] [cursor=pointer]
+      - main [ref=e88]:
+        - generic [ref=e221]:
+          - generic [ref=e222]:
+            - heading "Order details" [level=1] [ref=e223]
+            - paragraph [ref=e224]: Customer, items, payment schedule, totals, and status history from the show endpoint.
+          - button "Back to orders" [ref=e226] [cursor=pointer]
+        - generic [ref=e227]: Loading data...
+  - generic [ref=e231]:
+    - paragraph [ref=e235]: Order created successfully.
+    - button "×" [ref=e236] [cursor=pointer]

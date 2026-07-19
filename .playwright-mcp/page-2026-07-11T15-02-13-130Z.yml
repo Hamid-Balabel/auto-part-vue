@@ -1,0 +1,76 @@
+- generic [ref=f5e32]:
+  - complementary [ref=f5e33]:
+    - generic [ref=f5e38]:
+      - paragraph [ref=f5e39]: إدارة قطع الغيار
+      - paragraph [ref=f5e40]: المخزون والمبيعات
+    - navigation [ref=f5e41]:
+      - link "لوحة التحكم" [ref=f5e42] [cursor=pointer]:
+        - /url: /
+      - button "إدخال البيانات" [ref=f5e47] [cursor=pointer]
+      - button "المبيعات" [ref=f5e56] [cursor=pointer]
+      - button "المستخدمين" [ref=f5e65] [cursor=pointer]
+      - button "الإعدادات" [ref=f5e75] [cursor=pointer]
+  - generic [ref=f5e82]:
+    - banner [ref=f5e83]:
+      - generic [ref=f5e84]:
+        - generic [ref=f5e85]: الفلاتر المدعومة من الخلفية تظهر داخل كل شاشة.
+        - generic "اللغة" [ref=f5e90]:
+          - button "العربية" [ref=f5e95] [cursor=pointer]
+          - button "English" [ref=f5e96] [cursor=pointer]
+        - generic [ref=f5e97]:
+          - paragraph [ref=f5e98]: root
+          - paragraph [ref=f5e99]: root@jervis.com
+        - button "تسجيل الخروج" [ref=f5e100] [cursor=pointer]
+    - main [ref=f5e101]:
+      - generic [ref=f5e386]:
+        - heading "تعديل مستخدم" [level=1] [ref=f5e387]
+        - paragraph [ref=f5e388]: الأدوار مطلوبة، وكلمة المرور مطلوبة عند إنشاء مستخدم جديد.
+      - generic [ref=f5e389]:
+        - generic [ref=f5e390]:
+          - heading "البيانات الأساسية" [level=2] [ref=f5e391]
+          - generic [ref=f5e392]:
+            - generic [ref=f5e393]:
+              - generic [ref=f5e394]: الاسم *
+              - textbox "الاسم *" [ref=f5e395]: Playwright Temporary User
+            - generic [ref=f5e396]:
+              - generic [ref=f5e397]: البريد الإلكتروني *
+              - textbox "البريد الإلكتروني *" [ref=f5e398]: playwright.temp.202607111501@jervis.com
+            - generic [ref=f5e399]:
+              - generic [ref=f5e400]: الجنس *
+              - combobox "الجنس *" [ref=f5e401]:
+                - option "اختر..."
+                - option "ذكر" [selected]
+                - option "أنثى"
+            - generic [ref=f5e402]:
+              - generic [ref=f5e403]: معرف كود الهاتف
+              - spinbutton "معرف كود الهاتف" [ref=f5e404]
+            - generic [ref=f5e405]:
+              - generic [ref=f5e406]: الهاتف
+              - textbox "الهاتف" [ref=f5e407]
+            - generic [ref=f5e408]:
+              - generic [ref=f5e409]: حالة المستخدم
+              - combobox "حالة المستخدم" [ref=f5e410]:
+                - option "اختر..."
+                - option "نشط" [selected]
+                - option "غير نشط"
+        - generic [ref=f5e411]:
+          - heading "بيانات الأمان" [level=2] [ref=f5e412]
+          - generic [ref=f5e413]:
+            - generic [ref=f5e414]:
+              - generic [ref=f5e415]: كلمة المرور
+              - textbox "كلمة المرور" [ref=f5e416]
+            - generic [ref=f5e417]:
+              - generic [ref=f5e418]: تأكيد كلمة المرور
+              - textbox "تأكيد كلمة المرور" [ref=f5e419]
+        - generic [ref=f5e420]:
+          - paragraph [ref=f5e421]: الأدوار
+          - generic [ref=f5e422]:
+            - button "default_role" [ref=f5e423] [cursor=pointer]
+            - button "admin" [ref=f5e424] [cursor=pointer]
+        - generic [ref=f5e426]:
+          - text: الصورة الشخصية
+          - button "الصورة الشخصية" [ref=f5e427]
+        - generic [ref=f5e428]:
+          - link "إلغاء" [ref=f5e429] [cursor=pointer]:
+            - /url: /users
+          - button "حفظ" [ref=f5e430] [cursor=pointer]

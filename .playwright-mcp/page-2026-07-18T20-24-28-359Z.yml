@@ -1,0 +1,91 @@
+- generic [ref=f1e1]:
+  - generic [ref=f1e35]:
+    - complementary [ref=f1e36]:
+      - generic [ref=f1e41]:
+        - paragraph [ref=f1e42]: إدارة قطع الغيار
+        - paragraph [ref=f1e43]: المخزون والمبيعات
+      - navigation [ref=f1e44]:
+        - link "لوحة التحكم" [ref=f1e45] [cursor=pointer]:
+          - /url: /
+        - button "إدخال البيانات" [ref=f1e50] [cursor=pointer]
+        - button "المبيعات" [ref=f1e59] [cursor=pointer]
+        - generic [ref=f1e67]:
+          - button "المستخدمين" [expanded] [ref=f1e68] [cursor=pointer]
+          - generic [ref=f1e77]:
+            - link "المستخدمون" [ref=f1e78] [cursor=pointer]:
+              - /url: /users
+            - link "الأدوار" [ref=f1e85] [cursor=pointer]:
+              - /url: /roles
+        - button "الإعدادات" [ref=f1e91] [cursor=pointer]
+    - generic [ref=f1e98]:
+      - banner [ref=f1e99]:
+        - generic [ref=f1e100]:
+          - generic [ref=f1e101]: الفلاتر المدعومة من الخلفية تظهر داخل كل شاشة.
+          - generic "اللغة" [ref=f1e106]:
+            - button "العربية" [ref=f1e111] [cursor=pointer]
+            - button "English" [ref=f1e112] [cursor=pointer]
+          - generic [ref=f1e113]:
+            - paragraph [ref=f1e114]: root
+            - paragraph [ref=f1e115]: root@jervis.com
+          - button "تسجيل الخروج" [ref=f1e116] [cursor=pointer]
+      - main [ref=f1e117]:
+        - generic [ref=f1e118]:
+          - generic [ref=f1e120]:
+            - heading "إنشاء مستخدم" [level=1] [ref=f1e121]
+            - paragraph [ref=f1e122]: الأدوار مطلوبة، وكلمة المرور مطلوبة عند إنشاء مستخدم جديد.
+          - generic [ref=f1e123]:
+            - generic [ref=f1e124]:
+              - heading "البيانات الأساسية" [level=2] [ref=f1e126]
+              - generic [ref=f1e127]:
+                - generic [ref=f1e128]:
+                  - generic [ref=f1e129]: الاسم *
+                  - textbox "الاسم *" [ref=f1e130]
+                - generic [ref=f1e131]:
+                  - generic [ref=f1e132]: البريد الإلكتروني *
+                  - textbox "البريد الإلكتروني *" [ref=f1e133]
+                - generic [ref=f1e134]:
+                  - generic [ref=f1e135]: الجنس *
+                  - combobox "الجنس *" [expanded] [ref=f1e138] [cursor=pointer]:
+                    - generic [ref=f1e139]: ذكر
+                - generic [ref=f1e142]:
+                  - generic [ref=f1e143]: حالة المستخدم
+                  - switch "حالة المستخدم" [checked] [ref=f1e145] [cursor=pointer]:
+                    - generic [ref=f1e147]: نشط
+              - generic [ref=f1e149]:
+                - paragraph [ref=f1e150]: الهاتف
+                - generic [ref=f1e151]:
+                  - generic [ref=f1e152]:
+                    - generic [ref=f1e153]: كود الدولة
+                    - combobox "كود الدولة" [ref=f1e156] [cursor=pointer]:
+                      - generic [ref=f1e157]: اختر كود الدولة.
+                  - generic [ref=f1e160]:
+                    - text: الهاتف
+                    - textbox "الهاتف" [ref=f1e161]
+            - generic [ref=f1e162]:
+              - heading "بيانات الأمان" [level=2] [ref=f1e164]
+              - generic [ref=f1e165]:
+                - generic [ref=f1e166]:
+                  - generic [ref=f1e167]: كلمة المرور *
+                  - textbox "كلمة المرور *" [ref=f1e168]
+                - generic [ref=f1e169]:
+                  - generic [ref=f1e170]: تأكيد كلمة المرور *
+                  - textbox "تأكيد كلمة المرور *" [ref=f1e171]
+            - generic [ref=f1e172]:
+              - heading "الأدوار" [level=2] [ref=f1e174]
+              - generic [ref=f1e175]:
+                - generic [ref=f1e176]: الأدوار *
+                - combobox "الأدوار *" [ref=f1e179] [cursor=pointer]:
+                  - generic [ref=f1e180]: اختر...
+            - generic [ref=f1e183]:
+              - heading "الصورة الشخصية" [level=2] [ref=f1e185]
+              - generic [ref=f1e186]:
+                - text: الصورة الشخصية
+                - button "الصورة الشخصية" [ref=f1e187]
+            - generic [ref=f1e188]:
+              - link "إلغاء" [ref=f1e189] [cursor=pointer]:
+                - /url: /users
+              - button "حفظ" [ref=f1e190] [cursor=pointer]
+  - listbox [active] [ref=f1e191]:
+    - generic [ref=f1e192]:
+      - option "ذكر" [selected] [ref=f1e193] [cursor=pointer]
+      - option "أنثى" [ref=f1e198] [cursor=pointer]

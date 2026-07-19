@@ -1,0 +1,131 @@
+- generic [ref=f11e3]:
+  - complementary [ref=f11e4]:
+    - generic [ref=f11e5]:
+      - generic [ref=f11e9]:
+        - paragraph [ref=f11e10]: إدارة قطع الغيار
+        - paragraph [ref=f11e11]: المخزون والمبيعات
+      - button "إغلاق القائمة الجانبية" [ref=f11e12] [cursor=pointer]
+    - navigation [ref=f11e16]:
+      - link "لوحة التحكم" [ref=f11e17] [cursor=pointer]:
+        - /url: /
+      - button "إدخال البيانات" [ref=f11e22] [cursor=pointer]
+      - generic [ref=f11e30]:
+        - button "المبيعات" [expanded] [ref=f11e31] [cursor=pointer]
+        - generic [ref=f11e39]:
+          - link "السلات" [ref=f11e40] [cursor=pointer]:
+            - /url: /cart
+          - link "الطلبات" [ref=f11e46] [cursor=pointer]:
+            - /url: /orders
+          - link "الأقساط" [ref=f11e51] [cursor=pointer]:
+            - /url: /modules/installments
+      - button "المستخدمين" [ref=f11e56] [cursor=pointer]
+      - button "الإعدادات" [ref=f11e66] [cursor=pointer]
+  - generic [ref=f11e73]:
+    - banner [ref=f11e74]:
+      - generic [ref=f11e75]:
+        - button "فتح القائمة الجانبية" [ref=f11e76] [cursor=pointer]
+        - generic "اللغة" [ref=f11e78]:
+          - button "العربية" [ref=f11e83] [cursor=pointer]
+          - button "English" [ref=f11e84] [cursor=pointer]
+        - button "تسجيل الخروج" [ref=f11e85] [cursor=pointer]
+    - main [ref=f11e86]:
+      - generic [ref=f11e87]:
+        - generic [ref=f11e88]:
+          - heading "طلب QA-CANCEL-20260718-1610" [level=1] [ref=f11e89]
+          - paragraph [ref=f11e90]: بيانات العميل والعناصر وجدول الدفع والإجماليات وسجل الحالة من نقطة العرض.
+        - button "العودة للطلبات" [ref=f11e92] [cursor=pointer]
+      - generic [ref=f11e93]:
+        - generic [ref=f11e94]:
+          - generic [ref=f11e95]:
+            - generic [ref=f11e96]:
+              - heading "بيانات الطلب" [level=3] [ref=f11e98]
+              - generic [ref=f11e99]:
+                - generic [ref=f11e100]:
+                  - term [ref=f11e101]: رقم الفاتورة
+                  - definition [ref=f11e102]: QA-CANCEL-20260718-1610
+                - generic [ref=f11e103]:
+                  - term [ref=f11e104]: حالة الطلب
+                  - definition [ref=f11e105]:
+                    - generic [ref=f11e106]: ملغي
+                - generic [ref=f11e107]:
+                  - term [ref=f11e108]: حالة الدفع
+                  - definition [ref=f11e109]:
+                    - generic [ref=f11e110]: معلق
+                - generic [ref=f11e111]:
+                  - term [ref=f11e112]: طريقة الدفع
+                  - definition [ref=f11e113]: نقدي
+                - generic [ref=f11e114]:
+                  - term [ref=f11e115]: أنشأه
+                  - definition [ref=f11e116]: root
+                - generic [ref=f11e117]:
+                  - term [ref=f11e118]: تاريخ الإنشاء
+                  - definition [ref=f11e119]: 18‏/07‏/2026، 7:11 م
+                - generic [ref=f11e120]:
+                  - term [ref=f11e121]: آخر تحديث
+                  - definition [ref=f11e122]: 18‏/07‏/2026، 7:11 م
+            - generic [ref=f11e123]:
+              - heading "بيانات العميل" [level=3] [ref=f11e125]
+              - generic [ref=f11e126]:
+                - generic [ref=f11e127]:
+                  - term [ref=f11e128]: العميل
+                  - definition [ref=f11e129]: custmoer 11
+                - generic [ref=f11e130]:
+                  - term [ref=f11e131]: الهاتف
+                  - definition [ref=f11e132]: "01012255454"
+                - generic [ref=f11e133]:
+                  - term [ref=f11e134]: البريد الإلكتروني
+                  - definition [ref=f11e135]: hameed12@gmail.com
+          - generic [ref=f11e136]:
+            - heading "ملخص الطلب" [level=2] [ref=f11e137]
+            - generic [ref=f11e138]:
+              - generic [ref=f11e139]:
+                - term [ref=f11e140]: الإجمالي الفرعي
+                - definition [ref=f11e141]: EGP 155.00
+              - generic [ref=f11e142]:
+                - term [ref=f11e143]: المبلغ المدفوع
+                - definition [ref=f11e144]: EGP 0.00
+              - generic [ref=f11e145]:
+                - term [ref=f11e146]: المبلغ المتبقي
+                - definition [ref=f11e147]: EGP 155.00
+              - generic [ref=f11e148]:
+                - term [ref=f11e149]: الإجمالي
+                - definition [ref=f11e150]: EGP 155.00
+            - paragraph [ref=f11e151]: الأسعار والإجماليات مؤكدة من الخلفية. الضريبة والخصم والشحن غير متاحة في واجهة API الحالية.
+        - generic [ref=f11e152]:
+          - heading "عناصر الطلب" [level=3] [ref=f11e154]
+          - table [ref=f11e156]:
+            - rowgroup [ref=f11e157]:
+              - row [ref=f11e158]:
+                - columnheader "عنصر المنتج" [ref=f11e159]
+                - columnheader "المستودع" [ref=f11e160]
+                - columnheader "سعر الوحدة" [ref=f11e161]
+                - columnheader "الكمية" [ref=f11e162]
+                - columnheader "إجمالي العنصر" [ref=f11e163]
+            - rowgroup [ref=f11e164]:
+              - row [ref=f11e165]:
+                - cell [ref=f11e166]:
+                  - generic [ref=f11e167]:
+                    - img "منتج تجريبي" [ref=f11e169]
+                    - generic [ref=f11e170]:
+                      - paragraph [ref=f11e171]: منتج تجريبي
+                      - paragraph [ref=f11e172]: TEST-SKU-012
+                - cell "test ars21" [ref=f11e173]
+                - cell "EGP 155.00" [ref=f11e174]
+                - cell "1" [ref=f11e175]
+                - cell "EGP 155.00" [ref=f11e176]
+        - generic [ref=f11e177]:
+          - generic [ref=f11e178]:
+            - heading "جدول الدفع" [level=3] [ref=f11e180]
+            - paragraph [ref=f11e181]: لا توجد أقساط مرتبطة بهذا الطلب.
+          - generic [ref=f11e182]:
+            - heading "سجل الحالة" [level=3] [ref=f11e184]
+            - list [ref=f11e185]:
+              - listitem [ref=f11e186]:
+                - paragraph [ref=f11e188]: تم إنشاء الطلب.
+                - paragraph [ref=f11e189]: root · 18‏/07‏/2026، 7:11 م
+              - listitem [ref=f11e190]:
+                - generic [ref=f11e191]:
+                  - paragraph [ref=f11e192]: تم تغيير حالة الطلب من pending إلى cancelled.
+                  - generic [ref=f11e193]: ملغي
+                - paragraph [ref=f11e194]: اختبار Playwright لإلغاء الطلب
+                - paragraph [ref=f11e195]: root · 18‏/07‏/2026، 7:11 م

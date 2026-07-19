@@ -1,0 +1,916 @@
+- generic [ref=f23e32]:
+  - complementary [ref=f23e33]:
+    - generic [ref=f23e38]:
+      - paragraph [ref=f23e39]: Auto Part Admin
+      - paragraph [ref=f23e40]: Inventory and sales
+    - navigation [ref=f23e41]:
+      - link "Dashboard" [ref=f23e1704] [cursor=pointer]:
+        - /url: /
+      - button "إدخال البيانات" [ref=f23e47] [cursor=pointer]
+      - button "Sales" [ref=f23e1705] [cursor=pointer]
+      - button "المستخدمين" [ref=f23e65] [cursor=pointer]
+      - button "الإعدادات" [ref=f23e75] [cursor=pointer]
+  - generic [ref=f23e82]:
+    - banner [ref=f23e83]:
+      - generic [ref=f23e84]:
+        - generic [ref=f23e85]: Backend-supported filters appear inside each module.
+        - generic "Language" [ref=f23e1706]:
+          - button "العربية" [ref=f23e95] [cursor=pointer]
+          - button "English" [ref=f23e96] [cursor=pointer]
+        - generic [ref=f23e97]:
+          - paragraph [ref=f23e98]: root
+          - paragraph [ref=f23e99]: root@jervis.com
+        - button "Logout" [ref=f23e1707] [cursor=pointer]
+    - main [ref=f23e101]:
+      - generic [ref=f23e152]:
+        - heading "Create role" [level=1] [ref=f23e1708]
+        - paragraph [ref=f23e154]: Permissions are submitted by name exactly as RoleRequest requires.
+      - generic [ref=f23e155]:
+        - generic [ref=f23e1745]: Call to undefined function App\Http\Requests\User\detectPermissionGuard()
+        - generic [ref=f23e156]:
+          - heading "Basic information" [level=2] [ref=f23e1709]
+          - generic [ref=f23e159]:
+            - generic [ref=f23e160]:
+              - generic [ref=f23e161]: Key *
+              - textbox "Key *" [ref=f23e1710]: design_system_temp_role_202607111550
+            - generic [ref=f23e163]:
+              - generic [ref=f23e164]: Display name Arabic *
+              - textbox "Display name Arabic *" [ref=f23e1711]: دور نظام التصميم مؤقت
+            - generic [ref=f23e166]:
+              - generic [ref=f23e167]: Display name English
+              - textbox "Display name English" [ref=f23e1712]: Design System Temporary Role
+        - generic [ref=f23e169]:
+          - heading "Role Permissions" [level=2] [ref=f23e1713]
+          - generic [ref=f23e172]:
+            - paragraph [ref=f23e174]: 0 / 127 selected
+            - generic [ref=f23e175]:
+              - searchbox "Search Permissions" [ref=f23e1714]
+              - button "Select All Permissions" [active] [ref=f23e1746] [cursor=pointer]
+          - generic [ref=f23e178]:
+            - generic [ref=f23e947]:
+              - generic [ref=f23e948]:
+                - button "⌄ الانشطة 0 / 1" [expanded] [ref=f23e1747] [cursor=pointer]:
+                  - generic [ref=f23e950]: ⌄
+                  - generic [ref=f23e951]:
+                    - generic [ref=f23e952]: الانشطة
+                    - generic [ref=f23e953]: 0 / 1
+                - generic [ref=f23e956] [cursor=pointer]:
+                  - checkbox "Select All" [ref=f23e1748]
+                  - text: Select All
+              - button "Log (read) read-log" [ref=f23e959] [cursor=pointer]:
+                - checkbox [ref=f23e960]
+                - generic [ref=f23e961]:
+                  - text: Log (read)
+                  - generic [ref=f23e962]: read-log
+            - generic [ref=f23e963]:
+              - generic [ref=f23e964]:
+                - button "⌄ لوحة التحكم 0 / 1" [expanded] [ref=f23e1749] [cursor=pointer]:
+                  - generic [ref=f23e966]: ⌄
+                  - generic [ref=f23e967]:
+                    - generic [ref=f23e968]: لوحة التحكم
+                    - generic [ref=f23e969]: 0 / 1
+                - generic [ref=f23e972] [cursor=pointer]:
+                  - checkbox "Select All" [ref=f23e1750]
+                  - text: Select All
+              - button "Home (report) report-home" [ref=f23e975] [cursor=pointer]:
+                - checkbox [ref=f23e976]
+                - generic [ref=f23e977]:
+                  - text: Home (report)
+                  - generic [ref=f23e978]: report-home
+            - generic [ref=f23e979]:
+              - generic [ref=f23e980]:
+                - button "⌄ المستودع 0 / 9" [expanded] [ref=f23e1751] [cursor=pointer]:
+                  - generic [ref=f23e982]: ⌄
+                  - generic [ref=f23e983]:
+                    - generic [ref=f23e984]: المستودع
+                    - generic [ref=f23e985]: 0 / 9
+                - generic [ref=f23e988] [cursor=pointer]:
+                  - checkbox "Select All" [ref=f23e1752]
+                  - text: Select All
+              - generic [ref=f23e990]:
+                - button "Warehouse (toggle-active) toggle-active-warehouse" [ref=f23e991] [cursor=pointer]:
+                  - checkbox [ref=f23e992]
+                  - generic [ref=f23e993]:
+                    - text: Warehouse (toggle-active)
+                    - generic [ref=f23e994]: toggle-active-warehouse
+                - button "Warehouse (force-delete) force-delete-warehouse" [ref=f23e995] [cursor=pointer]:
+                  - checkbox [ref=f23e996]
+                  - generic [ref=f23e997]:
+                    - text: Warehouse (force-delete)
+                    - generic [ref=f23e998]: force-delete-warehouse
+                - button "Warehouse (restore) restore-warehouse" [ref=f23e999] [cursor=pointer]:
+                  - checkbox [ref=f23e1000]
+                  - generic [ref=f23e1001]:
+                    - text: Warehouse (restore)
+                    - generic [ref=f23e1002]: restore-warehouse
+                - button "Warehouse (view-own) view-own-warehouse" [ref=f23e1003] [cursor=pointer]:
+                  - checkbox [ref=f23e1004]
+                  - generic [ref=f23e1005]:
+                    - text: Warehouse (view-own)
+                    - generic [ref=f23e1006]: view-own-warehouse
+                - button "Warehouse (view-all) view-all-warehouse" [ref=f23e1007] [cursor=pointer]:
+                  - checkbox [ref=f23e1008]
+                  - generic [ref=f23e1009]:
+                    - text: Warehouse (view-all)
+                    - generic [ref=f23e1010]: view-all-warehouse
+                - button "Warehouse (delete) delete-warehouse" [ref=f23e1011] [cursor=pointer]:
+                  - checkbox [ref=f23e1012]
+                  - generic [ref=f23e1013]:
+                    - text: Warehouse (delete)
+                    - generic [ref=f23e1014]: delete-warehouse
+                - button "Warehouse (update) update-warehouse" [ref=f23e1015] [cursor=pointer]:
+                  - checkbox [ref=f23e1016]
+                  - generic [ref=f23e1017]:
+                    - text: Warehouse (update)
+                    - generic [ref=f23e1018]: update-warehouse
+                - button "Warehouse (read) read-warehouse" [ref=f23e1019] [cursor=pointer]:
+                  - checkbox [ref=f23e1020]
+                  - generic [ref=f23e1021]:
+                    - text: Warehouse (read)
+                    - generic [ref=f23e1022]: read-warehouse
+                - button "Warehouse (create) create-warehouse" [ref=f23e1023] [cursor=pointer]:
+                  - checkbox [ref=f23e1024]
+                  - generic [ref=f23e1025]:
+                    - text: Warehouse (create)
+                    - generic [ref=f23e1026]: create-warehouse
+            - generic [ref=f23e259]:
+              - generic [ref=f23e260]:
+                - button "⌄ المستخدم 0 / 8" [expanded] [ref=f23e1753] [cursor=pointer]:
+                  - generic [ref=f23e262]: ⌄
+                  - generic [ref=f23e263]:
+                    - generic [ref=f23e264]: المستخدم
+                    - generic [ref=f23e265]: 0 / 8
+                - generic [ref=f23e268] [cursor=pointer]:
+                  - checkbox "Select All" [ref=f23e1754]
+                  - text: Select All
+              - generic [ref=f23e270]:
+                - button "User (toggle-active) toggle-active-user" [ref=f23e271] [cursor=pointer]:
+                  - checkbox [ref=f23e272]
+                  - generic [ref=f23e273]:
+                    - text: User (toggle-active)
+                    - generic [ref=f23e274]: toggle-active-user
+                - button "User (force-delete) force-delete-user" [ref=f23e275] [cursor=pointer]:
+                  - checkbox [ref=f23e276]
+                  - generic [ref=f23e277]:
+                    - text: User (force-delete)
+                    - generic [ref=f23e278]: force-delete-user
+                - button "User (restore) restore-user" [ref=f23e279] [cursor=pointer]:
+                  - checkbox [ref=f23e280]
+                  - generic [ref=f23e281]:
+                    - text: User (restore)
+                    - generic [ref=f23e282]: restore-user
+                - button "User (view-own) view-own-user" [ref=f23e283] [cursor=pointer]:
+                  - checkbox [ref=f23e284]
+                  - generic [ref=f23e285]:
+                    - text: User (view-own)
+                    - generic [ref=f23e286]: view-own-user
+                - button "User (view-all) view-all-user" [ref=f23e287] [cursor=pointer]:
+                  - checkbox [ref=f23e288]
+                  - generic [ref=f23e289]:
+                    - text: User (view-all)
+                    - generic [ref=f23e290]: view-all-user
+                - button "User (delete) delete-user" [ref=f23e291] [cursor=pointer]:
+                  - checkbox [ref=f23e292]
+                  - generic [ref=f23e293]:
+                    - text: User (delete)
+                    - generic [ref=f23e294]: delete-user
+                - button "User (update) update-user" [ref=f23e295] [cursor=pointer]:
+                  - checkbox [ref=f23e296]
+                  - generic [ref=f23e297]:
+                    - text: User (update)
+                    - generic [ref=f23e298]: update-user
+                - button "User (create) create-user" [ref=f23e299] [cursor=pointer]:
+                  - checkbox [ref=f23e300]
+                  - generic [ref=f23e301]:
+                    - text: User (create)
+                    - generic [ref=f23e302]: create-user
+            - generic [ref=f23e1027]:
+              - generic [ref=f23e1028]:
+                - button "⌄ المخزون 0 / 4" [expanded] [ref=f23e1755] [cursor=pointer]:
+                  - generic [ref=f23e1030]: ⌄
+                  - generic [ref=f23e1031]:
+                    - generic [ref=f23e1032]: المخزون
+                    - generic [ref=f23e1033]: 0 / 4
+                - generic [ref=f23e1036] [cursor=pointer]:
+                  - checkbox "Select All" [ref=f23e1756]
+                  - text: Select All
+              - generic [ref=f23e1038]:
+                - button "Stock (delete) delete-stock" [ref=f23e1039] [cursor=pointer]:
+                  - checkbox [ref=f23e1040]
+                  - generic [ref=f23e1041]:
+                    - text: Stock (delete)
+                    - generic [ref=f23e1042]: delete-stock
+                - button "Stock (update) update-stock" [ref=f23e1043] [cursor=pointer]:
+                  - checkbox [ref=f23e1044]
+                  - generic [ref=f23e1045]:
+                    - text: Stock (update)
+                    - generic [ref=f23e1046]: update-stock
+                - button "Stock (read) read-stock" [ref=f23e1047] [cursor=pointer]:
+                  - checkbox [ref=f23e1048]
+                  - generic [ref=f23e1049]:
+                    - text: Stock (read)
+                    - generic [ref=f23e1050]: read-stock
+                - button "Stock (create) create-stock" [ref=f23e1051] [cursor=pointer]:
+                  - checkbox [ref=f23e1052]
+                  - generic [ref=f23e1053]:
+                    - text: Stock (create)
+                    - generic [ref=f23e1054]: create-stock
+            - generic [ref=f23e1055]:
+              - generic [ref=f23e1056]:
+                - button "⌄ الإعداد 0 / 2" [expanded] [ref=f23e1757] [cursor=pointer]:
+                  - generic [ref=f23e1058]: ⌄
+                  - generic [ref=f23e1059]:
+                    - generic [ref=f23e1060]: الإعداد
+                    - generic [ref=f23e1061]: 0 / 2
+                - generic [ref=f23e1064] [cursor=pointer]:
+                  - checkbox "Select All" [ref=f23e1758]
+                  - text: Select All
+              - generic [ref=f23e1066]:
+                - button "Setting (update) update-setting" [ref=f23e1067] [cursor=pointer]:
+                  - checkbox [ref=f23e1068]
+                  - generic [ref=f23e1069]:
+                    - text: Setting (update)
+                    - generic [ref=f23e1070]: update-setting
+                - button "Setting (read) read-setting" [ref=f23e1071] [cursor=pointer]:
+                  - checkbox [ref=f23e1072]
+                  - generic [ref=f23e1073]:
+                    - text: Setting (read)
+                    - generic [ref=f23e1074]: read-setting
+            - generic [ref=f23e1075]:
+              - generic [ref=f23e1076]:
+                - button "⌄ الدور 0 / 6" [expanded] [ref=f23e1759] [cursor=pointer]:
+                  - generic [ref=f23e1078]: ⌄
+                  - generic [ref=f23e1079]:
+                    - generic [ref=f23e1080]: الدور
+                    - generic [ref=f23e1081]: 0 / 6
+                - generic [ref=f23e1084] [cursor=pointer]:
+                  - checkbox "Select All" [ref=f23e1760]
+                  - text: Select All
+              - generic [ref=f23e1086]:
+                - button "Role (toggle-active) toggle-active-role" [ref=f23e1087] [cursor=pointer]:
+                  - checkbox [ref=f23e1088]
+                  - generic [ref=f23e1089]:
+                    - text: Role (toggle-active)
+                    - generic [ref=f23e1090]: toggle-active-role
+                - button "Role (view-own) view-own-role" [ref=f23e1091] [cursor=pointer]:
+                  - checkbox [ref=f23e1092]
+                  - generic [ref=f23e1093]:
+                    - text: Role (view-own)
+                    - generic [ref=f23e1094]: view-own-role
+                - button "Role (view-all) view-all-role" [ref=f23e1095] [cursor=pointer]:
+                  - checkbox [ref=f23e1096]
+                  - generic [ref=f23e1097]:
+                    - text: Role (view-all)
+                    - generic [ref=f23e1098]: view-all-role
+                - button "Role (delete) delete-role" [ref=f23e1099] [cursor=pointer]:
+                  - checkbox [ref=f23e1100]
+                  - generic [ref=f23e1101]:
+                    - text: Role (delete)
+                    - generic [ref=f23e1102]: delete-role
+                - button "Role (update) update-role" [ref=f23e1103] [cursor=pointer]:
+                  - checkbox [ref=f23e1104]
+                  - generic [ref=f23e1105]:
+                    - text: Role (update)
+                    - generic [ref=f23e1106]: update-role
+                - button "Role (create) create-role" [ref=f23e1107] [cursor=pointer]:
+                  - checkbox [ref=f23e1108]
+                  - generic [ref=f23e1109]:
+                    - text: Role (create)
+                    - generic [ref=f23e1110]: create-role
+            - generic [ref=f23e1111]:
+              - generic [ref=f23e1112]:
+                - button "⌄ product-option-value 0 / 9" [expanded] [ref=f23e1761] [cursor=pointer]:
+                  - generic [ref=f23e1114]: ⌄
+                  - generic [ref=f23e1115]:
+                    - generic [ref=f23e1116]: product-option-value
+                    - generic [ref=f23e1117]: 0 / 9
+                - generic [ref=f23e1120] [cursor=pointer]:
+                  - checkbox "Select All" [ref=f23e1762]
+                  - text: Select All
+              - generic [ref=f23e1122]:
+                - button "ProductOptionValue (toggle-active) toggle-active-product-option-value" [ref=f23e1123] [cursor=pointer]:
+                  - checkbox [ref=f23e1124]
+                  - generic [ref=f23e1125]:
+                    - text: ProductOptionValue (toggle-active)
+                    - generic [ref=f23e1126]: toggle-active-product-option-value
+                - button "ProductOptionValue (force-delete) force-delete-product-option-value" [ref=f23e1127] [cursor=pointer]:
+                  - checkbox [ref=f23e1128]
+                  - generic [ref=f23e1129]:
+                    - text: ProductOptionValue (force-delete)
+                    - generic [ref=f23e1130]: force-delete-product-option-value
+                - button "ProductOptionValue (restore) restore-product-option-value" [ref=f23e1131] [cursor=pointer]:
+                  - checkbox [ref=f23e1132]
+                  - generic [ref=f23e1133]:
+                    - text: ProductOptionValue (restore)
+                    - generic [ref=f23e1134]: restore-product-option-value
+                - button "ProductOptionValue (view-own) view-own-product-option-value" [ref=f23e1135] [cursor=pointer]:
+                  - checkbox [ref=f23e1136]
+                  - generic [ref=f23e1137]:
+                    - text: ProductOptionValue (view-own)
+                    - generic [ref=f23e1138]: view-own-product-option-value
+                - button "ProductOptionValue (view-all) view-all-product-option-value" [ref=f23e1139] [cursor=pointer]:
+                  - checkbox [ref=f23e1140]
+                  - generic [ref=f23e1141]:
+                    - text: ProductOptionValue (view-all)
+                    - generic [ref=f23e1142]: view-all-product-option-value
+                - button "ProductOptionValue (delete) delete-product-option-value" [ref=f23e1143] [cursor=pointer]:
+                  - checkbox [ref=f23e1144]
+                  - generic [ref=f23e1145]:
+                    - text: ProductOptionValue (delete)
+                    - generic [ref=f23e1146]: delete-product-option-value
+                - button "ProductOptionValue (update) update-product-option-value" [ref=f23e1147] [cursor=pointer]:
+                  - checkbox [ref=f23e1148]
+                  - generic [ref=f23e1149]:
+                    - text: ProductOptionValue (update)
+                    - generic [ref=f23e1150]: update-product-option-value
+                - button "ProductOptionValue (read) read-product-option-value" [ref=f23e1151] [cursor=pointer]:
+                  - checkbox [ref=f23e1152]
+                  - generic [ref=f23e1153]:
+                    - text: ProductOptionValue (read)
+                    - generic [ref=f23e1154]: read-product-option-value
+                - button "ProductOptionValue (create) create-product-option-value" [ref=f23e1155] [cursor=pointer]:
+                  - checkbox [ref=f23e1156]
+                  - generic [ref=f23e1157]:
+                    - text: ProductOptionValue (create)
+                    - generic [ref=f23e1158]: create-product-option-value
+            - generic [ref=f23e1159]:
+              - generic [ref=f23e1160]:
+                - button "⌄ product-option 0 / 9" [expanded] [ref=f23e1763] [cursor=pointer]:
+                  - generic [ref=f23e1162]: ⌄
+                  - generic [ref=f23e1163]:
+                    - generic [ref=f23e1164]: product-option
+                    - generic [ref=f23e1165]: 0 / 9
+                - generic [ref=f23e1168] [cursor=pointer]:
+                  - checkbox "Select All" [ref=f23e1764]
+                  - text: Select All
+              - generic [ref=f23e1170]:
+                - button "ProductOption (toggle-active) toggle-active-product-option" [ref=f23e1171] [cursor=pointer]:
+                  - checkbox [ref=f23e1172]
+                  - generic [ref=f23e1173]:
+                    - text: ProductOption (toggle-active)
+                    - generic [ref=f23e1174]: toggle-active-product-option
+                - button "ProductOption (force-delete) force-delete-product-option" [ref=f23e1175] [cursor=pointer]:
+                  - checkbox [ref=f23e1176]
+                  - generic [ref=f23e1177]:
+                    - text: ProductOption (force-delete)
+                    - generic [ref=f23e1178]: force-delete-product-option
+                - button "ProductOption (restore) restore-product-option" [ref=f23e1179] [cursor=pointer]:
+                  - checkbox [ref=f23e1180]
+                  - generic [ref=f23e1181]:
+                    - text: ProductOption (restore)
+                    - generic [ref=f23e1182]: restore-product-option
+                - button "ProductOption (view-own) view-own-product-option" [ref=f23e1183] [cursor=pointer]:
+                  - checkbox [ref=f23e1184]
+                  - generic [ref=f23e1185]:
+                    - text: ProductOption (view-own)
+                    - generic [ref=f23e1186]: view-own-product-option
+                - button "ProductOption (view-all) view-all-product-option" [ref=f23e1187] [cursor=pointer]:
+                  - checkbox [ref=f23e1188]
+                  - generic [ref=f23e1189]:
+                    - text: ProductOption (view-all)
+                    - generic [ref=f23e1190]: view-all-product-option
+                - button "ProductOption (delete) delete-product-option" [ref=f23e1191] [cursor=pointer]:
+                  - checkbox [ref=f23e1192]
+                  - generic [ref=f23e1193]:
+                    - text: ProductOption (delete)
+                    - generic [ref=f23e1194]: delete-product-option
+                - button "ProductOption (update) update-product-option" [ref=f23e1195] [cursor=pointer]:
+                  - checkbox [ref=f23e1196]
+                  - generic [ref=f23e1197]:
+                    - text: ProductOption (update)
+                    - generic [ref=f23e1198]: update-product-option
+                - button "ProductOption (read) read-product-option" [ref=f23e1199] [cursor=pointer]:
+                  - checkbox [ref=f23e1200]
+                  - generic [ref=f23e1201]:
+                    - text: ProductOption (read)
+                    - generic [ref=f23e1202]: read-product-option
+                - button "ProductOption (create) create-product-option" [ref=f23e1203] [cursor=pointer]:
+                  - checkbox [ref=f23e1204]
+                  - generic [ref=f23e1205]:
+                    - text: ProductOption (create)
+                    - generic [ref=f23e1206]: create-product-option
+            - generic [ref=f23e1207]:
+              - generic [ref=f23e1208]:
+                - button "⌄ product-item 0 / 9" [expanded] [ref=f23e1765] [cursor=pointer]:
+                  - generic [ref=f23e1210]: ⌄
+                  - generic [ref=f23e1211]:
+                    - generic [ref=f23e1212]: product-item
+                    - generic [ref=f23e1213]: 0 / 9
+                - generic [ref=f23e1216] [cursor=pointer]:
+                  - checkbox "Select All" [ref=f23e1766]
+                  - text: Select All
+              - generic [ref=f23e1218]:
+                - button "ProductItem (toggle-active) toggle-active-product-item" [ref=f23e1219] [cursor=pointer]:
+                  - checkbox [ref=f23e1220]
+                  - generic [ref=f23e1221]:
+                    - text: ProductItem (toggle-active)
+                    - generic [ref=f23e1222]: toggle-active-product-item
+                - button "ProductItem (force-delete) force-delete-product-item" [ref=f23e1223] [cursor=pointer]:
+                  - checkbox [ref=f23e1224]
+                  - generic [ref=f23e1225]:
+                    - text: ProductItem (force-delete)
+                    - generic [ref=f23e1226]: force-delete-product-item
+                - button "ProductItem (restore) restore-product-item" [ref=f23e1227] [cursor=pointer]:
+                  - checkbox [ref=f23e1228]
+                  - generic [ref=f23e1229]:
+                    - text: ProductItem (restore)
+                    - generic [ref=f23e1230]: restore-product-item
+                - button "ProductItem (view-own) view-own-product-item" [ref=f23e1231] [cursor=pointer]:
+                  - checkbox [ref=f23e1232]
+                  - generic [ref=f23e1233]:
+                    - text: ProductItem (view-own)
+                    - generic [ref=f23e1234]: view-own-product-item
+                - button "ProductItem (view-all) view-all-product-item" [ref=f23e1235] [cursor=pointer]:
+                  - checkbox [ref=f23e1236]
+                  - generic [ref=f23e1237]:
+                    - text: ProductItem (view-all)
+                    - generic [ref=f23e1238]: view-all-product-item
+                - button "ProductItem (delete) delete-product-item" [ref=f23e1239] [cursor=pointer]:
+                  - checkbox [ref=f23e1240]
+                  - generic [ref=f23e1241]:
+                    - text: ProductItem (delete)
+                    - generic [ref=f23e1242]: delete-product-item
+                - button "ProductItem (update) update-product-item" [ref=f23e1243] [cursor=pointer]:
+                  - checkbox [ref=f23e1244]
+                  - generic [ref=f23e1245]:
+                    - text: ProductItem (update)
+                    - generic [ref=f23e1246]: update-product-item
+                - button "ProductItem (read) read-product-item" [ref=f23e1247] [cursor=pointer]:
+                  - checkbox [ref=f23e1248]
+                  - generic [ref=f23e1249]:
+                    - text: ProductItem (read)
+                    - generic [ref=f23e1250]: read-product-item
+                - button "ProductItem (create) create-product-item" [ref=f23e1251] [cursor=pointer]:
+                  - checkbox [ref=f23e1252]
+                  - generic [ref=f23e1253]:
+                    - text: ProductItem (create)
+                    - generic [ref=f23e1254]: create-product-item
+            - generic [ref=f23e1255]:
+              - generic [ref=f23e1256]:
+                - button "⌄ المنتج 0 / 9" [expanded] [ref=f23e1767] [cursor=pointer]:
+                  - generic [ref=f23e1258]: ⌄
+                  - generic [ref=f23e1259]:
+                    - generic [ref=f23e1260]: المنتج
+                    - generic [ref=f23e1261]: 0 / 9
+                - generic [ref=f23e1264] [cursor=pointer]:
+                  - checkbox "Select All" [ref=f23e1768]
+                  - text: Select All
+              - generic [ref=f23e1266]:
+                - button "Product (toggle-active) toggle-active-product" [ref=f23e1267] [cursor=pointer]:
+                  - checkbox [ref=f23e1268]
+                  - generic [ref=f23e1269]:
+                    - text: Product (toggle-active)
+                    - generic [ref=f23e1270]: toggle-active-product
+                - button "Product (force-delete) force-delete-product" [ref=f23e1271] [cursor=pointer]:
+                  - checkbox [ref=f23e1272]
+                  - generic [ref=f23e1273]:
+                    - text: Product (force-delete)
+                    - generic [ref=f23e1274]: force-delete-product
+                - button "Product (restore) restore-product" [ref=f23e1275] [cursor=pointer]:
+                  - checkbox [ref=f23e1276]
+                  - generic [ref=f23e1277]:
+                    - text: Product (restore)
+                    - generic [ref=f23e1278]: restore-product
+                - button "Product (view-own) view-own-product" [ref=f23e1279] [cursor=pointer]:
+                  - checkbox [ref=f23e1280]
+                  - generic [ref=f23e1281]:
+                    - text: Product (view-own)
+                    - generic [ref=f23e1282]: view-own-product
+                - button "Product (view-all) view-all-product" [ref=f23e1283] [cursor=pointer]:
+                  - checkbox [ref=f23e1284]
+                  - generic [ref=f23e1285]:
+                    - text: Product (view-all)
+                    - generic [ref=f23e1286]: view-all-product
+                - button "Product (delete) delete-product" [ref=f23e1287] [cursor=pointer]:
+                  - checkbox [ref=f23e1288]
+                  - generic [ref=f23e1289]:
+                    - text: Product (delete)
+                    - generic [ref=f23e1290]: delete-product
+                - button "Product (update) update-product" [ref=f23e1291] [cursor=pointer]:
+                  - checkbox [ref=f23e1292]
+                  - generic [ref=f23e1293]:
+                    - text: Product (update)
+                    - generic [ref=f23e1294]: update-product
+                - button "Product (read) read-product" [ref=f23e1295] [cursor=pointer]:
+                  - checkbox [ref=f23e1296]
+                  - generic [ref=f23e1297]:
+                    - text: Product (read)
+                    - generic [ref=f23e1298]: read-product
+                - button "Product (create) create-product" [ref=f23e1299] [cursor=pointer]:
+                  - checkbox [ref=f23e1300]
+                  - generic [ref=f23e1301]:
+                    - text: Product (create)
+                    - generic [ref=f23e1302]: create-product
+            - generic [ref=f23e1303]:
+              - generic [ref=f23e1304]:
+                - button "⌄ personal-access-token 0 / 4" [expanded] [ref=f23e1769] [cursor=pointer]:
+                  - generic [ref=f23e1306]: ⌄
+                  - generic [ref=f23e1307]:
+                    - generic [ref=f23e1308]: personal-access-token
+                    - generic [ref=f23e1309]: 0 / 4
+                - generic [ref=f23e1312] [cursor=pointer]:
+                  - checkbox "Select All" [ref=f23e1770]
+                  - text: Select All
+              - generic [ref=f23e1314]:
+                - button "PersonalAccessToken (delete) delete-personal-access-token" [ref=f23e1315] [cursor=pointer]:
+                  - checkbox [ref=f23e1316]
+                  - generic [ref=f23e1317]:
+                    - text: PersonalAccessToken (delete)
+                    - generic [ref=f23e1318]: delete-personal-access-token
+                - button "PersonalAccessToken (update) update-personal-access-token" [ref=f23e1319] [cursor=pointer]:
+                  - checkbox [ref=f23e1320]
+                  - generic [ref=f23e1321]:
+                    - text: PersonalAccessToken (update)
+                    - generic [ref=f23e1322]: update-personal-access-token
+                - button "PersonalAccessToken (read) read-personal-access-token" [ref=f23e1323] [cursor=pointer]:
+                  - checkbox [ref=f23e1324]
+                  - generic [ref=f23e1325]:
+                    - text: PersonalAccessToken (read)
+                    - generic [ref=f23e1326]: read-personal-access-token
+                - button "PersonalAccessToken (create) create-personal-access-token" [ref=f23e1327] [cursor=pointer]:
+                  - checkbox [ref=f23e1328]
+                  - generic [ref=f23e1329]:
+                    - text: PersonalAccessToken (create)
+                    - generic [ref=f23e1330]: create-personal-access-token
+            - generic [ref=f23e1331]:
+              - generic [ref=f23e1332]:
+                - button "⌄ الصلاحية 0 / 4" [expanded] [ref=f23e1771] [cursor=pointer]:
+                  - generic [ref=f23e1334]: ⌄
+                  - generic [ref=f23e1335]:
+                    - generic [ref=f23e1336]: الصلاحية
+                    - generic [ref=f23e1337]: 0 / 4
+                - generic [ref=f23e1340] [cursor=pointer]:
+                  - checkbox "Select All" [ref=f23e1772]
+                  - text: Select All
+              - generic [ref=f23e1342]:
+                - button "Permission (delete) delete-permission" [ref=f23e1343] [cursor=pointer]:
+                  - checkbox [ref=f23e1344]
+                  - generic [ref=f23e1345]:
+                    - text: Permission (delete)
+                    - generic [ref=f23e1346]: delete-permission
+                - button "Permission (update) update-permission" [ref=f23e1347] [cursor=pointer]:
+                  - checkbox [ref=f23e1348]
+                  - generic [ref=f23e1349]:
+                    - text: Permission (update)
+                    - generic [ref=f23e1350]: update-permission
+                - button "Permission (read) read-permission" [ref=f23e1351] [cursor=pointer]:
+                  - checkbox [ref=f23e1352]
+                  - generic [ref=f23e1353]:
+                    - text: Permission (read)
+                    - generic [ref=f23e1354]: read-permission
+                - button "Permission (create) create-permission" [ref=f23e1355] [cursor=pointer]:
+                  - checkbox [ref=f23e1356]
+                  - generic [ref=f23e1357]:
+                    - text: Permission (create)
+                    - generic [ref=f23e1358]: create-permission
+            - generic [ref=f23e1359]:
+              - generic [ref=f23e1360]:
+                - button "⌄ الإشعار 0 / 4" [expanded] [ref=f23e1773] [cursor=pointer]:
+                  - generic [ref=f23e1362]: ⌄
+                  - generic [ref=f23e1363]:
+                    - generic [ref=f23e1364]: الإشعار
+                    - generic [ref=f23e1365]: 0 / 4
+                - generic [ref=f23e1368] [cursor=pointer]:
+                  - checkbox "Select All" [ref=f23e1774]
+                  - text: Select All
+              - generic [ref=f23e1370]:
+                - button "Notification (delete) delete-notification" [ref=f23e1371] [cursor=pointer]:
+                  - checkbox [ref=f23e1372]
+                  - generic [ref=f23e1373]:
+                    - text: Notification (delete)
+                    - generic [ref=f23e1374]: delete-notification
+                - button "Notification (update) update-notification" [ref=f23e1375] [cursor=pointer]:
+                  - checkbox [ref=f23e1376]
+                  - generic [ref=f23e1377]:
+                    - text: Notification (update)
+                    - generic [ref=f23e1378]: update-notification
+                - button "Notification (read) read-notification" [ref=f23e1379] [cursor=pointer]:
+                  - checkbox [ref=f23e1380]
+                  - generic [ref=f23e1381]:
+                    - text: Notification (read)
+                    - generic [ref=f23e1382]: read-notification
+                - button "Notification (create) create-notification" [ref=f23e1383] [cursor=pointer]:
+                  - checkbox [ref=f23e1384]
+                  - generic [ref=f23e1385]:
+                    - text: Notification (create)
+                    - generic [ref=f23e1386]: create-notification
+            - generic [ref=f23e1387]:
+              - generic [ref=f23e1388]:
+                - button "⌄ item-price 0 / 4" [expanded] [ref=f23e1775] [cursor=pointer]:
+                  - generic [ref=f23e1390]: ⌄
+                  - generic [ref=f23e1391]:
+                    - generic [ref=f23e1392]: item-price
+                    - generic [ref=f23e1393]: 0 / 4
+                - generic [ref=f23e1396] [cursor=pointer]:
+                  - checkbox "Select All" [ref=f23e1776]
+                  - text: Select All
+              - generic [ref=f23e1398]:
+                - button "ItemPrice (delete) delete-item-price" [ref=f23e1399] [cursor=pointer]:
+                  - checkbox [ref=f23e1400]
+                  - generic [ref=f23e1401]:
+                    - text: ItemPrice (delete)
+                    - generic [ref=f23e1402]: delete-item-price
+                - button "ItemPrice (update) update-item-price" [ref=f23e1403] [cursor=pointer]:
+                  - checkbox [ref=f23e1404]
+                  - generic [ref=f23e1405]:
+                    - text: ItemPrice (update)
+                    - generic [ref=f23e1406]: update-item-price
+                - button "ItemPrice (read) read-item-price" [ref=f23e1407] [cursor=pointer]:
+                  - checkbox [ref=f23e1408]
+                  - generic [ref=f23e1409]:
+                    - text: ItemPrice (read)
+                    - generic [ref=f23e1410]: read-item-price
+                - button "ItemPrice (create) create-item-price" [ref=f23e1411] [cursor=pointer]:
+                  - checkbox [ref=f23e1412]
+                  - generic [ref=f23e1413]:
+                    - text: ItemPrice (create)
+                    - generic [ref=f23e1414]: create-item-price
+            - generic [ref=f23e1415]:
+              - generic [ref=f23e1416]:
+                - button "⌄ item-image 0 / 7" [expanded] [ref=f23e1777] [cursor=pointer]:
+                  - generic [ref=f23e1418]: ⌄
+                  - generic [ref=f23e1419]:
+                    - generic [ref=f23e1420]: item-image
+                    - generic [ref=f23e1421]: 0 / 7
+                - generic [ref=f23e1424] [cursor=pointer]:
+                  - checkbox "Select All" [ref=f23e1778]
+                  - text: Select All
+              - generic [ref=f23e1426]:
+                - button "ItemImage (toggle-active) toggle-active-item-image" [ref=f23e1427] [cursor=pointer]:
+                  - checkbox [ref=f23e1428]
+                  - generic [ref=f23e1429]:
+                    - text: ItemImage (toggle-active)
+                    - generic [ref=f23e1430]: toggle-active-item-image
+                - button "ItemImage (view-own) view-own-item-image" [ref=f23e1431] [cursor=pointer]:
+                  - checkbox [ref=f23e1432]
+                  - generic [ref=f23e1433]:
+                    - text: ItemImage (view-own)
+                    - generic [ref=f23e1434]: view-own-item-image
+                - button "ItemImage (view-all) view-all-item-image" [ref=f23e1435] [cursor=pointer]:
+                  - checkbox [ref=f23e1436]
+                  - generic [ref=f23e1437]:
+                    - text: ItemImage (view-all)
+                    - generic [ref=f23e1438]: view-all-item-image
+                - button "ItemImage (delete) delete-item-image" [ref=f23e1439] [cursor=pointer]:
+                  - checkbox [ref=f23e1440]
+                  - generic [ref=f23e1441]:
+                    - text: ItemImage (delete)
+                    - generic [ref=f23e1442]: delete-item-image
+                - button "ItemImage (update) update-item-image" [ref=f23e1443] [cursor=pointer]:
+                  - checkbox [ref=f23e1444]
+                  - generic [ref=f23e1445]:
+                    - text: ItemImage (update)
+                    - generic [ref=f23e1446]: update-item-image
+                - button "ItemImage (read) read-item-image" [ref=f23e1447] [cursor=pointer]:
+                  - checkbox [ref=f23e1448]
+                  - generic [ref=f23e1449]:
+                    - text: ItemImage (read)
+                    - generic [ref=f23e1450]: read-item-image
+                - button "ItemImage (create) create-item-image" [ref=f23e1451] [cursor=pointer]:
+                  - checkbox [ref=f23e1452]
+                  - generic [ref=f23e1453]:
+                    - text: ItemImage (create)
+                    - generic [ref=f23e1454]: create-item-image
+            - generic [ref=f23e1455]:
+              - generic [ref=f23e1456]:
+                - button "⌄ العميل 0 / 9" [expanded] [ref=f23e1779] [cursor=pointer]:
+                  - generic [ref=f23e1458]: ⌄
+                  - generic [ref=f23e1459]:
+                    - generic [ref=f23e1460]: العميل
+                    - generic [ref=f23e1461]: 0 / 9
+                - generic [ref=f23e1464] [cursor=pointer]:
+                  - checkbox "Select All" [ref=f23e1780]
+                  - text: Select All
+              - generic [ref=f23e1466]:
+                - button "Customer (toggle-active) toggle-active-customer" [ref=f23e1467] [cursor=pointer]:
+                  - checkbox [ref=f23e1468]
+                  - generic [ref=f23e1469]:
+                    - text: Customer (toggle-active)
+                    - generic [ref=f23e1470]: toggle-active-customer
+                - button "Customer (force-delete) force-delete-customer" [ref=f23e1471] [cursor=pointer]:
+                  - checkbox [ref=f23e1472]
+                  - generic [ref=f23e1473]:
+                    - text: Customer (force-delete)
+                    - generic [ref=f23e1474]: force-delete-customer
+                - button "Customer (restore) restore-customer" [ref=f23e1475] [cursor=pointer]:
+                  - checkbox [ref=f23e1476]
+                  - generic [ref=f23e1477]:
+                    - text: Customer (restore)
+                    - generic [ref=f23e1478]: restore-customer
+                - button "Customer (view-own) view-own-customer" [ref=f23e1479] [cursor=pointer]:
+                  - checkbox [ref=f23e1480]
+                  - generic [ref=f23e1481]:
+                    - text: Customer (view-own)
+                    - generic [ref=f23e1482]: view-own-customer
+                - button "Customer (view-all) view-all-customer" [ref=f23e1483] [cursor=pointer]:
+                  - checkbox [ref=f23e1484]
+                  - generic [ref=f23e1485]:
+                    - text: Customer (view-all)
+                    - generic [ref=f23e1486]: view-all-customer
+                - button "Customer (delete) delete-customer" [ref=f23e1487] [cursor=pointer]:
+                  - checkbox [ref=f23e1488]
+                  - generic [ref=f23e1489]:
+                    - text: Customer (delete)
+                    - generic [ref=f23e1490]: delete-customer
+                - button "Customer (update) update-customer" [ref=f23e1491] [cursor=pointer]:
+                  - checkbox [ref=f23e1492]
+                  - generic [ref=f23e1493]:
+                    - text: Customer (update)
+                    - generic [ref=f23e1494]: update-customer
+                - button "Customer (read) read-customer" [ref=f23e1495] [cursor=pointer]:
+                  - checkbox [ref=f23e1496]
+                  - generic [ref=f23e1497]:
+                    - text: Customer (read)
+                    - generic [ref=f23e1498]: read-customer
+                - button "Customer (create) create-customer" [ref=f23e1499] [cursor=pointer]:
+                  - checkbox [ref=f23e1500]
+                  - generic [ref=f23e1501]:
+                    - text: Customer (create)
+                    - generic [ref=f23e1502]: create-customer
+            - generic [ref=f23e1503]:
+              - generic [ref=f23e1504]:
+                - button "⌄ الدولة 0 / 6" [expanded] [ref=f23e1781] [cursor=pointer]:
+                  - generic [ref=f23e1506]: ⌄
+                  - generic [ref=f23e1507]:
+                    - generic [ref=f23e1508]: الدولة
+                    - generic [ref=f23e1509]: 0 / 6
+                - generic [ref=f23e1512] [cursor=pointer]:
+                  - checkbox "Select All" [ref=f23e1782]
+                  - text: Select All
+              - generic [ref=f23e1514]:
+                - button "Country (restore) restore-country" [ref=f23e1515] [cursor=pointer]:
+                  - checkbox [ref=f23e1516]
+                  - generic [ref=f23e1517]:
+                    - text: Country (restore)
+                    - generic [ref=f23e1518]: restore-country
+                - button "Country (force-delete) force-delete-country" [ref=f23e1519] [cursor=pointer]:
+                  - checkbox [ref=f23e1520]
+                  - generic [ref=f23e1521]:
+                    - text: Country (force-delete)
+                    - generic [ref=f23e1522]: force-delete-country
+                - button "Country (delete) delete-country" [ref=f23e1523] [cursor=pointer]:
+                  - checkbox [ref=f23e1524]
+                  - generic [ref=f23e1525]:
+                    - text: Country (delete)
+                    - generic [ref=f23e1526]: delete-country
+                - button "Country (update) update-country" [ref=f23e1527] [cursor=pointer]:
+                  - checkbox [ref=f23e1528]
+                  - generic [ref=f23e1529]:
+                    - text: Country (update)
+                    - generic [ref=f23e1530]: update-country
+                - button "Country (read) read-country" [ref=f23e1531] [cursor=pointer]:
+                  - checkbox [ref=f23e1532]
+                  - generic [ref=f23e1533]:
+                    - text: Country (read)
+                    - generic [ref=f23e1534]: read-country
+                - button "Country (create) create-country" [ref=f23e1535] [cursor=pointer]:
+                  - checkbox [ref=f23e1536]
+                  - generic [ref=f23e1537]:
+                    - text: Country (create)
+                    - generic [ref=f23e1538]: create-country
+            - generic [ref=f23e1539]:
+              - generic [ref=f23e1540]:
+                - button "⌄ التصنيف 0 / 9" [expanded] [ref=f23e1783] [cursor=pointer]:
+                  - generic [ref=f23e1542]: ⌄
+                  - generic [ref=f23e1543]:
+                    - generic [ref=f23e1544]: التصنيف
+                    - generic [ref=f23e1545]: 0 / 9
+                - generic [ref=f23e1548] [cursor=pointer]:
+                  - checkbox "Select All" [ref=f23e1784]
+                  - text: Select All
+              - generic [ref=f23e1550]:
+                - button "Category (toggle-active) toggle-active-category" [ref=f23e1551] [cursor=pointer]:
+                  - checkbox [ref=f23e1552]
+                  - generic [ref=f23e1553]:
+                    - text: Category (toggle-active)
+                    - generic [ref=f23e1554]: toggle-active-category
+                - button "Category (force-delete) force-delete-category" [ref=f23e1555] [cursor=pointer]:
+                  - checkbox [ref=f23e1556]
+                  - generic [ref=f23e1557]:
+                    - text: Category (force-delete)
+                    - generic [ref=f23e1558]: force-delete-category
+                - button "Category (restore) restore-category" [ref=f23e1559] [cursor=pointer]:
+                  - checkbox [ref=f23e1560]
+                  - generic [ref=f23e1561]:
+                    - text: Category (restore)
+                    - generic [ref=f23e1562]: restore-category
+                - button "Category (view-own) view-own-category" [ref=f23e1563] [cursor=pointer]:
+                  - checkbox [ref=f23e1564]
+                  - generic [ref=f23e1565]:
+                    - text: Category (view-own)
+                    - generic [ref=f23e1566]: view-own-category
+                - button "Category (view-all) view-all-category" [ref=f23e1567] [cursor=pointer]:
+                  - checkbox [ref=f23e1568]
+                  - generic [ref=f23e1569]:
+                    - text: Category (view-all)
+                    - generic [ref=f23e1570]: view-all-category
+                - button "Category (delete) delete-category" [ref=f23e1571] [cursor=pointer]:
+                  - checkbox [ref=f23e1572]
+                  - generic [ref=f23e1573]:
+                    - text: Category (delete)
+                    - generic [ref=f23e1574]: delete-category
+                - button "Category (update) update-category" [ref=f23e1575] [cursor=pointer]:
+                  - checkbox [ref=f23e1576]
+                  - generic [ref=f23e1577]:
+                    - text: Category (update)
+                    - generic [ref=f23e1578]: update-category
+                - button "Category (read) read-category" [ref=f23e1579] [cursor=pointer]:
+                  - checkbox [ref=f23e1580]
+                  - generic [ref=f23e1581]:
+                    - text: Category (read)
+                    - generic [ref=f23e1582]: read-category
+                - button "Category (create) create-category" [ref=f23e1583] [cursor=pointer]:
+                  - checkbox [ref=f23e1584]
+                  - generic [ref=f23e1585]:
+                    - text: Category (create)
+                    - generic [ref=f23e1586]: create-category
+            - generic [ref=f23e1587]:
+              - generic [ref=f23e1588]:
+                - button "⌄ السلة 0 / 4" [expanded] [ref=f23e1785] [cursor=pointer]:
+                  - generic [ref=f23e1590]: ⌄
+                  - generic [ref=f23e1591]:
+                    - generic [ref=f23e1592]: السلة
+                    - generic [ref=f23e1593]: 0 / 4
+                - generic [ref=f23e1596] [cursor=pointer]:
+                  - checkbox "Select All" [ref=f23e1786]
+                  - text: Select All
+              - generic [ref=f23e1598]:
+                - button "Cart (delete) delete-cart" [ref=f23e1599] [cursor=pointer]:
+                  - checkbox [ref=f23e1600]
+                  - generic [ref=f23e1601]:
+                    - text: Cart (delete)
+                    - generic [ref=f23e1602]: delete-cart
+                - button "Cart (update) update-cart" [ref=f23e1603] [cursor=pointer]:
+                  - checkbox [ref=f23e1604]
+                  - generic [ref=f23e1605]:
+                    - text: Cart (update)
+                    - generic [ref=f23e1606]: update-cart
+                - button "Cart (read) read-cart" [ref=f23e1607] [cursor=pointer]:
+                  - checkbox [ref=f23e1608]
+                  - generic [ref=f23e1609]:
+                    - text: Cart (read)
+                    - generic [ref=f23e1610]: read-cart
+                - button "Cart (create) create-cart" [ref=f23e1611] [cursor=pointer]:
+                  - checkbox [ref=f23e1612]
+                  - generic [ref=f23e1613]:
+                    - text: Cart (create)
+                    - generic [ref=f23e1614]: create-cart
+            - generic [ref=f23e1615]:
+              - generic [ref=f23e1616]:
+                - button "⌄ العلامة التجارية 0 / 9" [expanded] [ref=f23e1787] [cursor=pointer]:
+                  - generic [ref=f23e1618]: ⌄
+                  - generic [ref=f23e1619]:
+                    - generic [ref=f23e1620]: العلامة التجارية
+                    - generic [ref=f23e1621]: 0 / 9
+                - generic [ref=f23e1624] [cursor=pointer]:
+                  - checkbox "Select All" [ref=f23e1788]
+                  - text: Select All
+              - generic [ref=f23e1626]:
+                - button "Brand (toggle-active) toggle-active-brand" [ref=f23e1627] [cursor=pointer]:
+                  - checkbox [ref=f23e1628]
+                  - generic [ref=f23e1629]:
+                    - text: Brand (toggle-active)
+                    - generic [ref=f23e1630]: toggle-active-brand
+                - button "Brand (force-delete) force-delete-brand" [ref=f23e1631] [cursor=pointer]:
+                  - checkbox [ref=f23e1632]
+                  - generic [ref=f23e1633]:
+                    - text: Brand (force-delete)
+                    - generic [ref=f23e1634]: force-delete-brand
+                - button "Brand (restore) restore-brand" [ref=f23e1635] [cursor=pointer]:
+                  - checkbox [ref=f23e1636]
+                  - generic [ref=f23e1637]:
+                    - text: Brand (restore)
+                    - generic [ref=f23e1638]: restore-brand
+                - button "Brand (view-own) view-own-brand" [ref=f23e1639] [cursor=pointer]:
+                  - checkbox [ref=f23e1640]
+                  - generic [ref=f23e1641]:
+                    - text: Brand (view-own)
+                    - generic [ref=f23e1642]: view-own-brand
+                - button "Brand (view-all) view-all-brand" [ref=f23e1643] [cursor=pointer]:
+                  - checkbox [ref=f23e1644]
+                  - generic [ref=f23e1645]:
+                    - text: Brand (view-all)
+                    - generic [ref=f23e1646]: view-all-brand
+                - button "Brand (delete) delete-brand" [ref=f23e1647] [cursor=pointer]:
+                  - checkbox [ref=f23e1648]
+                  - generic [ref=f23e1649]:
+                    - text: Brand (delete)
+                    - generic [ref=f23e1650]: delete-brand
+                - button "Brand (update) update-brand" [ref=f23e1651] [cursor=pointer]:
+                  - checkbox [ref=f23e1652]
+                  - generic [ref=f23e1653]:
+                    - text: Brand (update)
+                    - generic [ref=f23e1654]: update-brand
+                - button "Brand (read) read-brand" [ref=f23e1655] [cursor=pointer]:
+                  - checkbox [ref=f23e1656]
+                  - generic [ref=f23e1657]:
+                    - text: Brand (read)
+                    - generic [ref=f23e1658]: read-brand
+                - button "Brand (create) create-brand" [ref=f23e1659] [cursor=pointer]:
+                  - checkbox [ref=f23e1660]
+                  - generic [ref=f23e1661]:
+                    - text: Brand (create)
+                    - generic [ref=f23e1662]: create-brand
+        - generic [ref=f23e939]:
+          - generic [ref=f23e940]: Cancel
+          - button "Save" [ref=f23e1737] [cursor=pointer]

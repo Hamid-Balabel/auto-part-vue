@@ -1,0 +1,74 @@
+- generic [ref=f3e40]:
+  - complementary [ref=f3e41]:
+    - generic [ref=f3e46]:
+      - paragraph [ref=f3e47]: إدارة قطع الغيار
+      - paragraph [ref=f3e48]: المخزون والمبيعات
+    - navigation [ref=f3e49]:
+      - link "لوحة التحكم" [ref=f3e50] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f3e54]:
+        - button "إدخال البيانات" [expanded] [ref=f3e55] [cursor=pointer]
+        - generic [ref=f3e63]:
+          - link "المنتجات" [ref=f3e64] [cursor=pointer]:
+            - /url: /products
+          - link "عناصر المنتجات" [ref=f3e72] [cursor=pointer]:
+            - /url: /product-items
+          - link "التصنيفات" [ref=f3e84] [cursor=pointer]:
+            - /url: /categories
+          - link "العلامات التجارية" [ref=f3e90] [cursor=pointer]:
+            - /url: /brands
+          - link "العملاء" [ref=f3e95] [cursor=pointer]:
+            - /url: /customers
+          - link "المستودعات" [ref=f3e102] [cursor=pointer]:
+            - /url: /warehouses
+          - link "المخزون" [ref=f3e107] [cursor=pointer]:
+            - /url: /stocks
+          - link "الدول" [ref=f3e113] [cursor=pointer]:
+            - /url: /countries
+      - button "المبيعات" [ref=f3e118] [cursor=pointer]
+      - button "المستخدمين" [ref=f3e127] [cursor=pointer]
+      - button "الإعدادات" [ref=f3e137] [cursor=pointer]
+  - generic [ref=f3e144]:
+    - banner [ref=f3e145]:
+      - generic [ref=f3e146]:
+        - generic [ref=f3e147]: الفلاتر المدعومة من الخلفية تظهر داخل كل شاشة.
+        - generic "اللغة" [ref=f3e152]:
+          - button "العربية" [ref=f3e157] [cursor=pointer]
+          - button "English" [ref=f3e158] [cursor=pointer]
+        - generic [ref=f3e159]:
+          - paragraph [ref=f3e160]: root
+          - paragraph [ref=f3e161]: root@jervis.com
+        - button "تسجيل الخروج" [ref=f3e162] [cursor=pointer]
+    - main [ref=f3e3]:
+      - generic [ref=f3e163]:
+        - generic [ref=f3e165]:
+          - heading "إنشاء التصنيفات" [level=1] [ref=f3e166]
+          - paragraph [ref=f3e167]: الاسم العربي مطلوب حسب تحقق الخلفية، والإنجليزية والوصف اختياريان.
+        - generic [ref=f3e168]:
+          - generic [ref=f3e199]: يجب أن يكون الاسم بالإنجليزية نصًا.
+          - generic [ref=f3e169]:
+            - generic [ref=f3e170]:
+              - generic [ref=f3e171]: الاسم بالعربية *
+              - textbox "الاسم بالعربية * يجب أن يكون الاسم بالإنجليزية نصًا." [invalid] [ref=f3e200]: QA Select Active 20260718
+              - generic [ref=f3e201]: يجب أن يكون الاسم بالإنجليزية نصًا.
+            - generic [ref=f3e173]:
+              - generic [ref=f3e174]: الاسم بالإنجليزية
+              - textbox "الاسم بالإنجليزية" [ref=f3e175]
+            - generic [ref=f3e176]:
+              - generic [ref=f3e177]: الوصف بالعربية
+              - textbox "الوصف بالعربية" [ref=f3e178]
+            - generic [ref=f3e179]:
+              - generic [ref=f3e180]: الوصف بالإنجليزية
+              - textbox "الوصف بالإنجليزية" [ref=f3e181]
+            - generic [ref=f3e182]:
+              - generic [ref=f3e183]: التصنيف الأب
+              - combobox "التصنيف الأب" [ref=f3e186] [cursor=pointer]:
+                - generic [ref=f3e187]: اختر...
+            - generic [ref=f3e190]:
+              - generic [ref=f3e191]: الحالة
+              - switch "الحالة" [checked] [ref=f3e193] [cursor=pointer]:
+                - generic [ref=f3e195]: نشط
+          - generic [ref=f3e196]:
+            - link "إلغاء" [ref=f3e197] [cursor=pointer]:
+              - /url: /categories
+            - button "حفظ" [ref=f3e198] [cursor=pointer]

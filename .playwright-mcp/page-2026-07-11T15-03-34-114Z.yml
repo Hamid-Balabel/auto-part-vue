@@ -1,0 +1,53 @@
+- generic [ref=f6e32]:
+  - complementary [ref=f6e33]:
+    - generic [ref=f6e38]:
+      - paragraph [ref=f6e39]: إدارة قطع الغيار
+      - paragraph [ref=f6e40]: المخزون والمبيعات
+    - navigation [ref=f6e41]:
+      - link "لوحة التحكم" [ref=f6e42] [cursor=pointer]:
+        - /url: /
+      - button "إدخال البيانات" [ref=f6e47] [cursor=pointer]
+      - button "المبيعات" [ref=f6e56] [cursor=pointer]
+      - button "المستخدمين" [ref=f6e65] [cursor=pointer]
+      - button "الإعدادات" [ref=f6e75] [cursor=pointer]
+  - generic [ref=f6e82]:
+    - banner [ref=f6e83]:
+      - generic [ref=f6e84]:
+        - generic [ref=f6e85]: الفلاتر المدعومة من الخلفية تظهر داخل كل شاشة.
+        - generic "اللغة" [ref=f6e90]:
+          - button "العربية" [ref=f6e95] [cursor=pointer]
+          - button "English" [ref=f6e96] [cursor=pointer]
+        - generic [ref=f6e97]:
+          - paragraph [ref=f6e98]: root
+          - paragraph [ref=f6e99]: root@jervis.com
+        - button "تسجيل الخروج" [ref=f6e100] [cursor=pointer]
+    - main [ref=f6e101]:
+      - generic [ref=f6e150]:
+        - heading "إنشاء دور" [level=1] [ref=f6e151]
+        - paragraph [ref=f6e152]: الصلاحيات ترسل إلى الخلفية بأسمائها كما يتطلب RoleRequest.
+      - generic [ref=f6e153]:
+        - generic [ref=f6e154]:
+          - heading "البيانات الأساسية" [level=2] [ref=f6e155]
+          - generic [ref=f6e156]:
+            - generic [ref=f6e157]:
+              - generic [ref=f6e158]: المفتاح *
+              - textbox "المفتاح *" [ref=f6e159]
+            - generic [ref=f6e160]:
+              - generic [ref=f6e161]: الاسم المعروض بالعربية *
+              - textbox "الاسم المعروض بالعربية *" [ref=f6e162]
+            - generic [ref=f6e163]:
+              - generic [ref=f6e164]: الاسم المعروض بالإنجليزية
+              - textbox "الاسم المعروض بالإنجليزية" [ref=f6e165]
+        - generic [ref=f6e166]:
+          - generic [ref=f6e167]:
+            - generic [ref=f6e168]:
+              - paragraph [ref=f6e169]: صلاحيات الدور
+              - paragraph [ref=f6e170]: 0 / 0 محدد
+            - generic [ref=f6e171]:
+              - searchbox "ابحث في الصلاحيات" [ref=f6e172]
+              - button "تحديد كل الصلاحيات" [disabled] [ref=f6e173]
+          - generic [ref=f6e174]: جار تحميل البيانات...
+        - generic [ref=f6e175]:
+          - link "إلغاء" [ref=f6e176] [cursor=pointer]:
+            - /url: /roles
+          - button "حفظ" [ref=f6e177] [cursor=pointer]

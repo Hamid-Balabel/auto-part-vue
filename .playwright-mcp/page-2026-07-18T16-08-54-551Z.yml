@@ -1,0 +1,172 @@
+- generic [ref=e3]:
+  - complementary [ref=e4]:
+    - generic [ref=e9]:
+      - paragraph [ref=e10]: إدارة قطع الغيار
+      - paragraph [ref=e11]: المخزون والمبيعات
+    - navigation [ref=e12]:
+      - link "لوحة التحكم" [ref=e605] [cursor=pointer]:
+        - /url: /
+      - button "إدخال البيانات" [ref=e18] [cursor=pointer]
+      - generic [ref=e26]:
+        - button "المبيعات" [expanded] [ref=e606] [cursor=pointer]
+        - generic [ref=e35]:
+          - link "السلات" [ref=e607] [cursor=pointer]:
+            - /url: /cart
+          - link "الطلبات" [ref=e608] [cursor=pointer]:
+            - /url: /orders
+          - link "الأقساط" [ref=e609] [cursor=pointer]:
+            - /url: /modules/installments
+      - button "المستخدمين" [ref=e52] [cursor=pointer]
+      - button "الإعدادات" [ref=e62] [cursor=pointer]
+  - generic [ref=e69]:
+    - banner [ref=e70]:
+      - generic [ref=e71]:
+        - generic [ref=e72]: الفلاتر المدعومة من الخلفية تظهر داخل كل شاشة.
+        - generic "اللغة" [ref=e610]:
+          - button "العربية" [ref=e82] [cursor=pointer]
+          - button "English" [ref=e83] [cursor=pointer]
+        - generic [ref=e84]:
+          - paragraph [ref=e85]: root
+          - paragraph [ref=e86]: root@jervis.com
+        - button "تسجيل الخروج" [ref=e611] [cursor=pointer]
+    - main [ref=e88]:
+      - generic [ref=e341]:
+        - heading "الطلبات" [level=1] [ref=e612]
+        - paragraph [ref=e343]: الطلبات وإجماليات الخلفية والمدفوعات وإجراءات الحالة المتاحة.
+      - generic [ref=e344]:
+        - generic [ref=e345]:
+          - searchbox "الخلفية تدعم حاليًا الصفحات والترتيب فقط؛ فلاتر الطلبات غير متاحة." [disabled] [ref=e613]
+          - generic [ref=e347]:
+            - button "بحث" [disabled] [ref=e614]
+            - button "مسح" [disabled] [ref=e615]
+        - button "تحديث" [ref=e616] [cursor=pointer]
+      - table [ref=e353]:
+        - rowgroup [ref=e354]:
+          - row [ref=e617]:
+            - columnheader [ref=e618]:
+              - button "رقم الفاتورة" [ref=e619] [cursor=pointer]
+            - columnheader "العميل" [ref=e620]
+            - columnheader [ref=e621]:
+              - button "تاريخ الطلب" [ref=e622] [cursor=pointer]
+            - columnheader "العناصر" [ref=e623]
+            - columnheader [ref=e624]:
+              - button "الإجمالي" [ref=e625] [cursor=pointer]
+            - columnheader "طريقة الدفع" [ref=e626]
+            - columnheader "حالة الدفع" [ref=e627]
+            - columnheader "حالة الطلب" [ref=e628]
+            - columnheader "الإجراءات" [ref=e629]
+        - rowgroup [ref=e380]:
+          - row [ref=e630]:
+            - cell "QA-20260718-1606" [ref=e382]
+            - cell [ref=e384]:
+              - generic [ref=e386]:
+                - paragraph [ref=e387]: custmoer 11
+                - paragraph [ref=e388]: "01012255454"
+            - cell "18‏/07‏/2026، 7:07 م" [ref=e631]
+            - cell "1" [ref=e391]
+            - cell "EGP 310.00" [ref=e393]
+            - cell "نقدي" [ref=e632]
+            - cell "معلق" [ref=e633]
+            - cell "معلق" [ref=e634]
+            - cell [ref=e635]:
+              - generic [ref=e405]:
+                - button "عرض" [ref=e636] [cursor=pointer]
+                - button "إلغاء الطلب" [ref=e637] [cursor=pointer]
+                - button "حذف" [active] [ref=e638] [cursor=pointer]
+          - row [ref=e639]:
+            - cell "MANUAL-20260714-1726" [ref=e420]
+            - cell [ref=e422]:
+              - generic [ref=e424]:
+                - paragraph [ref=e425]: custmoer 11
+                - paragraph [ref=e426]: "01012255477"
+            - cell "14‏/07‏/2026، 8:27 م" [ref=e640]
+            - cell "1" [ref=e429]
+            - cell "EGP 200.00" [ref=e431]
+            - cell "نقدي" [ref=e641]
+            - cell "مدفوع" [ref=e642]
+            - cell "مكتمل" [ref=e643]
+            - cell [ref=e644]:
+              - button "عرض" [ref=e645] [cursor=pointer]
+          - row [ref=e646]:
+            - cell "INV-1005" [ref=e450]
+            - cell [ref=e452]:
+              - generic [ref=e454]:
+                - paragraph [ref=e455]: custmoer 11
+                - paragraph [ref=e456]: "01012255477"
+            - cell "21‏/02‏/2026، 3:00 م" [ref=e647]
+            - cell "2" [ref=e459]
+            - cell "EGP 2,500.00" [ref=e461]
+            - cell "نقدي" [ref=e648]
+            - cell "مدفوع" [ref=e649]
+            - cell "مدفوع" [ref=e650]
+            - cell [ref=e651]:
+              - button "عرض" [ref=e652] [cursor=pointer]
+          - row [ref=e653]:
+            - cell "INV-1004" [ref=e480]
+            - cell [ref=e482]:
+              - generic [ref=e484]:
+                - paragraph [ref=e485]: custmoer 11
+                - paragraph [ref=e486]: "01012255477"
+            - cell "21‏/02‏/2026، 2:49 م" [ref=e654]
+            - cell "2" [ref=e489]
+            - cell "EGP 2,500.00" [ref=e491]
+            - cell "نقدي" [ref=e655]
+            - cell "مدفوع" [ref=e656]
+            - cell "مدفوع" [ref=e657]
+            - cell [ref=e658]:
+              - button "عرض" [ref=e659] [cursor=pointer]
+          - row [ref=e660]:
+            - cell "INV-1003" [ref=e510]
+            - cell [ref=e512]:
+              - generic [ref=e514]:
+                - paragraph [ref=e515]: custmoer 11
+                - paragraph [ref=e516]: "01012255477"
+            - cell "21‏/02‏/2026، 2:29 م" [ref=e661]
+            - cell "2" [ref=e519]
+            - cell "EGP 2,500.00" [ref=e521]
+            - cell "نقدي" [ref=e662]
+            - cell "مدفوع" [ref=e663]
+            - cell "مدفوع" [ref=e664]
+            - cell [ref=e665]:
+              - button "عرض" [ref=e666] [cursor=pointer]
+          - row [ref=e667]:
+            - cell "INV-1002" [ref=e540]
+            - cell [ref=e542]:
+              - generic [ref=e544]:
+                - paragraph [ref=e545]: custmoer 11
+                - paragraph [ref=e546]: "01012255477"
+            - cell "21‏/02‏/2026، 2:26 م" [ref=e668]
+            - cell "2" [ref=e549]
+            - cell "EGP 2,500.00" [ref=e551]
+            - cell "نقدي" [ref=e669]
+            - cell "مدفوع" [ref=e670]
+            - cell "مدفوع" [ref=e671]
+            - cell [ref=e672]:
+              - button "عرض" [ref=e673] [cursor=pointer]
+          - row [ref=e674]:
+            - cell "INV-1001" [ref=e570]
+            - cell [ref=e572]:
+              - generic [ref=e574]:
+                - paragraph [ref=e575]: custmoer 11
+                - paragraph [ref=e576]: "01012255477"
+            - cell "21‏/02‏/2026، 2:20 م" [ref=e675]
+            - cell "2" [ref=e579]
+            - cell "EGP 1,000.00" [ref=e581]
+            - cell "نقدي" [ref=e676]
+            - cell "مدفوع" [ref=e677]
+            - cell "مدفوع" [ref=e678]
+            - cell [ref=e679]:
+              - button "عرض" [ref=e680] [cursor=pointer]
+      - generic [ref=e599]:
+        - paragraph [ref=e600]: عرض 1 إلى 7 من 7 سجل
+        - generic [ref=e601]:
+          - button "السابق" [disabled] [ref=e681]
+          - generic [ref=e603]: صفحة 1 من 1
+          - button "التالي" [disabled] [ref=e682]
+      - dialog [ref=e700]:
+        - generic [ref=e701]:
+          - heading "حذف الطلب" [level=2] [ref=e702]
+          - paragraph [ref=e703]: يمكن حذف الطلبات المعلقة بدون أقساط فقط، وسيتم استرجاع المخزون المحجوز.
+          - generic [ref=e704]:
+            - button "إلغاء" [ref=e705] [cursor=pointer]
+            - button "حذف" [ref=e706] [cursor=pointer]

@@ -1,0 +1,88 @@
+- generic [ref=f69e3]:
+  - complementary [ref=f69e4]:
+    - generic [ref=f69e9]:
+      - paragraph [ref=f69e10]: Auto Part Admin
+      - paragraph [ref=f69e11]: Inventory and sales
+    - navigation [ref=f69e12]:
+      - link "Dashboard" [ref=f69e13] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f69e17]:
+        - button "إدخال البيانات" [expanded] [ref=f69e18] [cursor=pointer]
+        - generic [ref=f69e26]:
+          - link "Products" [ref=f69e27] [cursor=pointer]:
+            - /url: /products
+          - link "Product Items" [ref=f69e35] [cursor=pointer]:
+            - /url: /product-items
+          - link "Categories" [ref=f69e47] [cursor=pointer]:
+            - /url: /categories
+          - link "Brands" [ref=f69e53] [cursor=pointer]:
+            - /url: /brands
+          - link "Customers" [ref=f69e58] [cursor=pointer]:
+            - /url: /customers
+          - link "Warehouses" [ref=f69e65] [cursor=pointer]:
+            - /url: /warehouses
+          - link "Stocks" [ref=f69e70] [cursor=pointer]:
+            - /url: /stocks
+          - link "Countries" [ref=f69e76] [cursor=pointer]:
+            - /url: /countries
+      - button "Sales" [ref=f69e81] [cursor=pointer]
+      - button "المستخدمين" [ref=f69e90] [cursor=pointer]
+      - button "الإعدادات" [ref=f69e100] [cursor=pointer]
+  - generic [ref=f69e107]:
+    - banner [ref=f69e108]:
+      - generic [ref=f69e109]:
+        - generic [ref=f69e110]: Backend-supported filters appear inside each module.
+        - generic "Language" [ref=f69e115]:
+          - button "العربية" [ref=f69e120] [cursor=pointer]
+          - button "English" [ref=f69e121] [cursor=pointer]
+        - generic [ref=f69e122]:
+          - paragraph [ref=f69e123]: root
+          - paragraph [ref=f69e124]: root@jervis.com
+        - button "Logout" [ref=f69e125] [cursor=pointer]
+    - main [ref=f69e126]:
+      - generic [ref=f69e127]:
+        - generic [ref=f69e129]:
+          - heading "Edit product item" [level=1] [ref=f69e130]
+          - paragraph [ref=f69e131]: Barcode is required in the UI because the database column is unique and non-nullable.
+        - generic [ref=f69e132]:
+          - generic [ref=f69e133]:
+            - generic [ref=f69e134]:
+              - generic [ref=f69e135]: SKU *
+              - textbox "SKU *" [ref=f69e136]: TEST-SKU-012
+            - generic [ref=f69e137]:
+              - generic [ref=f69e138]: Barcode *
+              - textbox "Barcode *" [ref=f69e139]: "1234567890178"
+            - generic [ref=f69e140]:
+              - generic [ref=f69e141]: Product *
+              - combobox "Product *" [ref=f69e144] [cursor=pointer]:
+                - generic [ref=f69e145]: Test Product
+            - generic [ref=f69e148]:
+              - generic [ref=f69e149]: Price *
+              - spinbutton "Price *" [ref=f69e150]: "155"
+            - generic [ref=f69e151]:
+              - generic [ref=f69e152]: Status
+              - switch "Status" [checked] [ref=f69e154] [cursor=pointer]:
+                - generic [ref=f69e156]: Active
+            - generic [ref=f69e157]:
+              - generic [ref=f69e158]: Option values
+              - generic [ref=f69e160]:
+                - generic [ref=f69e161]: test ens21
+                - combobox "test ens21" [ref=f69e164] [cursor=pointer]:
+                  - generic [ref=f69e165]: Redaass, Redaas
+                  - button "Clear" [ref=f69e166]
+            - generic [ref=f69e172]:
+              - text: Warehouse quantities
+              - generic [ref=f69e173]:
+                - generic [ref=f69e174]:
+                  - generic [ref=f69e175]: test ens87
+                  - spinbutton "test ens87" [ref=f69e176]: "0"
+                - generic [ref=f69e177]:
+                  - generic [ref=f69e178]: test ens21
+                  - spinbutton "test ens21" [ref=f69e179]: "37"
+            - generic [ref=f69e180]:
+              - text: Images
+              - button "Images" [ref=f69e181]
+          - generic [ref=f69e182]:
+            - link "Cancel" [ref=f69e183] [cursor=pointer]:
+              - /url: /product-items
+            - button "Save" [ref=f69e184] [cursor=pointer]

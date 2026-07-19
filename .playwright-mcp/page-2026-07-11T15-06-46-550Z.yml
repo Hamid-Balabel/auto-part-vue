@@ -1,0 +1,81 @@
+- generic [ref=f7e32]:
+  - complementary [ref=f7e33]:
+    - generic [ref=f7e38]:
+      - paragraph [ref=f7e39]: إدارة قطع الغيار
+      - paragraph [ref=f7e40]: المخزون والمبيعات
+    - navigation [ref=f7e41]:
+      - link "لوحة التحكم" [ref=f7e42] [cursor=pointer]:
+        - /url: /
+      - button "إدخال البيانات" [ref=f7e47] [cursor=pointer]
+      - button "المبيعات" [ref=f7e56] [cursor=pointer]
+      - button "المستخدمين" [ref=f7e65] [cursor=pointer]
+      - button "الإعدادات" [ref=f7e75] [cursor=pointer]
+  - generic [ref=f7e82]:
+    - banner [ref=f7e83]:
+      - generic [ref=f7e84]:
+        - generic [ref=f7e85]: الفلاتر المدعومة من الخلفية تظهر داخل كل شاشة.
+        - generic "اللغة" [ref=f7e90]:
+          - button "العربية" [ref=f7e95] [cursor=pointer]
+          - button "English" [ref=f7e96] [cursor=pointer]
+        - generic [ref=f7e97]:
+          - paragraph [ref=f7e98]: root
+          - paragraph [ref=f7e99]: root@jervis.com
+        - button "تسجيل الخروج" [ref=f7e100] [cursor=pointer]
+    - main [ref=f7e101]:
+      - generic [ref=f7e1278]:
+        - generic [ref=f7e1279]:
+          - heading "الأدوار" [level=1] [ref=f7e1280]
+          - paragraph [ref=f7e1281]: إدارة الأدوار وربطها بالصلاحيات المسجلة في الخلفية.
+        - link "إنشاء دور" [ref=f7e1283] [cursor=pointer]:
+          - /url: /roles/create
+      - table [ref=f7e1290]:
+        - rowgroup [ref=f7e1291]:
+          - row [ref=f7e1292]:
+            - columnheader "الاسم المعروض" [ref=f7e1293]
+            - columnheader "المفتاح" [ref=f7e1294]
+            - columnheader "الصلاحيات" [ref=f7e1295]
+            - columnheader "الحالة" [ref=f7e1296]
+            - columnheader "الإجراءات" [ref=f7e1297]
+        - rowgroup [ref=f7e1298]:
+          - row [ref=f7e1299]:
+            - cell "دور اختبار مؤقت" [ref=f7e1300]
+            - cell "playwright_temp_role_202607111504" [ref=f7e1301]
+            - cell "0" [ref=f7e1302]
+            - cell "نشط" [ref=f7e1303]
+            - cell [ref=f7e1305]:
+              - generic [ref=f7e1306]:
+                - link "تعديل" [ref=f7e1307] [cursor=pointer]:
+                  - /url: /roles/5/edit
+                - button "حذف" [active] [ref=f7e1308] [cursor=pointer]
+          - row [ref=f7e1309]:
+            - cell "default_role" [ref=f7e1310]
+            - cell "default_role" [ref=f7e1311]
+            - cell "0" [ref=f7e1312]
+            - cell "نشط" [ref=f7e1313]
+            - cell [ref=f7e1315]:
+              - generic [ref=f7e1316]:
+                - link "تعديل" [ref=f7e1317] [cursor=pointer]:
+                  - /url: /roles/3/edit
+                - button "حذف" [ref=f7e1318] [cursor=pointer]
+          - row [ref=f7e1319]:
+            - cell "admin" [ref=f7e1320]
+            - cell "admin" [ref=f7e1321]
+            - cell "0" [ref=f7e1322]
+            - cell "نشط" [ref=f7e1323]
+            - cell [ref=f7e1325]:
+              - generic [ref=f7e1326]:
+                - link "تعديل" [ref=f7e1327] [cursor=pointer]:
+                  - /url: /roles/2/edit
+                - button "حذف" [ref=f7e1328] [cursor=pointer]
+      - generic [ref=f7e1329]:
+        - paragraph [ref=f7e1330]: عرض 1 إلى 3 من 3 سجل
+        - generic [ref=f7e1331]:
+          - button "السابق" [disabled] [ref=f7e1332]
+          - generic [ref=f7e1333]: صفحة 1 من 1
+          - button "التالي" [disabled] [ref=f7e1334]
+      - generic [ref=f7e1336]:
+        - heading "حذف الدور" [level=2] [ref=f7e1337]
+        - paragraph [ref=f7e1338]: لا يمكن حذف دور مرتبط بمستخدمين حسب حماية الخلفية.
+        - generic [ref=f7e1339]:
+          - button "إلغاء" [ref=f7e1340] [cursor=pointer]
+          - button "حذف" [ref=f7e1341] [cursor=pointer]

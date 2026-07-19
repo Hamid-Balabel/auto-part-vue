@@ -1,0 +1,59 @@
+- generic [ref=f166e32]:
+  - complementary [ref=f166e33]:
+    - generic [ref=f166e38]:
+      - paragraph [ref=f166e39]: إدارة قطع الغيار
+      - paragraph [ref=f166e40]: المخزون والمبيعات
+    - navigation [ref=f166e41]:
+      - link "لوحة التحكم" [ref=f166e42] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f166e46]:
+        - button "إدخال البيانات" [expanded] [active] [ref=f166e47] [cursor=pointer]
+        - generic [ref=f166e138]:
+          - link "المنتجات" [ref=f166e139] [cursor=pointer]:
+            - /url: /products
+          - link "عناصر المنتجات" [ref=f166e147] [cursor=pointer]:
+            - /url: /product-items
+          - link "التصنيفات" [ref=f166e159] [cursor=pointer]:
+            - /url: /categories
+          - link "العلامات التجارية" [ref=f166e165] [cursor=pointer]:
+            - /url: /brands
+          - link "العملاء" [ref=f166e170] [cursor=pointer]:
+            - /url: /customers
+          - link "المستودعات" [ref=f166e177] [cursor=pointer]:
+            - /url: /warehouses
+          - link "المخزون" [ref=f166e182] [cursor=pointer]:
+            - /url: /stocks
+          - link "الدول" [ref=f166e188] [cursor=pointer]:
+            - /url: /countries
+      - button "المبيعات" [ref=f166e56] [cursor=pointer]
+      - button "المستخدمين" [ref=f166e65] [cursor=pointer]
+      - button "الإعدادات" [ref=f166e75] [cursor=pointer]
+  - generic [ref=f166e82]:
+    - banner [ref=f166e83]:
+      - generic [ref=f166e84]:
+        - generic [ref=f166e85]: الفلاتر المدعومة من الخلفية تظهر داخل كل شاشة.
+        - generic "اللغة" [ref=f166e90]:
+          - button "العربية" [ref=f166e95] [cursor=pointer]
+          - button "English" [ref=f166e96] [cursor=pointer]
+        - generic [ref=f166e97]:
+          - paragraph [ref=f166e98]: root
+          - paragraph [ref=f166e99]: root@jervis.com
+        - button "تسجيل الخروج" [ref=f166e100] [cursor=pointer]
+    - main [ref=f166e101]:
+      - generic [ref=f166e103]:
+        - heading "لوحة التحكم" [level=1] [ref=f166e104]
+        - paragraph [ref=f166e105]: واجهة إدارة احترافية متصلة بعقد Laravel API الذي تم فحصه.
+      - generic [ref=f166e106]:
+        - generic [ref=f166e107]:
+          - paragraph [ref=f166e119]: وحدات المخزون
+          - paragraph [ref=f166e120]: المنتجات، العناصر، المخزون
+        - generic [ref=f166e121]:
+          - paragraph [ref=f166e125]: وحدات المبيعات
+          - paragraph [ref=f166e126]: السلات، الطلبات، الأقساط
+        - generic [ref=f166e127]:
+          - paragraph [ref=f166e132]: وحدات الإدارة
+          - paragraph [ref=f166e133]: المستخدمون، الأدوار، الإعدادات
+      - generic [ref=f166e134]:
+        - heading "الجلسة" [level=2] [ref=f166e135]
+        - paragraph [ref=f166e136]: تم تسجيل الدخول باسم root.
+        - paragraph [ref=f166e137]: إذا كانت الصلاحيات مشفرة من إعدادات الخلفية، ستبقى رؤية القائمة محافظة حتى تعرض الخلفية أسماء الصلاحيات.

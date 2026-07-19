@@ -1,0 +1,807 @@
+- generic [ref=e3]:
+  - complementary [ref=e4]:
+    - generic [ref=e9]:
+      - paragraph [ref=e10]: إدارة قطع الغيار
+      - paragraph [ref=e11]: المخزون والمبيعات
+    - navigation [ref=e12]:
+      - link "لوحة التحكم" [ref=e1643] [cursor=pointer]:
+        - /url: /
+      - button "إدخال البيانات" [ref=e18] [cursor=pointer]
+      - button "المبيعات" [ref=e1644] [cursor=pointer]
+      - button "المستخدمين" [ref=e36] [cursor=pointer]
+      - button "الإعدادات" [ref=e46] [cursor=pointer]
+  - generic [ref=e53]:
+    - banner [ref=e54]:
+      - generic [ref=e55]:
+        - generic [ref=e56]: الفلاتر المدعومة من الخلفية تظهر داخل كل شاشة.
+        - generic "اللغة" [ref=e1645]:
+          - button "العربية" [active] [ref=e66] [cursor=pointer]
+          - button "English" [ref=e67] [cursor=pointer]
+        - generic [ref=e68]:
+          - paragraph [ref=e69]: root
+          - paragraph [ref=e70]: root@jervis.com
+        - button "تسجيل الخروج" [ref=e1646] [cursor=pointer]
+    - main [ref=e72]:
+      - generic [ref=e73]:
+        - generic [ref=e74]:
+          - heading "إعدادات النظام" [level=1] [ref=e1647]
+          - paragraph [ref=e76]: تحديث الإعدادات المتاحة من الخلفية باستخدام بنية settings[].
+        - generic [ref=e77]:
+          - button "إعادة ضبط التغييرات" [disabled] [ref=e1648]
+          - button "حفظ الإعدادات" [ref=e1649] [cursor=pointer]
+      - generic [ref=e80]:
+        - generic [ref=e868]: Settings saved successfully.
+        - generic [ref=e869]:
+          - generic [ref=e870]:
+            - generic [ref=e871]:
+              - generic [ref=e872]:
+                - generic [ref=e873]: G
+                - generic [ref=e874]:
+                  - heading "عام" [level=2] [ref=e1650]
+                  - paragraph [ref=e876]: 13 إعداد
+              - generic [ref=e877]: general
+            - generic [ref=e878]:
+              - generic [ref=e879]:
+                - generic [ref=e880]:
+                  - generic [ref=e881]:
+                    - generic [ref=e882]: I
+                    - generic [ref=e883]:
+                      - heading "معلومات عامة" [level=2] [ref=e1651]
+                      - paragraph [ref=e885]: 5 إعداد
+                  - generic [ref=e886]: info
+                - generic [ref=e888]:
+                  - generic [ref=e889]:
+                    - generic [ref=e890]:
+                      - generic [ref=e891]: text
+                      - button "إعادة ضبط" [ref=e1652] [cursor=pointer]
+                    - generic [ref=e893]:
+                      - paragraph [ref=e894]: اسم الشركة
+                      - generic [ref=e895]:
+                        - generic [ref=e896]:
+                          - text: AR
+                          - textbox "AR" [ref=e897]:
+                            - /placeholder: "مثال: اسم الشركة"
+                            - text: حارفيس
+                        - generic [ref=e898]:
+                          - text: EN
+                          - textbox "EN" [ref=e899]:
+                            - /placeholder: "مثال: اسم الشركة"
+                            - text: Jervis
+                      - generic [ref=e900]: "مثال: اسم الشركة"
+                  - generic [ref=e901]:
+                    - generic [ref=e902]:
+                      - generic [ref=e903]: text
+                      - button "إعادة ضبط" [ref=e1653] [cursor=pointer]
+                    - generic [ref=e905]:
+                      - paragraph [ref=e906]: حقوق الطبع والنشر
+                      - generic [ref=e907]:
+                        - generic [ref=e908]:
+                          - text: AR
+                          - textbox "AR" [ref=e909]:
+                            - /placeholder: "مثال: © 2024 الشركة"
+                        - generic [ref=e910]:
+                          - text: EN
+                          - textbox "EN" [ref=e911]:
+                            - /placeholder: "مثال: © 2024 الشركة"
+                      - generic [ref=e912]: "مثال: © 2024 الشركة"
+                  - generic [ref=e913]:
+                    - generic [ref=e914]:
+                      - generic [ref=e915]: text
+                      - button "إعادة ضبط" [ref=e1654] [cursor=pointer]
+                    - generic [ref=e917]:
+                      - paragraph [ref=e918]: رابط الموقع
+                      - 'textbox "مثال: https://example.com" [ref=e1655]'
+                      - generic [ref=e920]: "مثال: https://example.com"
+                  - generic [ref=e921]:
+                    - generic [ref=e922]:
+                      - generic [ref=e923]: textarea
+                      - button "إعادة ضبط" [ref=e1656] [cursor=pointer]
+                    - generic [ref=e925]:
+                      - paragraph [ref=e926]: وصف الموقع
+                      - generic [ref=e927]:
+                        - generic [ref=e928]:
+                          - text: AR
+                          - textbox "AR" [ref=e929]:
+                            - /placeholder: "مثال: نحن شركة متخصصة في..."
+                        - generic [ref=e930]:
+                          - text: EN
+                          - textbox "EN" [ref=e931]:
+                            - /placeholder: "مثال: نحن شركة متخصصة في..."
+                      - generic [ref=e932]: "مثال: نحن شركة متخصصة في..."
+                  - generic [ref=e933]:
+                    - generic [ref=e934]:
+                      - generic [ref=e935]: textarea
+                      - button "إعادة ضبط" [ref=e1657] [cursor=pointer]
+                    - generic [ref=e937]:
+                      - paragraph [ref=e938]: وصف الميتا
+                      - generic [ref=e939]:
+                        - generic [ref=e940]:
+                          - text: AR
+                          - textbox "AR" [ref=e941]:
+                            - /placeholder: "مثال: وصف قصير للموقع (160 حرف)"
+                        - generic [ref=e942]:
+                          - text: EN
+                          - textbox "EN" [ref=e943]:
+                            - /placeholder: "مثال: وصف قصير للموقع (160 حرف)"
+                      - generic [ref=e944]: "مثال: وصف قصير للموقع (160 حرف)"
+              - generic [ref=e945]:
+                - generic [ref=e946]:
+                  - generic [ref=e947]:
+                    - generic [ref=e948]: C
+                    - generic [ref=e949]:
+                      - heading "معلومات الاتصال" [level=2] [ref=e1658]
+                      - paragraph [ref=e951]: 3 إعداد
+                  - generic [ref=e952]: contact
+                - generic [ref=e954]:
+                  - generic [ref=e955]:
+                    - generic [ref=e956]:
+                      - generic [ref=e957]: text
+                      - button "إعادة ضبط" [ref=e1659] [cursor=pointer]
+                    - generic [ref=e959]:
+                      - paragraph [ref=e960]: البريد الإلكتروني
+                      - 'textbox "مثال: support@example.com" [ref=e1660]'
+                      - generic [ref=e962]: "مثال: support@example.com"
+                  - generic [ref=e963]:
+                    - generic [ref=e964]:
+                      - generic [ref=e965]: text
+                      - button "إعادة ضبط" [ref=e1661] [cursor=pointer]
+                    - generic [ref=e967]:
+                      - paragraph [ref=e968]: رقم الهاتف
+                      - 'textbox "مثال: +966 (12) 3456-789" [ref=e1662]'
+                      - generic [ref=e970]: "مثال: +966 (12) 3456-789"
+                  - generic [ref=e971]:
+                    - generic [ref=e972]:
+                      - generic [ref=e973]: text
+                      - button "إعادة ضبط" [ref=e1663] [cursor=pointer]
+                    - generic [ref=e975]:
+                      - paragraph [ref=e976]: العنوان
+                      - generic [ref=e977]:
+                        - generic [ref=e978]:
+                          - text: AR
+                          - textbox "AR" [ref=e979]:
+                            - /placeholder: "مثال: شارع الملك، المدينة"
+                        - generic [ref=e980]:
+                          - text: EN
+                          - textbox "EN" [ref=e981]:
+                            - /placeholder: "مثال: شارع الملك، المدينة"
+                      - generic [ref=e982]: "مثال: شارع الملك، المدينة"
+              - generic [ref=e983]:
+                - generic [ref=e984]:
+                  - generic [ref=e985]:
+                    - generic [ref=e986]: S
+                    - generic [ref=e987]:
+                      - heading "مواقع التواصل الاجتماعي" [level=2] [ref=e1664]
+                      - paragraph [ref=e989]: 5 إعداد
+                  - generic [ref=e990]: social
+                - generic [ref=e992]:
+                  - generic [ref=e993]:
+                    - generic [ref=e994]:
+                      - generic [ref=e995]: text
+                      - button "إعادة ضبط" [ref=e1665] [cursor=pointer]
+                    - generic [ref=e997]:
+                      - paragraph [ref=e998]: انستجرام
+                      - 'textbox "مثال: https://instagram.com/username" [ref=e1666]'
+                      - generic [ref=e1000]: "مثال: https://instagram.com/username"
+                  - generic [ref=e1001]:
+                    - generic [ref=e1002]:
+                      - generic [ref=e1003]: text
+                      - button "إعادة ضبط" [ref=e1667] [cursor=pointer]
+                    - generic [ref=e1005]:
+                      - paragraph [ref=e1006]: فيسبوك
+                      - 'textbox "مثال: https://facebook.com/pagename" [ref=e1668]'
+                      - generic [ref=e1008]: "مثال: https://facebook.com/pagename"
+                  - generic [ref=e1009]:
+                    - generic [ref=e1010]:
+                      - generic [ref=e1011]: text
+                      - button "إعادة ضبط" [ref=e1669] [cursor=pointer]
+                    - generic [ref=e1013]:
+                      - paragraph [ref=e1014]: لينكدإن
+                      - 'textbox "مثال: https://linkedin.com/company/name" [ref=e1670]'
+                      - generic [ref=e1016]: "مثال: https://linkedin.com/company/name"
+                  - generic [ref=e1017]:
+                    - generic [ref=e1018]:
+                      - generic [ref=e1019]: text
+                      - button "إعادة ضبط" [ref=e1671] [cursor=pointer]
+                    - generic [ref=e1021]:
+                      - paragraph [ref=e1022]: تويتر
+                      - 'textbox "مثال: https://twitter.com/username" [ref=e1672]'
+                      - generic [ref=e1024]: "مثال: https://twitter.com/username"
+                  - generic [ref=e1025]:
+                    - generic [ref=e1026]:
+                      - generic [ref=e1027]: text
+                      - button "إعادة ضبط" [ref=e1673] [cursor=pointer]
+                    - generic [ref=e1029]:
+                      - paragraph [ref=e1030]: يوتيوب
+                      - 'textbox "مثال: https://youtube.com/c/channelname" [ref=e1674]'
+                      - generic [ref=e1032]: "مثال: https://youtube.com/c/channelname"
+          - generic [ref=e1033]:
+            - generic [ref=e1034]:
+              - generic [ref=e1035]:
+                - generic [ref=e1036]: P
+                - generic [ref=e1037]:
+                  - heading "الخصائص" [level=2] [ref=e1675]
+                  - paragraph [ref=e1039]: 5 إعداد
+              - generic [ref=e1040]: properties
+            - generic [ref=e1042]:
+              - generic [ref=e1043]:
+                - generic [ref=e1044]:
+                  - generic [ref=e1045]: imageUploader
+                  - button "إعادة ضبط" [ref=e1676] [cursor=pointer]
+                - generic [ref=e1048]:
+                  - text: شعار كبير
+                  - generic [ref=e1049]:
+                    - button "شعار كبير شعار كبير للويب" [ref=e1677]
+                    - paragraph [ref=e1051]: شعار كبير للويب
+              - generic [ref=e1052]:
+                - generic [ref=e1053]:
+                  - generic [ref=e1054]: imageUploader
+                  - button "إعادة ضبط" [ref=e1678] [cursor=pointer]
+                - generic [ref=e1057]:
+                  - text: شعار كبير داكن
+                  - generic [ref=e1058]:
+                    - button "شعار كبير داكن شعار كبير للويب النسخة الداكنة" [ref=e1679]
+                    - paragraph [ref=e1060]: شعار كبير للويب النسخة الداكنة
+              - generic [ref=e1061]:
+                - generic [ref=e1062]:
+                  - generic [ref=e1063]: imageUploader
+                  - button "إعادة ضبط" [ref=e1680] [cursor=pointer]
+                - generic [ref=e1066]:
+                  - text: شعار صغير
+                  - generic [ref=e1067]:
+                    - button "شعار صغير شعار صغير للويب" [ref=e1681]
+                    - paragraph [ref=e1069]: شعار صغير للويب
+              - generic [ref=e1070]:
+                - generic [ref=e1071]:
+                  - generic [ref=e1072]: imageUploader
+                  - button "إعادة ضبط" [ref=e1682] [cursor=pointer]
+                - generic [ref=e1075]:
+                  - text: شعار صغير داكن
+                  - generic [ref=e1076]:
+                    - button "شعار صغير داكن شعار صغير للويب النسخة الداكنة" [ref=e1683]
+                    - paragraph [ref=e1078]: شعار صغير للويب النسخة الداكنة
+              - generic [ref=e1079]:
+                - generic [ref=e1080]:
+                  - generic [ref=e1081]: imageUploader
+                  - button "إعادة ضبط" [ref=e1684] [cursor=pointer]
+                - generic [ref=e1084]:
+                  - text: أيقونة المفضلة
+                  - generic [ref=e1085]:
+                    - button "أيقونة المفضلة أيقونة المفضلة" [ref=e1685]
+                    - paragraph [ref=e1087]: أيقونة المفضلة
+          - generic [ref=e1088]:
+            - generic [ref=e1089]:
+              - generic [ref=e1090]:
+                - generic [ref=e1091]: "N"
+                - generic [ref=e1092]:
+                  - heading "الإشعارات" [level=2] [ref=e1686]
+                  - paragraph [ref=e1094]: 4 إعداد
+              - generic [ref=e1095]: notifications
+            - generic [ref=e1097]:
+              - generic [ref=e1098]:
+                - generic [ref=e1099]:
+                  - generic [ref=e1100]: switchbox
+                  - button "إعادة ضبط" [ref=e1687] [cursor=pointer]
+                - generic [ref=e1103]:
+                  - generic [ref=e1104]:
+                    - paragraph [ref=e1105]: إشعارات البريد
+                    - paragraph [ref=e1106]: تمكين إشعارات البريد الإلكتروني
+                  - switch "إشعارات البريد" [checked] [ref=e1688] [cursor=pointer]:
+                    - generic [ref=e1109]: مفعل
+              - generic [ref=e1110]:
+                - generic [ref=e1111]:
+                  - generic [ref=e1112]: switchbox
+                  - button "إعادة ضبط" [ref=e1689] [cursor=pointer]
+                - generic [ref=e1115]:
+                  - generic [ref=e1116]:
+                    - paragraph [ref=e1117]: إشعارات الرسائل
+                    - paragraph [ref=e1118]: تمكين إشعارات الرسائل القصيرة
+                  - switch "إشعارات الرسائل" [ref=e1690] [cursor=pointer]:
+                    - generic [ref=e1121]: معطل
+              - generic [ref=e1122]:
+                - generic [ref=e1123]:
+                  - generic [ref=e1124]: switchbox
+                  - button "إعادة ضبط" [ref=e1691] [cursor=pointer]
+                - generic [ref=e1127]:
+                  - generic [ref=e1128]:
+                    - paragraph [ref=e1129]: إشعارات فورية
+                    - paragraph [ref=e1130]: تمكين الإشعارات الفورية
+                  - switch "إشعارات فورية" [ref=e1692] [cursor=pointer]:
+                    - generic [ref=e1133]: معطل
+              - generic [ref=e1134]:
+                - generic [ref=e1135]:
+                  - generic [ref=e1136]: switchbox
+                  - button "إعادة ضبط" [ref=e1693] [cursor=pointer]
+                - generic [ref=e1139]:
+                  - generic [ref=e1140]:
+                    - paragraph [ref=e1141]: إشعارات حية
+                    - paragraph [ref=e1142]: تمكين الإشعارات الحية
+                  - switch "إشعارات حية" [ref=e1694] [cursor=pointer]:
+                    - generic [ref=e1145]: معطل
+          - generic [ref=e1146]:
+            - generic [ref=e1147]:
+              - generic [ref=e1148]:
+                - generic [ref=e1149]: T
+                - generic [ref=e1150]:
+                  - heading "السمات" [level=2] [ref=e1695]
+                  - paragraph [ref=e1152]: 7 إعداد
+              - generic [ref=e1153]: theme
+            - generic [ref=e1154]:
+              - generic [ref=e1155]:
+                - generic [ref=e1156]:
+                  - generic [ref=e1157]:
+                    - generic [ref=e1158]: C
+                    - generic [ref=e1159]:
+                      - heading "الالوان" [level=2] [ref=e1696]
+                      - paragraph [ref=e1161]: 4 إعداد
+                  - generic [ref=e1162]: colors
+                - generic [ref=e1164]:
+                  - generic [ref=e1165]:
+                    - generic [ref=e1166]:
+                      - generic [ref=e1167]: text
+                      - button "إعادة ضبط" [ref=e1697] [cursor=pointer]
+                    - generic [ref=e1169]:
+                      - paragraph [ref=e1170]: اللون الرئيسي
+                      - 'textbox "مثال: #000000" [ref=e1698]'
+                      - generic [ref=e1172]: "مثال: #000000"
+                  - generic [ref=e1173]:
+                    - generic [ref=e1174]:
+                      - generic [ref=e1175]: text
+                      - button "إعادة ضبط" [ref=e1699] [cursor=pointer]
+                    - generic [ref=e1177]:
+                      - paragraph [ref=e1178]: اللون الثانوي
+                      - 'textbox "مثال: #FFFFFF" [ref=e1700]'
+                      - generic [ref=e1180]: "مثال: #FFFFFF"
+                  - generic [ref=e1181]:
+                    - generic [ref=e1182]:
+                      - generic [ref=e1183]: text
+                      - button "إعادة ضبط" [ref=e1701] [cursor=pointer]
+                    - generic [ref=e1185]:
+                      - paragraph [ref=e1186]: لون النص
+                      - 'textbox "مثال: #333333" [ref=e1702]'
+                      - generic [ref=e1188]: "مثال: #333333"
+                  - generic [ref=e1189]:
+                    - generic [ref=e1190]:
+                      - generic [ref=e1191]: text
+                      - button "إعادة ضبط" [ref=e1703] [cursor=pointer]
+                    - generic [ref=e1193]:
+                      - paragraph [ref=e1194]: لون النص الثانوي
+                      - 'textbox "مثال: #999999" [ref=e1704]'
+                      - generic [ref=e1196]: "مثال: #999999"
+              - generic [ref=e1197]:
+                - generic [ref=e1198]:
+                  - generic [ref=e1199]:
+                    - generic [ref=e1200]: F
+                    - generic [ref=e1201]:
+                      - heading "الخط" [level=2] [ref=e1705]
+                      - paragraph [ref=e1203]: 3 إعداد
+                  - generic [ref=e1204]: font
+                - generic [ref=e1206]:
+                  - generic [ref=e1207]:
+                    - generic [ref=e1208]:
+                      - generic [ref=e1209]: select
+                      - button "إعادة ضبط" [ref=e1706] [cursor=pointer]
+                    - generic [ref=e1212]:
+                      - generic [ref=e1213]:
+                        - text: خط عربي
+                        - textbox "خط عربي" [ref=e1707]:
+                          - /placeholder: اختر خط عربي
+                      - paragraph [ref=e1215]: اختر خط عربي
+                  - generic [ref=e1216]:
+                    - generic [ref=e1217]:
+                      - generic [ref=e1218]: select
+                      - button "إعادة ضبط" [ref=e1708] [cursor=pointer]
+                    - generic [ref=e1221]:
+                      - generic [ref=e1222]:
+                        - text: خط انجليزي
+                        - textbox "خط انجليزي" [ref=e1709]:
+                          - /placeholder: اختر خط انجليزي
+                      - paragraph [ref=e1224]: اختر خط انجليزي
+                  - generic [ref=e1225]:
+                    - generic [ref=e1226]:
+                      - generic [ref=e1227]: select
+                      - button "إعادة ضبط" [ref=e1710] [cursor=pointer]
+                    - generic [ref=e1230]:
+                      - generic [ref=e1231]:
+                        - text: حجم الخط
+                        - textbox "حجم الخط" [ref=e1711]:
+                          - /placeholder: اختر حجم الخط
+                      - paragraph [ref=e1233]: اختر حجم الخط
+          - generic [ref=e1234]:
+            - generic [ref=e1235]:
+              - generic [ref=e1236]:
+                - generic [ref=e1237]: M
+                - generic [ref=e1238]:
+                  - heading "قوالب البريد" [level=2] [ref=e1712]
+                  - paragraph [ref=e1240]: 11 إعداد
+              - generic [ref=e1241]: mail_templates
+            - generic [ref=e1242]:
+              - generic [ref=e1243]:
+                - generic [ref=e1244]:
+                  - generic [ref=e1245]:
+                    - generic [ref=e1246]: O
+                    - generic [ref=e1247]:
+                      - heading "الرمز المؤقت" [level=2] [ref=e1713]
+                      - paragraph [ref=e1249]: 5 إعداد
+                  - generic [ref=e1250]: otp
+                - generic [ref=e1252]:
+                  - generic [ref=e1253]:
+                    - generic [ref=e1254]:
+                      - generic [ref=e1255]: text
+                      - button "إعادة ضبط" [ref=e1714] [cursor=pointer]
+                    - generic [ref=e1257]:
+                      - paragraph [ref=e1258]: خلفية OTP
+                      - 'textbox "مثال: #F4F4F5" [ref=e1715]'
+                      - generic [ref=e1260]: "مثال: #F4F4F5"
+                  - generic [ref=e1261]:
+                    - generic [ref=e1262]:
+                      - generic [ref=e1263]: text
+                      - button "إعادة ضبط" [ref=e1716] [cursor=pointer]
+                    - generic [ref=e1265]:
+                      - paragraph [ref=e1266]: حد OTP
+                      - 'textbox "مثال: #D1D5DB" [ref=e1717]'
+                      - generic [ref=e1268]: "مثال: #D1D5DB"
+                  - generic [ref=e1269]:
+                    - generic [ref=e1270]:
+                      - generic [ref=e1271]: text
+                      - button "إعادة ضبط" [ref=e1718] [cursor=pointer]
+                    - generic [ref=e1273]:
+                      - paragraph [ref=e1274]: حجم خط OTP
+                      - 'textbox "مثال: 18px" [ref=e1719]'
+                      - generic [ref=e1276]: "مثال: 18px"
+                  - generic [ref=e1277]:
+                    - generic [ref=e1278]:
+                      - generic [ref=e1279]: text
+                      - button "إعادة ضبط" [ref=e1720] [cursor=pointer]
+                    - generic [ref=e1281]:
+                      - paragraph [ref=e1282]: تباعد أحرف OTP
+                      - 'textbox "مثال: 4px" [ref=e1721]'
+                      - generic [ref=e1284]: "مثال: 4px"
+                  - generic [ref=e1285]:
+                    - generic [ref=e1286]:
+                      - generic [ref=e1287]: text
+                      - button "إعادة ضبط" [ref=e1722] [cursor=pointer]
+                    - generic [ref=e1289]:
+                      - paragraph [ref=e1290]: لون النص
+                      - 'textbox "مثال: #111827" [ref=e1723]'
+                      - generic [ref=e1292]: "مثال: #111827"
+              - generic [ref=e1293]:
+                - generic [ref=e1294]:
+                  - generic [ref=e1295]:
+                    - generic [ref=e1296]: T
+                    - generic [ref=e1297]:
+                      - heading "السمات" [level=2] [ref=e1724]
+                      - paragraph [ref=e1299]: 6 إعداد
+                  - generic [ref=e1300]: theme
+                - generic [ref=e1302]:
+                  - generic [ref=e1303]:
+                    - generic [ref=e1304]:
+                      - generic [ref=e1305]: text
+                      - button "إعادة ضبط" [ref=e1725] [cursor=pointer]
+                    - generic [ref=e1307]:
+                      - paragraph [ref=e1308]: خلفية الزر
+                      - 'textbox "مثال: #000000" [ref=e1726]'
+                      - generic [ref=e1310]: "مثال: #000000"
+                  - generic [ref=e1311]:
+                    - generic [ref=e1312]:
+                      - generic [ref=e1313]: text
+                      - button "إعادة ضبط" [ref=e1727] [cursor=pointer]
+                    - generic [ref=e1315]:
+                      - paragraph [ref=e1316]: لون نص الزر
+                      - 'textbox "مثال: #FFFFFF" [ref=e1728]'
+                      - generic [ref=e1318]: "مثال: #FFFFFF"
+                  - generic [ref=e1319]:
+                    - generic [ref=e1320]:
+                      - generic [ref=e1321]: imageUploader
+                      - button "إعادة ضبط" [ref=e1729] [cursor=pointer]
+                    - generic [ref=e1324]:
+                      - text: صورة الهيدر
+                      - generic [ref=e1325]:
+                        - button "صورة الهيدر صورة الهيدر" [ref=e1730]
+                        - paragraph [ref=e1327]: صورة الهيدر
+                  - generic [ref=e1328]:
+                    - generic [ref=e1329]:
+                      - generic [ref=e1330]: textarea
+                      - button "إعادة ضبط" [ref=e1731] [cursor=pointer]
+                    - generic [ref=e1332]:
+                      - paragraph [ref=e1333]: نص الهيدر
+                      - generic [ref=e1334]:
+                        - generic [ref=e1335]:
+                          - text: AR
+                          - textbox "AR" [ref=e1336]:
+                            - /placeholder: نص الهيدر
+                        - generic [ref=e1337]:
+                          - text: EN
+                          - textbox "EN" [ref=e1338]:
+                            - /placeholder: نص الهيدر
+                      - generic [ref=e1339]: نص الهيدر
+                  - generic [ref=e1340]:
+                    - generic [ref=e1341]:
+                      - generic [ref=e1342]: imageUploader
+                      - button "إعادة ضبط" [ref=e1732] [cursor=pointer]
+                    - generic [ref=e1345]:
+                      - text: صورة الفوتر
+                      - generic [ref=e1346]:
+                        - button "صورة الفوتر صورة الفوتر" [ref=e1733]
+                        - paragraph [ref=e1348]: صورة الفوتر
+                  - generic [ref=e1349]:
+                    - generic [ref=e1350]:
+                      - generic [ref=e1351]: textarea
+                      - button "إعادة ضبط" [ref=e1734] [cursor=pointer]
+                    - generic [ref=e1353]:
+                      - paragraph [ref=e1354]: نص الفوتر
+                      - generic [ref=e1355]:
+                        - generic [ref=e1356]:
+                          - text: AR
+                          - textbox "AR" [ref=e1357]:
+                            - /placeholder: نص الفوتر
+                        - generic [ref=e1358]:
+                          - text: EN
+                          - textbox "EN" [ref=e1359]:
+                            - /placeholder: نص الفوتر
+                      - generic [ref=e1360]: نص الفوتر
+          - generic [ref=e1361]:
+            - generic [ref=e1362]:
+              - generic [ref=e1363]:
+                - generic [ref=e1364]: C
+                - generic [ref=e1365]:
+                  - heading "الإعدادات" [level=2] [ref=e1735]
+                  - paragraph [ref=e1367]: 24 إعداد
+              - generic [ref=e1368]: config
+            - generic [ref=e1369]:
+              - generic [ref=e1370]:
+                - generic [ref=e1371]:
+                  - generic [ref=e1372]:
+                    - generic [ref=e1373]: M
+                    - generic [ref=e1374]:
+                      - heading "البريد" [level=2] [ref=e1736]
+                      - paragraph [ref=e1376]: 8 إعداد
+                  - generic [ref=e1377]: mail
+                - generic [ref=e1379]:
+                  - generic [ref=e1380]:
+                    - generic [ref=e1381]:
+                      - generic [ref=e1382]: select
+                      - button "إعادة ضبط" [ref=e1737] [cursor=pointer]
+                    - generic [ref=e1385]:
+                      - generic [ref=e1386]: نوع البريد
+                      - button "نوع البريد" [ref=e1738] [cursor=pointer]:
+                        - generic [ref=e1389]: smtp
+                        - generic [ref=e1390]: ⌄
+                      - generic [ref=e1391]: "الخيارات: smtp, sendmail, mailgun, ses, postmark, resend"
+                  - generic [ref=e1392]:
+                    - generic [ref=e1393]:
+                      - generic [ref=e1394]: text
+                      - button "إعادة ضبط" [ref=e1739] [cursor=pointer]
+                    - generic [ref=e1396]:
+                      - paragraph [ref=e1397]: خادم البريد
+                      - 'textbox "مثال: smtp.gmail.com, smtp.office365.com" [ref=e1740]'
+                      - generic [ref=e1399]: "مثال: smtp.gmail.com, smtp.office365.com"
+                  - generic [ref=e1400]:
+                    - generic [ref=e1401]:
+                      - generic [ref=e1402]: select
+                      - button "إعادة ضبط" [ref=e1741] [cursor=pointer]
+                    - generic [ref=e1405]:
+                      - generic [ref=e1406]: منفذ البريد
+                      - button "منفذ البريد" [ref=e1742] [cursor=pointer]:
+                        - generic [ref=e1409]: اختر قيمة
+                        - generic [ref=e1410]: ⌄
+                      - generic [ref=e1411]: "الخيارات: 25, 465, 587, 2525"
+                  - generic [ref=e1412]:
+                    - generic [ref=e1413]:
+                      - generic [ref=e1414]: text
+                      - button "إعادة ضبط" [ref=e1743] [cursor=pointer]
+                    - generic [ref=e1416]:
+                      - paragraph [ref=e1417]: اسم المستخدم
+                      - 'textbox "مثال: your-email@gmail.com" [ref=e1744]'
+                      - generic [ref=e1419]: "مثال: your-email@gmail.com"
+                  - generic [ref=e1420]:
+                    - generic [ref=e1421]:
+                      - generic [ref=e1422]: text
+                      - button "إعادة ضبط" [ref=e1745] [cursor=pointer]
+                    - generic [ref=e1424]:
+                      - paragraph [ref=e1425]: كلمة المرور
+                      - 'textbox "مثال: your-app-password" [ref=e1746]'
+                      - generic [ref=e1427]: "مثال: your-app-password"
+                  - generic [ref=e1428]:
+                    - generic [ref=e1429]:
+                      - generic [ref=e1430]: select
+                      - button "إعادة ضبط" [ref=e1747] [cursor=pointer]
+                    - generic [ref=e1433]:
+                      - generic [ref=e1434]: نوع التشفير
+                      - button "نوع التشفير" [ref=e1748] [cursor=pointer]:
+                        - generic [ref=e1437]: اختر قيمة
+                        - generic [ref=e1438]: ⌄
+                      - generic [ref=e1439]: "الخيارات: null, tls, ssl"
+                  - generic [ref=e1440]:
+                    - generic [ref=e1441]:
+                      - generic [ref=e1442]: text
+                      - button "إعادة ضبط" [ref=e1749] [cursor=pointer]
+                    - generic [ref=e1444]:
+                      - paragraph [ref=e1445]: البريد المرسل
+                      - 'textbox "مثال: noreply@example.com" [ref=e1750]'
+                      - generic [ref=e1447]: "مثال: noreply@example.com"
+                  - generic [ref=e1448]:
+                    - generic [ref=e1449]:
+                      - generic [ref=e1450]: text
+                      - button "إعادة ضبط" [ref=e1751] [cursor=pointer]
+                    - generic [ref=e1452]:
+                      - paragraph [ref=e1453]: اسم المرسل
+                      - generic [ref=e1454]:
+                        - generic [ref=e1455]:
+                          - text: AR
+                          - textbox "AR" [ref=e1456]:
+                            - /placeholder: "مثال: اسم الشركة"
+                        - generic [ref=e1457]:
+                          - text: EN
+                          - textbox "EN" [ref=e1458]:
+                            - /placeholder: "مثال: اسم الشركة"
+                      - generic [ref=e1459]: "مثال: اسم الشركة"
+              - generic [ref=e1460]:
+                - generic [ref=e1461]:
+                  - generic [ref=e1462]:
+                    - generic [ref=e1463]: S
+                    - generic [ref=e1464]:
+                      - heading "الرسائل القصيرة" [level=2] [ref=e1752]
+                      - paragraph [ref=e1466]: 4 إعداد
+                  - generic [ref=e1467]: sms
+                - generic [ref=e1469]:
+                  - generic [ref=e1470]:
+                    - generic [ref=e1471]:
+                      - generic [ref=e1472]: select
+                      - button "إعادة ضبط" [ref=e1753] [cursor=pointer]
+                    - generic [ref=e1475]:
+                      - generic [ref=e1476]: بوابة الرسائل
+                      - button "بوابة الرسائل" [ref=e1754] [cursor=pointer]:
+                        - generic [ref=e1479]: اختر قيمة
+                        - generic [ref=e1480]: ⌄
+                      - generic [ref=e1481]: "الخيارات: twilio, nexmo, aws-sns, custom"
+                  - generic [ref=e1482]:
+                    - generic [ref=e1483]:
+                      - generic [ref=e1484]: text
+                      - button "إعادة ضبط" [ref=e1755] [cursor=pointer]
+                    - generic [ref=e1486]:
+                      - paragraph [ref=e1487]: اسم المستخدم
+                      - 'textbox "مثال: your-account-sid" [ref=e1756]'
+                      - generic [ref=e1489]: "مثال: your-account-sid"
+                  - generic [ref=e1490]:
+                    - generic [ref=e1491]:
+                      - generic [ref=e1492]: text
+                      - button "إعادة ضبط" [ref=e1757] [cursor=pointer]
+                    - generic [ref=e1494]:
+                      - paragraph [ref=e1495]: كلمة المرور
+                      - 'textbox "مثال: your-auth-token" [ref=e1758]'
+                      - generic [ref=e1497]: "مثال: your-auth-token"
+                  - generic [ref=e1498]:
+                    - generic [ref=e1499]:
+                      - generic [ref=e1500]: text
+                      - button "إعادة ضبط" [ref=e1759] [cursor=pointer]
+                    - generic [ref=e1502]:
+                      - paragraph [ref=e1503]: اسم المرسل
+                      - 'textbox "مثال: YourBrand أو 1234567890" [ref=e1760]'
+                      - generic [ref=e1505]: "مثال: YourBrand أو 1234567890"
+              - generic [ref=e1506]:
+                - generic [ref=e1507]:
+                  - generic [ref=e1508]:
+                    - generic [ref=e1509]: L
+                    - generic [ref=e1510]:
+                      - heading "LDAP" [level=2] [ref=e1761]
+                      - paragraph [ref=e1512]: 5 إعداد
+                  - generic [ref=e1513]: ldap
+                - generic [ref=e1515]:
+                  - generic [ref=e1516]:
+                    - generic [ref=e1517]:
+                      - generic [ref=e1518]: text
+                      - button "إعادة ضبط" [ref=e1762] [cursor=pointer]
+                    - generic [ref=e1520]:
+                      - paragraph [ref=e1521]: خادم LDAP
+                      - 'textbox "مثال: ldap.example.com" [ref=e1763]'
+                      - generic [ref=e1523]: "مثال: ldap.example.com"
+                  - generic [ref=e1524]:
+                    - generic [ref=e1525]:
+                      - generic [ref=e1526]: select
+                      - button "إعادة ضبط" [ref=e1764] [cursor=pointer]
+                    - generic [ref=e1529]:
+                      - generic [ref=e1530]: منفذ LDAP
+                      - button "منفذ LDAP" [ref=e1765] [cursor=pointer]:
+                        - generic [ref=e1533]: اختر قيمة
+                        - generic [ref=e1534]: ⌄
+                      - generic [ref=e1535]: "الخيارات: 389 (عادي), 636 (SSL)"
+                  - generic [ref=e1536]:
+                    - generic [ref=e1537]:
+                      - generic [ref=e1538]: text
+                      - button "إعادة ضبط" [ref=e1766] [cursor=pointer]
+                    - generic [ref=e1540]:
+                      - paragraph [ref=e1541]: LDAP Base DN
+                      - 'textbox "مثال: dc=example,dc=com" [ref=e1767]'
+                      - generic [ref=e1543]: "مثال: dc=example,dc=com"
+                  - generic [ref=e1544]:
+                    - generic [ref=e1545]:
+                      - generic [ref=e1546]: text
+                      - button "إعادة ضبط" [ref=e1768] [cursor=pointer]
+                    - generic [ref=e1548]:
+                      - paragraph [ref=e1549]: اسم المستخدم
+                      - 'textbox "مثال: cn=admin,dc=example,dc=com" [ref=e1769]'
+                      - generic [ref=e1551]: "مثال: cn=admin,dc=example,dc=com"
+                  - generic [ref=e1552]:
+                    - generic [ref=e1553]:
+                      - generic [ref=e1554]: text
+                      - button "إعادة ضبط" [ref=e1770] [cursor=pointer]
+                    - generic [ref=e1556]:
+                      - paragraph [ref=e1557]: كلمة المرور
+                      - 'textbox "مثال: ldap-password" [ref=e1771]'
+                      - generic [ref=e1559]: "مثال: ldap-password"
+              - generic [ref=e1560]:
+                - generic [ref=e1561]:
+                  - generic [ref=e1562]:
+                    - generic [ref=e1563]: R
+                    - generic [ref=e1564]:
+                      - heading "الاشعارات اللحظية" [level=2] [ref=e1772]
+                      - paragraph [ref=e1566]: 7 إعداد
+                  - generic [ref=e1567]: reverb
+                - generic [ref=e1569]:
+                  - generic [ref=e1570]:
+                    - generic [ref=e1571]:
+                      - generic [ref=e1572]: switchbox
+                      - button "إعادة ضبط" [ref=e1773] [cursor=pointer]
+                    - generic [ref=e1575]:
+                      - generic [ref=e1576]:
+                        - paragraph [ref=e1577]: تفعيل البث المباشر
+                        - paragraph [ref=e1578]: تفعيل/تعطيل
+                      - switch "تفعيل البث المباشر" [ref=e1774] [cursor=pointer]:
+                        - generic [ref=e1581]: معطل
+                  - generic [ref=e1582]:
+                    - generic [ref=e1583]:
+                      - generic [ref=e1584]: text
+                      - button "إعادة ضبط" [ref=e1775] [cursor=pointer]
+                    - generic [ref=e1586]:
+                      - paragraph [ref=e1587]: معرف التطبيق
+                      - 'textbox "مثال: 1080194" [ref=e1776]'
+                      - generic [ref=e1589]: "مثال: 1080194"
+                  - generic [ref=e1590]:
+                    - generic [ref=e1591]:
+                      - generic [ref=e1592]: text
+                      - button "إعادة ضبط" [ref=e1777] [cursor=pointer]
+                    - generic [ref=e1594]:
+                      - paragraph [ref=e1595]: مفتاح التطبيق
+                      - 'textbox "مثال: bae3160ce349d284eace" [ref=e1778]'
+                      - generic [ref=e1597]: "مثال: bae3160ce349d284eace"
+                  - generic [ref=e1598]:
+                    - generic [ref=e1599]:
+                      - generic [ref=e1600]: text
+                      - button "إعادة ضبط" [ref=e1779] [cursor=pointer]
+                    - generic [ref=e1602]:
+                      - paragraph [ref=e1603]: سر التطبيق
+                      - 'textbox "مثال: 976e5b64127df42af8b6" [ref=e1780]'
+                      - generic [ref=e1605]: "مثال: 976e5b64127df42af8b6"
+                  - generic [ref=e1606]:
+                    - generic [ref=e1607]:
+                      - generic [ref=e1608]: text
+                      - button "إعادة ضبط" [ref=e1781] [cursor=pointer]
+                    - generic [ref=e1610]:
+                      - paragraph [ref=e1611]: المضيف
+                      - 'textbox "مثال: reverb.example.com أو localhost" [ref=e1782]'
+                      - generic [ref=e1613]: "مثال: reverb.example.com أو localhost"
+                  - generic [ref=e1614]:
+                    - generic [ref=e1615]:
+                      - generic [ref=e1616]: select
+                      - button "إعادة ضبط" [ref=e1783] [cursor=pointer]
+                    - generic [ref=e1619]:
+                      - generic [ref=e1620]: المنفذ
+                      - button "المنفذ" [ref=e1784] [cursor=pointer]:
+                        - generic [ref=e1623]: اختر قيمة
+                        - generic [ref=e1624]: ⌄
+                      - generic [ref=e1625]: "الخيارات: 8080, 9000, 3000"
+                  - generic [ref=e1626]:
+                    - generic [ref=e1627]:
+                      - generic [ref=e1628]: select
+                      - button "إعادة ضبط" [ref=e1785] [cursor=pointer]
+                    - generic [ref=e1631]:
+                      - generic [ref=e1632]: البروتوكول
+                      - button "البروتوكول" [ref=e1786] [cursor=pointer]:
+                        - generic [ref=e1635]: اختر قيمة
+                        - generic [ref=e1636]: ⌄
+                      - generic [ref=e1637]: "الخيارات: http, https, ws, wss"
+          - generic [ref=e1638]:
+            - paragraph [ref=e1639]: 64 إعداد
+            - generic [ref=e1640]:
+              - button "إعادة ضبط التغييرات" [disabled] [ref=e1787]
+              - button "حفظ الإعدادات" [ref=e1788] [cursor=pointer]

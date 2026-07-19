@@ -1,0 +1,172 @@
+- generic [ref=f6e3]:
+  - complementary [ref=f6e4]:
+    - generic [ref=f6e9]:
+      - paragraph [ref=f6e10]: Auto Part Admin
+      - paragraph [ref=f6e11]: Inventory and sales
+    - navigation [ref=f6e12]:
+      - link "Dashboard" [ref=f6e13] [cursor=pointer]:
+        - /url: /
+      - button "إدخال البيانات" [ref=f6e18] [cursor=pointer]
+      - button "Sales" [ref=f6e27] [cursor=pointer]
+      - button "المستخدمين" [ref=f6e36] [cursor=pointer]
+      - button "الإعدادات" [ref=f6e46] [cursor=pointer]
+  - generic [ref=f6e53]:
+    - banner [ref=f6e54]:
+      - generic [ref=f6e55]:
+        - generic [ref=f6e56]: Backend-supported filters appear inside each module.
+        - generic "Language" [ref=f6e61]:
+          - button "العربية" [ref=f6e66] [cursor=pointer]
+          - button "English" [ref=f6e67] [cursor=pointer]
+        - generic [ref=f6e68]:
+          - paragraph [ref=f6e69]: root
+          - paragraph [ref=f6e70]: root@jervis.com
+        - button "Logout" [ref=f6e71] [cursor=pointer]
+    - main [ref=f6e72]:
+      - generic [ref=f6e73]:
+        - generic [ref=f6e74]:
+          - heading "Stocks" [level=1] [ref=f6e75]
+          - paragraph [ref=f6e76]: Stock quantities are absolute per warehouse and product item. Unsupported delete, restore, and toggle actions are hidden.
+        - link "Create" [ref=f6e78] [cursor=pointer]:
+          - /url: /stocks/create
+      - generic [ref=f6e79]:
+        - generic [ref=f6e80]:
+          - searchbox "Search is not supported reliably by this backend endpoint." [disabled] [ref=f6e81]
+          - generic [ref=f6e82]:
+            - button "Search" [disabled] [ref=f6e83]
+            - button "Clear" [disabled] [ref=f6e84]
+        - button "Refresh" [ref=f6e85] [cursor=pointer]
+      - table [ref=f6e88]:
+        - rowgroup [ref=f6e89]:
+          - row [ref=f6e90]:
+            - columnheader [ref=f6e91]:
+              - button "ID" [ref=f6e92] [cursor=pointer]:
+                - generic [ref=f6e94]: DESC
+            - columnheader "Warehouse" [ref=f6e95]
+            - columnheader "Product SKU" [ref=f6e96]
+            - columnheader "Product Name" [ref=f6e97]
+            - columnheader [ref=f6e98]:
+              - button "Quantity" [ref=f6e99] [cursor=pointer]
+            - columnheader "Actions" [ref=f6e101]
+        - rowgroup [ref=f6e102]:
+          - row [ref=f6e103]:
+            - cell "7" [ref=f6e104]
+            - cell "test ars21" [ref=f6e105]
+            - cell "TEST-SKU-012" [ref=f6e106]
+            - cell "منتج تجريبي" [ref=f6e107]
+            - cell "50" [ref=f6e108]
+            - cell [ref=f6e109]:
+              - generic [ref=f6e110]:
+                - button "View" [ref=f6e111] [cursor=pointer]
+                - link "Edit" [ref=f6e117] [cursor=pointer]:
+                  - /url: /stocks/7/edit
+          - row [ref=f6e118]:
+            - cell "6" [ref=f6e119]
+            - cell "test ars21" [ref=f6e120]
+            - cell "TEST-SKU-041" [ref=f6e121]
+            - cell "منتج تجريبي" [ref=f6e122]
+            - cell "200" [ref=f6e123]
+            - cell [ref=f6e124]:
+              - generic [ref=f6e125]:
+                - button "View" [ref=f6e126] [cursor=pointer]
+                - link "Edit" [ref=f6e132] [cursor=pointer]:
+                  - /url: /stocks/6/edit
+          - row [ref=f6e133]:
+            - cell "5" [ref=f6e134]
+            - cell "test ars21" [ref=f6e135]
+            - cell "TEST-SKU-019" [ref=f6e136]
+            - cell "منتج تجريبي" [ref=f6e137]
+            - cell "50" [ref=f6e138]
+            - cell [ref=f6e139]:
+              - generic [ref=f6e140]:
+                - button "View" [ref=f6e141] [cursor=pointer]
+                - link "Edit" [ref=f6e147] [cursor=pointer]:
+                  - /url: /stocks/5/edit
+          - row [ref=f6e148]:
+            - cell "4" [ref=f6e149]
+            - cell "test ars21" [ref=f6e150]
+            - cell "TEST-SKU-040" [ref=f6e151]
+            - cell "منتج تجريبي" [ref=f6e152]
+            - cell "200" [ref=f6e153]
+            - cell [ref=f6e154]:
+              - generic [ref=f6e155]:
+                - button "View" [ref=f6e156] [cursor=pointer]
+                - link "Edit" [ref=f6e162] [cursor=pointer]:
+                  - /url: /stocks/4/edit
+          - row [ref=f6e163]:
+            - cell "2" [ref=f6e164]
+            - cell "test ars21" [ref=f6e165]
+            - cell "TEST-SKU-030" [ref=f6e166]
+            - cell "test ars21" [ref=f6e167]
+            - cell "200" [ref=f6e168]
+            - cell [ref=f6e169]:
+              - generic [ref=f6e170]:
+                - button "View" [ref=f6e171] [cursor=pointer]
+                - link "Edit" [ref=f6e177] [cursor=pointer]:
+                  - /url: /stocks/2/edit
+          - row [ref=f6e178]:
+            - cell "1" [ref=f6e179]
+            - cell "test ars21" [ref=f6e180]
+            - cell "TEST-SKU-038" [ref=f6e181]
+            - cell "test ars21" [ref=f6e182]
+            - cell "200" [ref=f6e183]
+            - cell [ref=f6e184]:
+              - generic [ref=f6e185]:
+                - button "View" [ref=f6e186] [cursor=pointer]
+                - link "Edit" [ref=f6e192] [cursor=pointer]:
+                  - /url: /stocks/1/edit
+      - generic [ref=f6e193]:
+        - paragraph [ref=f6e194]: Showing 1 to 6 of 6 records
+        - generic [ref=f6e195]:
+          - button "Previous" [disabled] [ref=f6e196]
+          - generic [ref=f6e197]: Page 1 of 1
+          - button "Next" [disabled] [ref=f6e198]
+      - dialog [ref=f6e202]:
+        - generic [ref=f6e203]:
+          - generic [ref=f6e204]:
+            - generic [ref=f6e205]:
+              - 'heading "Stocks #7" [level=2] [ref=f6e206]'
+              - paragraph [ref=f6e207]: Details
+            - button "Close" [ref=f6e208] [cursor=pointer]
+          - generic [ref=f6e213]:
+            - generic [ref=f6e214]:
+              - heading "Main information" [level=3] [ref=f6e216]
+              - generic [ref=f6e217]:
+                - generic [ref=f6e218]:
+                  - term [ref=f6e219]: Quantity
+                  - definition [ref=f6e220]: "50"
+                - generic [ref=f6e221]:
+                  - term [ref=f6e222]: Available Quantity
+                  - definition [ref=f6e223]: "50"
+                - generic [ref=f6e224]:
+                  - term [ref=f6e225]: Total Quantity
+                  - definition [ref=f6e226]: "50"
+                - generic [ref=f6e227]:
+                  - term [ref=f6e228]: Created At
+                  - definition [ref=f6e229]: Feb 23, 2026, 4:40 PM
+            - generic [ref=f6e230]:
+              - heading "Related Information" [level=3] [ref=f6e232]
+              - generic [ref=f6e233]:
+                - article [ref=f6e234]:
+                  - generic [ref=f6e235]:
+                    - generic [ref=f6e236]:
+                      - heading "test ars21" [level=4] [ref=f6e237]
+                      - paragraph [ref=f6e238]: sad
+                    - generic [ref=f6e239]: Active
+                - article [ref=f6e240]:
+                  - generic [ref=f6e241]:
+                    - generic [ref=f6e242]:
+                      - heading "TEST-SKU-012" [level=4] [ref=f6e243]
+                      - paragraph [ref=f6e244]: "1234567890178"
+                    - generic [ref=f6e245]: Active
+                  - generic [ref=f6e247]:
+                    - term [ref=f6e248]: Price
+                    - definition [ref=f6e249]: —
+                - article [ref=f6e250]:
+                  - generic [ref=f6e251]:
+                    - generic [ref=f6e252]:
+                      - heading "منتج تجريبي" [level=4] [ref=f6e253]
+                      - paragraph [ref=f6e254]: منتج تجريبي
+                    - generic [ref=f6e255]: Active
+            - generic [ref=f6e256]:
+              - heading "Stock movements" [level=3] [ref=f6e258]
+              - paragraph [ref=f6e259]: No related data

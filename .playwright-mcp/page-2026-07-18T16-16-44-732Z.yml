@@ -1,0 +1,56 @@
+- generic [ref=f13e3]:
+  - complementary [ref=f13e4]:
+    - generic [ref=f13e5]:
+      - generic [ref=f13e9]:
+        - paragraph [ref=f13e10]: إدارة قطع الغيار
+        - paragraph [ref=f13e11]: المخزون والمبيعات
+      - button "إغلاق القائمة الجانبية" [ref=f13e12] [cursor=pointer]
+    - navigation [ref=f13e16]:
+      - link "لوحة التحكم" [ref=f13e17] [cursor=pointer]:
+        - /url: /
+      - button "إدخال البيانات" [ref=f13e22] [cursor=pointer]
+      - generic [ref=f13e30]:
+        - button "المبيعات" [expanded] [ref=f13e31] [cursor=pointer]
+        - generic [ref=f13e39]:
+          - link "السلات" [ref=f13e40] [cursor=pointer]:
+            - /url: /cart
+          - link "الطلبات" [ref=f13e46] [cursor=pointer]:
+            - /url: /orders
+          - link "الأقساط" [ref=f13e51] [cursor=pointer]:
+            - /url: /modules/installments
+      - button "المستخدمين" [ref=f13e56] [cursor=pointer]
+      - button "الإعدادات" [ref=f13e66] [cursor=pointer]
+  - generic [ref=f13e73]:
+    - banner [ref=f13e74]:
+      - generic [ref=f13e75]:
+        - button "فتح القائمة الجانبية" [ref=f13e76] [cursor=pointer]
+        - generic "اللغة" [ref=f13e78]:
+          - button "العربية" [ref=f13e83] [cursor=pointer]
+          - button "English" [ref=f13e84] [cursor=pointer]
+        - button "تسجيل الخروج" [ref=f13e85] [cursor=pointer]
+    - main [ref=f13e86]:
+      - generic [ref=f13e88]:
+        - heading "السلة الحالية" [level=1] [ref=f13e89]
+        - paragraph [ref=f13e90]: إدارة عناصر سلتك. تعيد الخلفية التحقق من الأسعار والمخزون عند إتمام الطلب.
+      - generic [ref=f13e92]:
+        - generic [ref=f13e93]:
+          - generic [ref=f13e94]: عنصر المنتج *
+          - button "عنصر المنتج *" [expanded] [active] [ref=f13e96] [cursor=pointer]:
+            - generic [ref=f13e97]: ⌄
+          - generic [ref=f13e114]:
+            - searchbox [ref=f13e115]
+            - generic [ref=f13e116]:
+              - button "منتج تجريبي · TEST-SKU-012" [ref=f13e117] [cursor=pointer]
+              - button "منتج تجريبي · TEST-SKU-041" [ref=f13e120] [cursor=pointer]
+              - button "test ars21 · TEST-SKU-030" [ref=f13e123] [cursor=pointer]
+              - button "test ars21 · TEST-SKU-038" [ref=f13e126] [cursor=pointer]
+              - button "test ars21 · TEST-SKU-034" [ref=f13e129] [cursor=pointer]
+              - button "test ars21 · TEST-SKU-037" [ref=f13e132] [cursor=pointer]
+              - button "test ars21 · TEST-SKU-035" [ref=f13e135] [cursor=pointer]
+        - generic [ref=f13e98]:
+          - generic [ref=f13e99]: الكمية *
+          - spinbutton "الكمية *" [ref=f13e100]: "1"
+        - button "إضافة للسلة" [disabled] [ref=f13e101]
+      - generic [ref=f13e106]:
+        - paragraph [ref=f13e112]: سلتك فارغة
+        - paragraph [ref=f13e113]: أضف عنصر منتج متاحًا لبدء طلب جديد.

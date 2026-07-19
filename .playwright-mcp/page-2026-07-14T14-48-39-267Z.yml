@@ -1,0 +1,38 @@
+- generic [ref=f9e32]:
+  - complementary [ref=f9e33]:
+    - generic [ref=f9e38]:
+      - paragraph [ref=f9e39]: إدارة قطع الغيار
+      - paragraph [ref=f9e40]: المخزون والمبيعات
+    - navigation [ref=f9e41]:
+      - link "لوحة التحكم" [ref=f9e42] [cursor=pointer]:
+        - /url: /
+      - button "إدخال البيانات" [ref=f9e47] [cursor=pointer]
+      - button "المبيعات" [ref=f9e56] [cursor=pointer]
+      - button "المستخدمين" [ref=f9e65] [cursor=pointer]
+      - button "الإعدادات" [ref=f9e75] [cursor=pointer]
+  - generic [ref=f9e82]:
+    - banner [ref=f9e83]:
+      - generic [ref=f9e84]:
+        - generic [ref=f9e85]: الفلاتر المدعومة من الخلفية تظهر داخل كل شاشة.
+        - generic "اللغة" [ref=f9e90]:
+          - button "العربية" [ref=f9e95] [cursor=pointer]
+          - button "English" [ref=f9e96] [cursor=pointer]
+        - generic [ref=f9e97]:
+          - paragraph [ref=f9e98]: root
+          - paragraph [ref=f9e99]: root@jervis.com
+        - button "تسجيل الخروج" [ref=f9e100] [cursor=pointer]
+    - main [ref=f9e101]:
+      - generic [ref=f9e102]:
+        - generic [ref=f9e103]:
+          - heading "المخزون" [level=1] [ref=f9e104]
+          - paragraph [ref=f9e105]: كميات المخزون قيم مطلقة لكل مستودع وعنصر منتج. إجراءات الحذف والاستعادة وتبديل الحالة غير المدعومة مخفية.
+        - link "إنشاء" [ref=f9e107] [cursor=pointer]:
+          - /url: /stocks/create
+      - generic [ref=f9e108]:
+        - generic [ref=f9e109]:
+          - searchbox "البحث غير مدعوم بشكل موثوق في نقطة الخلفية هذه." [disabled] [ref=f9e110]
+          - generic [ref=f9e111]:
+            - button "بحث" [disabled] [ref=f9e112]
+            - button "مسح" [disabled] [ref=f9e113]
+        - button "تحديث" [disabled] [ref=f9e114]
+      - generic [ref=f9e116]: جار تحميل البيانات...

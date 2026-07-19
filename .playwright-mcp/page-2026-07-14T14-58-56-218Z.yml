@@ -1,0 +1,192 @@
+- generic [ref=f20e4]:
+  - banner [ref=f20e5]:
+    - generic [ref=f20e6]:
+      - button "Open sidebar" [ref=f20e7] [cursor=pointer]
+      - generic "Language" [ref=f20e9]:
+        - button "العربية" [ref=f20e14] [cursor=pointer]
+        - button "English" [ref=f20e15] [cursor=pointer]
+      - button "Logout" [ref=f20e16] [cursor=pointer]
+  - main [ref=f20e17]:
+    - generic [ref=f20e18]:
+      - generic [ref=f20e19]:
+        - heading "Products" [level=1] [ref=f20e20]
+        - paragraph [ref=f20e21]: Product master records are linked to backend categories and brands.
+      - link "Create" [ref=f20e23] [cursor=pointer]:
+        - /url: /products/create
+    - generic [ref=f20e24]:
+      - generic [ref=f20e25]:
+        - searchbox "Search is not supported reliably by this backend endpoint." [disabled] [ref=f20e26]
+        - generic [ref=f20e27]:
+          - button "Search" [disabled] [ref=f20e28]
+          - button "Clear" [disabled] [ref=f20e29]
+      - button "Refresh" [ref=f20e30] [cursor=pointer]
+    - table [ref=f20e33]:
+      - rowgroup [ref=f20e34]:
+        - row [ref=f20e35]:
+          - columnheader [ref=f20e36]:
+            - button "ID" [ref=f20e37] [cursor=pointer]:
+              - generic [ref=f20e39]: DESC
+          - columnheader "Name" [ref=f20e40]
+          - columnheader "Category" [ref=f20e41]
+          - columnheader "Brand" [ref=f20e42]
+          - columnheader "Status" [ref=f20e43]
+          - columnheader "Actions" [ref=f20e44]
+      - rowgroup [ref=f20e45]:
+        - row [ref=f20e46]:
+          - cell "8" [ref=f20e47]
+          - cell "الاسم بالعربية *" [ref=f20e48]
+          - cell "test ars21" [ref=f20e49]
+          - cell "test ars21e" [ref=f20e50]
+          - cell "Active" [ref=f20e51]
+          - cell [ref=f20e53]:
+            - generic [ref=f20e54]:
+              - button "View" [ref=f20e55] [cursor=pointer]
+              - generic [ref=f20e60]:
+                - button "Toggle" [ref=f20e61] [cursor=pointer]
+                - link "Edit" [ref=f20e62] [cursor=pointer]:
+                  - /url: /products/8/edit
+                - button "Delete" [ref=f20e63] [cursor=pointer]
+        - row [ref=f20e64]:
+          - cell "7" [ref=f20e65]
+          - cell "منتج تجريبي" [ref=f20e66]
+          - cell "test ars21" [ref=f20e67]
+          - cell "test ars21e" [ref=f20e68]
+          - cell "Active" [ref=f20e69]
+          - cell [ref=f20e71]:
+            - generic [ref=f20e72]:
+              - button "View" [ref=f20e73] [cursor=pointer]
+              - generic [ref=f20e78]:
+                - button "Toggle" [ref=f20e79] [cursor=pointer]
+                - link "Edit" [ref=f20e80] [cursor=pointer]:
+                  - /url: /products/7/edit
+                - button "Delete" [ref=f20e81] [cursor=pointer]
+        - row [ref=f20e82]:
+          - cell "6" [ref=f20e83]
+          - cell "منتج تجريبي" [ref=f20e84]
+          - cell "test ars21" [ref=f20e85]
+          - cell "test ars21e" [ref=f20e86]
+          - cell "Inactive" [ref=f20e87]
+          - cell [ref=f20e89]:
+            - generic [ref=f20e90]:
+              - button "View" [ref=f20e91] [cursor=pointer]
+              - generic [ref=f20e96]:
+                - button "Toggle" [ref=f20e97] [cursor=pointer]
+                - link "Edit" [ref=f20e98] [cursor=pointer]:
+                  - /url: /products/6/edit
+                - button "Delete" [ref=f20e99] [cursor=pointer]
+        - row [ref=f20e100]:
+          - cell "2" [ref=f20e101]
+          - cell "test ars21s" [ref=f20e102]
+          - cell "test ars21" [ref=f20e103]
+          - cell "test ars21e" [ref=f20e104]
+          - cell "Active" [ref=f20e105]
+          - cell [ref=f20e107]:
+            - generic [ref=f20e108]:
+              - button "View" [ref=f20e109] [cursor=pointer]
+              - generic [ref=f20e114]:
+                - button "Toggle" [ref=f20e115] [cursor=pointer]
+                - link "Edit" [ref=f20e116] [cursor=pointer]:
+                  - /url: /products/2/edit
+                - button "Delete" [ref=f20e117] [cursor=pointer]
+        - row [ref=f20e118]:
+          - cell "1" [ref=f20e119]
+          - cell "test ars21" [ref=f20e120]
+          - cell "test ars21" [ref=f20e121]
+          - cell "test ars21e" [ref=f20e122]
+          - cell "Active" [ref=f20e123]
+          - cell [ref=f20e125]:
+            - generic [ref=f20e126]:
+              - button "View" [ref=f20e127] [cursor=pointer]
+              - generic [ref=f20e132]:
+                - button "Toggle" [ref=f20e133] [cursor=pointer]
+                - link "Edit" [ref=f20e134] [cursor=pointer]:
+                  - /url: /products/1/edit
+                - button "Delete" [ref=f20e135] [cursor=pointer]
+    - generic [ref=f20e136]:
+      - paragraph [ref=f20e137]: Showing 1 to 5 of 5 records
+      - generic [ref=f20e138]:
+        - button "Previous" [disabled] [ref=f20e139]
+        - generic [ref=f20e140]: Page 1 of 1
+        - button "Next" [disabled] [ref=f20e141]
+    - dialog [ref=f20e145]:
+      - generic [ref=f20e146]:
+        - generic [ref=f20e147]:
+          - generic [ref=f20e148]:
+            - heading "منتج تجريبي" [level=2] [ref=f20e149]
+            - paragraph [ref=f20e150]: Details
+          - button "Close" [ref=f20e151] [cursor=pointer]
+        - generic [ref=f20e156]:
+          - generic [ref=f20e157]:
+            - heading "Main information" [level=3] [ref=f20e159]
+            - generic [ref=f20e160]:
+              - generic [ref=f20e161]:
+                - term [ref=f20e162]: Name
+                - definition [ref=f20e163]: منتج تجريبي
+              - generic [ref=f20e164]:
+                - term [ref=f20e165]: Name Arabic
+                - definition [ref=f20e166]: منتج تجريبي
+              - generic [ref=f20e167]:
+                - term [ref=f20e168]: Name English
+                - definition [ref=f20e169]: Test Product
+              - generic [ref=f20e170]:
+                - term [ref=f20e171]: Description
+                - definition [ref=f20e172]: منتج تجريبي
+              - generic [ref=f20e173]:
+                - term [ref=f20e174]: Status
+                - definition [ref=f20e175]:
+                  - generic [ref=f20e176]: Active
+              - generic [ref=f20e177]:
+                - term [ref=f20e178]: Created At
+                - definition [ref=f20e179]: Feb 23, 2026, 4:40 PM
+          - generic [ref=f20e180]:
+            - heading "Related Information" [level=3] [ref=f20e182]
+            - generic [ref=f20e183]:
+              - article [ref=f20e184]:
+                - generic [ref=f20e185]:
+                  - generic [ref=f20e186]:
+                    - heading "test ars21" [level=4] [ref=f20e187]
+                    - paragraph [ref=f20e188]: decription ars
+                  - generic [ref=f20e189]: Active
+              - article [ref=f20e190]:
+                - generic [ref=f20e191]:
+                  - generic [ref=f20e192]:
+                    - heading "test ars21e" [level=4] [ref=f20e193]
+                    - paragraph [ref=f20e194]: No related data
+                  - generic [ref=f20e195]: Active
+          - generic [ref=f20e196]:
+            - heading "Product Items" [level=3] [ref=f20e198]
+            - table [ref=f20e201]:
+              - rowgroup [ref=f20e202]:
+                - row [ref=f20e203]:
+                  - columnheader "SKU" [ref=f20e204]
+                  - columnheader "Barcode" [ref=f20e205]
+                  - columnheader "Price" [ref=f20e206]
+                  - columnheader "Stock" [ref=f20e207]
+                  - columnheader "Status" [ref=f20e208]
+                  - columnheader "Created At" [ref=f20e209]
+              - rowgroup [ref=f20e210]:
+                - row [ref=f20e211]:
+                  - cell "TEST-SKU-041" [ref=f20e212]
+                  - cell "1234567890180" [ref=f20e213]
+                  - cell "100" [ref=f20e214]
+                  - cell "200" [ref=f20e215]
+                  - cell "Active" [ref=f20e216]
+                  - cell "Feb 23, 2026, 4:40 PM" [ref=f20e218]
+                - row [ref=f20e219]:
+                  - cell "TEST-SKU-012" [ref=f20e220]
+                  - cell "1234567890178" [ref=f20e221]
+                  - cell "150" [ref=f20e222]
+                  - cell "50" [ref=f20e223]
+                  - cell "Active" [ref=f20e224]
+                  - cell "Feb 23, 2026, 4:40 PM" [ref=f20e226]
+          - generic [ref=f20e227]:
+            - heading "Creator" [level=3] [ref=f20e229]
+            - article [ref=f20e230]:
+              - generic [ref=f20e231]:
+                - generic [ref=f20e232]:
+                  - heading "root" [level=4] [ref=f20e233]
+                  - paragraph [ref=f20e234]: root@jervis.com
+                - generic [ref=f20e235]: Active
+              - generic [ref=f20e237]:
+                - term [ref=f20e238]: Created At
+                - definition [ref=f20e239]: Feb 18, 2026, 4:27 PM

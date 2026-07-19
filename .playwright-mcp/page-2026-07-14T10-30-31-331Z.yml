@@ -1,0 +1,85 @@
+- generic [ref=f6e32]:
+  - complementary [ref=f6e33]:
+    - generic [ref=f6e38]:
+      - paragraph [ref=f6e39]: إدارة قطع الغيار
+      - paragraph [ref=f6e40]: المخزون والمبيعات
+    - navigation [ref=f6e41]:
+      - link "لوحة التحكم" [ref=f6e42] [cursor=pointer]:
+        - /url: /
+      - button "إدخال البيانات" [ref=f6e47] [cursor=pointer]
+      - button "المبيعات" [ref=f6e56] [cursor=pointer]
+      - button "المستخدمين" [ref=f6e65] [cursor=pointer]
+      - button "الإعدادات" [ref=f6e75] [cursor=pointer]
+  - generic [ref=f6e82]:
+    - banner [ref=f6e83]:
+      - generic [ref=f6e84]:
+        - generic [ref=f6e85]: الفلاتر المدعومة من الخلفية تظهر داخل كل شاشة.
+        - generic "اللغة" [ref=f6e90]:
+          - button "العربية" [ref=f6e95] [cursor=pointer]
+          - button "English" [ref=f6e96] [cursor=pointer]
+        - generic [ref=f6e97]:
+          - paragraph [ref=f6e98]: root
+          - paragraph [ref=f6e99]: root@jervis.com
+        - button "تسجيل الخروج" [ref=f6e100] [cursor=pointer]
+    - main [ref=f6e101]:
+      - generic [ref=f6e399]:
+        - generic [ref=f6e401]:
+          - heading "تعديل مستخدم" [level=1] [ref=f6e402]
+          - paragraph [ref=f6e403]: الأدوار مطلوبة، وكلمة المرور مطلوبة عند إنشاء مستخدم جديد.
+        - generic [ref=f6e404]:
+          - generic [ref=f6e405]:
+            - heading "البيانات الأساسية" [level=2] [ref=f6e407]
+            - generic [ref=f6e408]:
+              - generic [ref=f6e409]:
+                - generic [ref=f6e410]: الاسم *
+                - textbox "الاسم *" [ref=f6e411]: Jon O'Connell
+              - generic [ref=f6e412]:
+                - generic [ref=f6e413]: البريد الإلكتروني *
+                - textbox "البريد الإلكتروني *" [ref=f6e414]: jon.o'connell.8992@jervis.com
+              - generic [ref=f6e415]:
+                - generic [ref=f6e416]: الجنس *
+                - combobox "الجنس *" [ref=f6e417]:
+                  - option "اختر..."
+                  - option "ذكر"
+                  - option "أنثى" [selected]
+              - generic [ref=f6e418]:
+                - generic [ref=f6e419]: حالة المستخدم
+                - combobox "حالة المستخدم" [ref=f6e420]:
+                  - option "اختر..."
+                  - option "نشط" [selected]
+                  - option "غير نشط"
+            - generic [ref=f6e422]:
+              - paragraph [ref=f6e423]: الهاتف
+              - generic [ref=f6e424]:
+                - generic [ref=f6e425]:
+                  - generic [ref=f6e426]: كود الدولة
+                  - button "كود الدولة" [ref=f6e428] [cursor=pointer]:
+                    - generic [ref=f6e429]: 🇪🇬 مصر (+20)
+                    - generic [ref=f6e430]: ⌄
+                - generic [ref=f6e431]:
+                  - text: الهاتف
+                  - textbox "الهاتف رقم الهاتف يجب أن يتكون من 10 أرقام." [ref=f6e432]: "1234567890"
+                  - generic [ref=f6e433]: رقم الهاتف يجب أن يتكون من 10 أرقام.
+          - generic [ref=f6e434]:
+            - heading "بيانات الأمان" [level=2] [ref=f6e436]
+            - generic [ref=f6e437]:
+              - generic [ref=f6e438]:
+                - generic [ref=f6e439]: كلمة المرور
+                - textbox "كلمة المرور" [ref=f6e440]
+              - generic [ref=f6e441]:
+                - generic [ref=f6e442]: تأكيد كلمة المرور
+                - textbox "تأكيد كلمة المرور" [ref=f6e443]
+          - generic [ref=f6e444]:
+            - heading "الأدوار" [level=2] [ref=f6e446]
+            - generic [ref=f6e447]:
+              - button "default_role" [ref=f6e448] [cursor=pointer]
+              - button "admin" [ref=f6e449] [cursor=pointer]
+          - generic [ref=f6e450]:
+            - heading "الصورة الشخصية" [level=2] [ref=f6e452]
+            - generic [ref=f6e453]:
+              - text: الصورة الشخصية
+              - button "الصورة الشخصية" [ref=f6e454]
+          - generic [ref=f6e455]:
+            - link "إلغاء" [ref=f6e456] [cursor=pointer]:
+              - /url: /users
+            - button "حفظ" [ref=f6e457] [cursor=pointer]

@@ -1,0 +1,295 @@
+- generic [ref=f148e3]:
+  - complementary [ref=f148e4]:
+    - generic [ref=f148e9]:
+      - paragraph [ref=f148e10]: إدارة قطع الغيار
+      - paragraph [ref=f148e11]: المخزون والمبيعات
+    - navigation [ref=f148e12]:
+      - link "لوحة التحكم" [ref=f148e13] [cursor=pointer]:
+        - /url: /
+      - button "إدخال البيانات" [ref=f148e18] [cursor=pointer]
+      - button "المبيعات" [ref=f148e27] [cursor=pointer]
+      - button "المستخدمين" [ref=f148e36] [cursor=pointer]
+      - button "الإعدادات" [ref=f148e46] [cursor=pointer]
+  - generic [ref=f148e53]:
+    - banner [ref=f148e54]:
+      - generic [ref=f148e55]:
+        - generic [ref=f148e56]: الفلاتر المدعومة من الخلفية تظهر داخل كل شاشة.
+        - generic "اللغة" [ref=f148e61]:
+          - button "العربية" [ref=f148e66] [cursor=pointer]
+          - button "English" [ref=f148e67] [cursor=pointer]
+        - generic [ref=f148e68]:
+          - paragraph [ref=f148e69]: root
+          - paragraph [ref=f148e70]: root@jervis.com
+        - button "تسجيل الخروج" [ref=f148e71] [cursor=pointer]
+    - main [ref=f148e72]:
+      - generic [ref=f148e73]:
+        - generic [ref=f148e74]:
+          - heading "عناصر المنتجات" [level=1] [ref=f148e75]
+          - paragraph [ref=f148e76]: إدارة متغيرات المنتجات القابلة للبيع مع SKU والباركود والسعر والصور والخيارات وكميات المستودعات.
+        - link "إنشاء" [ref=f148e78] [cursor=pointer]:
+          - /url: /product-items/create
+      - generic [ref=f148e79]:
+        - generic [ref=f148e80]:
+          - searchbox "البحث غير مدعوم بشكل موثوق في نقطة الخلفية هذه." [disabled] [ref=f148e81]
+          - generic [ref=f148e82]:
+            - button "بحث" [disabled] [ref=f148e83]
+            - button "مسح" [disabled] [ref=f148e84]
+        - button "تحديث" [ref=f148e85] [cursor=pointer]
+      - table [ref=f148e88]:
+        - rowgroup [ref=f148e89]:
+          - row [ref=f148e90]:
+            - columnheader [ref=f148e91]:
+              - button "المعرف" [ref=f148e92] [cursor=pointer]:
+                - generic [ref=f148e94]: DESC
+            - columnheader [ref=f148e95]:
+              - button "SKU" [ref=f148e96] [cursor=pointer]
+            - columnheader "المنتج" [ref=f148e98]
+            - columnheader "الباركود" [ref=f148e99]
+            - columnheader "السعر" [ref=f148e100]
+            - columnheader "المخزون" [ref=f148e101]
+            - columnheader "الحالة" [ref=f148e102]
+            - columnheader "الإجراءات" [ref=f148e103]
+        - rowgroup [ref=f148e104]:
+          - row [ref=f148e105]:
+            - cell "11" [ref=f148e106]
+            - cell "TEST-SKU-012" [ref=f148e107]
+            - cell "منتج تجريبي" [ref=f148e108]
+            - cell "1234567890178" [ref=f148e109]
+            - cell "150" [ref=f148e110]
+            - cell "0" [ref=f148e111]
+            - cell "نشط" [ref=f148e112]
+            - cell [ref=f148e114]:
+              - generic [ref=f148e115]:
+                - button "عرض" [ref=f148e116] [cursor=pointer]
+                - generic [ref=f148e121]:
+                  - button "تبديل الحالة" [ref=f148e122] [cursor=pointer]
+                  - link "تعديل" [ref=f148e123] [cursor=pointer]:
+                    - /url: /product-items/11/edit
+                  - button "حذف" [ref=f148e124] [cursor=pointer]
+          - row [ref=f148e125]:
+            - cell "10" [ref=f148e126]
+            - cell "TEST-SKU-041" [ref=f148e127]
+            - cell "منتج تجريبي" [ref=f148e128]
+            - cell "1234567890180" [ref=f148e129]
+            - cell "100" [ref=f148e130]
+            - cell "0" [ref=f148e131]
+            - cell "نشط" [ref=f148e132]
+            - cell [ref=f148e134]:
+              - generic [ref=f148e135]:
+                - button "عرض" [ref=f148e136] [cursor=pointer]
+                - generic [ref=f148e141]:
+                  - button "تبديل الحالة" [ref=f148e142] [cursor=pointer]
+                  - link "تعديل" [ref=f148e143] [cursor=pointer]:
+                    - /url: /product-items/10/edit
+                  - button "حذف" [ref=f148e144] [cursor=pointer]
+          - row [ref=f148e145]:
+            - cell "9" [ref=f148e146]
+            - cell "TEST-SKU-019" [ref=f148e147]
+            - cell "منتج تجريبي" [ref=f148e148]
+            - cell "1234567890170" [ref=f148e149]
+            - cell "150" [ref=f148e150]
+            - cell "0" [ref=f148e151]
+            - cell "نشط" [ref=f148e152]
+            - cell [ref=f148e154]:
+              - generic [ref=f148e155]:
+                - button "عرض" [ref=f148e156] [cursor=pointer]
+                - generic [ref=f148e161]:
+                  - button "تبديل الحالة" [ref=f148e162] [cursor=pointer]
+                  - link "تعديل" [ref=f148e163] [cursor=pointer]:
+                    - /url: /product-items/9/edit
+                  - button "حذف" [ref=f148e164] [cursor=pointer]
+          - row [ref=f148e165]:
+            - cell "8" [ref=f148e166]
+            - cell "TEST-SKU-040" [ref=f148e167]
+            - cell "منتج تجريبي" [ref=f148e168]
+            - cell "1234567890188" [ref=f148e169]
+            - cell "100" [ref=f148e170]
+            - cell "0" [ref=f148e171]
+            - cell "نشط" [ref=f148e172]
+            - cell [ref=f148e174]:
+              - generic [ref=f148e175]:
+                - button "عرض" [ref=f148e176] [cursor=pointer]
+                - generic [ref=f148e181]:
+                  - button "تبديل الحالة" [ref=f148e182] [cursor=pointer]
+                  - link "تعديل" [ref=f148e183] [cursor=pointer]:
+                    - /url: /product-items/8/edit
+                  - button "حذف" [ref=f148e184] [cursor=pointer]
+          - row [ref=f148e185]:
+            - cell "6" [ref=f148e186]
+            - cell "TEST-SKU-030" [ref=f148e187]
+            - cell "test ars21" [ref=f148e188]
+            - cell "1234567890150" [ref=f148e189]
+            - cell "100" [ref=f148e190]
+            - cell "0" [ref=f148e191]
+            - cell "نشط" [ref=f148e192]
+            - cell [ref=f148e194]:
+              - generic [ref=f148e195]:
+                - button "عرض" [ref=f148e196] [cursor=pointer]
+                - generic [ref=f148e201]:
+                  - button "تبديل الحالة" [ref=f148e202] [cursor=pointer]
+                  - link "تعديل" [ref=f148e203] [cursor=pointer]:
+                    - /url: /product-items/6/edit
+                  - button "حذف" [ref=f148e204] [cursor=pointer]
+          - row [ref=f148e205]:
+            - cell "4" [ref=f148e206]
+            - cell "TEST-SKU-038" [ref=f148e207]
+            - cell "test ars21" [ref=f148e208]
+            - cell "1234567890158" [ref=f148e209]
+            - cell "100" [ref=f148e210]
+            - cell "0" [ref=f148e211]
+            - cell "نشط" [ref=f148e212]
+            - cell [ref=f148e214]:
+              - generic [ref=f148e215]:
+                - button "عرض" [ref=f148e216] [cursor=pointer]
+                - generic [ref=f148e221]:
+                  - button "تبديل الحالة" [ref=f148e222] [cursor=pointer]
+                  - link "تعديل" [ref=f148e223] [cursor=pointer]:
+                    - /url: /product-items/4/edit
+                  - button "حذف" [ref=f148e224] [cursor=pointer]
+          - row [ref=f148e225]:
+            - cell "3" [ref=f148e226]
+            - cell "TEST-SKU-034" [ref=f148e227]
+            - cell "test ars21" [ref=f148e228]
+            - cell "1234567890156" [ref=f148e229]
+            - cell "100" [ref=f148e230]
+            - cell "0" [ref=f148e231]
+            - cell "نشط" [ref=f148e232]
+            - cell [ref=f148e234]:
+              - generic [ref=f148e235]:
+                - button "عرض" [ref=f148e236] [cursor=pointer]
+                - generic [ref=f148e241]:
+                  - button "تبديل الحالة" [ref=f148e242] [cursor=pointer]
+                  - link "تعديل" [ref=f148e243] [cursor=pointer]:
+                    - /url: /product-items/3/edit
+                  - button "حذف" [ref=f148e244] [cursor=pointer]
+          - row [ref=f148e245]:
+            - cell "2" [ref=f148e246]
+            - cell "TEST-SKU-037" [ref=f148e247]
+            - cell "test ars21" [ref=f148e248]
+            - cell "1234567890151" [ref=f148e249]
+            - cell "100" [ref=f148e250]
+            - cell "0" [ref=f148e251]
+            - cell "نشط" [ref=f148e252]
+            - cell [ref=f148e254]:
+              - generic [ref=f148e255]:
+                - button "عرض" [ref=f148e256] [cursor=pointer]
+                - generic [ref=f148e261]:
+                  - button "تبديل الحالة" [ref=f148e262] [cursor=pointer]
+                  - link "تعديل" [ref=f148e263] [cursor=pointer]:
+                    - /url: /product-items/2/edit
+                  - button "حذف" [ref=f148e264] [cursor=pointer]
+          - row [ref=f148e265]:
+            - cell "1" [ref=f148e266]
+            - cell "TEST-SKU-035" [ref=f148e267]
+            - cell "test ars21" [ref=f148e268]
+            - cell "1234567890155" [ref=f148e269]
+            - cell "100" [ref=f148e270]
+            - cell "0" [ref=f148e271]
+            - cell "نشط" [ref=f148e272]
+            - cell [ref=f148e274]:
+              - generic [ref=f148e275]:
+                - button "عرض" [ref=f148e276] [cursor=pointer]
+                - generic [ref=f148e281]:
+                  - button "تبديل الحالة" [ref=f148e282] [cursor=pointer]
+                  - link "تعديل" [ref=f148e283] [cursor=pointer]:
+                    - /url: /product-items/1/edit
+                  - button "حذف" [ref=f148e284] [cursor=pointer]
+      - generic [ref=f148e285]:
+        - paragraph [ref=f148e286]: عرض 1 إلى 9 من 9 سجل
+        - generic [ref=f148e287]:
+          - button "السابق" [disabled] [ref=f148e288]
+          - generic [ref=f148e289]: صفحة 1 من 1
+          - button "التالي" [disabled] [ref=f148e290]
+      - dialog [ref=f148e291]:
+        - generic [ref=f148e292]:
+          - generic [ref=f148e293]:
+            - generic [ref=f148e294]:
+              - heading "TEST-SKU-012" [level=2] [ref=f148e295]
+              - paragraph [ref=f148e296]: التفاصيل
+            - button "إغلاق" [ref=f148e297] [cursor=pointer]
+          - generic [ref=f148e302]:
+            - generic [ref=f148e303]:
+              - heading "المعلومات الرئيسية" [level=3] [ref=f148e305]
+              - generic [ref=f148e306]:
+                - generic [ref=f148e307]:
+                  - term [ref=f148e308]: SKU
+                  - definition [ref=f148e309]: TEST-SKU-012
+                - generic [ref=f148e310]:
+                  - term [ref=f148e311]: الباركود
+                  - definition [ref=f148e312]: "1234567890178"
+                - generic [ref=f148e313]:
+                  - term [ref=f148e314]: السعر
+                  - definition [ref=f148e315]: "150"
+                - generic [ref=f148e316]:
+                  - term [ref=f148e317]: المخزون
+                  - definition [ref=f148e318]: "50"
+                - generic [ref=f148e319]:
+                  - term [ref=f148e320]: الحالة
+                  - definition [ref=f148e321]:
+                    - generic [ref=f148e322]: نشط
+                - generic [ref=f148e323]:
+                  - term [ref=f148e324]: تاريخ الإنشاء
+                  - definition [ref=f148e325]: 23‏/02‏/2026، 4:40 م
+            - generic [ref=f148e326]:
+              - heading "المنتج" [level=3] [ref=f148e328]
+              - article [ref=f148e329]:
+                - generic [ref=f148e330]:
+                  - generic [ref=f148e331]:
+                    - heading "منتج تجريبي" [level=4] [ref=f148e332]
+                    - paragraph [ref=f148e333]: منتج تجريبي
+                  - generic [ref=f148e334]: نشط
+                - generic [ref=f148e335]:
+                  - generic [ref=f148e336]:
+                    - term [ref=f148e337]: التصنيف
+                    - definition [ref=f148e338]: test ars21
+                  - generic [ref=f148e339]:
+                    - term [ref=f148e340]: العلامة التجارية
+                    - definition [ref=f148e341]: test ars21e
+            - generic [ref=f148e342]:
+              - heading "الخصائص" [level=3] [ref=f148e344]
+              - table [ref=f148e347]:
+                - rowgroup [ref=f148e348]:
+                  - row [ref=f148e349]:
+                    - columnheader "الاسم" [ref=f148e350]
+                    - columnheader "الخاصية" [ref=f148e351]
+                    - columnheader "الوصف" [ref=f148e352]
+                    - columnheader "الحالة" [ref=f148e353]
+                - rowgroup [ref=f148e354]:
+                  - row [ref=f148e355]:
+                    - cell "أحمر w3ass" [ref=f148e356]
+                    - cell "test ars21" [ref=f148e357]
+                    - cell "لون أحمر" [ref=f148e358]
+                    - cell "نشط" [ref=f148e359]
+            - generic [ref=f148e361]:
+              - heading "الأسعار" [level=3] [ref=f148e363]
+              - table [ref=f148e366]:
+                - rowgroup [ref=f148e367]:
+                  - row [ref=f148e368]:
+                    - columnheader "السعر" [ref=f148e369]
+                    - columnheader "صالح من" [ref=f148e370]
+                    - columnheader "صالح إلى" [ref=f148e371]
+                    - columnheader "الحالة" [ref=f148e372]
+                - rowgroup [ref=f148e373]:
+                  - row [ref=f148e374]:
+                    - cell "150" [ref=f148e375]
+                    - cell "23‏/02‏/2026، 2:00 ص" [ref=f148e376]
+                    - cell "—" [ref=f148e377]
+                    - cell "نشط" [ref=f148e378]
+            - generic [ref=f148e380]:
+              - heading "الصور" [level=3] [ref=f148e382]
+              - generic [ref=f148e383]:
+                - img "8befee0e13bbaa553459e8072caedf41.jpg" [ref=f148e385]
+                - img "68170c52c76e25167662b40de817eb23.jpg" [ref=f148e387]
+            - generic [ref=f148e388]:
+              - heading "كميات المستودعات" [level=3] [ref=f148e390]
+              - table [ref=f148e393]:
+                - rowgroup [ref=f148e394]:
+                  - row [ref=f148e395]:
+                    - columnheader "المستودع" [ref=f148e396]
+                    - columnheader "الكمية" [ref=f148e397]
+                    - columnheader "تاريخ الإنشاء" [ref=f148e398]
+                - rowgroup [ref=f148e399]:
+                  - row [ref=f148e400]:
+                    - cell "test ars21" [ref=f148e401]
+                    - cell "50" [ref=f148e402]
+                    - cell "23‏/02‏/2026، 4:40 م" [ref=f148e403]

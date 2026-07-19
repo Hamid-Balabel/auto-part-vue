@@ -1,0 +1,101 @@
+- generic [ref=f23e32]:
+  - complementary [ref=f23e33]:
+    - generic [ref=f23e38]:
+      - paragraph [ref=f23e39]: إدارة قطع الغيار
+      - paragraph [ref=f23e40]: المخزون والمبيعات
+    - navigation [ref=f23e41]:
+      - link "لوحة التحكم" [ref=f23e42] [cursor=pointer]:
+        - /url: /
+      - button "إدخال البيانات" [ref=f23e47] [cursor=pointer]
+      - button "المبيعات" [ref=f23e56] [cursor=pointer]
+      - button "المستخدمين" [ref=f23e65] [cursor=pointer]
+      - button "الإعدادات" [ref=f23e75] [cursor=pointer]
+  - generic [ref=f23e82]:
+    - banner [ref=f23e83]:
+      - generic [ref=f23e84]:
+        - generic [ref=f23e85]: الفلاتر المدعومة من الخلفية تظهر داخل كل شاشة.
+        - generic "اللغة" [ref=f23e90]:
+          - button "العربية" [ref=f23e95] [cursor=pointer]
+          - button "English" [ref=f23e96] [cursor=pointer]
+        - generic [ref=f23e97]:
+          - paragraph [ref=f23e98]: root
+          - paragraph [ref=f23e99]: root@jervis.com
+        - button "تسجيل الخروج" [ref=f23e100] [cursor=pointer]
+    - main [ref=f23e101]:
+      - generic [ref=f23e152]:
+        - heading "إنشاء دور" [level=1] [ref=f23e153]
+        - paragraph [ref=f23e154]: الصلاحيات ترسل إلى الخلفية بأسمائها كما يتطلب RoleRequest.
+      - generic [ref=f23e155]:
+        - generic [ref=f23e156]:
+          - heading "البيانات الأساسية" [level=2] [ref=f23e158]
+          - generic [ref=f23e159]:
+            - generic [ref=f23e160]:
+              - generic [ref=f23e161]: المفتاح *
+              - textbox "المفتاح *" [ref=f23e162]
+            - generic [ref=f23e163]:
+              - generic [ref=f23e164]: الاسم المعروض بالعربية *
+              - textbox "الاسم المعروض بالعربية *" [ref=f23e165]
+            - generic [ref=f23e166]:
+              - generic [ref=f23e167]: الاسم المعروض بالإنجليزية
+              - textbox "الاسم المعروض بالإنجليزية" [ref=f23e168]
+        - generic [ref=f23e169]:
+          - heading "صلاحيات الدور" [level=2] [ref=f23e171]
+          - generic [ref=f23e172]:
+            - paragraph [ref=f23e174]: 1 / 127 محدد
+            - generic [ref=f23e175]:
+              - searchbox "ابحث في الصلاحيات" [ref=f23e176]: User
+              - button "تحديد كل الصلاحيات" [ref=f23e177] [cursor=pointer]
+          - generic [ref=f23e259]:
+            - generic [ref=f23e260]:
+              - button "⌄ المستخدم 1 / 8" [expanded] [ref=f23e942] [cursor=pointer]:
+                - generic [ref=f23e262]: ⌄
+                - generic [ref=f23e263]:
+                  - generic [ref=f23e264]: المستخدم
+                  - generic [ref=f23e265]: 1 / 8
+              - generic [ref=f23e268] [cursor=pointer]:
+                - checkbox "تحديد الكل" [checked=mixed] [ref=f23e269]
+                - text: تحديد الكل
+            - generic [ref=f23e270]:
+              - button "User (toggle-active) toggle-active-user" [pressed] [ref=f23e271] [cursor=pointer]:
+                - checkbox [checked] [active] [ref=f23e272]
+                - generic [ref=f23e273]:
+                  - text: User (toggle-active)
+                  - generic [ref=f23e274]: toggle-active-user
+              - button "User (force-delete) force-delete-user" [ref=f23e275] [cursor=pointer]:
+                - checkbox [ref=f23e276]
+                - generic [ref=f23e277]:
+                  - text: User (force-delete)
+                  - generic [ref=f23e278]: force-delete-user
+              - button "User (restore) restore-user" [ref=f23e279] [cursor=pointer]:
+                - checkbox [ref=f23e280]
+                - generic [ref=f23e281]:
+                  - text: User (restore)
+                  - generic [ref=f23e282]: restore-user
+              - button "User (view-own) view-own-user" [ref=f23e283] [cursor=pointer]:
+                - checkbox [ref=f23e284]
+                - generic [ref=f23e285]:
+                  - text: User (view-own)
+                  - generic [ref=f23e286]: view-own-user
+              - button "User (view-all) view-all-user" [ref=f23e287] [cursor=pointer]:
+                - checkbox [ref=f23e288]
+                - generic [ref=f23e289]:
+                  - text: User (view-all)
+                  - generic [ref=f23e290]: view-all-user
+              - button "User (delete) delete-user" [ref=f23e291] [cursor=pointer]:
+                - checkbox [ref=f23e292]
+                - generic [ref=f23e293]:
+                  - text: User (delete)
+                  - generic [ref=f23e294]: delete-user
+              - button "User (update) update-user" [ref=f23e295] [cursor=pointer]:
+                - checkbox [ref=f23e296]
+                - generic [ref=f23e297]:
+                  - text: User (update)
+                  - generic [ref=f23e298]: update-user
+              - button "User (create) create-user" [ref=f23e299] [cursor=pointer]:
+                - checkbox [ref=f23e300]
+                - generic [ref=f23e301]:
+                  - text: User (create)
+                  - generic [ref=f23e302]: create-user
+        - generic [ref=f23e939]:
+          - generic [ref=f23e940]: إلغاء
+          - button "حفظ" [ref=f23e941] [cursor=pointer]

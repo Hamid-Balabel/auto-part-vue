@@ -1,0 +1,197 @@
+- generic [ref=f147e3]:
+  - complementary [ref=f147e4]:
+    - generic [ref=f147e9]:
+      - paragraph [ref=f147e10]: إدارة قطع الغيار
+      - paragraph [ref=f147e11]: المخزون والمبيعات
+    - navigation [ref=f147e12]:
+      - link "لوحة التحكم" [ref=f147e13] [cursor=pointer]:
+        - /url: /
+      - button "إدخال البيانات" [ref=f147e18] [cursor=pointer]
+      - button "المبيعات" [ref=f147e27] [cursor=pointer]
+      - button "المستخدمين" [ref=f147e36] [cursor=pointer]
+      - button "الإعدادات" [ref=f147e46] [cursor=pointer]
+  - generic [ref=f147e53]:
+    - banner [ref=f147e54]:
+      - generic [ref=f147e55]:
+        - generic [ref=f147e56]: الفلاتر المدعومة من الخلفية تظهر داخل كل شاشة.
+        - generic "اللغة" [ref=f147e61]:
+          - button "العربية" [ref=f147e66] [cursor=pointer]
+          - button "English" [ref=f147e67] [cursor=pointer]
+        - generic [ref=f147e68]:
+          - paragraph [ref=f147e69]: root
+          - paragraph [ref=f147e70]: root@jervis.com
+        - button "تسجيل الخروج" [ref=f147e71] [cursor=pointer]
+    - main [ref=f147e72]:
+      - generic [ref=f147e73]:
+        - generic [ref=f147e74]:
+          - heading "المنتجات" [level=1] [ref=f147e75]
+          - paragraph [ref=f147e76]: سجلات المنتجات الرئيسية مرتبطة بالتصنيفات والعلامات التجارية من الخلفية.
+        - link "إنشاء" [ref=f147e78] [cursor=pointer]:
+          - /url: /products/create
+      - generic [ref=f147e79]:
+        - generic [ref=f147e80]:
+          - searchbox "البحث غير مدعوم بشكل موثوق في نقطة الخلفية هذه." [disabled] [ref=f147e81]
+          - generic [ref=f147e82]:
+            - button "بحث" [disabled] [ref=f147e83]
+            - button "مسح" [disabled] [ref=f147e84]
+        - button "تحديث" [ref=f147e85] [cursor=pointer]
+      - table [ref=f147e88]:
+        - rowgroup [ref=f147e89]:
+          - row [ref=f147e90]:
+            - columnheader [ref=f147e91]:
+              - button "المعرف" [ref=f147e92] [cursor=pointer]:
+                - generic [ref=f147e94]: DESC
+            - columnheader "الاسم" [ref=f147e95]
+            - columnheader "التصنيف" [ref=f147e96]
+            - columnheader "العلامة التجارية" [ref=f147e97]
+            - columnheader "الحالة" [ref=f147e98]
+            - columnheader "الإجراءات" [ref=f147e99]
+        - rowgroup [ref=f147e100]:
+          - row [ref=f147e101]:
+            - cell "8" [ref=f147e102]
+            - cell "الاسم بالعربية *" [ref=f147e103]
+            - cell "test ars21" [ref=f147e104]
+            - cell "test ars21e" [ref=f147e105]
+            - cell "نشط" [ref=f147e106]
+            - cell [ref=f147e108]:
+              - generic [ref=f147e109]:
+                - button "عرض" [ref=f147e110] [cursor=pointer]
+                - generic [ref=f147e115]:
+                  - button "تبديل الحالة" [ref=f147e116] [cursor=pointer]
+                  - link "تعديل" [ref=f147e117] [cursor=pointer]:
+                    - /url: /products/8/edit
+                  - button "حذف" [ref=f147e118] [cursor=pointer]
+          - row [ref=f147e119]:
+            - cell "7" [ref=f147e120]
+            - cell "منتج تجريبي" [ref=f147e121]
+            - cell "test ars21" [ref=f147e122]
+            - cell "test ars21e" [ref=f147e123]
+            - cell "نشط" [ref=f147e124]
+            - cell [ref=f147e126]:
+              - generic [ref=f147e127]:
+                - button "عرض" [ref=f147e128] [cursor=pointer]
+                - generic [ref=f147e133]:
+                  - button "تبديل الحالة" [ref=f147e134] [cursor=pointer]
+                  - link "تعديل" [ref=f147e135] [cursor=pointer]:
+                    - /url: /products/7/edit
+                  - button "حذف" [ref=f147e136] [cursor=pointer]
+          - row [ref=f147e137]:
+            - cell "6" [ref=f147e138]
+            - cell "منتج تجريبي" [ref=f147e139]
+            - cell "test ars21" [ref=f147e140]
+            - cell "test ars21e" [ref=f147e141]
+            - cell "غير نشط" [ref=f147e142]
+            - cell [ref=f147e144]:
+              - generic [ref=f147e145]:
+                - button "عرض" [ref=f147e146] [cursor=pointer]
+                - generic [ref=f147e151]:
+                  - button "تبديل الحالة" [ref=f147e152] [cursor=pointer]
+                  - link "تعديل" [ref=f147e153] [cursor=pointer]:
+                    - /url: /products/6/edit
+                  - button "حذف" [ref=f147e154] [cursor=pointer]
+          - row [ref=f147e155]:
+            - cell "2" [ref=f147e156]
+            - cell "test ars21s" [ref=f147e157]
+            - cell "test ars21" [ref=f147e158]
+            - cell "test ars21e" [ref=f147e159]
+            - cell "نشط" [ref=f147e160]
+            - cell [ref=f147e162]:
+              - generic [ref=f147e163]:
+                - button "عرض" [ref=f147e164] [cursor=pointer]
+                - generic [ref=f147e169]:
+                  - button "تبديل الحالة" [ref=f147e170] [cursor=pointer]
+                  - link "تعديل" [ref=f147e171] [cursor=pointer]:
+                    - /url: /products/2/edit
+                  - button "حذف" [ref=f147e172] [cursor=pointer]
+          - row [ref=f147e173]:
+            - cell "1" [ref=f147e174]
+            - cell "test ars21" [ref=f147e175]
+            - cell "test ars21" [ref=f147e176]
+            - cell "test ars21e" [ref=f147e177]
+            - cell "نشط" [ref=f147e178]
+            - cell [ref=f147e180]:
+              - generic [ref=f147e181]:
+                - button "عرض" [ref=f147e182] [cursor=pointer]
+                - generic [ref=f147e187]:
+                  - button "تبديل الحالة" [ref=f147e188] [cursor=pointer]
+                  - link "تعديل" [ref=f147e189] [cursor=pointer]:
+                    - /url: /products/1/edit
+                  - button "حذف" [ref=f147e190] [cursor=pointer]
+      - generic [ref=f147e191]:
+        - paragraph [ref=f147e192]: عرض 1 إلى 5 من 5 سجل
+        - generic [ref=f147e193]:
+          - button "السابق" [disabled] [ref=f147e194]
+          - generic [ref=f147e195]: صفحة 1 من 1
+          - button "التالي" [disabled] [ref=f147e196]
+      - dialog [ref=f147e197]:
+        - generic [ref=f147e198]:
+          - generic [ref=f147e199]:
+            - generic [ref=f147e200]:
+              - heading "الاسم بالعربية *" [level=2] [ref=f147e201]
+              - paragraph [ref=f147e202]: التفاصيل
+            - button "إغلاق" [ref=f147e203] [cursor=pointer]
+          - generic [ref=f147e208]:
+            - generic [ref=f147e209]:
+              - heading "المعلومات الرئيسية" [level=3] [ref=f147e211]
+              - generic [ref=f147e212]:
+                - generic [ref=f147e213]:
+                  - term [ref=f147e214]: الاسم
+                  - definition [ref=f147e215]: الاسم بالعربية *
+                - generic [ref=f147e216]:
+                  - term [ref=f147e217]: الاسم بالعربية
+                  - definition [ref=f147e218]: الاسم بالعربية *
+                - generic [ref=f147e219]:
+                  - term [ref=f147e220]: الاسم بالإنجليزية
+                  - definition [ref=f147e221]: الاسم بالإنجليزية
+                - generic [ref=f147e222]:
+                  - term [ref=f147e223]: الوصف
+                  - definition [ref=f147e224]: —
+                - generic [ref=f147e225]:
+                  - term [ref=f147e226]: الحالة
+                  - definition [ref=f147e227]:
+                    - generic [ref=f147e228]: نشط
+                - generic [ref=f147e229]:
+                  - term [ref=f147e230]: تاريخ الإنشاء
+                  - definition [ref=f147e231]: 14‏/07‏/2026، 5:08 م
+            - generic [ref=f147e232]:
+              - heading "المعلومات المرتبطة" [level=3] [ref=f147e234]
+              - generic [ref=f147e235]:
+                - article [ref=f147e236]:
+                  - generic [ref=f147e237]:
+                    - generic [ref=f147e238]:
+                      - heading "test ars21" [level=4] [ref=f147e239]
+                      - paragraph [ref=f147e240]: decription ars
+                    - generic [ref=f147e241]: نشط
+                - article [ref=f147e242]:
+                  - generic [ref=f147e243]:
+                    - generic [ref=f147e244]:
+                      - heading "test ars21e" [level=4] [ref=f147e245]
+                      - paragraph [ref=f147e246]: لا توجد بيانات مرتبطة
+                    - generic [ref=f147e247]: نشط
+            - generic [ref=f147e248]:
+              - heading "عناصر المنتجات" [level=3] [ref=f147e250]
+              - generic [ref=f147e251]:
+                - table [ref=f147e253]:
+                  - rowgroup [ref=f147e254]:
+                    - row [ref=f147e255]:
+                      - columnheader "SKU" [ref=f147e256]
+                      - columnheader "الباركود" [ref=f147e257]
+                      - columnheader "السعر" [ref=f147e258]
+                      - columnheader "المخزون" [ref=f147e259]
+                      - columnheader "الخصائص" [ref=f147e260]
+                      - columnheader "الصور" [ref=f147e261]
+                      - columnheader "كميات المستودعات" [ref=f147e262]
+                      - columnheader "الحالة" [ref=f147e263]
+                      - columnheader "تاريخ الإنشاء" [ref=f147e264]
+                - generic [ref=f147e265]: لا توجد بيانات مرتبطة
+            - generic [ref=f147e266]:
+              - heading "المنشئ" [level=3] [ref=f147e268]
+              - article [ref=f147e269]:
+                - generic [ref=f147e270]:
+                  - generic [ref=f147e271]:
+                    - heading "root" [level=4] [ref=f147e272]
+                    - paragraph [ref=f147e273]: root@jervis.com
+                  - generic [ref=f147e274]: نشط
+                - generic [ref=f147e276]:
+                  - term [ref=f147e277]: تاريخ الإنشاء
+                  - definition [ref=f147e278]: 18‏/02‏/2026، 4:27 م

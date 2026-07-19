@@ -1,0 +1,287 @@
+- generic [ref=f5e3]:
+  - complementary [ref=f5e4]:
+    - generic [ref=f5e9]:
+      - paragraph [ref=f5e10]: Auto Part Admin
+      - paragraph [ref=f5e11]: Inventory and sales
+    - navigation [ref=f5e12]:
+      - link "Dashboard" [ref=f5e13] [cursor=pointer]:
+        - /url: /
+      - button "إدخال البيانات" [ref=f5e18] [cursor=pointer]
+      - button "Sales" [ref=f5e27] [cursor=pointer]
+      - button "المستخدمين" [ref=f5e36] [cursor=pointer]
+      - button "الإعدادات" [ref=f5e46] [cursor=pointer]
+  - generic [ref=f5e53]:
+    - banner [ref=f5e54]:
+      - generic [ref=f5e55]:
+        - generic [ref=f5e56]: Backend-supported filters appear inside each module.
+        - generic "Language" [ref=f5e61]:
+          - button "العربية" [ref=f5e66] [cursor=pointer]
+          - button "English" [ref=f5e67] [cursor=pointer]
+        - generic [ref=f5e68]:
+          - paragraph [ref=f5e69]: root
+          - paragraph [ref=f5e70]: root@jervis.com
+        - button "Logout" [ref=f5e71] [cursor=pointer]
+    - main [ref=f5e72]:
+      - generic [ref=f5e73]:
+        - generic [ref=f5e74]:
+          - heading "Product Items" [level=1] [ref=f5e75]
+          - paragraph [ref=f5e76]: Manage sellable product variants with SKU, barcode, active price, images, options, and warehouse quantities.
+        - link "Create" [ref=f5e78] [cursor=pointer]:
+          - /url: /product-items/create
+      - generic [ref=f5e79]:
+        - generic [ref=f5e80]:
+          - searchbox "Search is not supported reliably by this backend endpoint." [disabled] [ref=f5e81]
+          - generic [ref=f5e82]:
+            - button "Search" [disabled] [ref=f5e83]
+            - button "Clear" [disabled] [ref=f5e84]
+        - button "Refresh" [ref=f5e85] [cursor=pointer]
+      - table [ref=f5e88]:
+        - rowgroup [ref=f5e89]:
+          - row [ref=f5e90]:
+            - columnheader [ref=f5e91]:
+              - button "ID" [ref=f5e92] [cursor=pointer]:
+                - generic [ref=f5e94]: DESC
+            - columnheader [ref=f5e95]:
+              - button "SKU" [ref=f5e96] [cursor=pointer]
+            - columnheader "Product" [ref=f5e98]
+            - columnheader "Barcode" [ref=f5e99]
+            - columnheader "Price" [ref=f5e100]
+            - columnheader "Stock" [ref=f5e101]
+            - columnheader "Status" [ref=f5e102]
+            - columnheader "Actions" [ref=f5e103]
+        - rowgroup [ref=f5e104]:
+          - row [ref=f5e105]:
+            - cell "11" [ref=f5e106]
+            - cell "TEST-SKU-012" [ref=f5e107]
+            - cell "منتج تجريبي" [ref=f5e108]
+            - cell "1234567890178" [ref=f5e109]
+            - cell "150" [ref=f5e110]
+            - cell "0" [ref=f5e111]
+            - cell "Active" [ref=f5e112]
+            - cell [ref=f5e114]:
+              - generic [ref=f5e115]:
+                - button "View" [ref=f5e116] [cursor=pointer]
+                - generic [ref=f5e121]:
+                  - button "Toggle" [ref=f5e122] [cursor=pointer]
+                  - link "Edit" [ref=f5e123] [cursor=pointer]:
+                    - /url: /product-items/11/edit
+                  - button "Delete" [ref=f5e124] [cursor=pointer]
+          - row [ref=f5e125]:
+            - cell "10" [ref=f5e126]
+            - cell "TEST-SKU-041" [ref=f5e127]
+            - cell "منتج تجريبي" [ref=f5e128]
+            - cell "1234567890180" [ref=f5e129]
+            - cell "100" [ref=f5e130]
+            - cell "0" [ref=f5e131]
+            - cell "Active" [ref=f5e132]
+            - cell [ref=f5e134]:
+              - generic [ref=f5e135]:
+                - button "View" [ref=f5e136] [cursor=pointer]
+                - generic [ref=f5e141]:
+                  - button "Toggle" [ref=f5e142] [cursor=pointer]
+                  - link "Edit" [ref=f5e143] [cursor=pointer]:
+                    - /url: /product-items/10/edit
+                  - button "Delete" [ref=f5e144] [cursor=pointer]
+          - row [ref=f5e145]:
+            - cell "9" [ref=f5e146]
+            - cell "TEST-SKU-019" [ref=f5e147]
+            - cell "منتج تجريبي" [ref=f5e148]
+            - cell "1234567890170" [ref=f5e149]
+            - cell "150" [ref=f5e150]
+            - cell "0" [ref=f5e151]
+            - cell "Active" [ref=f5e152]
+            - cell [ref=f5e154]:
+              - generic [ref=f5e155]:
+                - button "View" [ref=f5e156] [cursor=pointer]
+                - generic [ref=f5e161]:
+                  - button "Toggle" [ref=f5e162] [cursor=pointer]
+                  - link "Edit" [ref=f5e163] [cursor=pointer]:
+                    - /url: /product-items/9/edit
+                  - button "Delete" [ref=f5e164] [cursor=pointer]
+          - row [ref=f5e165]:
+            - cell "8" [ref=f5e166]
+            - cell "TEST-SKU-040" [ref=f5e167]
+            - cell "منتج تجريبي" [ref=f5e168]
+            - cell "1234567890188" [ref=f5e169]
+            - cell "100" [ref=f5e170]
+            - cell "0" [ref=f5e171]
+            - cell "Active" [ref=f5e172]
+            - cell [ref=f5e174]:
+              - generic [ref=f5e175]:
+                - button "View" [ref=f5e176] [cursor=pointer]
+                - generic [ref=f5e181]:
+                  - button "Toggle" [ref=f5e182] [cursor=pointer]
+                  - link "Edit" [ref=f5e183] [cursor=pointer]:
+                    - /url: /product-items/8/edit
+                  - button "Delete" [ref=f5e184] [cursor=pointer]
+          - row [ref=f5e185]:
+            - cell "6" [ref=f5e186]
+            - cell "TEST-SKU-030" [ref=f5e187]
+            - cell "test ars21" [ref=f5e188]
+            - cell "1234567890150" [ref=f5e189]
+            - cell "100" [ref=f5e190]
+            - cell "0" [ref=f5e191]
+            - cell "Active" [ref=f5e192]
+            - cell [ref=f5e194]:
+              - generic [ref=f5e195]:
+                - button "View" [ref=f5e196] [cursor=pointer]
+                - generic [ref=f5e201]:
+                  - button "Toggle" [ref=f5e202] [cursor=pointer]
+                  - link "Edit" [ref=f5e203] [cursor=pointer]:
+                    - /url: /product-items/6/edit
+                  - button "Delete" [ref=f5e204] [cursor=pointer]
+          - row [ref=f5e205]:
+            - cell "4" [ref=f5e206]
+            - cell "TEST-SKU-038" [ref=f5e207]
+            - cell "test ars21" [ref=f5e208]
+            - cell "1234567890158" [ref=f5e209]
+            - cell "100" [ref=f5e210]
+            - cell "0" [ref=f5e211]
+            - cell "Active" [ref=f5e212]
+            - cell [ref=f5e214]:
+              - generic [ref=f5e215]:
+                - button "View" [ref=f5e216] [cursor=pointer]
+                - generic [ref=f5e221]:
+                  - button "Toggle" [ref=f5e222] [cursor=pointer]
+                  - link "Edit" [ref=f5e223] [cursor=pointer]:
+                    - /url: /product-items/4/edit
+                  - button "Delete" [ref=f5e224] [cursor=pointer]
+          - row [ref=f5e225]:
+            - cell "3" [ref=f5e226]
+            - cell "TEST-SKU-034" [ref=f5e227]
+            - cell "test ars21" [ref=f5e228]
+            - cell "1234567890156" [ref=f5e229]
+            - cell "100" [ref=f5e230]
+            - cell "0" [ref=f5e231]
+            - cell "Active" [ref=f5e232]
+            - cell [ref=f5e234]:
+              - generic [ref=f5e235]:
+                - button "View" [ref=f5e236] [cursor=pointer]
+                - generic [ref=f5e241]:
+                  - button "Toggle" [ref=f5e242] [cursor=pointer]
+                  - link "Edit" [ref=f5e243] [cursor=pointer]:
+                    - /url: /product-items/3/edit
+                  - button "Delete" [ref=f5e244] [cursor=pointer]
+          - row [ref=f5e245]:
+            - cell "2" [ref=f5e246]
+            - cell "TEST-SKU-037" [ref=f5e247]
+            - cell "test ars21" [ref=f5e248]
+            - cell "1234567890151" [ref=f5e249]
+            - cell "100" [ref=f5e250]
+            - cell "0" [ref=f5e251]
+            - cell "Active" [ref=f5e252]
+            - cell [ref=f5e254]:
+              - generic [ref=f5e255]:
+                - button "View" [ref=f5e256] [cursor=pointer]
+                - generic [ref=f5e261]:
+                  - button "Toggle" [ref=f5e262] [cursor=pointer]
+                  - link "Edit" [ref=f5e263] [cursor=pointer]:
+                    - /url: /product-items/2/edit
+                  - button "Delete" [ref=f5e264] [cursor=pointer]
+          - row [ref=f5e265]:
+            - cell "1" [ref=f5e266]
+            - cell "TEST-SKU-035" [ref=f5e267]
+            - cell "test ars21" [ref=f5e268]
+            - cell "1234567890155" [ref=f5e269]
+            - cell "100" [ref=f5e270]
+            - cell "0" [ref=f5e271]
+            - cell "Active" [ref=f5e272]
+            - cell [ref=f5e274]:
+              - generic [ref=f5e275]:
+                - button "View" [ref=f5e276] [cursor=pointer]
+                - generic [ref=f5e281]:
+                  - button "Toggle" [ref=f5e282] [cursor=pointer]
+                  - link "Edit" [ref=f5e283] [cursor=pointer]:
+                    - /url: /product-items/1/edit
+                  - button "Delete" [ref=f5e284] [cursor=pointer]
+      - generic [ref=f5e285]:
+        - paragraph [ref=f5e286]: Showing 1 to 9 of 9 records
+        - generic [ref=f5e287]:
+          - button "Previous" [disabled] [ref=f5e288]
+          - generic [ref=f5e289]: Page 1 of 1
+          - button "Next" [disabled] [ref=f5e290]
+      - dialog [ref=f5e294]:
+        - generic [ref=f5e295]:
+          - generic [ref=f5e296]:
+            - generic [ref=f5e297]:
+              - heading "TEST-SKU-012" [level=2] [ref=f5e298]
+              - paragraph [ref=f5e299]: Details
+            - button "Close" [ref=f5e300] [cursor=pointer]
+          - generic [ref=f5e305]:
+            - generic [ref=f5e306]:
+              - heading "Main information" [level=3] [ref=f5e308]
+              - generic [ref=f5e309]:
+                - generic [ref=f5e310]:
+                  - term [ref=f5e311]: SKU
+                  - definition [ref=f5e312]: TEST-SKU-012
+                - generic [ref=f5e313]:
+                  - term [ref=f5e314]: Barcode
+                  - definition [ref=f5e315]: "1234567890178"
+                - generic [ref=f5e316]:
+                  - term [ref=f5e317]: Price
+                  - definition [ref=f5e318]: "150"
+                - generic [ref=f5e319]:
+                  - term [ref=f5e320]: Stock
+                  - definition [ref=f5e321]: "0"
+                - generic [ref=f5e322]:
+                  - term [ref=f5e323]: Status
+                  - definition [ref=f5e324]:
+                    - generic [ref=f5e325]: Active
+                - generic [ref=f5e326]:
+                  - term [ref=f5e327]: Created At
+                  - definition [ref=f5e328]: Feb 23, 2026, 4:40 PM
+            - generic [ref=f5e329]:
+              - heading "Product" [level=3] [ref=f5e331]
+              - article [ref=f5e332]:
+                - generic [ref=f5e333]:
+                  - generic [ref=f5e334]:
+                    - heading "منتج تجريبي" [level=4] [ref=f5e335]
+                    - paragraph [ref=f5e336]: منتج تجريبي
+                  - generic [ref=f5e337]: Active
+                - generic [ref=f5e338]:
+                  - generic [ref=f5e339]:
+                    - term [ref=f5e340]: Category
+                    - definition [ref=f5e341]: test ars21
+                  - generic [ref=f5e342]:
+                    - term [ref=f5e343]: Brand
+                    - definition [ref=f5e344]: test ars21e
+            - generic [ref=f5e345]:
+              - heading "Attributes" [level=3] [ref=f5e347]
+              - table [ref=f5e350]:
+                - rowgroup [ref=f5e351]:
+                  - row [ref=f5e352]:
+                    - columnheader "Name" [ref=f5e353]
+                    - columnheader "Attribute" [ref=f5e354]
+                    - columnheader "Description" [ref=f5e355]
+                    - columnheader "Status" [ref=f5e356]
+                - rowgroup [ref=f5e357]:
+                  - row [ref=f5e358]:
+                    - cell "أحمر w3ass" [ref=f5e359]
+                    - cell "test ars21" [ref=f5e360]
+                    - cell "لون أحمر" [ref=f5e361]
+                    - cell "Active" [ref=f5e362]
+            - generic [ref=f5e364]:
+              - heading "Prices" [level=3] [ref=f5e366]
+              - table [ref=f5e369]:
+                - rowgroup [ref=f5e370]:
+                  - row [ref=f5e371]:
+                    - columnheader "Price" [ref=f5e372]
+                    - columnheader "Valid From" [ref=f5e373]
+                    - columnheader "Valid To" [ref=f5e374]
+                    - columnheader "Status" [ref=f5e375]
+                - rowgroup [ref=f5e376]:
+                  - row [ref=f5e377]:
+                    - cell "150" [ref=f5e378]
+                    - cell "Feb 23, 2026, 2:00 AM" [ref=f5e379]
+                    - cell "—" [ref=f5e380]
+                    - cell "Active" [ref=f5e381]
+            - generic [ref=f5e383]:
+              - heading "Warehouse quantities" [level=3] [ref=f5e385]
+              - generic [ref=f5e386]:
+                - table [ref=f5e388]:
+                  - rowgroup [ref=f5e389]:
+                    - row [ref=f5e390]:
+                      - columnheader "Warehouse" [ref=f5e391]
+                      - columnheader "Quantity" [ref=f5e392]
+                      - columnheader "Created At" [ref=f5e393]
+                - generic [ref=f5e394]: No related data

@@ -1,0 +1,32 @@
+- generic [ref=e3]:
+  - complementary [ref=e4]:
+    - generic [ref=e9]:
+      - paragraph [ref=e10]: Auto Part Admin
+      - paragraph [ref=e11]: Inventory and sales
+    - navigation [ref=e12]:
+      - link "Dashboard" [ref=e13] [cursor=pointer]:
+        - /url: /
+      - button "إدخال البيانات" [ref=e18] [cursor=pointer]
+      - button "Sales" [ref=e27] [cursor=pointer]
+      - button "المستخدمين" [ref=e36] [cursor=pointer]
+      - button "الإعدادات" [ref=e46] [cursor=pointer]
+  - generic [ref=e53]:
+    - banner [ref=e54]:
+      - generic [ref=e55]:
+        - generic [ref=e56]: Backend-supported filters appear inside each module.
+        - generic "Language" [ref=e61]:
+          - button "العربية" [ref=e66] [cursor=pointer]
+          - button "English" [ref=e67] [cursor=pointer]
+        - generic [ref=e68]:
+          - paragraph [ref=e69]: root
+          - paragraph [ref=e70]: root@jervis.com
+        - button "Logout" [ref=e71] [cursor=pointer]
+    - main [ref=e72]:
+      - generic [ref=e73]:
+        - generic [ref=e74]:
+          - heading "System Settings" [level=1] [ref=e75]
+          - paragraph [ref=e76]: Update backend-exposed settings using the settings[] request shape.
+        - generic [ref=e77]:
+          - button "Reset changes" [disabled] [ref=e78]
+          - button "Saving..." [disabled] [ref=e855]
+      - generic [ref=e80]: Loading settings...

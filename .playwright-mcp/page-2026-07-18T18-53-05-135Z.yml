@@ -1,0 +1,192 @@
+- generic [ref=f19e3]:
+  - complementary [ref=f19e4]:
+    - generic [ref=f19e5]:
+      - generic [ref=f19e9]:
+        - paragraph [ref=f19e10]: إدارة قطع الغيار
+        - paragraph [ref=f19e11]: المخزون والمبيعات
+      - button "إغلاق القائمة الجانبية" [ref=f19e266] [cursor=pointer]
+    - navigation [ref=f19e16]:
+      - link "لوحة التحكم" [ref=f19e267] [cursor=pointer]:
+        - /url: /
+      - button "إدخال البيانات" [ref=f19e22] [cursor=pointer]
+      - generic [ref=f19e30]:
+        - button "المبيعات" [expanded] [ref=f19e268] [cursor=pointer]
+        - generic [ref=f19e39]:
+          - link "الطلبات" [ref=f19e269] [cursor=pointer]:
+            - /url: /orders
+          - link "الأقساط" [ref=f19e270] [cursor=pointer]:
+            - /url: /modules/installments
+      - button "المستخدمين" [ref=f19e50] [cursor=pointer]
+      - button "الإعدادات" [ref=f19e60] [cursor=pointer]
+  - generic [ref=f19e67]:
+    - banner [ref=f19e68]:
+      - generic [ref=f19e69]:
+        - button "فتح القائمة الجانبية" [ref=f19e271] [cursor=pointer]
+        - generic "اللغة" [ref=f19e272]:
+          - button "العربية" [active] [ref=f19e77] [cursor=pointer]
+          - button "English" [ref=f19e78] [cursor=pointer]
+        - button "تسجيل الخروج" [ref=f19e273] [cursor=pointer]
+    - main [ref=f19e80]:
+      - generic [ref=f19e81]:
+        - generic [ref=f19e82]:
+          - heading "طلب QA-PARTIAL-20260718-1836" [level=1] [ref=f19e274]
+          - paragraph [ref=f19e84]: بيانات العميل والعناصر وجدول الدفع والإجماليات وسجل الحالة من نقطة العرض.
+        - generic [ref=f19e85]:
+          - button "العودة للطلبات" [ref=f19e275] [cursor=pointer]
+          - button "Refund order" [ref=f19e87] [cursor=pointer]
+      - generic [ref=f19e91]:
+        - generic [ref=f19e92]:
+          - generic [ref=f19e93]:
+            - generic [ref=f19e94]:
+              - heading "بيانات الطلب" [level=3] [ref=f19e276]
+              - generic [ref=f19e97]:
+                - generic [ref=f19e98]:
+                  - term [ref=f19e99]: رقم الفاتورة
+                  - definition [ref=f19e100]: QA-PARTIAL-20260718-1836
+                - generic [ref=f19e101]:
+                  - term [ref=f19e102]: حالة الطلب
+                  - definition [ref=f19e103]:
+                    - generic [ref=f19e104]: مكتمل
+                - generic [ref=f19e105]:
+                  - term [ref=f19e106]: حالة الدفع
+                  - definition [ref=f19e107]:
+                    - generic [ref=f19e108]: مدفوع
+                - generic [ref=f19e109]:
+                  - term [ref=f19e110]: طريقة الدفع
+                  - definition [ref=f19e111]: نقدي
+                - generic [ref=f19e112]:
+                  - term [ref=f19e113]: أنشأه
+                  - definition [ref=f19e114]: root
+                - generic [ref=f19e115]:
+                  - term [ref=f19e116]: تاريخ الإنشاء
+                  - definition [ref=f19e117]: 18‏/07‏/2026، 9:36 م
+                - generic [ref=f19e118]:
+                  - term [ref=f19e119]: آخر تحديث
+                  - definition [ref=f19e120]: 18‏/07‏/2026، 9:44 م
+            - generic [ref=f19e121]:
+              - heading "بيانات العميل" [level=3] [ref=f19e277]
+              - generic [ref=f19e124]:
+                - generic [ref=f19e125]:
+                  - term [ref=f19e126]: العميل
+                  - definition [ref=f19e127]: custmoer 11
+                - generic [ref=f19e128]:
+                  - term [ref=f19e129]: الهاتف
+                  - definition [ref=f19e130]: "01012255454"
+                - generic [ref=f19e131]:
+                  - term [ref=f19e132]: البريد الإلكتروني
+                  - definition [ref=f19e133]: hameed12@gmail.com
+          - generic [ref=f19e134]:
+            - heading "ملخص الطلب" [level=2] [ref=f19e278]
+            - generic [ref=f19e136]:
+              - generic [ref=f19e137]:
+                - term [ref=f19e138]: الإجمالي الفرعي
+                - definition [ref=f19e139]: EGP 155.00
+              - generic [ref=f19e140]:
+                - term [ref=f19e141]: المبلغ المدفوع
+                - definition [ref=f19e142]: EGP 155.00
+              - generic [ref=f19e143]:
+                - term [ref=f19e144]: المبلغ المتبقي
+                - definition [ref=f19e145]: EGP 0.00
+              - generic [ref=f19e146]:
+                - term [ref=f19e147]: الإجمالي
+                - definition [ref=f19e148]: EGP 155.00
+            - paragraph [ref=f19e149]: الأسعار والإجماليات مؤكدة من الخلفية. الضريبة والخصم والشحن غير متاحة في واجهة API الحالية.
+        - generic [ref=f19e150]:
+          - heading "عناصر الطلب" [level=3] [ref=f19e279]
+          - table [ref=f19e154]:
+            - rowgroup [ref=f19e155]:
+              - row [ref=f19e280]:
+                - columnheader "عنصر المنتج" [ref=f19e281]
+                - columnheader "المستودع" [ref=f19e282]
+                - columnheader "سعر الوحدة" [ref=f19e283]
+                - columnheader "الكمية" [ref=f19e284]
+                - columnheader "إجمالي العنصر" [ref=f19e285]
+            - rowgroup [ref=f19e162]:
+              - row [ref=f19e163]:
+                - cell [ref=f19e164]:
+                  - generic [ref=f19e165]:
+                    - img "Test Product" [ref=f19e167]
+                    - generic [ref=f19e168]:
+                      - paragraph [ref=f19e169]: Test Product
+                      - paragraph [ref=f19e170]: TEST-SKU-012
+                - cell "test ens21" [ref=f19e171]
+                - cell "EGP 155.00" [ref=f19e172]
+                - cell "1" [ref=f19e173]
+                - cell "EGP 155.00" [ref=f19e174]
+        - generic [ref=f19e175]:
+          - heading "الدفعات" [level=3] [ref=f19e286]
+          - generic [ref=f19e178]:
+            - generic [ref=f19e179]:
+              - term [ref=f19e180]: الإجمالي
+              - definition [ref=f19e181]: EGP 155.00
+            - generic [ref=f19e182]:
+              - term [ref=f19e183]: المبلغ المدفوع
+              - definition [ref=f19e184]: EGP 155.00
+            - generic [ref=f19e185]:
+              - term [ref=f19e186]: المبلغ المتبقي
+              - definition [ref=f19e187]: EGP 0.00
+            - generic [ref=f19e188]:
+              - term [ref=f19e189]: حالة الدفع
+              - definition [ref=f19e190]:
+                - generic [ref=f19e191]: مدفوع
+                - generic [ref=f19e192]: نقدي
+          - table [ref=f19e195]:
+            - rowgroup [ref=f19e196]:
+              - row [ref=f19e287]:
+                - columnheader "قيمة الدفعة" [ref=f19e288]
+                - columnheader "طريقة الدفع" [ref=f19e289]
+                - columnheader "تاريخ الدفع" [ref=f19e290]
+                - columnheader "سجلها" [ref=f19e291]
+                - columnheader "حالة الدفع" [ref=f19e292]
+            - rowgroup [ref=f19e203]:
+              - row [ref=f19e293]:
+                - cell "EGP 50.00" [ref=f19e205]
+                - cell "نقدي" [ref=f19e294]
+                - cell "18‏/07‏/2026، 9:36 م" [ref=f19e295]
+                - cell "root" [ref=f19e208]
+                - cell "مدفوع" [ref=f19e296]
+              - row [ref=f19e297]:
+                - cell "EGP 50.00" [ref=f19e212]
+                - cell "بطاقة" [ref=f19e298]
+                - cell "18‏/07‏/2026، 9:39 م" [ref=f19e299]
+                - cell "root" [ref=f19e215]
+                - cell "مدفوع" [ref=f19e300]
+              - row [ref=f19e301]:
+                - cell "EGP 55.00" [ref=f19e219]
+                - cell "نقدي" [ref=f19e302]
+                - cell "18‏/07‏/2026، 9:40 م" [ref=f19e303]
+                - cell "root" [ref=f19e222]
+                - cell "مدفوع" [ref=f19e304]
+        - generic [ref=f19e226]:
+          - heading "سجل الحالة" [level=3] [ref=f19e305]
+          - list [ref=f19e229]:
+            - listitem [ref=f19e230]:
+              - paragraph [ref=f19e232]: تم إنشاء الطلب.
+              - paragraph [ref=f19e233]: root · 18‏/07‏/2026، 9:36 م
+            - listitem [ref=f19e234]:
+              - paragraph [ref=f19e236]: تم تغيير حالة دفع الطلب من pending إلى partial.
+              - paragraph [ref=f19e237]: root · 18‏/07‏/2026، 9:36 م
+            - listitem [ref=f19e238]:
+              - paragraph [ref=f19e240]: تم إنشاء القسط.
+              - paragraph [ref=f19e241]: root · 18‏/07‏/2026، 9:36 م
+            - listitem [ref=f19e242]:
+              - paragraph [ref=f19e244]: تم إنشاء القسط.
+              - paragraph [ref=f19e245]: root · 18‏/07‏/2026، 9:39 م
+            - listitem [ref=f19e246]:
+              - paragraph [ref=f19e248]: تم تغيير حالة دفع الطلب من partial إلى paid.
+              - paragraph [ref=f19e249]: root · 18‏/07‏/2026، 9:40 م
+            - listitem [ref=f19e250]:
+              - paragraph [ref=f19e252]: تم إنشاء القسط.
+              - paragraph [ref=f19e253]: root · 18‏/07‏/2026، 9:40 م
+            - listitem [ref=f19e254]:
+              - generic [ref=f19e255]:
+                - paragraph [ref=f19e256]: تم تغيير حالة الطلب من pending إلى paid.
+                - generic [ref=f19e257]: مدفوع
+              - paragraph [ref=f19e258]: test
+              - paragraph [ref=f19e259]: root · 18‏/07‏/2026، 9:44 م
+            - listitem [ref=f19e260]:
+              - generic [ref=f19e261]:
+                - paragraph [ref=f19e262]: تم تغيير حالة الطلب من paid إلى completed.
+                - generic [ref=f19e263]: مكتمل
+              - paragraph [ref=f19e264]: drsdf
+              - paragraph [ref=f19e265]: root · 18‏/07‏/2026، 9:44 م

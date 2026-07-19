@@ -1,0 +1,17 @@
+- main [ref=f7e3]:
+  - generic [ref=f7e5]:
+    - generic "اللغة" [ref=f7e7]:
+      - button "العربية" [ref=f7e12] [cursor=pointer]
+      - button "English" [ref=f7e13] [cursor=pointer]
+    - generic [ref=f7e14]:
+      - paragraph [ref=f7e15]: تسجيل دخول الإدارة
+      - heading "مرحباً بعودتك" [level=2] [ref=f7e16]
+      - paragraph [ref=f7e17]: سجّل الدخول مباشرة ببيانات الخلفية.
+    - generic [ref=f7e18]:
+      - generic [ref=f7e19]:
+        - generic [ref=f7e20]: البريد الإلكتروني *
+        - textbox "البريد الإلكتروني *" [ref=f7e21]
+      - generic [ref=f7e22]:
+        - generic [ref=f7e23]: كلمة المرور *
+        - textbox "كلمة المرور *" [ref=f7e24]
+    - button "تسجيل الدخول" [ref=f7e25] [cursor=pointer]

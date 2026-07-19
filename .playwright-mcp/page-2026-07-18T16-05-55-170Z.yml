@@ -1,0 +1,57 @@
+- generic [ref=e3]:
+  - complementary [ref=e4]:
+    - generic [ref=e9]:
+      - paragraph [ref=e10]: Auto Part Admin
+      - paragraph [ref=e11]: Inventory and sales
+    - navigation [ref=e12]:
+      - link "Dashboard" [ref=e13] [cursor=pointer]:
+        - /url: /
+      - button "إدخال البيانات" [ref=e18] [cursor=pointer]
+      - generic [ref=e26]:
+        - button "Sales" [expanded] [ref=e27] [cursor=pointer]
+        - generic [ref=e35]:
+          - link "Carts" [ref=e36] [cursor=pointer]:
+            - /url: /cart
+          - link "Orders" [ref=e42] [cursor=pointer]:
+            - /url: /orders
+          - link "Installments" [ref=e47] [cursor=pointer]:
+            - /url: /modules/installments
+      - button "المستخدمين" [ref=e52] [cursor=pointer]
+      - button "الإعدادات" [ref=e62] [cursor=pointer]
+  - generic [ref=e69]:
+    - banner [ref=e70]:
+      - generic [ref=e71]:
+        - generic [ref=e72]: Backend-supported filters appear inside each module.
+        - generic "Language" [ref=e77]:
+          - button "العربية" [ref=e82] [cursor=pointer]
+          - button "English" [ref=e83] [cursor=pointer]
+        - generic [ref=e84]:
+          - paragraph [ref=e85]: root
+          - paragraph [ref=e86]: root@jervis.com
+        - button "Logout" [ref=e87] [cursor=pointer]
+    - main [ref=e88]:
+      - generic [ref=e90]:
+        - heading "Current Cart" [level=1] [ref=e91]
+        - paragraph [ref=e92]: Manage your cart lines. Prices and stock are revalidated by the backend at checkout.
+      - generic [ref=e94]:
+        - generic [ref=e95]:
+          - generic [ref=e96]: Product item *
+          - button "Product item *" [expanded] [active] [ref=e98] [cursor=pointer]:
+            - generic [ref=e99]: ⌄
+          - generic [ref=e116]:
+            - searchbox [ref=e117]
+            - generic [ref=e118]:
+              - button "Test Product · TEST-SKU-012" [ref=e119] [cursor=pointer]
+              - button "Test Product · TEST-SKU-041" [ref=e122] [cursor=pointer]
+              - button "test ens21 · TEST-SKU-030" [ref=e125] [cursor=pointer]
+              - button "test ens21 · TEST-SKU-038" [ref=e128] [cursor=pointer]
+              - button "test ens21 · TEST-SKU-034" [ref=e131] [cursor=pointer]
+              - button "test ens21 · TEST-SKU-037" [ref=e134] [cursor=pointer]
+              - button "test ens21 · TEST-SKU-035" [ref=e137] [cursor=pointer]
+        - generic [ref=e100]:
+          - generic [ref=e101]: Quantity *
+          - spinbutton "Quantity *" [ref=e102]: "1"
+        - button "Add to cart" [disabled] [ref=e103]
+      - generic [ref=e108]:
+        - paragraph [ref=e114]: Your cart is empty
+        - paragraph [ref=e115]: Add an available product item to start a new order.

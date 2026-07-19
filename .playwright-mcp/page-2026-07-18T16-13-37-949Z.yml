@@ -1,0 +1,37 @@
+- generic [ref=f7e26]:
+  - complementary [ref=f7e27]:
+    - generic [ref=f7e28]:
+      - generic [ref=f7e32]:
+        - paragraph [ref=f7e33]: إدارة قطع الغيار
+        - paragraph [ref=f7e34]: المخزون والمبيعات
+      - button "إغلاق القائمة الجانبية" [ref=f7e35] [cursor=pointer]
+    - navigation [ref=f7e39]:
+      - link "لوحة التحكم" [ref=f7e40] [cursor=pointer]:
+        - /url: /
+      - button "إدخال البيانات" [ref=f7e45] [cursor=pointer]
+      - generic [ref=f7e53]:
+        - button "المبيعات" [expanded] [ref=f7e54] [cursor=pointer]
+        - generic [ref=f7e62]:
+          - link "السلات" [ref=f7e63] [cursor=pointer]:
+            - /url: /cart
+          - link "الطلبات" [ref=f7e69] [cursor=pointer]:
+            - /url: /orders
+          - link "الأقساط" [ref=f7e74] [cursor=pointer]:
+            - /url: /modules/installments
+      - button "المستخدمين" [ref=f7e79] [cursor=pointer]
+      - button "الإعدادات" [ref=f7e89] [cursor=pointer]
+  - generic [ref=f7e96]:
+    - banner [ref=f7e97]:
+      - generic [ref=f7e98]:
+        - button "فتح القائمة الجانبية" [ref=f7e99] [cursor=pointer]
+        - generic "اللغة" [ref=f7e101]:
+          - button "العربية" [ref=f7e106] [cursor=pointer]
+          - button "English" [ref=f7e107] [cursor=pointer]
+        - button "تسجيل الخروج" [ref=f7e108] [cursor=pointer]
+    - main [ref=f7e109]:
+      - generic [ref=f7e110]:
+        - generic [ref=f7e111]:
+          - heading "تفاصيل الطلب" [level=1] [ref=f7e112]
+          - paragraph [ref=f7e113]: بيانات العميل والعناصر وجدول الدفع والإجماليات وسجل الحالة من نقطة العرض.
+        - button "العودة للطلبات" [ref=f7e115] [cursor=pointer]
+      - generic [ref=f7e116]: جار تحميل البيانات...

@@ -1,0 +1,579 @@
+- generic [ref=f7e32]:
+  - complementary [ref=f7e33]:
+    - generic [ref=f7e38]:
+      - paragraph [ref=f7e39]: إدارة قطع الغيار
+      - paragraph [ref=f7e40]: المخزون والمبيعات
+    - navigation [ref=f7e41]:
+      - link "لوحة التحكم" [ref=f7e42] [cursor=pointer]:
+        - /url: /
+      - button "إدخال البيانات" [ref=f7e47] [cursor=pointer]
+      - button "المبيعات" [ref=f7e56] [cursor=pointer]
+      - button "المستخدمين" [ref=f7e65] [cursor=pointer]
+      - button "الإعدادات" [ref=f7e75] [cursor=pointer]
+  - generic [ref=f7e82]:
+    - banner [ref=f7e83]:
+      - generic [ref=f7e84]:
+        - generic [ref=f7e85]: الفلاتر المدعومة من الخلفية تظهر داخل كل شاشة.
+        - generic "اللغة" [ref=f7e90]:
+          - button "العربية" [ref=f7e95] [cursor=pointer]
+          - button "English" [ref=f7e96] [cursor=pointer]
+        - generic [ref=f7e97]:
+          - paragraph [ref=f7e98]: root
+          - paragraph [ref=f7e99]: root@jervis.com
+        - button "تسجيل الخروج" [ref=f7e100] [cursor=pointer]
+    - main [ref=f7e101]:
+      - generic [ref=f7e722]:
+        - heading "تعديل دور" [level=1] [ref=f7e723]
+        - paragraph [ref=f7e724]: الصلاحيات ترسل إلى الخلفية بأسمائها كما يتطلب RoleRequest.
+      - generic [ref=f7e725]:
+        - generic [ref=f7e726]:
+          - heading "البيانات الأساسية" [level=2] [ref=f7e727]
+          - generic [ref=f7e728]:
+            - generic [ref=f7e729]:
+              - generic [ref=f7e730]: المفتاح *
+              - textbox "المفتاح *" [ref=f7e731]: playwright_temp_role_202607111504
+            - generic [ref=f7e732]:
+              - generic [ref=f7e733]: الاسم المعروض بالعربية *
+              - textbox "الاسم المعروض بالعربية *" [ref=f7e734]: دور اختبار مؤقت
+            - generic [ref=f7e735]:
+              - generic [ref=f7e736]: الاسم المعروض بالإنجليزية
+              - textbox "الاسم المعروض بالإنجليزية" [ref=f7e737]: Playwright Temporary Role
+        - generic [ref=f7e738]:
+          - generic [ref=f7e739]:
+            - generic [ref=f7e740]:
+              - paragraph [ref=f7e741]: صلاحيات الدور
+              - paragraph [ref=f7e742]: 8 / 127 محدد
+            - generic [ref=f7e743]:
+              - searchbox "ابحث في الصلاحيات" [ref=f7e744]
+              - button "تحديد كل الصلاحيات" [ref=f7e745] [cursor=pointer]
+          - generic [ref=f7e746]:
+            - generic [ref=f7e747]:
+              - generic [ref=f7e748]:
+                - generic [ref=f7e749]:
+                  - heading "الانشطة" [level=3] [ref=f7e750]
+                  - paragraph [ref=f7e751]: مجموعة الصلاحيات · 1
+                - button "تحديد الكل" [ref=f7e752] [cursor=pointer]
+              - generic [ref=f7e754] [cursor=pointer]:
+                - checkbox "Log (read)" [ref=f7e755]
+                - generic [ref=f7e756]: Log (read)
+            - generic [ref=f7e757]:
+              - generic [ref=f7e758]:
+                - generic [ref=f7e759]:
+                  - heading "لوحة التحكم" [level=3] [ref=f7e760]
+                  - paragraph [ref=f7e761]: مجموعة الصلاحيات · 1
+                - button "تحديد الكل" [ref=f7e762] [cursor=pointer]
+              - generic [ref=f7e764] [cursor=pointer]:
+                - checkbox "Home (report)" [ref=f7e765]
+                - generic [ref=f7e766]: Home (report)
+            - generic [ref=f7e767]:
+              - generic [ref=f7e768]:
+                - generic [ref=f7e769]:
+                  - heading "warehouse" [level=3] [ref=f7e770]
+                  - paragraph [ref=f7e771]: مجموعة الصلاحيات · 9
+                - button "تحديد الكل" [ref=f7e772] [cursor=pointer]
+              - generic [ref=f7e773]:
+                - generic [ref=f7e774] [cursor=pointer]:
+                  - checkbox "Warehouse (toggle-active)" [ref=f7e775]
+                  - generic [ref=f7e776]: Warehouse (toggle-active)
+                - generic [ref=f7e777] [cursor=pointer]:
+                  - checkbox "Warehouse (force-delete)" [ref=f7e778]
+                  - generic [ref=f7e779]: Warehouse (force-delete)
+                - generic [ref=f7e780] [cursor=pointer]:
+                  - checkbox "Warehouse (restore)" [ref=f7e781]
+                  - generic [ref=f7e782]: Warehouse (restore)
+                - generic [ref=f7e783] [cursor=pointer]:
+                  - checkbox "Warehouse (view-own)" [ref=f7e784]
+                  - generic [ref=f7e785]: Warehouse (view-own)
+                - generic [ref=f7e786] [cursor=pointer]:
+                  - checkbox "Warehouse (view-all)" [ref=f7e787]
+                  - generic [ref=f7e788]: Warehouse (view-all)
+                - generic [ref=f7e789] [cursor=pointer]:
+                  - checkbox "Warehouse (delete)" [ref=f7e790]
+                  - generic [ref=f7e791]: Warehouse (delete)
+                - generic [ref=f7e792] [cursor=pointer]:
+                  - checkbox "Warehouse (update)" [ref=f7e793]
+                  - generic [ref=f7e794]: Warehouse (update)
+                - generic [ref=f7e795] [cursor=pointer]:
+                  - checkbox "Warehouse (read)" [ref=f7e796]
+                  - generic [ref=f7e797]: Warehouse (read)
+                - generic [ref=f7e798] [cursor=pointer]:
+                  - checkbox "Warehouse (create)" [ref=f7e799]
+                  - generic [ref=f7e800]: Warehouse (create)
+            - generic [ref=f7e801]:
+              - generic [ref=f7e802]:
+                - generic [ref=f7e803]:
+                  - heading "المستخدم" [level=3] [ref=f7e804]
+                  - paragraph [ref=f7e805]: مجموعة الصلاحيات · 8
+                - button "إلغاء المجموعة" [ref=f7e806] [cursor=pointer]
+              - generic [ref=f7e807]:
+                - generic [ref=f7e808] [cursor=pointer]:
+                  - checkbox "User (toggle-active)" [checked] [ref=f7e809]
+                  - generic [ref=f7e810]: User (toggle-active)
+                - generic [ref=f7e811] [cursor=pointer]:
+                  - checkbox "User (force-delete)" [checked] [ref=f7e812]
+                  - generic [ref=f7e813]: User (force-delete)
+                - generic [ref=f7e814] [cursor=pointer]:
+                  - checkbox "User (restore)" [checked] [ref=f7e815]
+                  - generic [ref=f7e816]: User (restore)
+                - generic [ref=f7e817] [cursor=pointer]:
+                  - checkbox "User (view-own)" [checked] [ref=f7e818]
+                  - generic [ref=f7e819]: User (view-own)
+                - generic [ref=f7e820] [cursor=pointer]:
+                  - checkbox "User (view-all)" [checked] [ref=f7e821]
+                  - generic [ref=f7e822]: User (view-all)
+                - generic [ref=f7e823] [cursor=pointer]:
+                  - checkbox "User (delete)" [checked] [ref=f7e824]
+                  - generic [ref=f7e825]: User (delete)
+                - generic [ref=f7e826] [cursor=pointer]:
+                  - checkbox "User (update)" [checked] [ref=f7e827]
+                  - generic [ref=f7e828]: User (update)
+                - generic [ref=f7e829] [cursor=pointer]:
+                  - checkbox "User (create)" [checked] [ref=f7e830]
+                  - generic [ref=f7e831]: User (create)
+            - generic [ref=f7e832]:
+              - generic [ref=f7e833]:
+                - generic [ref=f7e834]:
+                  - heading "stock" [level=3] [ref=f7e835]
+                  - paragraph [ref=f7e836]: مجموعة الصلاحيات · 4
+                - button "تحديد الكل" [ref=f7e837] [cursor=pointer]
+              - generic [ref=f7e838]:
+                - generic [ref=f7e839] [cursor=pointer]:
+                  - checkbox "Stock (delete)" [ref=f7e840]
+                  - generic [ref=f7e841]: Stock (delete)
+                - generic [ref=f7e842] [cursor=pointer]:
+                  - checkbox "Stock (update)" [ref=f7e843]
+                  - generic [ref=f7e844]: Stock (update)
+                - generic [ref=f7e845] [cursor=pointer]:
+                  - checkbox "Stock (read)" [ref=f7e846]
+                  - generic [ref=f7e847]: Stock (read)
+                - generic [ref=f7e848] [cursor=pointer]:
+                  - checkbox "Stock (create)" [ref=f7e849]
+                  - generic [ref=f7e850]: Stock (create)
+            - generic [ref=f7e851]:
+              - generic [ref=f7e852]:
+                - generic [ref=f7e853]:
+                  - heading "الإعداد" [level=3] [ref=f7e854]
+                  - paragraph [ref=f7e855]: مجموعة الصلاحيات · 2
+                - button "تحديد الكل" [ref=f7e856] [cursor=pointer]
+              - generic [ref=f7e857]:
+                - generic [ref=f7e858] [cursor=pointer]:
+                  - checkbox "Setting (update)" [ref=f7e859]
+                  - generic [ref=f7e860]: Setting (update)
+                - generic [ref=f7e861] [cursor=pointer]:
+                  - checkbox "Setting (read)" [ref=f7e862]
+                  - generic [ref=f7e863]: Setting (read)
+            - generic [ref=f7e864]:
+              - generic [ref=f7e865]:
+                - generic [ref=f7e866]:
+                  - heading "الدور" [level=3] [ref=f7e867]
+                  - paragraph [ref=f7e868]: مجموعة الصلاحيات · 6
+                - button "تحديد الكل" [ref=f7e869] [cursor=pointer]
+              - generic [ref=f7e870]:
+                - generic [ref=f7e871] [cursor=pointer]:
+                  - checkbox "Role (toggle-active)" [ref=f7e872]
+                  - generic [ref=f7e873]: Role (toggle-active)
+                - generic [ref=f7e874] [cursor=pointer]:
+                  - checkbox "Role (view-own)" [ref=f7e875]
+                  - generic [ref=f7e876]: Role (view-own)
+                - generic [ref=f7e877] [cursor=pointer]:
+                  - checkbox "Role (view-all)" [ref=f7e878]
+                  - generic [ref=f7e879]: Role (view-all)
+                - generic [ref=f7e880] [cursor=pointer]:
+                  - checkbox "Role (delete)" [ref=f7e881]
+                  - generic [ref=f7e882]: Role (delete)
+                - generic [ref=f7e883] [cursor=pointer]:
+                  - checkbox "Role (update)" [ref=f7e884]
+                  - generic [ref=f7e885]: Role (update)
+                - generic [ref=f7e886] [cursor=pointer]:
+                  - checkbox "Role (create)" [ref=f7e887]
+                  - generic [ref=f7e888]: Role (create)
+            - generic [ref=f7e889]:
+              - generic [ref=f7e890]:
+                - generic [ref=f7e891]:
+                  - heading "product-option-value" [level=3] [ref=f7e892]
+                  - paragraph [ref=f7e893]: مجموعة الصلاحيات · 9
+                - button "تحديد الكل" [ref=f7e894] [cursor=pointer]
+              - generic [ref=f7e895]:
+                - generic [ref=f7e896] [cursor=pointer]:
+                  - checkbox "ProductOptionValue (toggle-active)" [ref=f7e897]
+                  - generic [ref=f7e898]: ProductOptionValue (toggle-active)
+                - generic [ref=f7e899] [cursor=pointer]:
+                  - checkbox "ProductOptionValue (force-delete)" [ref=f7e900]
+                  - generic [ref=f7e901]: ProductOptionValue (force-delete)
+                - generic [ref=f7e902] [cursor=pointer]:
+                  - checkbox "ProductOptionValue (restore)" [ref=f7e903]
+                  - generic [ref=f7e904]: ProductOptionValue (restore)
+                - generic [ref=f7e905] [cursor=pointer]:
+                  - checkbox "ProductOptionValue (view-own)" [ref=f7e906]
+                  - generic [ref=f7e907]: ProductOptionValue (view-own)
+                - generic [ref=f7e908] [cursor=pointer]:
+                  - checkbox "ProductOptionValue (view-all)" [ref=f7e909]
+                  - generic [ref=f7e910]: ProductOptionValue (view-all)
+                - generic [ref=f7e911] [cursor=pointer]:
+                  - checkbox "ProductOptionValue (delete)" [ref=f7e912]
+                  - generic [ref=f7e913]: ProductOptionValue (delete)
+                - generic [ref=f7e914] [cursor=pointer]:
+                  - checkbox "ProductOptionValue (update)" [ref=f7e915]
+                  - generic [ref=f7e916]: ProductOptionValue (update)
+                - generic [ref=f7e917] [cursor=pointer]:
+                  - checkbox "ProductOptionValue (read)" [ref=f7e918]
+                  - generic [ref=f7e919]: ProductOptionValue (read)
+                - generic [ref=f7e920] [cursor=pointer]:
+                  - checkbox "ProductOptionValue (create)" [ref=f7e921]
+                  - generic [ref=f7e922]: ProductOptionValue (create)
+            - generic [ref=f7e923]:
+              - generic [ref=f7e924]:
+                - generic [ref=f7e925]:
+                  - heading "product-option" [level=3] [ref=f7e926]
+                  - paragraph [ref=f7e927]: مجموعة الصلاحيات · 9
+                - button "تحديد الكل" [ref=f7e928] [cursor=pointer]
+              - generic [ref=f7e929]:
+                - generic [ref=f7e930] [cursor=pointer]:
+                  - checkbox "ProductOption (toggle-active)" [ref=f7e931]
+                  - generic [ref=f7e932]: ProductOption (toggle-active)
+                - generic [ref=f7e933] [cursor=pointer]:
+                  - checkbox "ProductOption (force-delete)" [ref=f7e934]
+                  - generic [ref=f7e935]: ProductOption (force-delete)
+                - generic [ref=f7e936] [cursor=pointer]:
+                  - checkbox "ProductOption (restore)" [ref=f7e937]
+                  - generic [ref=f7e938]: ProductOption (restore)
+                - generic [ref=f7e939] [cursor=pointer]:
+                  - checkbox "ProductOption (view-own)" [ref=f7e940]
+                  - generic [ref=f7e941]: ProductOption (view-own)
+                - generic [ref=f7e942] [cursor=pointer]:
+                  - checkbox "ProductOption (view-all)" [ref=f7e943]
+                  - generic [ref=f7e944]: ProductOption (view-all)
+                - generic [ref=f7e945] [cursor=pointer]:
+                  - checkbox "ProductOption (delete)" [ref=f7e946]
+                  - generic [ref=f7e947]: ProductOption (delete)
+                - generic [ref=f7e948] [cursor=pointer]:
+                  - checkbox "ProductOption (update)" [ref=f7e949]
+                  - generic [ref=f7e950]: ProductOption (update)
+                - generic [ref=f7e951] [cursor=pointer]:
+                  - checkbox "ProductOption (read)" [ref=f7e952]
+                  - generic [ref=f7e953]: ProductOption (read)
+                - generic [ref=f7e954] [cursor=pointer]:
+                  - checkbox "ProductOption (create)" [ref=f7e955]
+                  - generic [ref=f7e956]: ProductOption (create)
+            - generic [ref=f7e957]:
+              - generic [ref=f7e958]:
+                - generic [ref=f7e959]:
+                  - heading "product-item" [level=3] [ref=f7e960]
+                  - paragraph [ref=f7e961]: مجموعة الصلاحيات · 9
+                - button "تحديد الكل" [ref=f7e962] [cursor=pointer]
+              - generic [ref=f7e963]:
+                - generic [ref=f7e964] [cursor=pointer]:
+                  - checkbox "ProductItem (toggle-active)" [ref=f7e965]
+                  - generic [ref=f7e966]: ProductItem (toggle-active)
+                - generic [ref=f7e967] [cursor=pointer]:
+                  - checkbox "ProductItem (force-delete)" [ref=f7e968]
+                  - generic [ref=f7e969]: ProductItem (force-delete)
+                - generic [ref=f7e970] [cursor=pointer]:
+                  - checkbox "ProductItem (restore)" [ref=f7e971]
+                  - generic [ref=f7e972]: ProductItem (restore)
+                - generic [ref=f7e973] [cursor=pointer]:
+                  - checkbox "ProductItem (view-own)" [ref=f7e974]
+                  - generic [ref=f7e975]: ProductItem (view-own)
+                - generic [ref=f7e976] [cursor=pointer]:
+                  - checkbox "ProductItem (view-all)" [ref=f7e977]
+                  - generic [ref=f7e978]: ProductItem (view-all)
+                - generic [ref=f7e979] [cursor=pointer]:
+                  - checkbox "ProductItem (delete)" [ref=f7e980]
+                  - generic [ref=f7e981]: ProductItem (delete)
+                - generic [ref=f7e982] [cursor=pointer]:
+                  - checkbox "ProductItem (update)" [ref=f7e983]
+                  - generic [ref=f7e984]: ProductItem (update)
+                - generic [ref=f7e985] [cursor=pointer]:
+                  - checkbox "ProductItem (read)" [ref=f7e986]
+                  - generic [ref=f7e987]: ProductItem (read)
+                - generic [ref=f7e988] [cursor=pointer]:
+                  - checkbox "ProductItem (create)" [ref=f7e989]
+                  - generic [ref=f7e990]: ProductItem (create)
+            - generic [ref=f7e991]:
+              - generic [ref=f7e992]:
+                - generic [ref=f7e993]:
+                  - heading "product" [level=3] [ref=f7e994]
+                  - paragraph [ref=f7e995]: مجموعة الصلاحيات · 9
+                - button "تحديد الكل" [ref=f7e996] [cursor=pointer]
+              - generic [ref=f7e997]:
+                - generic [ref=f7e998] [cursor=pointer]:
+                  - checkbox "Product (toggle-active)" [ref=f7e999]
+                  - generic [ref=f7e1000]: Product (toggle-active)
+                - generic [ref=f7e1001] [cursor=pointer]:
+                  - checkbox "Product (force-delete)" [ref=f7e1002]
+                  - generic [ref=f7e1003]: Product (force-delete)
+                - generic [ref=f7e1004] [cursor=pointer]:
+                  - checkbox "Product (restore)" [ref=f7e1005]
+                  - generic [ref=f7e1006]: Product (restore)
+                - generic [ref=f7e1007] [cursor=pointer]:
+                  - checkbox "Product (view-own)" [ref=f7e1008]
+                  - generic [ref=f7e1009]: Product (view-own)
+                - generic [ref=f7e1010] [cursor=pointer]:
+                  - checkbox "Product (view-all)" [ref=f7e1011]
+                  - generic [ref=f7e1012]: Product (view-all)
+                - generic [ref=f7e1013] [cursor=pointer]:
+                  - checkbox "Product (delete)" [ref=f7e1014]
+                  - generic [ref=f7e1015]: Product (delete)
+                - generic [ref=f7e1016] [cursor=pointer]:
+                  - checkbox "Product (update)" [ref=f7e1017]
+                  - generic [ref=f7e1018]: Product (update)
+                - generic [ref=f7e1019] [cursor=pointer]:
+                  - checkbox "Product (read)" [ref=f7e1020]
+                  - generic [ref=f7e1021]: Product (read)
+                - generic [ref=f7e1022] [cursor=pointer]:
+                  - checkbox "Product (create)" [ref=f7e1023]
+                  - generic [ref=f7e1024]: Product (create)
+            - generic [ref=f7e1025]:
+              - generic [ref=f7e1026]:
+                - generic [ref=f7e1027]:
+                  - heading "personal-access-token" [level=3] [ref=f7e1028]
+                  - paragraph [ref=f7e1029]: مجموعة الصلاحيات · 4
+                - button "تحديد الكل" [ref=f7e1030] [cursor=pointer]
+              - generic [ref=f7e1031]:
+                - generic [ref=f7e1032] [cursor=pointer]:
+                  - checkbox "PersonalAccessToken (delete)" [ref=f7e1033]
+                  - generic [ref=f7e1034]: PersonalAccessToken (delete)
+                - generic [ref=f7e1035] [cursor=pointer]:
+                  - checkbox "PersonalAccessToken (update)" [ref=f7e1036]
+                  - generic [ref=f7e1037]: PersonalAccessToken (update)
+                - generic [ref=f7e1038] [cursor=pointer]:
+                  - checkbox "PersonalAccessToken (read)" [ref=f7e1039]
+                  - generic [ref=f7e1040]: PersonalAccessToken (read)
+                - generic [ref=f7e1041] [cursor=pointer]:
+                  - checkbox "PersonalAccessToken (create)" [ref=f7e1042]
+                  - generic [ref=f7e1043]: PersonalAccessToken (create)
+            - generic [ref=f7e1044]:
+              - generic [ref=f7e1045]:
+                - generic [ref=f7e1046]:
+                  - heading "الصلاحية" [level=3] [ref=f7e1047]
+                  - paragraph [ref=f7e1048]: مجموعة الصلاحيات · 4
+                - button "تحديد الكل" [ref=f7e1049] [cursor=pointer]
+              - generic [ref=f7e1050]:
+                - generic [ref=f7e1051] [cursor=pointer]:
+                  - checkbox "Permission (delete)" [ref=f7e1052]
+                  - generic [ref=f7e1053]: Permission (delete)
+                - generic [ref=f7e1054] [cursor=pointer]:
+                  - checkbox "Permission (update)" [ref=f7e1055]
+                  - generic [ref=f7e1056]: Permission (update)
+                - generic [ref=f7e1057] [cursor=pointer]:
+                  - checkbox "Permission (read)" [ref=f7e1058]
+                  - generic [ref=f7e1059]: Permission (read)
+                - generic [ref=f7e1060] [cursor=pointer]:
+                  - checkbox "Permission (create)" [ref=f7e1061]
+                  - generic [ref=f7e1062]: Permission (create)
+            - generic [ref=f7e1063]:
+              - generic [ref=f7e1064]:
+                - generic [ref=f7e1065]:
+                  - heading "الإشعار" [level=3] [ref=f7e1066]
+                  - paragraph [ref=f7e1067]: مجموعة الصلاحيات · 4
+                - button "تحديد الكل" [ref=f7e1068] [cursor=pointer]
+              - generic [ref=f7e1069]:
+                - generic [ref=f7e1070] [cursor=pointer]:
+                  - checkbox "Notification (delete)" [ref=f7e1071]
+                  - generic [ref=f7e1072]: Notification (delete)
+                - generic [ref=f7e1073] [cursor=pointer]:
+                  - checkbox "Notification (update)" [ref=f7e1074]
+                  - generic [ref=f7e1075]: Notification (update)
+                - generic [ref=f7e1076] [cursor=pointer]:
+                  - checkbox "Notification (read)" [ref=f7e1077]
+                  - generic [ref=f7e1078]: Notification (read)
+                - generic [ref=f7e1079] [cursor=pointer]:
+                  - checkbox "Notification (create)" [ref=f7e1080]
+                  - generic [ref=f7e1081]: Notification (create)
+            - generic [ref=f7e1082]:
+              - generic [ref=f7e1083]:
+                - generic [ref=f7e1084]:
+                  - heading "item-price" [level=3] [ref=f7e1085]
+                  - paragraph [ref=f7e1086]: مجموعة الصلاحيات · 4
+                - button "تحديد الكل" [ref=f7e1087] [cursor=pointer]
+              - generic [ref=f7e1088]:
+                - generic [ref=f7e1089] [cursor=pointer]:
+                  - checkbox "ItemPrice (delete)" [ref=f7e1090]
+                  - generic [ref=f7e1091]: ItemPrice (delete)
+                - generic [ref=f7e1092] [cursor=pointer]:
+                  - checkbox "ItemPrice (update)" [ref=f7e1093]
+                  - generic [ref=f7e1094]: ItemPrice (update)
+                - generic [ref=f7e1095] [cursor=pointer]:
+                  - checkbox "ItemPrice (read)" [ref=f7e1096]
+                  - generic [ref=f7e1097]: ItemPrice (read)
+                - generic [ref=f7e1098] [cursor=pointer]:
+                  - checkbox "ItemPrice (create)" [ref=f7e1099]
+                  - generic [ref=f7e1100]: ItemPrice (create)
+            - generic [ref=f7e1101]:
+              - generic [ref=f7e1102]:
+                - generic [ref=f7e1103]:
+                  - heading "item-image" [level=3] [ref=f7e1104]
+                  - paragraph [ref=f7e1105]: مجموعة الصلاحيات · 7
+                - button "تحديد الكل" [ref=f7e1106] [cursor=pointer]
+              - generic [ref=f7e1107]:
+                - generic [ref=f7e1108] [cursor=pointer]:
+                  - checkbox "ItemImage (toggle-active)" [ref=f7e1109]
+                  - generic [ref=f7e1110]: ItemImage (toggle-active)
+                - generic [ref=f7e1111] [cursor=pointer]:
+                  - checkbox "ItemImage (view-own)" [ref=f7e1112]
+                  - generic [ref=f7e1113]: ItemImage (view-own)
+                - generic [ref=f7e1114] [cursor=pointer]:
+                  - checkbox "ItemImage (view-all)" [ref=f7e1115]
+                  - generic [ref=f7e1116]: ItemImage (view-all)
+                - generic [ref=f7e1117] [cursor=pointer]:
+                  - checkbox "ItemImage (delete)" [ref=f7e1118]
+                  - generic [ref=f7e1119]: ItemImage (delete)
+                - generic [ref=f7e1120] [cursor=pointer]:
+                  - checkbox "ItemImage (update)" [ref=f7e1121]
+                  - generic [ref=f7e1122]: ItemImage (update)
+                - generic [ref=f7e1123] [cursor=pointer]:
+                  - checkbox "ItemImage (read)" [ref=f7e1124]
+                  - generic [ref=f7e1125]: ItemImage (read)
+                - generic [ref=f7e1126] [cursor=pointer]:
+                  - checkbox "ItemImage (create)" [ref=f7e1127]
+                  - generic [ref=f7e1128]: ItemImage (create)
+            - generic [ref=f7e1129]:
+              - generic [ref=f7e1130]:
+                - generic [ref=f7e1131]:
+                  - heading "customer" [level=3] [ref=f7e1132]
+                  - paragraph [ref=f7e1133]: مجموعة الصلاحيات · 9
+                - button "تحديد الكل" [ref=f7e1134] [cursor=pointer]
+              - generic [ref=f7e1135]:
+                - generic [ref=f7e1136] [cursor=pointer]:
+                  - checkbox "Customer (toggle-active)" [ref=f7e1137]
+                  - generic [ref=f7e1138]: Customer (toggle-active)
+                - generic [ref=f7e1139] [cursor=pointer]:
+                  - checkbox "Customer (force-delete)" [ref=f7e1140]
+                  - generic [ref=f7e1141]: Customer (force-delete)
+                - generic [ref=f7e1142] [cursor=pointer]:
+                  - checkbox "Customer (restore)" [ref=f7e1143]
+                  - generic [ref=f7e1144]: Customer (restore)
+                - generic [ref=f7e1145] [cursor=pointer]:
+                  - checkbox "Customer (view-own)" [ref=f7e1146]
+                  - generic [ref=f7e1147]: Customer (view-own)
+                - generic [ref=f7e1148] [cursor=pointer]:
+                  - checkbox "Customer (view-all)" [ref=f7e1149]
+                  - generic [ref=f7e1150]: Customer (view-all)
+                - generic [ref=f7e1151] [cursor=pointer]:
+                  - checkbox "Customer (delete)" [ref=f7e1152]
+                  - generic [ref=f7e1153]: Customer (delete)
+                - generic [ref=f7e1154] [cursor=pointer]:
+                  - checkbox "Customer (update)" [ref=f7e1155]
+                  - generic [ref=f7e1156]: Customer (update)
+                - generic [ref=f7e1157] [cursor=pointer]:
+                  - checkbox "Customer (read)" [ref=f7e1158]
+                  - generic [ref=f7e1159]: Customer (read)
+                - generic [ref=f7e1160] [cursor=pointer]:
+                  - checkbox "Customer (create)" [ref=f7e1161]
+                  - generic [ref=f7e1162]: Customer (create)
+            - generic [ref=f7e1163]:
+              - generic [ref=f7e1164]:
+                - generic [ref=f7e1165]:
+                  - heading "country" [level=3] [ref=f7e1166]
+                  - paragraph [ref=f7e1167]: مجموعة الصلاحيات · 6
+                - button "تحديد الكل" [ref=f7e1168] [cursor=pointer]
+              - generic [ref=f7e1169]:
+                - generic [ref=f7e1170] [cursor=pointer]:
+                  - checkbox "Country (restore)" [ref=f7e1171]
+                  - generic [ref=f7e1172]: Country (restore)
+                - generic [ref=f7e1173] [cursor=pointer]:
+                  - checkbox "Country (force-delete)" [ref=f7e1174]
+                  - generic [ref=f7e1175]: Country (force-delete)
+                - generic [ref=f7e1176] [cursor=pointer]:
+                  - checkbox "Country (delete)" [ref=f7e1177]
+                  - generic [ref=f7e1178]: Country (delete)
+                - generic [ref=f7e1179] [cursor=pointer]:
+                  - checkbox "Country (update)" [ref=f7e1180]
+                  - generic [ref=f7e1181]: Country (update)
+                - generic [ref=f7e1182] [cursor=pointer]:
+                  - checkbox "Country (read)" [ref=f7e1183]
+                  - generic [ref=f7e1184]: Country (read)
+                - generic [ref=f7e1185] [cursor=pointer]:
+                  - checkbox "Country (create)" [ref=f7e1186]
+                  - generic [ref=f7e1187]: Country (create)
+            - generic [ref=f7e1188]:
+              - generic [ref=f7e1189]:
+                - generic [ref=f7e1190]:
+                  - heading "category" [level=3] [ref=f7e1191]
+                  - paragraph [ref=f7e1192]: مجموعة الصلاحيات · 9
+                - button "تحديد الكل" [ref=f7e1193] [cursor=pointer]
+              - generic [ref=f7e1194]:
+                - generic [ref=f7e1195] [cursor=pointer]:
+                  - checkbox "Category (toggle-active)" [ref=f7e1196]
+                  - generic [ref=f7e1197]: Category (toggle-active)
+                - generic [ref=f7e1198] [cursor=pointer]:
+                  - checkbox "Category (force-delete)" [ref=f7e1199]
+                  - generic [ref=f7e1200]: Category (force-delete)
+                - generic [ref=f7e1201] [cursor=pointer]:
+                  - checkbox "Category (restore)" [ref=f7e1202]
+                  - generic [ref=f7e1203]: Category (restore)
+                - generic [ref=f7e1204] [cursor=pointer]:
+                  - checkbox "Category (view-own)" [ref=f7e1205]
+                  - generic [ref=f7e1206]: Category (view-own)
+                - generic [ref=f7e1207] [cursor=pointer]:
+                  - checkbox "Category (view-all)" [ref=f7e1208]
+                  - generic [ref=f7e1209]: Category (view-all)
+                - generic [ref=f7e1210] [cursor=pointer]:
+                  - checkbox "Category (delete)" [ref=f7e1211]
+                  - generic [ref=f7e1212]: Category (delete)
+                - generic [ref=f7e1213] [cursor=pointer]:
+                  - checkbox "Category (update)" [ref=f7e1214]
+                  - generic [ref=f7e1215]: Category (update)
+                - generic [ref=f7e1216] [cursor=pointer]:
+                  - checkbox "Category (read)" [ref=f7e1217]
+                  - generic [ref=f7e1218]: Category (read)
+                - generic [ref=f7e1219] [cursor=pointer]:
+                  - checkbox "Category (create)" [ref=f7e1220]
+                  - generic [ref=f7e1221]: Category (create)
+            - generic [ref=f7e1222]:
+              - generic [ref=f7e1223]:
+                - generic [ref=f7e1224]:
+                  - heading "cart" [level=3] [ref=f7e1225]
+                  - paragraph [ref=f7e1226]: مجموعة الصلاحيات · 4
+                - button "تحديد الكل" [ref=f7e1227] [cursor=pointer]
+              - generic [ref=f7e1228]:
+                - generic [ref=f7e1229] [cursor=pointer]:
+                  - checkbox "Cart (delete)" [ref=f7e1230]
+                  - generic [ref=f7e1231]: Cart (delete)
+                - generic [ref=f7e1232] [cursor=pointer]:
+                  - checkbox "Cart (update)" [ref=f7e1233]
+                  - generic [ref=f7e1234]: Cart (update)
+                - generic [ref=f7e1235] [cursor=pointer]:
+                  - checkbox "Cart (read)" [ref=f7e1236]
+                  - generic [ref=f7e1237]: Cart (read)
+                - generic [ref=f7e1238] [cursor=pointer]:
+                  - checkbox "Cart (create)" [ref=f7e1239]
+                  - generic [ref=f7e1240]: Cart (create)
+            - generic [ref=f7e1241]:
+              - generic [ref=f7e1242]:
+                - generic [ref=f7e1243]:
+                  - heading "brand" [level=3] [ref=f7e1244]
+                  - paragraph [ref=f7e1245]: مجموعة الصلاحيات · 9
+                - button "تحديد الكل" [ref=f7e1246] [cursor=pointer]
+              - generic [ref=f7e1247]:
+                - generic [ref=f7e1248] [cursor=pointer]:
+                  - checkbox "Brand (toggle-active)" [ref=f7e1249]
+                  - generic [ref=f7e1250]: Brand (toggle-active)
+                - generic [ref=f7e1251] [cursor=pointer]:
+                  - checkbox "Brand (force-delete)" [ref=f7e1252]
+                  - generic [ref=f7e1253]: Brand (force-delete)
+                - generic [ref=f7e1254] [cursor=pointer]:
+                  - checkbox "Brand (restore)" [ref=f7e1255]
+                  - generic [ref=f7e1256]: Brand (restore)
+                - generic [ref=f7e1257] [cursor=pointer]:
+                  - checkbox "Brand (view-own)" [ref=f7e1258]
+                  - generic [ref=f7e1259]: Brand (view-own)
+                - generic [ref=f7e1260] [cursor=pointer]:
+                  - checkbox "Brand (view-all)" [ref=f7e1261]
+                  - generic [ref=f7e1262]: Brand (view-all)
+                - generic [ref=f7e1263] [cursor=pointer]:
+                  - checkbox "Brand (delete)" [ref=f7e1264]
+                  - generic [ref=f7e1265]: Brand (delete)
+                - generic [ref=f7e1266] [cursor=pointer]:
+                  - checkbox "Brand (update)" [ref=f7e1267]
+                  - generic [ref=f7e1268]: Brand (update)
+                - generic [ref=f7e1269] [cursor=pointer]:
+                  - checkbox "Brand (read)" [ref=f7e1270]
+                  - generic [ref=f7e1271]: Brand (read)
+                - generic [ref=f7e1272] [cursor=pointer]:
+                  - checkbox "Brand (create)" [ref=f7e1273]
+                  - generic [ref=f7e1274]: Brand (create)
+        - generic [ref=f7e1275]:
+          - link "إلغاء" [ref=f7e1276] [cursor=pointer]:
+            - /url: /roles
+          - button "حفظ" [ref=f7e1277] [cursor=pointer]

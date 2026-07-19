@@ -1,0 +1,125 @@
+- generic [ref=f146e3]:
+  - complementary [ref=f146e4]:
+    - generic [ref=f146e9]:
+      - paragraph [ref=f146e10]: إدارة قطع الغيار
+      - paragraph [ref=f146e11]: المخزون والمبيعات
+    - navigation [ref=f146e12]:
+      - link "لوحة التحكم" [ref=f146e13] [cursor=pointer]:
+        - /url: /
+      - button "إدخال البيانات" [ref=f146e18] [cursor=pointer]
+      - button "المبيعات" [ref=f146e27] [cursor=pointer]
+      - button "المستخدمين" [ref=f146e36] [cursor=pointer]
+      - button "الإعدادات" [ref=f146e46] [cursor=pointer]
+  - generic [ref=f146e53]:
+    - banner [ref=f146e54]:
+      - generic [ref=f146e55]:
+        - generic [ref=f146e56]: الفلاتر المدعومة من الخلفية تظهر داخل كل شاشة.
+        - generic "اللغة" [ref=f146e61]:
+          - button "العربية" [ref=f146e66] [cursor=pointer]
+          - button "English" [ref=f146e67] [cursor=pointer]
+        - generic [ref=f146e68]:
+          - paragraph [ref=f146e69]: root
+          - paragraph [ref=f146e70]: root@jervis.com
+        - button "تسجيل الخروج" [ref=f146e71] [cursor=pointer]
+    - main [ref=f146e72]:
+      - generic [ref=f146e73]:
+        - generic [ref=f146e74]:
+          - heading "المنتجات" [level=1] [ref=f146e75]
+          - paragraph [ref=f146e76]: سجلات المنتجات الرئيسية مرتبطة بالتصنيفات والعلامات التجارية من الخلفية.
+        - link "إنشاء" [ref=f146e78] [cursor=pointer]:
+          - /url: /products/create
+      - generic [ref=f146e79]:
+        - generic [ref=f146e80]:
+          - searchbox "البحث غير مدعوم بشكل موثوق في نقطة الخلفية هذه." [disabled] [ref=f146e81]
+          - generic [ref=f146e82]:
+            - button "بحث" [disabled] [ref=f146e83]
+            - button "مسح" [disabled] [ref=f146e84]
+        - button "تحديث" [ref=f146e85] [cursor=pointer]
+      - table [ref=f146e88]:
+        - rowgroup [ref=f146e89]:
+          - row [ref=f146e90]:
+            - columnheader [ref=f146e91]:
+              - button "المعرف" [ref=f146e92] [cursor=pointer]:
+                - generic [ref=f146e94]: DESC
+            - columnheader "الاسم" [ref=f146e95]
+            - columnheader "التصنيف" [ref=f146e96]
+            - columnheader "العلامة التجارية" [ref=f146e97]
+            - columnheader "الحالة" [ref=f146e98]
+            - columnheader "الإجراءات" [ref=f146e99]
+        - rowgroup [ref=f146e100]:
+          - row [ref=f146e101]:
+            - cell "8" [ref=f146e102]
+            - cell "الاسم بالعربية *" [ref=f146e103]
+            - cell "test ars21" [ref=f146e104]
+            - cell "test ars21e" [ref=f146e105]
+            - cell "نشط" [ref=f146e106]
+            - cell [ref=f146e108]:
+              - generic [ref=f146e109]:
+                - button "عرض" [ref=f146e110] [cursor=pointer]
+                - generic [ref=f146e115]:
+                  - button "تبديل الحالة" [ref=f146e116] [cursor=pointer]
+                  - link "تعديل" [ref=f146e117] [cursor=pointer]:
+                    - /url: /products/8/edit
+                  - button "حذف" [ref=f146e118] [cursor=pointer]
+          - row [ref=f146e119]:
+            - cell "7" [ref=f146e120]
+            - cell "منتج تجريبي" [ref=f146e121]
+            - cell "test ars21" [ref=f146e122]
+            - cell "test ars21e" [ref=f146e123]
+            - cell "نشط" [ref=f146e124]
+            - cell [ref=f146e126]:
+              - generic [ref=f146e127]:
+                - button "عرض" [ref=f146e128] [cursor=pointer]
+                - generic [ref=f146e133]:
+                  - button "تبديل الحالة" [ref=f146e134] [cursor=pointer]
+                  - link "تعديل" [ref=f146e135] [cursor=pointer]:
+                    - /url: /products/7/edit
+                  - button "حذف" [ref=f146e136] [cursor=pointer]
+          - row [ref=f146e137]:
+            - cell "6" [ref=f146e138]
+            - cell "منتج تجريبي" [ref=f146e139]
+            - cell "test ars21" [ref=f146e140]
+            - cell "test ars21e" [ref=f146e141]
+            - cell "غير نشط" [ref=f146e142]
+            - cell [ref=f146e144]:
+              - generic [ref=f146e145]:
+                - button "عرض" [ref=f146e146] [cursor=pointer]
+                - generic [ref=f146e151]:
+                  - button "تبديل الحالة" [ref=f146e152] [cursor=pointer]
+                  - link "تعديل" [ref=f146e153] [cursor=pointer]:
+                    - /url: /products/6/edit
+                  - button "حذف" [ref=f146e154] [cursor=pointer]
+          - row [ref=f146e155]:
+            - cell "2" [ref=f146e156]
+            - cell "test ars21s" [ref=f146e157]
+            - cell "test ars21" [ref=f146e158]
+            - cell "test ars21e" [ref=f146e159]
+            - cell "نشط" [ref=f146e160]
+            - cell [ref=f146e162]:
+              - generic [ref=f146e163]:
+                - button "عرض" [ref=f146e164] [cursor=pointer]
+                - generic [ref=f146e169]:
+                  - button "تبديل الحالة" [ref=f146e170] [cursor=pointer]
+                  - link "تعديل" [ref=f146e171] [cursor=pointer]:
+                    - /url: /products/2/edit
+                  - button "حذف" [ref=f146e172] [cursor=pointer]
+          - row [ref=f146e173]:
+            - cell "1" [ref=f146e174]
+            - cell "test ars21" [ref=f146e175]
+            - cell "test ars21" [ref=f146e176]
+            - cell "test ars21e" [ref=f146e177]
+            - cell "نشط" [ref=f146e178]
+            - cell [ref=f146e180]:
+              - generic [ref=f146e181]:
+                - button "عرض" [ref=f146e182] [cursor=pointer]
+                - generic [ref=f146e187]:
+                  - button "تبديل الحالة" [ref=f146e188] [cursor=pointer]
+                  - link "تعديل" [ref=f146e189] [cursor=pointer]:
+                    - /url: /products/1/edit
+                  - button "حذف" [ref=f146e190] [cursor=pointer]
+      - generic [ref=f146e191]:
+        - paragraph [ref=f146e192]: عرض 1 إلى 5 من 5 سجل
+        - generic [ref=f146e193]:
+          - button "السابق" [disabled] [ref=f146e194]
+          - generic [ref=f146e195]: صفحة 1 من 1
+          - button "التالي" [disabled] [ref=f146e196]

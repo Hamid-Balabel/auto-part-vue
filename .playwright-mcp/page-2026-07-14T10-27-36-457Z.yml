@@ -1,0 +1,210 @@
+- generic [ref=f5e32]:
+  - complementary [ref=f5e33]:
+    - generic [ref=f5e38]:
+      - paragraph [ref=f5e39]: إدارة قطع الغيار
+      - paragraph [ref=f5e40]: المخزون والمبيعات
+    - navigation [ref=f5e41]:
+      - link "لوحة التحكم" [ref=f5e42] [cursor=pointer]:
+        - /url: /
+      - button "إدخال البيانات" [ref=f5e47] [cursor=pointer]
+      - button "المبيعات" [ref=f5e56] [cursor=pointer]
+      - button "المستخدمين" [ref=f5e65] [cursor=pointer]
+      - button "الإعدادات" [ref=f5e75] [cursor=pointer]
+  - generic [ref=f5e82]:
+    - banner [ref=f5e83]:
+      - generic [ref=f5e84]:
+        - generic [ref=f5e85]: الفلاتر المدعومة من الخلفية تظهر داخل كل شاشة.
+        - generic "اللغة" [ref=f5e90]:
+          - button "العربية" [ref=f5e95] [cursor=pointer]
+          - button "English" [ref=f5e96] [cursor=pointer]
+        - generic [ref=f5e97]:
+          - paragraph [ref=f5e98]: root
+          - paragraph [ref=f5e99]: root@jervis.com
+        - button "تسجيل الخروج" [ref=f5e100] [cursor=pointer]
+    - main [ref=f5e101]:
+      - generic [ref=f5e3129]:
+        - generic [ref=f5e3130]:
+          - heading "المستخدمون" [level=1] [ref=f5e3131]
+          - paragraph [ref=f5e3132]: إدارة مستخدمي النظام حسب قواعد وصلاحيات Laravel.
+        - link "إنشاء مستخدم" [ref=f5e3134] [cursor=pointer]:
+          - /url: /users/create
+      - table [ref=f5e3137]:
+        - rowgroup [ref=f5e3138]:
+          - row [ref=f5e3139]:
+            - columnheader "الاسم" [ref=f5e3140]
+            - columnheader "البريد الإلكتروني" [ref=f5e3141]
+            - columnheader "الأدوار" [ref=f5e3142]
+            - columnheader "حالة المستخدم" [ref=f5e3143]
+            - columnheader "الإجراءات" [ref=f5e3144]
+        - rowgroup [ref=f5e3145]:
+          - row [ref=f5e3146]:
+            - cell "Phone Layout Temporary User" [ref=f5e3147]
+            - cell "phone.layout.temp.202607141022@jervis.com" [ref=f5e3148]
+            - cell "admin" [ref=f5e3149]
+            - cell [ref=f5e3152]:
+              - switch "نشط" [checked] [ref=f5e3153] [cursor=pointer]
+            - cell [ref=f5e3156]:
+              - generic [ref=f5e3157]:
+                - link "تعديل" [ref=f5e3158] [cursor=pointer]:
+                  - /url: /users/35/edit
+                - button "حذف" [ref=f5e3159] [cursor=pointer]
+          - row [ref=f5e3160]:
+            - cell "Jon O'Connell" [ref=f5e3161]
+            - cell "jon.o'connell.8992@jervis.com" [ref=f5e3162]
+            - cell "admin" [ref=f5e3163]
+            - cell [ref=f5e3166]:
+              - switch "نشط" [checked] [ref=f5e3167] [cursor=pointer]
+            - cell [ref=f5e3170]:
+              - generic [ref=f5e3171]:
+                - link "تعديل" [ref=f5e3172] [cursor=pointer]:
+                  - /url: /users/32/edit
+                - button "حذف" [ref=f5e3173] [cursor=pointer]
+          - row [ref=f5e3174]:
+            - cell "Callie Runolfsdottir" [ref=f5e3175]
+            - cell "callie.runolfsdottir.2786@jervis.com" [ref=f5e3176]
+            - cell "admin" [ref=f5e3177]
+            - cell [ref=f5e3180]:
+              - switch "غير نشط" [ref=f5e3181] [cursor=pointer]
+            - cell [ref=f5e3184]:
+              - generic [ref=f5e3185]:
+                - link "تعديل" [ref=f5e3186] [cursor=pointer]:
+                  - /url: /users/31/edit
+                - button "حذف" [ref=f5e3187] [cursor=pointer]
+          - row [ref=f5e3188]:
+            - cell "Francesca Anderson" [ref=f5e3189]
+            - cell "francesca.anderson.8663@jervis.com" [ref=f5e3190]
+            - cell "admin" [ref=f5e3191]
+            - cell [ref=f5e3194]:
+              - switch "نشط" [checked] [ref=f5e3195] [cursor=pointer]
+            - cell [ref=f5e3198]:
+              - generic [ref=f5e3199]:
+                - link "تعديل" [ref=f5e3200] [cursor=pointer]:
+                  - /url: /users/30/edit
+                - button "حذف" [ref=f5e3201] [cursor=pointer]
+          - row [ref=f5e3202]:
+            - cell "Kamryn Hodkiewicz" [ref=f5e3203]
+            - cell "kamryn.hodkiewicz.5493@jervis.com" [ref=f5e3204]
+            - cell "admin" [ref=f5e3205]
+            - cell [ref=f5e3208]:
+              - switch "نشط" [checked] [ref=f5e3209] [cursor=pointer]
+            - cell [ref=f5e3212]:
+              - generic [ref=f5e3213]:
+                - link "تعديل" [ref=f5e3214] [cursor=pointer]:
+                  - /url: /users/29/edit
+                - button "حذف" [ref=f5e3215] [cursor=pointer]
+          - row [ref=f5e3216]:
+            - cell "Shaniya Halvorson" [ref=f5e3217]
+            - cell "shaniya.halvorson.637@jervis.com" [ref=f5e3218]
+            - cell "admin" [ref=f5e3219]
+            - cell [ref=f5e3222]:
+              - switch "نشط" [checked] [ref=f5e3223] [cursor=pointer]
+            - cell [ref=f5e3226]:
+              - generic [ref=f5e3227]:
+                - link "تعديل" [ref=f5e3228] [cursor=pointer]:
+                  - /url: /users/28/edit
+                - button "حذف" [ref=f5e3229] [cursor=pointer]
+          - row [ref=f5e3230]:
+            - cell "Bettye Schneider" [ref=f5e3231]
+            - cell "bettye.schneider.9638@jervis.com" [ref=f5e3232]
+            - cell "admin" [ref=f5e3233]
+            - cell [ref=f5e3236]:
+              - switch "نشط" [checked] [ref=f5e3237] [cursor=pointer]
+            - cell [ref=f5e3240]:
+              - generic [ref=f5e3241]:
+                - link "تعديل" [ref=f5e3242] [cursor=pointer]:
+                  - /url: /users/27/edit
+                - button "حذف" [ref=f5e3243] [cursor=pointer]
+          - row [ref=f5e3244]:
+            - cell "Ashlynn Kilback" [ref=f5e3245]
+            - cell "ashlynn.kilback.1494@jervis.com" [ref=f5e3246]
+            - cell "admin" [ref=f5e3247]
+            - cell [ref=f5e3250]:
+              - switch "نشط" [checked] [ref=f5e3251] [cursor=pointer]
+            - cell [ref=f5e3254]:
+              - generic [ref=f5e3255]:
+                - link "تعديل" [ref=f5e3256] [cursor=pointer]:
+                  - /url: /users/26/edit
+                - button "حذف" [ref=f5e3257] [cursor=pointer]
+          - row [ref=f5e3258]:
+            - cell "Hiram Bogisich" [ref=f5e3259]
+            - cell "hiram.bogisich.9289@jervis.com" [ref=f5e3260]
+            - cell "admin" [ref=f5e3261]
+            - cell [ref=f5e3264]:
+              - switch "نشط" [checked] [ref=f5e3265] [cursor=pointer]
+            - cell [ref=f5e3268]:
+              - generic [ref=f5e3269]:
+                - link "تعديل" [ref=f5e3270] [cursor=pointer]:
+                  - /url: /users/25/edit
+                - button "حذف" [ref=f5e3271] [cursor=pointer]
+          - row [ref=f5e3272]:
+            - cell "Roy Wyman" [ref=f5e3273]
+            - cell "roy.wyman.2521@jervis.com" [ref=f5e3274]
+            - cell "admin" [ref=f5e3275]
+            - cell [ref=f5e3278]:
+              - switch "نشط" [checked] [ref=f5e3279] [cursor=pointer]
+            - cell [ref=f5e3282]:
+              - generic [ref=f5e3283]:
+                - link "تعديل" [ref=f5e3284] [cursor=pointer]:
+                  - /url: /users/24/edit
+                - button "حذف" [ref=f5e3285] [cursor=pointer]
+          - row [ref=f5e3286]:
+            - cell "Emily Zieme" [ref=f5e3287]
+            - cell "emily.zieme.2761@jervis.com" [ref=f5e3288]
+            - cell "admin" [ref=f5e3289]
+            - cell [ref=f5e3292]:
+              - switch "نشط" [checked] [ref=f5e3293] [cursor=pointer]
+            - cell [ref=f5e3296]:
+              - generic [ref=f5e3297]:
+                - link "تعديل" [ref=f5e3298] [cursor=pointer]:
+                  - /url: /users/23/edit
+                - button "حذف" [ref=f5e3299] [cursor=pointer]
+          - row [ref=f5e3300]:
+            - cell "Elna Anderson" [ref=f5e3301]
+            - cell "elna.anderson.5754@jervis.com" [ref=f5e3302]
+            - cell "admin" [ref=f5e3303]
+            - cell [ref=f5e3306]:
+              - switch "نشط" [checked] [ref=f5e3307] [cursor=pointer]
+            - cell [ref=f5e3310]:
+              - generic [ref=f5e3311]:
+                - link "تعديل" [ref=f5e3312] [cursor=pointer]:
+                  - /url: /users/22/edit
+                - button "حذف" [ref=f5e3313] [cursor=pointer]
+          - row [ref=f5e3314]:
+            - cell "Amari Padberg" [ref=f5e3315]
+            - cell "amari.padberg.9286@jervis.com" [ref=f5e3316]
+            - cell "admin" [ref=f5e3317]
+            - cell [ref=f5e3320]:
+              - switch "نشط" [checked] [ref=f5e3321] [cursor=pointer]
+            - cell [ref=f5e3324]:
+              - generic [ref=f5e3325]:
+                - link "تعديل" [ref=f5e3326] [cursor=pointer]:
+                  - /url: /users/21/edit
+                - button "حذف" [ref=f5e3327] [cursor=pointer]
+          - row [ref=f5e3328]:
+            - cell "Leora Ryan" [ref=f5e3329]
+            - cell "leora.ryan.4932@jervis.com" [ref=f5e3330]
+            - cell "admin" [ref=f5e3331]
+            - cell [ref=f5e3334]:
+              - switch "نشط" [checked] [ref=f5e3335] [cursor=pointer]
+            - cell [ref=f5e3338]:
+              - generic [ref=f5e3339]:
+                - link "تعديل" [ref=f5e3340] [cursor=pointer]:
+                  - /url: /users/20/edit
+                - button "حذف" [ref=f5e3341] [cursor=pointer]
+          - row [ref=f5e3342]:
+            - cell "Carole Braun" [ref=f5e3343]
+            - cell "carole.braun.1595@jervis.com" [ref=f5e3344]
+            - cell "admin" [ref=f5e3345]
+            - cell [ref=f5e3348]:
+              - switch "نشط" [checked] [ref=f5e3349] [cursor=pointer]
+            - cell [ref=f5e3352]:
+              - generic [ref=f5e3353]:
+                - link "تعديل" [ref=f5e3354] [cursor=pointer]:
+                  - /url: /users/19/edit
+                - button "حذف" [ref=f5e3355] [cursor=pointer]
+      - generic [ref=f5e3356]:
+        - paragraph [ref=f5e3357]: عرض 1 إلى 15 من 33 سجل
+        - generic [ref=f5e3358]:
+          - button "السابق" [disabled] [ref=f5e3359]
+          - generic [ref=f5e3360]: صفحة 1 من 3
+          - button "التالي" [ref=f5e3361] [cursor=pointer]

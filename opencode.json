@@ -1,0 +1,48 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "skills": {
+    "paths": [
+      "ai-pack/skills",
+      ".agents/skills"
+    ]
+  },
+  "mcp": {
+    "laravel-boost": {
+      "type": "local",
+      "enabled": true,
+      "cwd": "C:\\laragon\\www\\auto-part",
+      "command": [
+        "php",
+        "artisan",
+        "boost:mcp"
+      ]
+    },
+    "filesystem": {
+      "type": "local",
+      "enabled": true,
+      "command": [
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "."
+      ]
+    },
+    "playwright": {
+      "type": "local",
+      "enabled": true,
+      "command": [
+        "npx",
+        "@playwright/mcp@latest"
+      ]
+    },
+    "context7": {
+      "type": "local",
+      "enabled": true,
+      "command": [
+        "npx",
+        "-y",
+        "@upstash/context7-mcp@latest"
+      ]
+    }
+  }
+}

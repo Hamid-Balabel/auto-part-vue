@@ -1,0 +1,1021 @@
+- generic [ref=f57e1]:
+  - generic [ref=f57e3]:
+    - complementary [ref=f57e4]:
+      - generic [ref=f57e9]:
+        - paragraph [ref=f57e10]: إدارة قطع الغيار
+        - paragraph [ref=f57e11]: المخزون والمبيعات
+      - navigation [ref=f57e12]:
+        - link "لوحة التحكم" [ref=f57e13] [cursor=pointer]:
+          - /url: /
+        - button "إدخال البيانات" [ref=f57e18] [cursor=pointer]
+        - generic [ref=f57e26]:
+          - button "المبيعات" [expanded] [ref=f57e27] [cursor=pointer]
+          - generic [ref=f57e35]:
+            - link "الطلبات" [ref=f57e36] [cursor=pointer]:
+              - /url: /orders
+            - link "الأقساط" [ref=f57e41] [cursor=pointer]:
+              - /url: /modules/installments
+        - button "المستخدمين" [ref=f57e46] [cursor=pointer]
+        - button "الإعدادات" [ref=f57e56] [cursor=pointer]
+    - generic [ref=f57e63]:
+      - banner [ref=f57e64]:
+        - generic [ref=f57e65]:
+          - generic [ref=f57e66]: الفلاتر المدعومة من الخلفية تظهر داخل كل شاشة.
+          - generic "اللغة" [ref=f57e71]:
+            - button "العربية" [ref=f57e76] [cursor=pointer]
+            - button "English" [ref=f57e77] [cursor=pointer]
+          - generic [ref=f57e78]:
+            - paragraph [ref=f57e79]: root
+            - paragraph [ref=f57e80]: root@jervis.com
+          - button "تسجيل الخروج" [ref=f57e81] [cursor=pointer]
+      - main [ref=f57e82]:
+        - generic [ref=f57e83]:
+          - generic [ref=f57e84]:
+            - heading "بيع سريع" [level=1] [ref=f57e85]
+            - paragraph [ref=f57e86]: ابحث عن المنتجات وحدد الكميات وحصّل الدفع وأنهِ البيع من شاشة واحدة.
+          - link "العودة للطلبات" [ref=f57e88] [cursor=pointer]:
+            - /url: /orders
+        - generic [ref=f57e91]:
+          - generic [ref=f57e92]:
+            - generic [ref=f57e93]:
+              - generic [ref=f57e94]:
+                - text: البحث عن منتج
+                - searchbox "البحث عن منتج" [ref=f57e96]
+              - paragraph [ref=f57e97]: يتم البحث داخل عناصر المنتجات التي أعادتها الخلفية. الأسعار المعروضة مؤقتة حتى إنشاء الطلب.
+            - generic [ref=f57e98]:
+              - paragraph [ref=f57e104]: لم يتم اختيار منتجات
+              - paragraph [ref=f57e105]: ابحث عن منتج بالأعلى واختره لإضافته إلى عملية البيع.
+          - complementary [ref=f57e106]:
+            - generic [ref=f57e107]:
+              - heading "بيانات البيع" [level=2] [ref=f57e108]
+              - generic [ref=f57e109]:
+                - generic [ref=f57e110]:
+                  - generic [ref=f57e111]: رقم الفاتورة *
+                  - textbox "رقم الفاتورة *" [ref=f57e112]: SALE-1784407223718
+                - generic [ref=f57e113]:
+                  - generic [ref=f57e114]:
+                    - generic [ref=f57e115]: العميل *
+                    - combobox "العميل *" [ref=f57e118] [cursor=pointer]:
+                      - generic [ref=f57e119]: اختر...
+                  - button "عميل سريع" [ref=f57e122] [cursor=pointer]
+                - group "طريقة الدفع" [ref=f57e124]:
+                  - generic [ref=f57e126]:
+                    - button "نقدي" [ref=f57e127] [cursor=pointer]
+                    - button "بطاقة" [ref=f57e132] [cursor=pointer]
+                    - button "دفع جزئي" [ref=f57e136] [cursor=pointer]
+            - generic [ref=f57e143]:
+              - heading "ملخص الطلب" [level=2] [ref=f57e144]
+              - generic [ref=f57e145]:
+                - generic [ref=f57e146]:
+                  - term [ref=f57e147]: الإجمالي الفرعي
+                  - definition [ref=f57e148]: EGP 0.00
+                - generic [ref=f57e149]:
+                  - term [ref=f57e150]: المبلغ المدفوع
+                  - definition [ref=f57e151]: EGP 0.00
+                - generic [ref=f57e152]:
+                  - term [ref=f57e153]: المبلغ المتبقي
+                  - definition [ref=f57e154]: EGP 0.00
+                - generic [ref=f57e155]:
+                  - term [ref=f57e156]: الإجمالي
+                  - definition [ref=f57e157]: EGP 0.00
+              - paragraph [ref=f57e158]: الأسعار والإجماليات مؤكدة من الخلفية. الضريبة والخصم والشحن غير متاحة في واجهة API الحالية.
+            - button "إتمام البيع · EGP 0.00" [disabled] [ref=f57e159]:
+              - text: إتمام البيع ·
+              - generic [ref=f57e160]: EGP 0.00
+        - dialog [ref=f57e161]:
+          - generic [ref=f57e162]:
+            - heading "عميل سريع" [level=2] [ref=f57e163]
+            - paragraph [ref=f57e164]: أنشئ أقل بيانات عميل تدعمها الخلفية واختره لهذه العملية.
+            - generic [ref=f57e165]:
+              - generic [ref=f57e166]:
+                - generic [ref=f57e167]: الاسم *
+                - textbox "الاسم *" [ref=f57e168]
+              - generic [ref=f57e169]:
+                - paragraph [ref=f57e170]: الهاتف
+                - generic [ref=f57e171]:
+                  - generic [ref=f57e172]:
+                    - generic [ref=f57e173]: كود الدولة
+                    - combobox "كود الدولة" [expanded] [ref=f57e176] [cursor=pointer]:
+                      - generic [ref=f57e177]: اختر كود الدولة.
+                  - generic [ref=f57e180]:
+                    - text: الهاتف
+                    - textbox "الهاتف" [ref=f57e181]
+              - generic [ref=f57e182]:
+                - generic [ref=f57e183]: البريد الإلكتروني
+                - textbox "البريد الإلكتروني" [ref=f57e184]
+            - generic [ref=f57e185]:
+              - button "إلغاء" [ref=f57e186] [cursor=pointer]
+              - button "إنشاء واختيار" [disabled] [ref=f57e187]
+  - listbox [ref=f57e188]:
+    - searchbox [active] [ref=f57e190]
+    - generic [ref=f57e191]:
+      - option "🇿🇼 زيمبابوي (+263) ZWE" [ref=f57e192] [cursor=pointer]:
+        - generic [ref=f57e193]: 🇿🇼
+        - generic [ref=f57e194]:
+          - generic [ref=f57e195]: زيمبابوي (+263)
+          - generic [ref=f57e196]: ZWE
+      - option "🇿🇲 زامبيا (+260) ZMB" [ref=f57e197] [cursor=pointer]:
+        - generic [ref=f57e198]: 🇿🇲
+        - generic [ref=f57e199]:
+          - generic [ref=f57e200]: زامبيا (+260)
+          - generic [ref=f57e201]: ZMB
+      - option "🇾🇪 اليمن (+967) YEM" [ref=f57e202] [cursor=pointer]:
+        - generic [ref=f57e203]: 🇾🇪
+        - generic [ref=f57e204]:
+          - generic [ref=f57e205]: اليمن (+967)
+          - generic [ref=f57e206]: YEM
+      - option "🇻🇳 فيتنام (+84) VNM" [ref=f57e207] [cursor=pointer]:
+        - generic [ref=f57e208]: 🇻🇳
+        - generic [ref=f57e209]:
+          - generic [ref=f57e210]: فيتنام (+84)
+          - generic [ref=f57e211]: VNM
+      - option "🇻🇪 فنزويلا (+58) VEN" [ref=f57e212] [cursor=pointer]:
+        - generic [ref=f57e213]: 🇻🇪
+        - generic [ref=f57e214]:
+          - generic [ref=f57e215]: فنزويلا (+58)
+          - generic [ref=f57e216]: VEN
+      - option "🇻🇦 الفاتيكان (+39) VAT" [ref=f57e217] [cursor=pointer]:
+        - generic [ref=f57e218]: 🇻🇦
+        - generic [ref=f57e219]:
+          - generic [ref=f57e220]: الفاتيكان (+39)
+          - generic [ref=f57e221]: VAT
+      - option "🇻🇺 فانواتو (+678) VUT" [ref=f57e222] [cursor=pointer]:
+        - generic [ref=f57e223]: 🇻🇺
+        - generic [ref=f57e224]:
+          - generic [ref=f57e225]: فانواتو (+678)
+          - generic [ref=f57e226]: VUT
+      - option "🇺🇿 أوزبكستان (+998) UZB" [ref=f57e227] [cursor=pointer]:
+        - generic [ref=f57e228]: 🇺🇿
+        - generic [ref=f57e229]:
+          - generic [ref=f57e230]: أوزبكستان (+998)
+          - generic [ref=f57e231]: UZB
+      - option "🇺🇷 أوروغواي (+598) URY" [ref=f57e232] [cursor=pointer]:
+        - generic [ref=f57e233]: 🇺🇷
+        - generic [ref=f57e234]:
+          - generic [ref=f57e235]: أوروغواي (+598)
+          - generic [ref=f57e236]: URY
+      - option "🇺🇸 الولايات المتحدة الأمريكية (+1) USA" [ref=f57e237] [cursor=pointer]:
+        - generic [ref=f57e238]: 🇺🇸
+        - generic [ref=f57e239]:
+          - generic [ref=f57e240]: الولايات المتحدة الأمريكية (+1)
+          - generic [ref=f57e241]: USA
+      - option "🇬🇧 المملكة المتحدة (+44) GBR" [ref=f57e242] [cursor=pointer]:
+        - generic [ref=f57e243]: 🇬🇧
+        - generic [ref=f57e244]:
+          - generic [ref=f57e245]: المملكة المتحدة (+44)
+          - generic [ref=f57e246]: GBR
+      - option "🇦🇷 الإمارات العربية المتحدة (+971) ARE" [ref=f57e247] [cursor=pointer]:
+        - generic [ref=f57e248]: 🇦🇷
+        - generic [ref=f57e249]:
+          - generic [ref=f57e250]: الإمارات العربية المتحدة (+971)
+          - generic [ref=f57e251]: ARE
+      - option "🇺🇰 أوكرانيا (+380) UKR" [ref=f57e252] [cursor=pointer]:
+        - generic [ref=f57e253]: 🇺🇰
+        - generic [ref=f57e254]:
+          - generic [ref=f57e255]: أوكرانيا (+380)
+          - generic [ref=f57e256]: UKR
+      - option "🇺🇬 أوغندا (+256) UGA" [ref=f57e257] [cursor=pointer]:
+        - generic [ref=f57e258]: 🇺🇬
+        - generic [ref=f57e259]:
+          - generic [ref=f57e260]: أوغندا (+256)
+          - generic [ref=f57e261]: UGA
+      - option "🇹🇺 توفالو (+688) TUV" [ref=f57e262] [cursor=pointer]:
+        - generic [ref=f57e263]: 🇹🇺
+        - generic [ref=f57e264]:
+          - generic [ref=f57e265]: توفالو (+688)
+          - generic [ref=f57e266]: TUV
+      - option "🇹🇰 تركمانستان (+993) TKM" [ref=f57e267] [cursor=pointer]:
+        - generic [ref=f57e268]: 🇹🇰
+        - generic [ref=f57e269]:
+          - generic [ref=f57e270]: تركمانستان (+993)
+          - generic [ref=f57e271]: TKM
+      - option "🇹🇺 تركيا (+90) TUR" [ref=f57e272] [cursor=pointer]:
+        - generic [ref=f57e273]: 🇹🇺
+        - generic [ref=f57e274]:
+          - generic [ref=f57e275]: تركيا (+90)
+          - generic [ref=f57e276]: TUR
+      - option "🇹🇺 تونس (+216) TUN" [ref=f57e277] [cursor=pointer]:
+        - generic [ref=f57e278]: 🇹🇺
+        - generic [ref=f57e279]:
+          - generic [ref=f57e280]: تونس (+216)
+          - generic [ref=f57e281]: TUN
+      - option "🇹🇹 ترينيداد وتوباغو (+1868) TTO" [ref=f57e282] [cursor=pointer]:
+        - generic [ref=f57e283]: 🇹🇹
+        - generic [ref=f57e284]:
+          - generic [ref=f57e285]: ترينيداد وتوباغو (+1868)
+          - generic [ref=f57e286]: TTO
+      - option "🇹🇴 تونغا (+676) TON" [ref=f57e287] [cursor=pointer]:
+        - generic [ref=f57e288]: 🇹🇴
+        - generic [ref=f57e289]:
+          - generic [ref=f57e290]: تونغا (+676)
+          - generic [ref=f57e291]: TON
+      - option "🇹🇬 توجو (+228) TGO" [ref=f57e292] [cursor=pointer]:
+        - generic [ref=f57e293]: 🇹🇬
+        - generic [ref=f57e294]:
+          - generic [ref=f57e295]: توجو (+228)
+          - generic [ref=f57e296]: TGO
+      - option "🇹🇭 تايلاند (+66) THA" [ref=f57e297] [cursor=pointer]:
+        - generic [ref=f57e298]: 🇹🇭
+        - generic [ref=f57e299]:
+          - generic [ref=f57e300]: تايلاند (+66)
+          - generic [ref=f57e301]: THA
+      - option "🇹🇿 تنزانيا (+255) TZA" [ref=f57e302] [cursor=pointer]:
+        - generic [ref=f57e303]: 🇹🇿
+        - generic [ref=f57e304]:
+          - generic [ref=f57e305]: تنزانيا (+255)
+          - generic [ref=f57e306]: TZA
+      - option "🇹🇯 طاجيكستان (+992) TJK" [ref=f57e307] [cursor=pointer]:
+        - generic [ref=f57e308]: 🇹🇯
+        - generic [ref=f57e309]:
+          - generic [ref=f57e310]: طاجيكستان (+992)
+          - generic [ref=f57e311]: TJK
+      - option "🇹🇼 تايوان (+886) TWN" [ref=f57e312] [cursor=pointer]:
+        - generic [ref=f57e313]: 🇹🇼
+        - generic [ref=f57e314]:
+          - generic [ref=f57e315]: تايوان (+886)
+          - generic [ref=f57e316]: TWN
+      - option "🇸🇾 سوريا (+963) SYR" [ref=f57e317] [cursor=pointer]:
+        - generic [ref=f57e318]: 🇸🇾
+        - generic [ref=f57e319]:
+          - generic [ref=f57e320]: سوريا (+963)
+          - generic [ref=f57e321]: SYR
+      - option "🇨🇭 سويسرا (+41) CHE" [ref=f57e322] [cursor=pointer]:
+        - generic [ref=f57e323]: 🇨🇭
+        - generic [ref=f57e324]:
+          - generic [ref=f57e325]: سويسرا (+41)
+          - generic [ref=f57e326]: CHE
+      - option "🇸🇼 السويد (+46) SWE" [ref=f57e327] [cursor=pointer]:
+        - generic [ref=f57e328]: 🇸🇼
+        - generic [ref=f57e329]:
+          - generic [ref=f57e330]: السويد (+46)
+          - generic [ref=f57e331]: SWE
+      - option "🇸🇺 سورينام (+597) SUR" [ref=f57e332] [cursor=pointer]:
+        - generic [ref=f57e333]: 🇸🇺
+        - generic [ref=f57e334]:
+          - generic [ref=f57e335]: سورينام (+597)
+          - generic [ref=f57e336]: SUR
+      - option "🇸🇩 السودان (+249) SDN" [ref=f57e337] [cursor=pointer]:
+        - generic [ref=f57e338]: 🇸🇩
+        - generic [ref=f57e339]:
+          - generic [ref=f57e340]: السودان (+249)
+          - generic [ref=f57e341]: SDN
+      - option "🇱🇰 سريلانكا (+94) LKA" [ref=f57e342] [cursor=pointer]:
+        - generic [ref=f57e343]: 🇱🇰
+        - generic [ref=f57e344]:
+          - generic [ref=f57e345]: سريلانكا (+94)
+          - generic [ref=f57e346]: LKA
+      - option "🇪🇸 إسبانيا (+34) ESP" [ref=f57e347] [cursor=pointer]:
+        - generic [ref=f57e348]: 🇪🇸
+        - generic [ref=f57e349]:
+          - generic [ref=f57e350]: إسبانيا (+34)
+          - generic [ref=f57e351]: ESP
+      - option "🇸🇸 جنوب السودان (+211) SSD" [ref=f57e352] [cursor=pointer]:
+        - generic [ref=f57e353]: 🇸🇸
+        - generic [ref=f57e354]:
+          - generic [ref=f57e355]: جنوب السودان (+211)
+          - generic [ref=f57e356]: SSD
+      - option "🇰🇴 كوريا الجنوبية (+82) KOR" [ref=f57e357] [cursor=pointer]:
+        - generic [ref=f57e358]: 🇰🇴
+        - generic [ref=f57e359]:
+          - generic [ref=f57e360]: كوريا الجنوبية (+82)
+          - generic [ref=f57e361]: KOR
+      - option "🇿🇦 جنوب أفريقيا (+27) ZAF" [ref=f57e362] [cursor=pointer]:
+        - generic [ref=f57e363]: 🇿🇦
+        - generic [ref=f57e364]:
+          - generic [ref=f57e365]: جنوب أفريقيا (+27)
+          - generic [ref=f57e366]: ZAF
+      - option "🇸🇴 الصومال (+252) SOM" [ref=f57e367] [cursor=pointer]:
+        - generic [ref=f57e368]: 🇸🇴
+        - generic [ref=f57e369]:
+          - generic [ref=f57e370]: الصومال (+252)
+          - generic [ref=f57e371]: SOM
+      - option "🇸🇱 جزر سليمان (+677) SLB" [ref=f57e372] [cursor=pointer]:
+        - generic [ref=f57e373]: 🇸🇱
+        - generic [ref=f57e374]:
+          - generic [ref=f57e375]: جزر سليمان (+677)
+          - generic [ref=f57e376]: SLB
+      - option "🇸🇻 سلوفينيا (+386) SVN" [ref=f57e377] [cursor=pointer]:
+        - generic [ref=f57e378]: 🇸🇻
+        - generic [ref=f57e379]:
+          - generic [ref=f57e380]: سلوفينيا (+386)
+          - generic [ref=f57e381]: SVN
+      - option "🇸🇻 سلوفاكيا (+421) SVK" [ref=f57e382] [cursor=pointer]:
+        - generic [ref=f57e383]: 🇸🇻
+        - generic [ref=f57e384]:
+          - generic [ref=f57e385]: سلوفاكيا (+421)
+          - generic [ref=f57e386]: SVK
+      - option "🇸🇬 سنغافورة (+65) SGP" [ref=f57e387] [cursor=pointer]:
+        - generic [ref=f57e388]: 🇸🇬
+        - generic [ref=f57e389]:
+          - generic [ref=f57e390]: سنغافورة (+65)
+          - generic [ref=f57e391]: SGP
+      - option "🇸🇱 سيراليون (+232) SLE" [ref=f57e392] [cursor=pointer]:
+        - generic [ref=f57e393]: 🇸🇱
+        - generic [ref=f57e394]:
+          - generic [ref=f57e395]: سيراليون (+232)
+          - generic [ref=f57e396]: SLE
+      - option "🇸🇾 سيشل (+248) SYC" [ref=f57e397] [cursor=pointer]:
+        - generic [ref=f57e398]: 🇸🇾
+        - generic [ref=f57e399]:
+          - generic [ref=f57e400]: سيشل (+248)
+          - generic [ref=f57e401]: SYC
+      - option "🇸🇷 صربيا (+381) SRB" [ref=f57e402] [cursor=pointer]:
+        - generic [ref=f57e403]: 🇸🇷
+        - generic [ref=f57e404]:
+          - generic [ref=f57e405]: صربيا (+381)
+          - generic [ref=f57e406]: SRB
+      - option "🇸🇪 السنغال (+221) SEN" [ref=f57e407] [cursor=pointer]:
+        - generic [ref=f57e408]: 🇸🇪
+        - generic [ref=f57e409]:
+          - generic [ref=f57e410]: السنغال (+221)
+          - generic [ref=f57e411]: SEN
+      - option "🇸🇹 ساو تومي وبرينسيب (+239) STP" [ref=f57e412] [cursor=pointer]:
+        - generic [ref=f57e413]: 🇸🇹
+        - generic [ref=f57e414]:
+          - generic [ref=f57e415]: ساو تومي وبرينسيب (+239)
+          - generic [ref=f57e416]: STP
+      - option "🇸🇲 سان مارينو (+378) SMR" [ref=f57e417] [cursor=pointer]:
+        - generic [ref=f57e418]: 🇸🇲
+        - generic [ref=f57e419]:
+          - generic [ref=f57e420]: سان مارينو (+378)
+          - generic [ref=f57e421]: SMR
+      - option "🇼🇸 ساموا (+685) WSM" [ref=f57e422] [cursor=pointer]:
+        - generic [ref=f57e423]: 🇼🇸
+        - generic [ref=f57e424]:
+          - generic [ref=f57e425]: ساموا (+685)
+          - generic [ref=f57e426]: WSM
+      - option "🇻🇨 سانت فنسنت وجزر غرينادين (+1784) VCT" [ref=f57e427] [cursor=pointer]:
+        - generic [ref=f57e428]: 🇻🇨
+        - generic [ref=f57e429]:
+          - generic [ref=f57e430]: سانت فنسنت وجزر غرينادين (+1784)
+          - generic [ref=f57e431]: VCT
+      - option "🇱🇨 سانت لوسيا (+1758) LCA" [ref=f57e432] [cursor=pointer]:
+        - generic [ref=f57e433]: 🇱🇨
+        - generic [ref=f57e434]:
+          - generic [ref=f57e435]: سانت لوسيا (+1758)
+          - generic [ref=f57e436]: LCA
+      - option "🇰🇳 سانت كيتس ونيفيس (+1869) KNA" [ref=f57e437] [cursor=pointer]:
+        - generic [ref=f57e438]: 🇰🇳
+        - generic [ref=f57e439]:
+          - generic [ref=f57e440]: سانت كيتس ونيفيس (+1869)
+          - generic [ref=f57e441]: KNA
+      - option "🇷🇼 رواندا (+250) RWA" [ref=f57e442] [cursor=pointer]:
+        - generic [ref=f57e443]: 🇷🇼
+        - generic [ref=f57e444]:
+          - generic [ref=f57e445]: رواندا (+250)
+          - generic [ref=f57e446]: RWA
+      - option "🇷🇺 روسيا (+7) RUS" [ref=f57e447] [cursor=pointer]:
+        - generic [ref=f57e448]: 🇷🇺
+        - generic [ref=f57e449]:
+          - generic [ref=f57e450]: روسيا (+7)
+          - generic [ref=f57e451]: RUS
+      - option "🇷🇴 رومانيا (+40) ROU" [ref=f57e452] [cursor=pointer]:
+        - generic [ref=f57e453]: 🇷🇴
+        - generic [ref=f57e454]:
+          - generic [ref=f57e455]: رومانيا (+40)
+          - generic [ref=f57e456]: ROU
+      - option "🇶🇦 قطر (+974) QAT" [ref=f57e457] [cursor=pointer]:
+        - generic [ref=f57e458]: 🇶🇦
+        - generic [ref=f57e459]:
+          - generic [ref=f57e460]: قطر (+974)
+          - generic [ref=f57e461]: QAT
+      - option "🇵🇷 البرتغال (+351) PRT" [ref=f57e462] [cursor=pointer]:
+        - generic [ref=f57e463]: 🇵🇷
+        - generic [ref=f57e464]:
+          - generic [ref=f57e465]: البرتغال (+351)
+          - generic [ref=f57e466]: PRT
+      - option "🇵🇴 بولندا (+48) POL" [ref=f57e467] [cursor=pointer]:
+        - generic [ref=f57e468]: 🇵🇴
+        - generic [ref=f57e469]:
+          - generic [ref=f57e470]: بولندا (+48)
+          - generic [ref=f57e471]: POL
+      - option "🇵🇭 الفلبين (+63) PHL" [ref=f57e472] [cursor=pointer]:
+        - generic [ref=f57e473]: 🇵🇭
+        - generic [ref=f57e474]:
+          - generic [ref=f57e475]: الفلبين (+63)
+          - generic [ref=f57e476]: PHL
+      - option "🇵🇪 بيرو (+51) PER" [ref=f57e477] [cursor=pointer]:
+        - generic [ref=f57e478]: 🇵🇪
+        - generic [ref=f57e479]:
+          - generic [ref=f57e480]: بيرو (+51)
+          - generic [ref=f57e481]: PER
+      - option "🇵🇷 باراغواي (+595) PRY" [ref=f57e482] [cursor=pointer]:
+        - generic [ref=f57e483]: 🇵🇷
+        - generic [ref=f57e484]:
+          - generic [ref=f57e485]: باراغواي (+595)
+          - generic [ref=f57e486]: PRY
+      - option "🇵🇳 بابوا غينيا الجديدة (+675) PNG" [ref=f57e487] [cursor=pointer]:
+        - generic [ref=f57e488]: 🇵🇳
+        - generic [ref=f57e489]:
+          - generic [ref=f57e490]: بابوا غينيا الجديدة (+675)
+          - generic [ref=f57e491]: PNG
+      - option "🇵🇦 بنما (+507) PAN" [ref=f57e492] [cursor=pointer]:
+        - generic [ref=f57e493]: 🇵🇦
+        - generic [ref=f57e494]:
+          - generic [ref=f57e495]: بنما (+507)
+          - generic [ref=f57e496]: PAN
+      - option "🇵🇱 بالاو (+680) PLW" [ref=f57e497] [cursor=pointer]:
+        - generic [ref=f57e498]: 🇵🇱
+        - generic [ref=f57e499]:
+          - generic [ref=f57e500]: بالاو (+680)
+          - generic [ref=f57e501]: PLW
+      - option "🇵🇦 باكستان (+92) PAK" [ref=f57e502] [cursor=pointer]:
+        - generic [ref=f57e503]: 🇵🇦
+        - generic [ref=f57e504]:
+          - generic [ref=f57e505]: باكستان (+92)
+          - generic [ref=f57e506]: PAK
+      - option "🇴🇲 عمان (+968) OMN" [ref=f57e507] [cursor=pointer]:
+        - generic [ref=f57e508]: 🇴🇲
+        - generic [ref=f57e509]:
+          - generic [ref=f57e510]: عمان (+968)
+          - generic [ref=f57e511]: OMN
+      - option "🇳🇴 النرويج (+47) NOR" [ref=f57e512] [cursor=pointer]:
+        - generic [ref=f57e513]: 🇳🇴
+        - generic [ref=f57e514]:
+          - generic [ref=f57e515]: النرويج (+47)
+          - generic [ref=f57e516]: NOR
+      - option "🇲🇰 مقدونيا الشمالية (+389) MKD" [ref=f57e517] [cursor=pointer]:
+        - generic [ref=f57e518]: 🇲🇰
+        - generic [ref=f57e519]:
+          - generic [ref=f57e520]: مقدونيا الشمالية (+389)
+          - generic [ref=f57e521]: MKD
+      - option "🇳🇬 نيجيريا (+234) NGA" [ref=f57e522] [cursor=pointer]:
+        - generic [ref=f57e523]: 🇳🇬
+        - generic [ref=f57e524]:
+          - generic [ref=f57e525]: نيجيريا (+234)
+          - generic [ref=f57e526]: NGA
+      - option "🇳🇪 النيجر (+227) NER" [ref=f57e527] [cursor=pointer]:
+        - generic [ref=f57e528]: 🇳🇪
+        - generic [ref=f57e529]:
+          - generic [ref=f57e530]: النيجر (+227)
+          - generic [ref=f57e531]: NER
+      - option "🇳🇮 نيكاراغوا (+505) NIC" [ref=f57e532] [cursor=pointer]:
+        - generic [ref=f57e533]: 🇳🇮
+        - generic [ref=f57e534]:
+          - generic [ref=f57e535]: نيكاراغوا (+505)
+          - generic [ref=f57e536]: NIC
+      - option "🇳🇿 نيوزيلندا (+64) NZL" [ref=f57e537] [cursor=pointer]:
+        - generic [ref=f57e538]: 🇳🇿
+        - generic [ref=f57e539]:
+          - generic [ref=f57e540]: نيوزيلندا (+64)
+          - generic [ref=f57e541]: NZL
+      - option "🇳🇱 هولندا (+31) NLD" [ref=f57e542] [cursor=pointer]:
+        - generic [ref=f57e543]: 🇳🇱
+        - generic [ref=f57e544]:
+          - generic [ref=f57e545]: هولندا (+31)
+          - generic [ref=f57e546]: NLD
+      - option "🇳🇵 نيبال (+977) NPL" [ref=f57e547] [cursor=pointer]:
+        - generic [ref=f57e548]: 🇳🇵
+        - generic [ref=f57e549]:
+          - generic [ref=f57e550]: نيبال (+977)
+          - generic [ref=f57e551]: NPL
+      - option "🇳🇷 ناورو (+674) NRU" [ref=f57e552] [cursor=pointer]:
+        - generic [ref=f57e553]: 🇳🇷
+        - generic [ref=f57e554]:
+          - generic [ref=f57e555]: ناورو (+674)
+          - generic [ref=f57e556]: NRU
+      - option "🇳🇦 ناميبيا (+264) NAM" [ref=f57e557] [cursor=pointer]:
+        - generic [ref=f57e558]: 🇳🇦
+        - generic [ref=f57e559]:
+          - generic [ref=f57e560]: ناميبيا (+264)
+          - generic [ref=f57e561]: NAM
+      - option "🇲🇲 ميانمار (+95) MMR" [ref=f57e562] [cursor=pointer]:
+        - generic [ref=f57e563]: 🇲🇲
+        - generic [ref=f57e564]:
+          - generic [ref=f57e565]: ميانمار (+95)
+          - generic [ref=f57e566]: MMR
+      - option "🇲🇴 موزمبيق (+258) MOZ" [ref=f57e567] [cursor=pointer]:
+        - generic [ref=f57e568]: 🇲🇴
+        - generic [ref=f57e569]:
+          - generic [ref=f57e570]: موزمبيق (+258)
+          - generic [ref=f57e571]: MOZ
+      - option "🇲🇦 المغرب (+212) MAR" [ref=f57e572] [cursor=pointer]:
+        - generic [ref=f57e573]: 🇲🇦
+        - generic [ref=f57e574]:
+          - generic [ref=f57e575]: المغرب (+212)
+          - generic [ref=f57e576]: MAR
+      - option "🇲🇳 الجبل الأسود (+382) MNE" [ref=f57e577] [cursor=pointer]:
+        - generic [ref=f57e578]: 🇲🇳
+        - generic [ref=f57e579]:
+          - generic [ref=f57e580]: الجبل الأسود (+382)
+          - generic [ref=f57e581]: MNE
+      - option "🇲🇳 منغوليا (+976) MNG" [ref=f57e582] [cursor=pointer]:
+        - generic [ref=f57e583]: 🇲🇳
+        - generic [ref=f57e584]:
+          - generic [ref=f57e585]: منغوليا (+976)
+          - generic [ref=f57e586]: MNG
+      - option "🇲🇨 موناكو (+377) MCO" [ref=f57e587] [cursor=pointer]:
+        - generic [ref=f57e588]: 🇲🇨
+        - generic [ref=f57e589]:
+          - generic [ref=f57e590]: موناكو (+377)
+          - generic [ref=f57e591]: MCO
+      - option "🇲🇩 مولدوفا (+373) MDA" [ref=f57e592] [cursor=pointer]:
+        - generic [ref=f57e593]: 🇲🇩
+        - generic [ref=f57e594]:
+          - generic [ref=f57e595]: مولدوفا (+373)
+          - generic [ref=f57e596]: MDA
+      - option "🇫🇸 ميكرونيزيا (+691) FSM" [ref=f57e597] [cursor=pointer]:
+        - generic [ref=f57e598]: 🇫🇸
+        - generic [ref=f57e599]:
+          - generic [ref=f57e600]: ميكرونيزيا (+691)
+          - generic [ref=f57e601]: FSM
+      - option "🇲🇪 المكسيك (+52) MEX" [ref=f57e602] [cursor=pointer]:
+        - generic [ref=f57e603]: 🇲🇪
+        - generic [ref=f57e604]:
+          - generic [ref=f57e605]: المكسيك (+52)
+          - generic [ref=f57e606]: MEX
+      - option "🇲🇺 موريشيوس (+230) MUS" [ref=f57e607] [cursor=pointer]:
+        - generic [ref=f57e608]: 🇲🇺
+        - generic [ref=f57e609]:
+          - generic [ref=f57e610]: موريشيوس (+230)
+          - generic [ref=f57e611]: MUS
+      - option "🇲🇷 موريتانيا (+222) MRT" [ref=f57e612] [cursor=pointer]:
+        - generic [ref=f57e613]: 🇲🇷
+        - generic [ref=f57e614]:
+          - generic [ref=f57e615]: موريتانيا (+222)
+          - generic [ref=f57e616]: MRT
+      - option "🇲🇭 جزر مارشال (+692) MHL" [ref=f57e617] [cursor=pointer]:
+        - generic [ref=f57e618]: 🇲🇭
+        - generic [ref=f57e619]:
+          - generic [ref=f57e620]: جزر مارشال (+692)
+          - generic [ref=f57e621]: MHL
+      - option "🇲🇱 مالطا (+356) MLT" [ref=f57e622] [cursor=pointer]:
+        - generic [ref=f57e623]: 🇲🇱
+        - generic [ref=f57e624]:
+          - generic [ref=f57e625]: مالطا (+356)
+          - generic [ref=f57e626]: MLT
+      - option "🇲🇱 مالي (+223) MLI" [ref=f57e627] [cursor=pointer]:
+        - generic [ref=f57e628]: 🇲🇱
+        - generic [ref=f57e629]:
+          - generic [ref=f57e630]: مالي (+223)
+          - generic [ref=f57e631]: MLI
+      - option "🇲🇩 جزر المالديف (+960) MDV" [ref=f57e632] [cursor=pointer]:
+        - generic [ref=f57e633]: 🇲🇩
+        - generic [ref=f57e634]:
+          - generic [ref=f57e635]: جزر المالديف (+960)
+          - generic [ref=f57e636]: MDV
+      - option "🇲🇾 ماليزيا (+60) MYS" [ref=f57e637] [cursor=pointer]:
+        - generic [ref=f57e638]: 🇲🇾
+        - generic [ref=f57e639]:
+          - generic [ref=f57e640]: ماليزيا (+60)
+          - generic [ref=f57e641]: MYS
+      - option "🇲🇼 مالاوي (+265) MWI" [ref=f57e642] [cursor=pointer]:
+        - generic [ref=f57e643]: 🇲🇼
+        - generic [ref=f57e644]:
+          - generic [ref=f57e645]: مالاوي (+265)
+          - generic [ref=f57e646]: MWI
+      - option "🇲🇩 مدغشقر (+261) MDG" [ref=f57e647] [cursor=pointer]:
+        - generic [ref=f57e648]: 🇲🇩
+        - generic [ref=f57e649]:
+          - generic [ref=f57e650]: مدغشقر (+261)
+          - generic [ref=f57e651]: MDG
+      - option "🇱🇺 لوكسمبورغ (+352) LUX" [ref=f57e652] [cursor=pointer]:
+        - generic [ref=f57e653]: 🇱🇺
+        - generic [ref=f57e654]:
+          - generic [ref=f57e655]: لوكسمبورغ (+352)
+          - generic [ref=f57e656]: LUX
+      - option "🇱🇹 ليتوانيا (+370) LTU" [ref=f57e657] [cursor=pointer]:
+        - generic [ref=f57e658]: 🇱🇹
+        - generic [ref=f57e659]:
+          - generic [ref=f57e660]: ليتوانيا (+370)
+          - generic [ref=f57e661]: LTU
+      - option "🇱🇮 ليختنشتاين (+423) LIE" [ref=f57e662] [cursor=pointer]:
+        - generic [ref=f57e663]: 🇱🇮
+        - generic [ref=f57e664]:
+          - generic [ref=f57e665]: ليختنشتاين (+423)
+          - generic [ref=f57e666]: LIE
+      - option "🇱🇧 ليبيا (+218) LBY" [ref=f57e667] [cursor=pointer]:
+        - generic [ref=f57e668]: 🇱🇧
+        - generic [ref=f57e669]:
+          - generic [ref=f57e670]: ليبيا (+218)
+          - generic [ref=f57e671]: LBY
+      - option "🇱🇧 ليبيريا (+231) LBR" [ref=f57e672] [cursor=pointer]:
+        - generic [ref=f57e673]: 🇱🇧
+        - generic [ref=f57e674]:
+          - generic [ref=f57e675]: ليبيريا (+231)
+          - generic [ref=f57e676]: LBR
+      - option "🇱🇸 ليسوتو (+266) LSO" [ref=f57e677] [cursor=pointer]:
+        - generic [ref=f57e678]: 🇱🇸
+        - generic [ref=f57e679]:
+          - generic [ref=f57e680]: ليسوتو (+266)
+          - generic [ref=f57e681]: LSO
+      - option "🇱🇧 لبنان (+961) LBN" [ref=f57e682] [cursor=pointer]:
+        - generic [ref=f57e683]: 🇱🇧
+        - generic [ref=f57e684]:
+          - generic [ref=f57e685]: لبنان (+961)
+          - generic [ref=f57e686]: LBN
+      - option "🇱🇻 لاتفيا (+371) LVA" [ref=f57e687] [cursor=pointer]:
+        - generic [ref=f57e688]: 🇱🇻
+        - generic [ref=f57e689]:
+          - generic [ref=f57e690]: لاتفيا (+371)
+          - generic [ref=f57e691]: LVA
+      - option "🇱🇦 لاوس (+856) LAO" [ref=f57e692] [cursor=pointer]:
+        - generic [ref=f57e693]: 🇱🇦
+        - generic [ref=f57e694]:
+          - generic [ref=f57e695]: لاوس (+856)
+          - generic [ref=f57e696]: LAO
+      - option "🇰🇬 قرغيزستان (+996) KGZ" [ref=f57e697] [cursor=pointer]:
+        - generic [ref=f57e698]: 🇰🇬
+        - generic [ref=f57e699]:
+          - generic [ref=f57e700]: قرغيزستان (+996)
+          - generic [ref=f57e701]: KGZ
+      - option "🇰🇼 الكويت (+965) KWT" [ref=f57e702] [cursor=pointer]:
+        - generic [ref=f57e703]: 🇰🇼
+        - generic [ref=f57e704]:
+          - generic [ref=f57e705]: الكويت (+965)
+          - generic [ref=f57e706]: KWT
+      - option "🇽🇰 كوسوفو (+383) XKX" [ref=f57e707] [cursor=pointer]:
+        - generic [ref=f57e708]: 🇽🇰
+        - generic [ref=f57e709]:
+          - generic [ref=f57e710]: كوسوفو (+383)
+          - generic [ref=f57e711]: XKX
+      - option "🇰🇮 كيريباتي (+686) KIR" [ref=f57e712] [cursor=pointer]:
+        - generic [ref=f57e713]: 🇰🇮
+        - generic [ref=f57e714]:
+          - generic [ref=f57e715]: كيريباتي (+686)
+          - generic [ref=f57e716]: KIR
+      - option "🇰🇪 كينيا (+254) KEN" [ref=f57e717] [cursor=pointer]:
+        - generic [ref=f57e718]: 🇰🇪
+        - generic [ref=f57e719]:
+          - generic [ref=f57e720]: كينيا (+254)
+          - generic [ref=f57e721]: KEN
+      - option "🇰🇦 كازاخستان (+7) KAZ" [ref=f57e722] [cursor=pointer]:
+        - generic [ref=f57e723]: 🇰🇦
+        - generic [ref=f57e724]:
+          - generic [ref=f57e725]: كازاخستان (+7)
+          - generic [ref=f57e726]: KAZ
+      - option "🇯🇴 الأردن (+962) JOR" [ref=f57e727] [cursor=pointer]:
+        - generic [ref=f57e728]: 🇯🇴
+        - generic [ref=f57e729]:
+          - generic [ref=f57e730]: الأردن (+962)
+          - generic [ref=f57e731]: JOR
+      - option "🇯🇵 اليابان (+81) JPN" [ref=f57e732] [cursor=pointer]:
+        - generic [ref=f57e733]: 🇯🇵
+        - generic [ref=f57e734]:
+          - generic [ref=f57e735]: اليابان (+81)
+          - generic [ref=f57e736]: JPN
+      - option "🇯🇦 جامايكا (+1-876) JAM" [ref=f57e737] [cursor=pointer]:
+        - generic [ref=f57e738]: 🇯🇦
+        - generic [ref=f57e739]:
+          - generic [ref=f57e740]: جامايكا (+1-876)
+          - generic [ref=f57e741]: JAM
+      - option "🇮🇹 إيطاليا (+39) ITA" [ref=f57e742] [cursor=pointer]:
+        - generic [ref=f57e743]: 🇮🇹
+        - generic [ref=f57e744]:
+          - generic [ref=f57e745]: إيطاليا (+39)
+          - generic [ref=f57e746]: ITA
+      - option "🇮🇷 أيرلندا (+353) IRL" [ref=f57e747] [cursor=pointer]:
+        - generic [ref=f57e748]: 🇮🇷
+        - generic [ref=f57e749]:
+          - generic [ref=f57e750]: أيرلندا (+353)
+          - generic [ref=f57e751]: IRL
+      - option "🇮🇷 العراق (+964) IRQ" [ref=f57e752] [cursor=pointer]:
+        - generic [ref=f57e753]: 🇮🇷
+        - generic [ref=f57e754]:
+          - generic [ref=f57e755]: العراق (+964)
+          - generic [ref=f57e756]: IRQ
+      - option "🇮🇷 إيران (+98) IRN" [ref=f57e757] [cursor=pointer]:
+        - generic [ref=f57e758]: 🇮🇷
+        - generic [ref=f57e759]:
+          - generic [ref=f57e760]: إيران (+98)
+          - generic [ref=f57e761]: IRN
+      - option "🇮🇩 إندونيسيا (+62) IDN" [ref=f57e762] [cursor=pointer]:
+        - generic [ref=f57e763]: 🇮🇩
+        - generic [ref=f57e764]:
+          - generic [ref=f57e765]: إندونيسيا (+62)
+          - generic [ref=f57e766]: IDN
+      - option "🇮🇳 الهند (+91) IND" [ref=f57e767] [cursor=pointer]:
+        - generic [ref=f57e768]: 🇮🇳
+        - generic [ref=f57e769]:
+          - generic [ref=f57e770]: الهند (+91)
+          - generic [ref=f57e771]: IND
+      - option "🇮🇸 أيسلندا (+354) ISL" [ref=f57e772] [cursor=pointer]:
+        - generic [ref=f57e773]: 🇮🇸
+        - generic [ref=f57e774]:
+          - generic [ref=f57e775]: أيسلندا (+354)
+          - generic [ref=f57e776]: ISL
+      - option "🇭🇺 المجر (+36) HUN" [ref=f57e777] [cursor=pointer]:
+        - generic [ref=f57e778]: 🇭🇺
+        - generic [ref=f57e779]:
+          - generic [ref=f57e780]: المجر (+36)
+          - generic [ref=f57e781]: HUN
+      - option "🇭🇳 هندوراس (+504) HND" [ref=f57e782] [cursor=pointer]:
+        - generic [ref=f57e783]: 🇭🇳
+        - generic [ref=f57e784]:
+          - generic [ref=f57e785]: هندوراس (+504)
+          - generic [ref=f57e786]: HND
+      - option "🇭🇹 هايتي (+509) HTI" [ref=f57e787] [cursor=pointer]:
+        - generic [ref=f57e788]: 🇭🇹
+        - generic [ref=f57e789]:
+          - generic [ref=f57e790]: هايتي (+509)
+          - generic [ref=f57e791]: HTI
+      - option "🇬🇺 غيانا (+592) GUY" [ref=f57e792] [cursor=pointer]:
+        - generic [ref=f57e793]: 🇬🇺
+        - generic [ref=f57e794]:
+          - generic [ref=f57e795]: غيانا (+592)
+          - generic [ref=f57e796]: GUY
+      - option "🇬🇳 غينيا بيساو (+245) GNB" [ref=f57e797] [cursor=pointer]:
+        - generic [ref=f57e798]: 🇬🇳
+        - generic [ref=f57e799]:
+          - generic [ref=f57e800]: غينيا بيساو (+245)
+          - generic [ref=f57e801]: GNB
+      - option "🇬🇮 غينيا (+224) GIN" [ref=f57e802] [cursor=pointer]:
+        - generic [ref=f57e803]: 🇬🇮
+        - generic [ref=f57e804]:
+          - generic [ref=f57e805]: غينيا (+224)
+          - generic [ref=f57e806]: GIN
+      - option "🇬🇹 غواتيمالا (+502) GTM" [ref=f57e807] [cursor=pointer]:
+        - generic [ref=f57e808]: 🇬🇹
+        - generic [ref=f57e809]:
+          - generic [ref=f57e810]: غواتيمالا (+502)
+          - generic [ref=f57e811]: GTM
+      - option "🇬🇷 غرينادا (+1-473) GRD" [ref=f57e812] [cursor=pointer]:
+        - generic [ref=f57e813]: 🇬🇷
+        - generic [ref=f57e814]:
+          - generic [ref=f57e815]: غرينادا (+1-473)
+          - generic [ref=f57e816]: GRD
+      - option "🇬🇷 اليونان (+30) GRC" [ref=f57e817] [cursor=pointer]:
+        - generic [ref=f57e818]: 🇬🇷
+        - generic [ref=f57e819]:
+          - generic [ref=f57e820]: اليونان (+30)
+          - generic [ref=f57e821]: GRC
+      - option "🇬🇭 غانا (+233) GHA" [ref=f57e822] [cursor=pointer]:
+        - generic [ref=f57e823]: 🇬🇭
+        - generic [ref=f57e824]:
+          - generic [ref=f57e825]: غانا (+233)
+          - generic [ref=f57e826]: GHA
+      - option "🇩🇪 ألمانيا (+49) DEU" [ref=f57e827] [cursor=pointer]:
+        - generic [ref=f57e828]: 🇩🇪
+        - generic [ref=f57e829]:
+          - generic [ref=f57e830]: ألمانيا (+49)
+          - generic [ref=f57e831]: DEU
+      - option "🇬🇪 جورجيا (+995) GEO" [ref=f57e832] [cursor=pointer]:
+        - generic [ref=f57e833]: 🇬🇪
+        - generic [ref=f57e834]:
+          - generic [ref=f57e835]: جورجيا (+995)
+          - generic [ref=f57e836]: GEO
+      - option "🇬🇲 غامبيا (+220) GMB" [ref=f57e837] [cursor=pointer]:
+        - generic [ref=f57e838]: 🇬🇲
+        - generic [ref=f57e839]:
+          - generic [ref=f57e840]: غامبيا (+220)
+          - generic [ref=f57e841]: GMB
+      - option "🇬🇦 الغابون (+241) GAB" [ref=f57e842] [cursor=pointer]:
+        - generic [ref=f57e843]: 🇬🇦
+        - generic [ref=f57e844]:
+          - generic [ref=f57e845]: الغابون (+241)
+          - generic [ref=f57e846]: GAB
+      - option "🇫🇷 فرنسا (+33) FRA" [ref=f57e847] [cursor=pointer]:
+        - generic [ref=f57e848]: 🇫🇷
+        - generic [ref=f57e849]:
+          - generic [ref=f57e850]: فرنسا (+33)
+          - generic [ref=f57e851]: FRA
+      - option "🇫🇮 فنلندا (+358) FIN" [ref=f57e852] [cursor=pointer]:
+        - generic [ref=f57e853]: 🇫🇮
+        - generic [ref=f57e854]:
+          - generic [ref=f57e855]: فنلندا (+358)
+          - generic [ref=f57e856]: FIN
+      - option "🇫🇯 فيجي (+679) FJI" [ref=f57e857] [cursor=pointer]:
+        - generic [ref=f57e858]: 🇫🇯
+        - generic [ref=f57e859]:
+          - generic [ref=f57e860]: فيجي (+679)
+          - generic [ref=f57e861]: FJI
+      - option "🇪🇹 إثيوبيا (+251) ETH" [ref=f57e862] [cursor=pointer]:
+        - generic [ref=f57e863]: 🇪🇹
+        - generic [ref=f57e864]:
+          - generic [ref=f57e865]: إثيوبيا (+251)
+          - generic [ref=f57e866]: ETH
+      - option "🇸🇼 إسواتيني (+268) SWZ" [ref=f57e867] [cursor=pointer]:
+        - generic [ref=f57e868]: 🇸🇼
+        - generic [ref=f57e869]:
+          - generic [ref=f57e870]: إسواتيني (+268)
+          - generic [ref=f57e871]: SWZ
+      - option "🇪🇸 إستونيا (+372) EST" [ref=f57e872] [cursor=pointer]:
+        - generic [ref=f57e873]: 🇪🇸
+        - generic [ref=f57e874]:
+          - generic [ref=f57e875]: إستونيا (+372)
+          - generic [ref=f57e876]: EST
+      - option "🇪🇷 إريتريا (+291) ERI" [ref=f57e877] [cursor=pointer]:
+        - generic [ref=f57e878]: 🇪🇷
+        - generic [ref=f57e879]:
+          - generic [ref=f57e880]: إريتريا (+291)
+          - generic [ref=f57e881]: ERI
+      - option "🇬🇳 غينيا الاستوائية (+240) GNQ" [ref=f57e882] [cursor=pointer]:
+        - generic [ref=f57e883]: 🇬🇳
+        - generic [ref=f57e884]:
+          - generic [ref=f57e885]: غينيا الاستوائية (+240)
+          - generic [ref=f57e886]: GNQ
+      - option "🇸🇱 السلفادور (+503) SLV" [ref=f57e887] [cursor=pointer]:
+        - generic [ref=f57e888]: 🇸🇱
+        - generic [ref=f57e889]:
+          - generic [ref=f57e890]: السلفادور (+503)
+          - generic [ref=f57e891]: SLV
+      - option "🇪🇨 الإكوادور (+593) ECU" [ref=f57e892] [cursor=pointer]:
+        - generic [ref=f57e893]: 🇪🇨
+        - generic [ref=f57e894]:
+          - generic [ref=f57e895]: الإكوادور (+593)
+          - generic [ref=f57e896]: ECU
+      - option "🇩🇴 جمهورية الدومينيكان (+1-809) DOM" [ref=f57e897] [cursor=pointer]:
+        - generic [ref=f57e898]: 🇩🇴
+        - generic [ref=f57e899]:
+          - generic [ref=f57e900]: جمهورية الدومينيكان (+1-809)
+          - generic [ref=f57e901]: DOM
+      - option "🇩🇲 دومينيكا (+1-767) DMA" [ref=f57e902] [cursor=pointer]:
+        - generic [ref=f57e903]: 🇩🇲
+        - generic [ref=f57e904]:
+          - generic [ref=f57e905]: دومينيكا (+1-767)
+          - generic [ref=f57e906]: DMA
+      - option "🇩🇯 جيبوتي (+253) DJI" [ref=f57e907] [cursor=pointer]:
+        - generic [ref=f57e908]: 🇩🇯
+        - generic [ref=f57e909]:
+          - generic [ref=f57e910]: جيبوتي (+253)
+          - generic [ref=f57e911]: DJI
+      - option "🇩🇳 الدنمارك (+45) DNK" [ref=f57e912] [cursor=pointer]:
+        - generic [ref=f57e913]: 🇩🇳
+        - generic [ref=f57e914]:
+          - generic [ref=f57e915]: الدنمارك (+45)
+          - generic [ref=f57e916]: DNK
+      - option "🇨🇿 جمهورية التشيك (+420) CZE" [ref=f57e917] [cursor=pointer]:
+        - generic [ref=f57e918]: 🇨🇿
+        - generic [ref=f57e919]:
+          - generic [ref=f57e920]: جمهورية التشيك (+420)
+          - generic [ref=f57e921]: CZE
+      - option "🇨🇾 قبرص (+357) CYP" [ref=f57e922] [cursor=pointer]:
+        - generic [ref=f57e923]: 🇨🇾
+        - generic [ref=f57e924]:
+          - generic [ref=f57e925]: قبرص (+357)
+          - generic [ref=f57e926]: CYP
+      - option "🇨🇺 كوبا (+53) CUB" [ref=f57e927] [cursor=pointer]:
+        - generic [ref=f57e928]: 🇨🇺
+        - generic [ref=f57e929]:
+          - generic [ref=f57e930]: كوبا (+53)
+          - generic [ref=f57e931]: CUB
+      - option "🇭🇷 كرواتيا (+385) HRV" [ref=f57e932] [cursor=pointer]:
+        - generic [ref=f57e933]: 🇭🇷
+        - generic [ref=f57e934]:
+          - generic [ref=f57e935]: كرواتيا (+385)
+          - generic [ref=f57e936]: HRV
+      - option "🇨🇷 كوستاريكا (+506) CRI" [ref=f57e937] [cursor=pointer]:
+        - generic [ref=f57e938]: 🇨🇷
+        - generic [ref=f57e939]:
+          - generic [ref=f57e940]: كوستاريكا (+506)
+          - generic [ref=f57e941]: CRI
+      - option "🇨🇴 الكونغو (+242) COG" [ref=f57e942] [cursor=pointer]:
+        - generic [ref=f57e943]: 🇨🇴
+        - generic [ref=f57e944]:
+          - generic [ref=f57e945]: الكونغو (+242)
+          - generic [ref=f57e946]: COG
+      - option "🇨🇴 جزر القمر (+269) COM" [ref=f57e947] [cursor=pointer]:
+        - generic [ref=f57e948]: 🇨🇴
+        - generic [ref=f57e949]:
+          - generic [ref=f57e950]: جزر القمر (+269)
+          - generic [ref=f57e951]: COM
+      - option "🇨🇴 كولومبيا (+57) COL" [ref=f57e952] [cursor=pointer]:
+        - generic [ref=f57e953]: 🇨🇴
+        - generic [ref=f57e954]:
+          - generic [ref=f57e955]: كولومبيا (+57)
+          - generic [ref=f57e956]: COL
+      - option "🇨🇭 الصين (+86) CHN" [ref=f57e957] [cursor=pointer]:
+        - generic [ref=f57e958]: 🇨🇭
+        - generic [ref=f57e959]:
+          - generic [ref=f57e960]: الصين (+86)
+          - generic [ref=f57e961]: CHN
+      - option "🇨🇭 تشيلي (+56) CHL" [ref=f57e962] [cursor=pointer]:
+        - generic [ref=f57e963]: 🇨🇭
+        - generic [ref=f57e964]:
+          - generic [ref=f57e965]: تشيلي (+56)
+          - generic [ref=f57e966]: CHL
+      - option "🇹🇨 تشاد (+235) TCD" [ref=f57e967] [cursor=pointer]:
+        - generic [ref=f57e968]: 🇹🇨
+        - generic [ref=f57e969]:
+          - generic [ref=f57e970]: تشاد (+235)
+          - generic [ref=f57e971]: TCD
+      - option "🇨🇦 كندا (+1) CAN" [ref=f57e972] [cursor=pointer]:
+        - generic [ref=f57e973]: 🇨🇦
+        - generic [ref=f57e974]:
+          - generic [ref=f57e975]: كندا (+1)
+          - generic [ref=f57e976]: CAN
+      - option "🇨🇲 الكاميرون (+237) CMR" [ref=f57e977] [cursor=pointer]:
+        - generic [ref=f57e978]: 🇨🇲
+        - generic [ref=f57e979]:
+          - generic [ref=f57e980]: الكاميرون (+237)
+          - generic [ref=f57e981]: CMR
+      - option "🇰🇭 كمبوديا (+855) KHM" [ref=f57e982] [cursor=pointer]:
+        - generic [ref=f57e983]: 🇰🇭
+        - generic [ref=f57e984]:
+          - generic [ref=f57e985]: كمبوديا (+855)
+          - generic [ref=f57e986]: KHM
+      - option "🇧🇩 بوروندي (+257) BDI" [ref=f57e987] [cursor=pointer]:
+        - generic [ref=f57e988]: 🇧🇩
+        - generic [ref=f57e989]:
+          - generic [ref=f57e990]: بوروندي (+257)
+          - generic [ref=f57e991]: BDI
+      - option "🇧🇬 بلغاريا (+359) BGR" [ref=f57e992] [cursor=pointer]:
+        - generic [ref=f57e993]: 🇧🇬
+        - generic [ref=f57e994]:
+          - generic [ref=f57e995]: بلغاريا (+359)
+          - generic [ref=f57e996]: BGR
+      - option "🇧🇷 بروناي (+673) BRN" [ref=f57e997] [cursor=pointer]:
+        - generic [ref=f57e998]: 🇧🇷
+        - generic [ref=f57e999]:
+          - generic [ref=f57e1000]: بروناي (+673)
+          - generic [ref=f57e1001]: BRN
+      - option "🇧🇷 البرازيل (+55) BRA" [ref=f57e1002] [cursor=pointer]:
+        - generic [ref=f57e1003]: 🇧🇷
+        - generic [ref=f57e1004]:
+          - generic [ref=f57e1005]: البرازيل (+55)
+          - generic [ref=f57e1006]: BRA
+      - option "🇧🇹 بوتان (+975) BTN" [ref=f57e1007] [cursor=pointer]:
+        - generic [ref=f57e1008]: 🇧🇹
+        - generic [ref=f57e1009]:
+          - generic [ref=f57e1010]: بوتان (+975)
+          - generic [ref=f57e1011]: BTN
+      - option "🇧🇪 بنين (+229) BEN" [ref=f57e1012] [cursor=pointer]:
+        - generic [ref=f57e1013]: 🇧🇪
+        - generic [ref=f57e1014]:
+          - generic [ref=f57e1015]: بنين (+229)
+          - generic [ref=f57e1016]: BEN
+      - option "🇧🇪 بلجيكا (+32) BEL" [ref=f57e1017] [cursor=pointer]:
+        - generic [ref=f57e1018]: 🇧🇪
+        - generic [ref=f57e1019]:
+          - generic [ref=f57e1020]: بلجيكا (+32)
+          - generic [ref=f57e1021]: BEL
+      - option "🇧🇱 بيلاروسيا (+375) BLR" [ref=f57e1022] [cursor=pointer]:
+        - generic [ref=f57e1023]: 🇧🇱
+        - generic [ref=f57e1024]:
+          - generic [ref=f57e1025]: بيلاروسيا (+375)
+          - generic [ref=f57e1026]: BLR
+      - option "🇧🇷 باربادوس (+1-246) BRB" [ref=f57e1027] [cursor=pointer]:
+        - generic [ref=f57e1028]: 🇧🇷
+        - generic [ref=f57e1029]:
+          - generic [ref=f57e1030]: باربادوس (+1-246)
+          - generic [ref=f57e1031]: BRB
+      - option "🇧🇬 بنغلاديش (+880) BGD" [ref=f57e1032] [cursor=pointer]:
+        - generic [ref=f57e1033]: 🇧🇬
+        - generic [ref=f57e1034]:
+          - generic [ref=f57e1035]: بنغلاديش (+880)
+          - generic [ref=f57e1036]: BGD
+      - option "🇧🇭 البحرين (+973) BHR" [ref=f57e1037] [cursor=pointer]:
+        - generic [ref=f57e1038]: 🇧🇭
+        - generic [ref=f57e1039]:
+          - generic [ref=f57e1040]: البحرين (+973)
+          - generic [ref=f57e1041]: BHR
+      - option "🇦🇿 أذربيجان (+994) AZE" [ref=f57e1042] [cursor=pointer]:
+        - generic [ref=f57e1043]: 🇦🇿
+        - generic [ref=f57e1044]:
+          - generic [ref=f57e1045]: أذربيجان (+994)
+          - generic [ref=f57e1046]: AZE
+      - option "🇦🇺 النمسا (+43) AUT" [ref=f57e1047] [cursor=pointer]:
+        - generic [ref=f57e1048]: 🇦🇺
+        - generic [ref=f57e1049]:
+          - generic [ref=f57e1050]: النمسا (+43)
+          - generic [ref=f57e1051]: AUT
+      - option "🇦🇺 أستراليا (+61) AUS" [ref=f57e1052] [cursor=pointer]:
+        - generic [ref=f57e1053]: 🇦🇺
+        - generic [ref=f57e1054]:
+          - generic [ref=f57e1055]: أستراليا (+61)
+          - generic [ref=f57e1056]: AUS
+      - option "🇦🇷 أرمينيا (+374) ARM" [ref=f57e1057] [cursor=pointer]:
+        - generic [ref=f57e1058]: 🇦🇷
+        - generic [ref=f57e1059]:
+          - generic [ref=f57e1060]: أرمينيا (+374)
+          - generic [ref=f57e1061]: ARM
+      - option "🇦🇷 الأرجنتين (+54) ARG" [ref=f57e1062] [cursor=pointer]:
+        - generic [ref=f57e1063]: 🇦🇷
+        - generic [ref=f57e1064]:
+          - generic [ref=f57e1065]: الأرجنتين (+54)
+          - generic [ref=f57e1066]: ARG
+      - option "🇦🇬 أنغولا (+244) AGO" [ref=f57e1067] [cursor=pointer]:
+        - generic [ref=f57e1068]: 🇦🇬
+        - generic [ref=f57e1069]:
+          - generic [ref=f57e1070]: أنغولا (+244)
+          - generic [ref=f57e1071]: AGO
+      - option "🇦🇳 أندورا (+376) AND" [ref=f57e1072] [cursor=pointer]:
+        - generic [ref=f57e1073]: 🇦🇳
+        - generic [ref=f57e1074]:
+          - generic [ref=f57e1075]: أندورا (+376)
+          - generic [ref=f57e1076]: AND
+      - option "🇩🇿 الجزائر (+213) DZA" [ref=f57e1077] [cursor=pointer]:
+        - generic [ref=f57e1078]: 🇩🇿
+        - generic [ref=f57e1079]:
+          - generic [ref=f57e1080]: الجزائر (+213)
+          - generic [ref=f57e1081]: DZA
+      - option "🇦🇱 ألبانيا (+355) ALB" [ref=f57e1082] [cursor=pointer]:
+        - generic [ref=f57e1083]: 🇦🇱
+        - generic [ref=f57e1084]:
+          - generic [ref=f57e1085]: ألبانيا (+355)
+          - generic [ref=f57e1086]: ALB
+      - option "🇦🇫 أفغانستان (+93) AFG" [ref=f57e1087] [cursor=pointer]:
+        - generic [ref=f57e1088]: 🇦🇫
+        - generic [ref=f57e1089]:
+          - generic [ref=f57e1090]: أفغانستان (+93)
+          - generic [ref=f57e1091]: AFG
+      - option "🇸🇦 المملكة العربية السعودية (+966) SAU" [ref=f57e1092] [cursor=pointer]:
+        - generic [ref=f57e1093]: 🇸🇦
+        - generic [ref=f57e1094]:
+          - generic [ref=f57e1095]: المملكة العربية السعودية (+966)
+          - generic [ref=f57e1096]: SAU
+      - option "🇪🇬 مصر (+20) EGY" [ref=f57e1097] [cursor=pointer]:
+        - generic [ref=f57e1098]: 🇪🇬
+        - generic [ref=f57e1099]:
+          - generic [ref=f57e1100]: مصر (+20)
+          - generic [ref=f57e1101]: EGY

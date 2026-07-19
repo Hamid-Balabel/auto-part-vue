@@ -1,0 +1,83 @@
+- generic [ref=f57e3]:
+  - complementary [ref=f57e4]:
+    - generic [ref=f57e9]:
+      - paragraph [ref=f57e10]: إدارة قطع الغيار
+      - paragraph [ref=f57e11]: المخزون والمبيعات
+    - navigation [ref=f57e12]:
+      - link "لوحة التحكم" [ref=f57e13] [cursor=pointer]:
+        - /url: /
+      - button "إدخال البيانات" [ref=f57e18] [cursor=pointer]
+      - generic [ref=f57e26]:
+        - button "المبيعات" [expanded] [ref=f57e27] [cursor=pointer]
+        - generic [ref=f57e35]:
+          - link "الطلبات" [ref=f57e36] [cursor=pointer]:
+            - /url: /orders
+          - link "الأقساط" [ref=f57e41] [cursor=pointer]:
+            - /url: /modules/installments
+      - button "المستخدمين" [ref=f57e46] [cursor=pointer]
+      - button "الإعدادات" [ref=f57e56] [cursor=pointer]
+  - generic [ref=f57e63]:
+    - banner [ref=f57e64]:
+      - generic [ref=f57e65]:
+        - generic [ref=f57e66]: الفلاتر المدعومة من الخلفية تظهر داخل كل شاشة.
+        - generic "اللغة" [ref=f57e71]:
+          - button "العربية" [ref=f57e76] [cursor=pointer]
+          - button "English" [ref=f57e77] [cursor=pointer]
+        - generic [ref=f57e78]:
+          - paragraph [ref=f57e79]: root
+          - paragraph [ref=f57e80]: root@jervis.com
+        - button "تسجيل الخروج" [ref=f57e81] [cursor=pointer]
+    - main [ref=f57e82]:
+      - generic [ref=f57e83]:
+        - generic [ref=f57e84]:
+          - heading "بيع سريع" [level=1] [ref=f57e85]
+          - paragraph [ref=f57e86]: ابحث عن المنتجات وحدد الكميات وحصّل الدفع وأنهِ البيع من شاشة واحدة.
+        - link "العودة للطلبات" [ref=f57e88] [cursor=pointer]:
+          - /url: /orders
+      - generic [ref=f57e91]:
+        - generic [ref=f57e92]:
+          - generic [ref=f57e93]:
+            - generic [ref=f57e94]:
+              - text: البحث عن منتج
+              - searchbox "البحث عن منتج" [ref=f57e96]
+            - paragraph [ref=f57e97]: يتم البحث داخل عناصر المنتجات التي أعادتها الخلفية. الأسعار المعروضة مؤقتة حتى إنشاء الطلب.
+          - generic [ref=f57e98]:
+            - paragraph [ref=f57e104]: لم يتم اختيار منتجات
+            - paragraph [ref=f57e105]: ابحث عن منتج بالأعلى واختره لإضافته إلى عملية البيع.
+        - complementary [ref=f57e106]:
+          - generic [ref=f57e107]:
+            - heading "بيانات البيع" [level=2] [ref=f57e108]
+            - generic [ref=f57e109]:
+              - generic [ref=f57e110]:
+                - generic [ref=f57e111]: رقم الفاتورة *
+                - textbox "رقم الفاتورة *" [ref=f57e112]: SALE-1784407223718
+              - generic [ref=f57e113]:
+                - generic [ref=f57e114]:
+                  - generic [ref=f57e115]: العميل *
+                  - combobox "العميل *" [ref=f57e118] [cursor=pointer]:
+                    - generic [ref=f57e119]: اختر...
+                - button "عميل سريع" [ref=f57e122] [cursor=pointer]
+              - group "طريقة الدفع" [ref=f57e124]:
+                - generic [ref=f57e126]:
+                  - button "نقدي" [ref=f57e127] [cursor=pointer]
+                  - button "بطاقة" [ref=f57e132] [cursor=pointer]
+                  - button "دفع جزئي" [ref=f57e136] [cursor=pointer]
+          - generic [ref=f57e143]:
+            - heading "ملخص الطلب" [level=2] [ref=f57e144]
+            - generic [ref=f57e145]:
+              - generic [ref=f57e146]:
+                - term [ref=f57e147]: الإجمالي الفرعي
+                - definition [ref=f57e148]: EGP 0.00
+              - generic [ref=f57e149]:
+                - term [ref=f57e150]: المبلغ المدفوع
+                - definition [ref=f57e151]: EGP 0.00
+              - generic [ref=f57e152]:
+                - term [ref=f57e153]: المبلغ المتبقي
+                - definition [ref=f57e154]: EGP 0.00
+              - generic [ref=f57e155]:
+                - term [ref=f57e156]: الإجمالي
+                - definition [ref=f57e157]: EGP 0.00
+            - paragraph [ref=f57e158]: الأسعار والإجماليات مؤكدة من الخلفية. الضريبة والخصم والشحن غير متاحة في واجهة API الحالية.
+          - button "إتمام البيع · EGP 0.00" [disabled] [ref=f57e159]:
+            - text: إتمام البيع ·
+            - generic [ref=f57e160]: EGP 0.00

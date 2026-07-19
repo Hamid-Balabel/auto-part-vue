@@ -1,0 +1,122 @@
+- generic [ref=f7e3]:
+  - complementary [ref=f7e4]:
+    - generic [ref=f7e9]:
+      - paragraph [ref=f7e10]: إدارة قطع الغيار
+      - paragraph [ref=f7e11]: المخزون والمبيعات
+    - navigation [ref=f7e12]:
+      - link "لوحة التحكم" [ref=f7e13] [cursor=pointer]:
+        - /url: /
+      - button "إدخال البيانات" [ref=f7e18] [cursor=pointer]
+      - button "المبيعات" [ref=f7e27] [cursor=pointer]
+      - button "المستخدمين" [ref=f7e36] [cursor=pointer]
+      - button "الإعدادات" [ref=f7e46] [cursor=pointer]
+  - generic [ref=f7e53]:
+    - banner [ref=f7e54]:
+      - generic [ref=f7e55]:
+        - generic [ref=f7e56]: الفلاتر المدعومة من الخلفية تظهر داخل كل شاشة.
+        - generic "اللغة" [ref=f7e61]:
+          - button "العربية" [ref=f7e66] [cursor=pointer]
+          - button "English" [ref=f7e67] [cursor=pointer]
+        - generic [ref=f7e68]:
+          - paragraph [ref=f7e69]: root
+          - paragraph [ref=f7e70]: root@jervis.com
+        - button "تسجيل الخروج" [ref=f7e71] [cursor=pointer]
+    - main [ref=f7e72]:
+      - generic [ref=f7e73]:
+        - generic [ref=f7e74]:
+          - heading "المخزون" [level=1] [ref=f7e75]
+          - paragraph [ref=f7e76]: كميات المخزون قيم مطلقة لكل مستودع وعنصر منتج. إجراءات الحذف والاستعادة وتبديل الحالة غير المدعومة مخفية.
+        - link "إنشاء" [ref=f7e78] [cursor=pointer]:
+          - /url: /stocks/create
+      - generic [ref=f7e79]:
+        - generic [ref=f7e80]:
+          - searchbox "البحث غير مدعوم بشكل موثوق في نقطة الخلفية هذه." [disabled] [ref=f7e81]
+          - generic [ref=f7e82]:
+            - button "بحث" [disabled] [ref=f7e83]
+            - button "مسح" [disabled] [ref=f7e84]
+        - button "تحديث" [ref=f7e85] [cursor=pointer]
+      - table [ref=f7e88]:
+        - rowgroup [ref=f7e89]:
+          - row [ref=f7e90]:
+            - columnheader [ref=f7e91]:
+              - button "المعرف" [ref=f7e92] [cursor=pointer]:
+                - generic [ref=f7e94]: DESC
+            - columnheader "المستودع" [ref=f7e95]
+            - columnheader "Product SKU" [ref=f7e96]
+            - columnheader "Product Name" [ref=f7e97]
+            - columnheader [ref=f7e98]:
+              - button "الكمية" [ref=f7e99] [cursor=pointer]
+            - columnheader "الإجراءات" [ref=f7e101]
+        - rowgroup [ref=f7e102]:
+          - row [ref=f7e103]:
+            - cell "7" [ref=f7e104]
+            - cell "test ars21" [ref=f7e105]
+            - cell "TEST-SKU-012" [ref=f7e106]
+            - cell "منتج تجريبي" [ref=f7e107]
+            - cell "50" [ref=f7e108]
+            - cell [ref=f7e109]:
+              - generic [ref=f7e110]:
+                - button "View" [ref=f7e111] [cursor=pointer]
+                - link "تعديل" [ref=f7e117] [cursor=pointer]:
+                  - /url: /stocks/7/edit
+          - row [ref=f7e118]:
+            - cell "6" [ref=f7e119]
+            - cell "test ars21" [ref=f7e120]
+            - cell "TEST-SKU-041" [ref=f7e121]
+            - cell "منتج تجريبي" [ref=f7e122]
+            - cell "200" [ref=f7e123]
+            - cell [ref=f7e124]:
+              - generic [ref=f7e125]:
+                - button "View" [ref=f7e126] [cursor=pointer]
+                - link "تعديل" [ref=f7e132] [cursor=pointer]:
+                  - /url: /stocks/6/edit
+          - row [ref=f7e133]:
+            - cell "5" [ref=f7e134]
+            - cell "test ars21" [ref=f7e135]
+            - cell "TEST-SKU-019" [ref=f7e136]
+            - cell "منتج تجريبي" [ref=f7e137]
+            - cell "50" [ref=f7e138]
+            - cell [ref=f7e139]:
+              - generic [ref=f7e140]:
+                - button "View" [ref=f7e141] [cursor=pointer]
+                - link "تعديل" [ref=f7e147] [cursor=pointer]:
+                  - /url: /stocks/5/edit
+          - row [ref=f7e148]:
+            - cell "4" [ref=f7e149]
+            - cell "test ars21" [ref=f7e150]
+            - cell "TEST-SKU-040" [ref=f7e151]
+            - cell "منتج تجريبي" [ref=f7e152]
+            - cell "200" [ref=f7e153]
+            - cell [ref=f7e154]:
+              - generic [ref=f7e155]:
+                - button "View" [ref=f7e156] [cursor=pointer]
+                - link "تعديل" [ref=f7e162] [cursor=pointer]:
+                  - /url: /stocks/4/edit
+          - row [ref=f7e163]:
+            - cell "2" [ref=f7e164]
+            - cell "test ars21" [ref=f7e165]
+            - cell "TEST-SKU-030" [ref=f7e166]
+            - cell "test ars21" [ref=f7e167]
+            - cell "200" [ref=f7e168]
+            - cell [ref=f7e169]:
+              - generic [ref=f7e170]:
+                - button "View" [ref=f7e171] [cursor=pointer]
+                - link "تعديل" [ref=f7e177] [cursor=pointer]:
+                  - /url: /stocks/2/edit
+          - row [ref=f7e178]:
+            - cell "1" [ref=f7e179]
+            - cell "test ars21" [ref=f7e180]
+            - cell "TEST-SKU-038" [ref=f7e181]
+            - cell "test ars21" [ref=f7e182]
+            - cell "200" [ref=f7e183]
+            - cell [ref=f7e184]:
+              - generic [ref=f7e185]:
+                - button "View" [ref=f7e186] [cursor=pointer]
+                - link "تعديل" [ref=f7e192] [cursor=pointer]:
+                  - /url: /stocks/1/edit
+      - generic [ref=f7e193]:
+        - paragraph [ref=f7e194]: عرض 1 إلى 6 من 6 سجل
+        - generic [ref=f7e195]:
+          - button "السابق" [disabled] [ref=f7e196]
+          - generic [ref=f7e197]: صفحة 1 من 1
+          - button "التالي" [disabled] [ref=f7e198]

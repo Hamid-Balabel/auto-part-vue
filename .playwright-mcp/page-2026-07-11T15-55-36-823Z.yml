@@ -1,0 +1,37 @@
+- generic [ref=f24e32]:
+  - complementary [ref=f24e33]:
+    - generic [ref=f24e38]:
+      - paragraph [ref=f24e39]: Auto Part Admin
+      - paragraph [ref=f24e40]: Inventory and sales
+    - navigation [ref=f24e41]:
+      - link "Dashboard" [ref=f24e42] [cursor=pointer]:
+        - /url: /
+      - button "إدخال البيانات" [ref=f24e47] [cursor=pointer]
+      - button "Sales" [ref=f24e56] [cursor=pointer]
+      - generic [ref=f24e64]:
+        - button "المستخدمين" [expanded] [ref=f24e65] [cursor=pointer]
+        - generic [ref=f24e995]:
+          - link "Users" [ref=f24e996] [cursor=pointer]:
+            - /url: /users
+          - link "Roles" [ref=f24e1003] [cursor=pointer]:
+            - /url: /roles
+      - button "الإعدادات" [ref=f24e75] [cursor=pointer]
+  - generic [ref=f24e82]:
+    - banner [ref=f24e83]:
+      - generic [ref=f24e84]:
+        - generic [ref=f24e85]: Backend-supported filters appear inside each module.
+        - generic "Language" [ref=f24e90]:
+          - button "العربية" [ref=f24e95] [cursor=pointer]
+          - button "English" [ref=f24e96] [cursor=pointer]
+        - generic [ref=f24e97]:
+          - paragraph [ref=f24e98]: root
+          - paragraph [ref=f24e99]: root@jervis.com
+        - button "Logout" [ref=f24e100] [cursor=pointer]
+    - main [ref=f24e101]:
+      - generic [ref=f24e1292]:
+        - generic [ref=f24e1293]:
+          - heading "Users" [level=1] [ref=f24e1294]
+          - paragraph [ref=f24e1295]: Manage system users according to Laravel policies and permissions.
+        - link "Create user" [ref=f24e1297] [cursor=pointer]:
+          - /url: /users/create
+      - generic [ref=f24e1298]: Loading data...

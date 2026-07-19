@@ -1,0 +1,109 @@
+- generic [ref=f5e2]:
+  - generic [ref=f5e3]:
+    - complementary [ref=f5e4]:
+      - generic [ref=f5e9]:
+        - paragraph [ref=f5e10]: إدارة قطع الغيار
+        - paragraph [ref=f5e11]: المخزون والمبيعات
+      - navigation [ref=f5e12]:
+        - link "لوحة التحكم" [ref=f5e13] [cursor=pointer]:
+          - /url: /
+        - generic [ref=f5e17]:
+          - button "إدخال البيانات" [expanded] [ref=f5e18] [cursor=pointer]
+          - generic [ref=f5e26]:
+            - link "المنتجات" [ref=f5e27] [cursor=pointer]:
+              - /url: /products
+            - link "عناصر المنتجات" [ref=f5e35] [cursor=pointer]:
+              - /url: /product-items
+            - link "التصنيفات" [ref=f5e47] [cursor=pointer]:
+              - /url: /categories
+            - link "العلامات التجارية" [ref=f5e53] [cursor=pointer]:
+              - /url: /brands
+            - link "العملاء" [ref=f5e58] [cursor=pointer]:
+              - /url: /customers
+            - link "المستودعات" [ref=f5e65] [cursor=pointer]:
+              - /url: /warehouses
+            - link "المخزون" [ref=f5e70] [cursor=pointer]:
+              - /url: /stocks
+            - link "الدول" [ref=f5e76] [cursor=pointer]:
+              - /url: /countries
+        - button "المبيعات" [ref=f5e81] [cursor=pointer]
+        - button "المستخدمين" [ref=f5e90] [cursor=pointer]
+        - button "الإعدادات" [ref=f5e100] [cursor=pointer]
+    - generic [ref=f5e107]:
+      - banner [ref=f5e108]:
+        - generic [ref=f5e109]:
+          - generic [ref=f5e110]: الفلاتر المدعومة من الخلفية تظهر داخل كل شاشة.
+          - generic "اللغة" [ref=f5e115]:
+            - button "العربية" [ref=f5e120] [cursor=pointer]
+            - button "English" [ref=f5e121] [cursor=pointer]
+          - generic [ref=f5e122]:
+            - paragraph [ref=f5e123]: root
+            - paragraph [ref=f5e124]: root@jervis.com
+          - button "تسجيل الخروج" [ref=f5e125] [cursor=pointer]
+      - main [ref=f5e126]:
+        - generic [ref=f5e127]:
+          - generic [ref=f5e128]:
+            - heading "التصنيفات" [level=1] [ref=f5e129]
+            - paragraph [ref=f5e130]: حقول الاسم والوصف متعددة اللغات مطابقة لموارد Laravel.
+          - link "إنشاء" [ref=f5e132] [cursor=pointer]:
+            - /url: /categories/create
+        - generic [ref=f5e133]:
+          - generic [ref=f5e134]:
+            - searchbox "البحث غير مدعوم بشكل موثوق في نقطة الخلفية هذه." [disabled] [ref=f5e135]
+            - generic [ref=f5e136]:
+              - button "بحث" [disabled] [ref=f5e137]
+              - button "مسح" [disabled] [ref=f5e138]
+          - button "تحديث" [ref=f5e139] [cursor=pointer]
+        - table [ref=f5e142]:
+          - rowgroup [ref=f5e143]:
+            - row [ref=f5e144]:
+              - columnheader [ref=f5e145]:
+                - button "المعرف" [ref=f5e147] [cursor=pointer]:
+                  - generic [ref=f5e149]: DESC
+              - columnheader "الاسم" [ref=f5e150]
+              - columnheader "الوصف" [ref=f5e152]
+              - columnheader "الحالة" [ref=f5e154]
+              - columnheader "الإجراءات" [ref=f5e156]
+          - rowgroup [ref=f5e158]:
+            - row [ref=f5e229]:
+              - cell "3" [ref=f5e160]
+              - cell "QA Select Inactive 20260718" [ref=f5e162]
+              - cell [ref=f5e164]
+              - cell [ref=f5e230]:
+                - switch "غير نشط" [ref=f5e231] [cursor=pointer]
+              - cell [ref=f5e170]:
+                - generic [ref=f5e172]:
+                  - link "تعديل" [ref=f5e173] [cursor=pointer]:
+                    - /url: /categories/3/edit
+                  - button "حذف" [ref=f5e176] [cursor=pointer]
+            - row [ref=f5e180]:
+              - cell "2" [ref=f5e181]
+              - cell "QA Select Active 20260718" [ref=f5e183]
+              - cell [ref=f5e185]
+              - cell [ref=f5e186]:
+                - switch "نشط" [checked] [ref=f5e188] [cursor=pointer]
+              - cell [ref=f5e191]:
+                - generic [ref=f5e193]:
+                  - link "تعديل" [ref=f5e194] [cursor=pointer]:
+                    - /url: /categories/2/edit
+                  - button "حذف" [ref=f5e197] [cursor=pointer]
+            - row [ref=f5e201]:
+              - cell "1" [ref=f5e202]
+              - cell "test ars21" [ref=f5e204]
+              - cell "decription ars" [ref=f5e206]
+              - cell [ref=f5e208]:
+                - switch "نشط" [checked] [ref=f5e210] [cursor=pointer]
+              - cell [ref=f5e213]:
+                - generic [ref=f5e215]:
+                  - link "تعديل" [ref=f5e216] [cursor=pointer]:
+                    - /url: /categories/1/edit
+                  - button "حذف" [ref=f5e219] [cursor=pointer]
+        - generic [ref=f5e223]:
+          - paragraph [ref=f5e224]: عرض 1 إلى 3 من 3 سجل
+          - generic [ref=f5e225]:
+            - button "السابق" [disabled] [ref=f5e226]
+            - generic [ref=f5e227]: صفحة 1 من 1
+            - button "التالي" [disabled] [ref=f5e228]
+  - generic [ref=f5e233]:
+    - paragraph [ref=f5e237]: تم تحديث الحالة بنجاح.
+    - button "×" [ref=f5e238] [cursor=pointer]

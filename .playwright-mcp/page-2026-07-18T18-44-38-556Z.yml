@@ -1,0 +1,40 @@
+- generic [ref=f17e3]:
+  - complementary [ref=f17e4]:
+    - generic [ref=f17e5]:
+      - generic [ref=f17e9]:
+        - paragraph [ref=f17e10]: Auto Part Admin
+        - paragraph [ref=f17e11]: Inventory and sales
+      - button "Close sidebar" [ref=f17e12] [cursor=pointer]
+    - navigation [ref=f17e16]:
+      - link "Dashboard" [ref=f17e17] [cursor=pointer]:
+        - /url: /
+      - button "إدخال البيانات" [ref=f17e22] [cursor=pointer]
+      - button "Sales" [ref=f17e31] [cursor=pointer]
+      - button "المستخدمين" [ref=f17e40] [cursor=pointer]
+      - button "الإعدادات" [ref=f17e50] [cursor=pointer]
+  - generic [ref=f17e57]:
+    - banner [ref=f17e58]:
+      - generic [ref=f17e59]:
+        - button "Open sidebar" [ref=f17e60] [cursor=pointer]
+        - generic "Language" [ref=f17e62]:
+          - button "العربية" [ref=f17e67] [cursor=pointer]
+          - button "English" [ref=f17e68] [cursor=pointer]
+        - button "Logout" [ref=f17e69] [cursor=pointer]
+    - main [ref=f17e70]:
+      - generic [ref=f17e72]:
+        - heading "Dashboard" [level=1] [ref=f17e73]
+        - paragraph [ref=f17e74]: Professional admin frontend connected to the inspected Laravel API contract.
+      - generic [ref=f17e75]:
+        - generic [ref=f17e76]:
+          - paragraph [ref=f17e88]: Inventory modules
+          - paragraph [ref=f17e89]: Products, items, stock
+        - generic [ref=f17e90]:
+          - paragraph [ref=f17e94]: Sales modules
+          - paragraph [ref=f17e95]: Carts, orders, installments
+        - generic [ref=f17e96]:
+          - paragraph [ref=f17e101]: Admin modules
+          - paragraph [ref=f17e102]: Users, roles, settings
+      - generic [ref=f17e103]:
+        - heading "Session" [level=2] [ref=f17e104]
+        - paragraph [ref=f17e105]: Signed in as root.
+        - paragraph [ref=f17e106]: If permissions are encrypted by backend config, sidebar visibility will remain conservative until the backend exposes decrypted permission names.

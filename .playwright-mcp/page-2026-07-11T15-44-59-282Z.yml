@@ -1,0 +1,41 @@
+- generic [ref=f21e32]:
+  - complementary [ref=f21e33]:
+    - generic [ref=f21e38]:
+      - paragraph [ref=f21e39]: إدارة قطع الغيار
+      - paragraph [ref=f21e40]: المخزون والمبيعات
+    - navigation [ref=f21e41]:
+      - link "لوحة التحكم" [ref=f21e42] [cursor=pointer]:
+        - /url: /
+      - button "إدخال البيانات" [ref=f21e47] [cursor=pointer]
+      - button "المبيعات" [ref=f21e56] [cursor=pointer]
+      - button "المستخدمين" [ref=f21e65] [cursor=pointer]
+      - button "الإعدادات" [ref=f21e75] [cursor=pointer]
+  - generic [ref=f21e82]:
+    - banner [ref=f21e83]:
+      - generic [ref=f21e84]:
+        - generic [ref=f21e85]: الفلاتر المدعومة من الخلفية تظهر داخل كل شاشة.
+        - generic "اللغة" [ref=f21e90]:
+          - button "العربية" [ref=f21e95] [cursor=pointer]
+          - button "English" [ref=f21e96] [cursor=pointer]
+        - generic [ref=f21e97]:
+          - paragraph [ref=f21e98]: root
+          - paragraph [ref=f21e99]: root@jervis.com
+        - button "تسجيل الخروج" [ref=f21e100] [cursor=pointer]
+    - main [ref=f21e101]:
+      - generic [ref=f21e103]:
+        - heading "لوحة التحكم" [level=1] [ref=f21e104]
+        - paragraph [ref=f21e105]: واجهة إدارة احترافية متصلة بعقد Laravel API الذي تم فحصه.
+      - generic [ref=f21e106]:
+        - generic [ref=f21e107]:
+          - paragraph [ref=f21e119]: وحدات المخزون
+          - paragraph [ref=f21e120]: المنتجات، العناصر، المخزون
+        - generic [ref=f21e121]:
+          - paragraph [ref=f21e125]: وحدات المبيعات
+          - paragraph [ref=f21e126]: السلات، الطلبات، الأقساط
+        - generic [ref=f21e127]:
+          - paragraph [ref=f21e132]: وحدات الإدارة
+          - paragraph [ref=f21e133]: المستخدمون، الأدوار، الإعدادات
+      - generic [ref=f21e134]:
+        - heading "الجلسة" [level=2] [ref=f21e135]
+        - paragraph [ref=f21e136]: تم تسجيل الدخول باسم root.
+        - paragraph [ref=f21e137]: إذا كانت الصلاحيات مشفرة من إعدادات الخلفية، ستبقى رؤية القائمة محافظة حتى تعرض الخلفية أسماء الصلاحيات.

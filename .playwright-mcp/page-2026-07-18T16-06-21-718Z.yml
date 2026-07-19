@@ -1,0 +1,95 @@
+- generic [ref=e3]:
+  - complementary [ref=e4]:
+    - generic [ref=e9]:
+      - paragraph [ref=e10]: Auto Part Admin
+      - paragraph [ref=e11]: Inventory and sales
+    - navigation [ref=e12]:
+      - link "Dashboard" [ref=e13] [cursor=pointer]:
+        - /url: /
+      - button "إدخال البيانات" [ref=e18] [cursor=pointer]
+      - generic [ref=e26]:
+        - button "Sales" [expanded] [ref=e27] [cursor=pointer]
+        - generic [ref=e35]:
+          - link "Carts" [ref=e36] [cursor=pointer]:
+            - /url: /cart
+          - link "Orders" [ref=e42] [cursor=pointer]:
+            - /url: /orders
+          - link "Installments" [ref=e47] [cursor=pointer]:
+            - /url: /modules/installments
+      - button "المستخدمين" [ref=e52] [cursor=pointer]
+      - button "الإعدادات" [ref=e62] [cursor=pointer]
+  - generic [ref=e69]:
+    - banner [ref=e70]:
+      - generic [ref=e71]:
+        - generic [ref=e72]: Backend-supported filters appear inside each module.
+        - generic "Language" [ref=e77]:
+          - button "العربية" [ref=e82] [cursor=pointer]
+          - button "English" [ref=e83] [cursor=pointer]
+        - generic [ref=e84]:
+          - paragraph [ref=e85]: root
+          - paragraph [ref=e86]: root@jervis.com
+        - button "Logout" [ref=e87] [cursor=pointer]
+    - main [ref=e88]:
+      - generic [ref=e89]:
+        - generic [ref=e90]:
+          - heading "Current Cart" [level=1] [ref=e91]
+          - paragraph [ref=e92]: Manage your cart lines. Prices and stock are revalidated by the backend at checkout.
+        - button "Clear cart" [ref=e154] [cursor=pointer]
+      - generic [ref=e94]:
+        - generic [ref=e95]:
+          - generic [ref=e96]: Product item *
+          - button "Product item *" [ref=e98] [cursor=pointer]:
+            - generic [ref=e99]: ⌄
+        - generic [ref=e100]:
+          - generic [ref=e101]: Quantity *
+          - spinbutton "Quantity *" [ref=e102]: "1"
+        - button "Add to cart" [disabled] [ref=e103]
+      - generic [ref=e158]:
+        - generic [ref=e160]:
+          - generic [ref=e161]:
+            - generic [ref=e162]: TEST-SKU-012
+            - generic [ref=e164]:
+              - paragraph [ref=e165]: Test Product
+              - paragraph [ref=e166]: TEST-SKU-012
+          - generic [ref=e167]:
+            - paragraph [ref=e168]: Unit price
+            - text: EGP 155.00
+          - generic "Quantity for TEST-SKU-012" [ref=e169]:
+            - button "Decrease quantity" [ref=e170] [cursor=pointer]
+            - spinbutton "Quantity for TEST-SKU-012" [ref=e172]: "2"
+            - button "Increase quantity" [ref=e173] [cursor=pointer]
+          - generic [ref=e175]:
+            - generic [ref=e176]:
+              - paragraph [ref=e177]: Line total
+              - text: EGP 310.00
+            - button "Delete" [ref=e178] [cursor=pointer]
+        - complementary [ref=e182]:
+          - generic [ref=e183]:
+            - heading "Order summary" [level=2] [ref=e184]
+            - generic [ref=e185]:
+              - generic [ref=e186]:
+                - term [ref=e187]: Subtotal
+                - definition [ref=e188]: EGP 310.00
+              - generic [ref=e189]:
+                - term [ref=e190]: Total
+                - definition [ref=e191]: EGP 310.00
+            - paragraph [ref=e192]: Prices and totals are confirmed by the backend. Tax, discount, and shipping amounts are not available in the current API.
+          - generic [ref=e193]:
+            - heading "Checkout" [level=2] [ref=e194]
+            - paragraph [ref=e195]: The backend reprices items and reserves stock when the order is created.
+            - generic [ref=e196]:
+              - generic [ref=e197]:
+                - generic [ref=e198]: Invoice number *
+                - textbox "Invoice number *" [ref=e199]
+              - generic [ref=e200]:
+                - generic [ref=e201]: Customer *
+                - button "Customer *" [ref=e203] [cursor=pointer]:
+                  - generic [ref=e204]: ⌄
+              - generic [ref=e205]:
+                - generic [ref=e206]: Payment method
+                - combobox "Payment method" [ref=e207]:
+                  - option "Select..."
+                  - option "Cash" [selected]
+                  - option "Card"
+                  - option "Bank transfer"
+              - button "Complete checkout" [disabled] [ref=e208]

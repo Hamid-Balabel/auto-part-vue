@@ -1,0 +1,105 @@
+import type { RouteRecordRaw } from 'vue-router'
+
+export const inventoryRoutes: RouteRecordRaw[] = [
+  {
+    path: 'products',
+    name: 'products.index',
+    component: () => import('./pages/ProductsIndexPage.vue'),
+    meta: { permission: ['view-all-product', 'view-own-product', 'read-product', 'create-product', 'update-product', 'delete-product'] },
+  },
+  {
+    path: 'products/create',
+    name: 'products.create',
+    component: () => import('./pages/ProductFormPage.vue'),
+    meta: { permission: 'create-product' },
+  },
+  {
+    path: 'products/create-with-items',
+    name: 'products.create-with-items',
+    component: () => import('./pages/ProductWithItemsFormPage.vue'),
+    meta: { permission: 'create-product' },
+  },
+  {
+    path: 'products/:id/edit',
+    name: 'products.edit',
+    component: () => import('./pages/ProductFormPage.vue'),
+    props: true,
+    meta: { permission: 'update-product' },
+  },
+  {
+    path: 'product-items',
+    name: 'product-items.index',
+    component: () => import('./pages/ProductItemsIndexPage.vue'),
+    meta: { permission: ['view-all-product-item', 'view-own-product-item', 'read-product-item', 'create-product-item', 'update-product-item', 'delete-product-item'] },
+  },
+  {
+    path: 'product-items/create',
+    name: 'product-items.create',
+    component: () => import('./pages/ProductItemFormPage.vue'),
+    meta: { permission: 'create-product-item' },
+  },
+  {
+    path: 'product-items/:id/edit',
+    name: 'product-items.edit',
+    component: () => import('./pages/ProductItemFormPage.vue'),
+    props: true,
+    meta: { permission: 'update-product-item' },
+  },
+  {
+    path: 'customers',
+    name: 'customers.index',
+    component: () => import('./pages/CustomersIndexPage.vue'),
+    meta: { permission: ['view-all-customer', 'view-own-customer', 'view-customer', 'read-customer', 'create-customer', 'update-customer', 'delete-customer'] },
+  },
+  {
+    path: 'customers/create',
+    name: 'customers.create',
+    component: () => import('./pages/CustomerFormPage.vue'),
+    meta: { permission: 'create-customer' },
+  },
+  {
+    path: 'customers/:id/edit',
+    name: 'customers.edit',
+    component: () => import('./pages/CustomerFormPage.vue'),
+    props: true,
+    meta: { permission: 'update-customer' },
+  },
+  {
+    path: 'warehouses',
+    name: 'warehouses.index',
+    component: () => import('./pages/WarehousesIndexPage.vue'),
+    meta: { permission: ['view-all-warehouse', 'view-own-warehouse', 'view-warehouse', 'read-warehouse', 'create-warehouse', 'update-warehouse', 'delete-warehouse'] },
+  },
+  {
+    path: 'warehouses/create',
+    name: 'warehouses.create',
+    component: () => import('./pages/WarehouseFormPage.vue'),
+    meta: { permission: 'create-warehouse' },
+  },
+  {
+    path: 'warehouses/:id/edit',
+    name: 'warehouses.edit',
+    component: () => import('./pages/WarehouseFormPage.vue'),
+    props: true,
+    meta: { permission: 'update-warehouse' },
+  },
+  {
+    path: 'stocks',
+    name: 'stocks.index',
+    component: () => import('./pages/StocksIndexPage.vue'),
+    meta: { permission: ['read-stock', 'create-stock', 'update-stock'] },
+  },
+  {
+    path: 'stocks/create',
+    name: 'stocks.create',
+    component: () => import('./pages/StockFormPage.vue'),
+    meta: { permission: ['read-stock', 'create-stock'] },
+  },
+  {
+    path: 'stocks/:id/edit',
+    name: 'stocks.edit',
+    component: () => import('./pages/StockFormPage.vue'),
+    props: true,
+    meta: { permission: ['read-stock', 'update-stock'] },
+  },
+]

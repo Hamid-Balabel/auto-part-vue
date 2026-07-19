@@ -1,0 +1,101 @@
+- generic [ref=f13e3]:
+  - complementary [ref=f13e4]:
+    - generic [ref=f13e5]:
+      - generic [ref=f13e9]:
+        - paragraph [ref=f13e10]: إدارة قطع الغيار
+        - paragraph [ref=f13e11]: المخزون والمبيعات
+      - button "إغلاق القائمة الجانبية" [ref=f13e12] [cursor=pointer]
+    - navigation [ref=f13e16]:
+      - link "لوحة التحكم" [ref=f13e17] [cursor=pointer]:
+        - /url: /
+      - button "إدخال البيانات" [ref=f13e22] [cursor=pointer]
+      - generic [ref=f13e30]:
+        - button "المبيعات" [expanded] [ref=f13e31] [cursor=pointer]
+        - generic [ref=f13e39]:
+          - link "السلات" [ref=f13e40] [cursor=pointer]:
+            - /url: /cart
+          - link "الطلبات" [ref=f13e46] [cursor=pointer]:
+            - /url: /orders
+          - link "الأقساط" [ref=f13e51] [cursor=pointer]:
+            - /url: /modules/installments
+      - button "المستخدمين" [ref=f13e56] [cursor=pointer]
+      - button "الإعدادات" [ref=f13e66] [cursor=pointer]
+  - generic [ref=f13e73]:
+    - banner [ref=f13e74]:
+      - generic [ref=f13e75]:
+        - button "فتح القائمة الجانبية" [ref=f13e76] [cursor=pointer]
+        - generic "اللغة" [ref=f13e78]:
+          - button "العربية" [ref=f13e83] [cursor=pointer]
+          - button "English" [ref=f13e84] [cursor=pointer]
+        - button "تسجيل الخروج" [ref=f13e85] [cursor=pointer]
+    - main [ref=f13e86]:
+      - generic [ref=f13e87]:
+        - generic [ref=f13e88]:
+          - heading "السلة الحالية" [level=1] [ref=f13e89]
+          - paragraph [ref=f13e90]: إدارة عناصر سلتك. تعيد الخلفية التحقق من الأسعار والمخزون عند إتمام الطلب.
+        - button "تفريغ السلة" [ref=f13e152] [cursor=pointer]
+      - generic [ref=f13e92]:
+        - generic [ref=f13e93]:
+          - generic [ref=f13e94]: عنصر المنتج *
+          - button "عنصر المنتج *" [ref=f13e96] [cursor=pointer]:
+            - generic [ref=f13e97]: ⌄
+        - generic [ref=f13e98]:
+          - generic [ref=f13e99]: الكمية *
+          - spinbutton "الكمية *" [ref=f13e100]: "1"
+        - button "إضافة للسلة" [disabled] [ref=f13e101]
+      - generic [ref=f13e156]:
+        - generic [ref=f13e158]:
+          - generic [ref=f13e159]:
+            - generic [ref=f13e160]: TEST-SKU-012
+            - generic [ref=f13e162]:
+              - paragraph [ref=f13e163]: منتج تجريبي
+              - paragraph [ref=f13e164]: TEST-SKU-012
+          - generic [ref=f13e165]:
+            - paragraph [ref=f13e166]: سعر الوحدة
+            - text: EGP 155.00
+          - generic "كمية TEST-SKU-012" [ref=f13e167]:
+            - button "تقليل الكمية" [disabled] [ref=f13e168]
+            - spinbutton "كمية TEST-SKU-012" [ref=f13e170]: "1"
+            - button "زيادة الكمية" [ref=f13e171] [cursor=pointer]
+          - generic [ref=f13e173]:
+            - generic [ref=f13e174]:
+              - paragraph [ref=f13e175]: إجمالي العنصر
+              - text: EGP 155.00
+            - button "حذف" [active] [ref=f13e176] [cursor=pointer]
+        - complementary [ref=f13e180]:
+          - generic [ref=f13e181]:
+            - heading "ملخص الطلب" [level=2] [ref=f13e182]
+            - generic [ref=f13e183]:
+              - generic [ref=f13e184]:
+                - term [ref=f13e185]: الإجمالي الفرعي
+                - definition [ref=f13e186]: EGP 155.00
+              - generic [ref=f13e187]:
+                - term [ref=f13e188]: الإجمالي
+                - definition [ref=f13e189]: EGP 155.00
+            - paragraph [ref=f13e190]: الأسعار والإجماليات مؤكدة من الخلفية. الضريبة والخصم والشحن غير متاحة في واجهة API الحالية.
+          - generic [ref=f13e191]:
+            - heading "إتمام الطلب" [level=2] [ref=f13e192]
+            - paragraph [ref=f13e193]: تعيد الخلفية تسعير العناصر وتحجز المخزون عند إنشاء الطلب.
+            - generic [ref=f13e194]:
+              - generic [ref=f13e195]:
+                - generic [ref=f13e196]: رقم الفاتورة *
+                - textbox "رقم الفاتورة *" [ref=f13e197]
+              - generic [ref=f13e198]:
+                - generic [ref=f13e199]: العميل *
+                - button "العميل *" [ref=f13e201] [cursor=pointer]:
+                  - generic [ref=f13e202]: ⌄
+              - generic [ref=f13e203]:
+                - generic [ref=f13e204]: طريقة الدفع
+                - combobox "طريقة الدفع" [ref=f13e205]:
+                  - option "اختر..."
+                  - option "نقدي" [selected]
+                  - option "بطاقة"
+                  - option "تحويل بنكي"
+              - button "تأكيد وإنشاء الطلب" [disabled] [ref=f13e206]
+      - dialog [ref=f13e209]:
+        - generic [ref=f13e210]:
+          - heading "حذف العنصر" [level=2] [ref=f13e211]
+          - paragraph [ref=f13e212]: هل تريد حذف هذا العنصر من السلة؟
+          - generic [ref=f13e213]:
+            - button "إلغاء" [ref=f13e214] [cursor=pointer]
+            - button "حذف" [ref=f13e215] [cursor=pointer]

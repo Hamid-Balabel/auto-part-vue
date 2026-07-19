@@ -1,0 +1,998 @@
+- generic [ref=f5e32]:
+  - complementary [ref=f5e33]:
+    - generic [ref=f5e38]:
+      - paragraph [ref=f5e39]: إدارة قطع الغيار
+      - paragraph [ref=f5e40]: المخزون والمبيعات
+    - navigation [ref=f5e41]:
+      - link "لوحة التحكم" [ref=f5e42] [cursor=pointer]:
+        - /url: /
+      - button "إدخال البيانات" [ref=f5e47] [cursor=pointer]
+      - button "المبيعات" [ref=f5e56] [cursor=pointer]
+      - button "المستخدمين" [ref=f5e65] [cursor=pointer]
+      - button "الإعدادات" [ref=f5e75] [cursor=pointer]
+  - generic [ref=f5e82]:
+    - banner [ref=f5e83]:
+      - generic [ref=f5e84]:
+        - generic [ref=f5e85]: الفلاتر المدعومة من الخلفية تظهر داخل كل شاشة.
+        - generic "اللغة" [ref=f5e90]:
+          - button "العربية" [ref=f5e95] [cursor=pointer]
+          - button "English" [ref=f5e96] [cursor=pointer]
+        - generic [ref=f5e97]:
+          - paragraph [ref=f5e98]: root
+          - paragraph [ref=f5e99]: root@jervis.com
+        - button "تسجيل الخروج" [ref=f5e100] [cursor=pointer]
+    - main [ref=f5e101]:
+      - generic [ref=f5e2085]:
+        - generic [ref=f5e2087]:
+          - heading "تعديل مستخدم" [level=1] [ref=f5e2088]
+          - paragraph [ref=f5e2089]: الأدوار مطلوبة، وكلمة المرور مطلوبة عند إنشاء مستخدم جديد.
+        - generic [ref=f5e2090]:
+          - generic [ref=f5e2091]:
+            - heading "البيانات الأساسية" [level=2] [ref=f5e2093]
+            - generic [ref=f5e2094]:
+              - generic [ref=f5e2095]:
+                - generic [ref=f5e2096]: الاسم *
+                - textbox "الاسم *" [ref=f5e2097]: Phone Layout Temporary User
+              - generic [ref=f5e2098]:
+                - generic [ref=f5e2099]: البريد الإلكتروني *
+                - textbox "البريد الإلكتروني *" [ref=f5e2100]: phone.layout.temp.202607141022@jervis.com
+              - generic [ref=f5e2101]:
+                - generic [ref=f5e2102]: الجنس *
+                - combobox "الجنس *" [ref=f5e2103]:
+                  - option "اختر..."
+                  - option "ذكر" [selected]
+                  - option "أنثى"
+              - generic [ref=f5e2104]:
+                - generic [ref=f5e2105]: حالة المستخدم
+                - combobox "حالة المستخدم" [ref=f5e2106]:
+                  - option "اختر..."
+                  - option "نشط" [selected]
+                  - option "غير نشط"
+            - generic [ref=f5e2108]:
+              - paragraph [ref=f5e2109]: الهاتف
+              - generic [ref=f5e2110]:
+                - generic [ref=f5e2111]:
+                  - generic [ref=f5e2112]: كود الدولة
+                  - button "كود الدولة" [expanded] [active] [ref=f5e2114] [cursor=pointer]:
+                    - generic [ref=f5e2115]: 🇸🇦 المملكة العربية السعودية (+966)
+                    - generic [ref=f5e2116]: ⌄
+                  - generic [ref=f5e2144]:
+                    - searchbox "ابحث باسم الدولة أو الكود أو كود الهاتف" [ref=f5e2145]
+                    - generic [ref=f5e2146]:
+                      - button "🇿🇼 زيمبابوي (+263) ZWE" [ref=f5e2147] [cursor=pointer]:
+                        - generic [ref=f5e2148]: 🇿🇼
+                        - generic [ref=f5e2149]:
+                          - generic [ref=f5e2150]: زيمبابوي (+263)
+                          - generic [ref=f5e2151]: ZWE
+                      - button "🇿🇲 زامبيا (+260) ZMB" [ref=f5e2152] [cursor=pointer]:
+                        - generic [ref=f5e2153]: 🇿🇲
+                        - generic [ref=f5e2154]:
+                          - generic [ref=f5e2155]: زامبيا (+260)
+                          - generic [ref=f5e2156]: ZMB
+                      - button "🇾🇪 اليمن (+967) YEM" [ref=f5e2157] [cursor=pointer]:
+                        - generic [ref=f5e2158]: 🇾🇪
+                        - generic [ref=f5e2159]:
+                          - generic [ref=f5e2160]: اليمن (+967)
+                          - generic [ref=f5e2161]: YEM
+                      - button "🇻🇳 فيتنام (+84) VNM" [ref=f5e2162] [cursor=pointer]:
+                        - generic [ref=f5e2163]: 🇻🇳
+                        - generic [ref=f5e2164]:
+                          - generic [ref=f5e2165]: فيتنام (+84)
+                          - generic [ref=f5e2166]: VNM
+                      - button "🇻🇪 فنزويلا (+58) VEN" [ref=f5e2167] [cursor=pointer]:
+                        - generic [ref=f5e2168]: 🇻🇪
+                        - generic [ref=f5e2169]:
+                          - generic [ref=f5e2170]: فنزويلا (+58)
+                          - generic [ref=f5e2171]: VEN
+                      - button "🇻🇦 الفاتيكان (+39) VAT" [ref=f5e2172] [cursor=pointer]:
+                        - generic [ref=f5e2173]: 🇻🇦
+                        - generic [ref=f5e2174]:
+                          - generic [ref=f5e2175]: الفاتيكان (+39)
+                          - generic [ref=f5e2176]: VAT
+                      - button "🇻🇺 فانواتو (+678) VUT" [ref=f5e2177] [cursor=pointer]:
+                        - generic [ref=f5e2178]: 🇻🇺
+                        - generic [ref=f5e2179]:
+                          - generic [ref=f5e2180]: فانواتو (+678)
+                          - generic [ref=f5e2181]: VUT
+                      - button "🇺🇿 أوزبكستان (+998) UZB" [ref=f5e2182] [cursor=pointer]:
+                        - generic [ref=f5e2183]: 🇺🇿
+                        - generic [ref=f5e2184]:
+                          - generic [ref=f5e2185]: أوزبكستان (+998)
+                          - generic [ref=f5e2186]: UZB
+                      - button "🇺🇷 أوروغواي (+598) URY" [ref=f5e2187] [cursor=pointer]:
+                        - generic [ref=f5e2188]: 🇺🇷
+                        - generic [ref=f5e2189]:
+                          - generic [ref=f5e2190]: أوروغواي (+598)
+                          - generic [ref=f5e2191]: URY
+                      - button "🇺🇸 الولايات المتحدة الأمريكية (+1) USA" [ref=f5e2192] [cursor=pointer]:
+                        - generic [ref=f5e2193]: 🇺🇸
+                        - generic [ref=f5e2194]:
+                          - generic [ref=f5e2195]: الولايات المتحدة الأمريكية (+1)
+                          - generic [ref=f5e2196]: USA
+                      - button "🇬🇧 المملكة المتحدة (+44) GBR" [ref=f5e2197] [cursor=pointer]:
+                        - generic [ref=f5e2198]: 🇬🇧
+                        - generic [ref=f5e2199]:
+                          - generic [ref=f5e2200]: المملكة المتحدة (+44)
+                          - generic [ref=f5e2201]: GBR
+                      - button "🇦🇷 الإمارات العربية المتحدة (+971) ARE" [ref=f5e2202] [cursor=pointer]:
+                        - generic [ref=f5e2203]: 🇦🇷
+                        - generic [ref=f5e2204]:
+                          - generic [ref=f5e2205]: الإمارات العربية المتحدة (+971)
+                          - generic [ref=f5e2206]: ARE
+                      - button "🇺🇰 أوكرانيا (+380) UKR" [ref=f5e2207] [cursor=pointer]:
+                        - generic [ref=f5e2208]: 🇺🇰
+                        - generic [ref=f5e2209]:
+                          - generic [ref=f5e2210]: أوكرانيا (+380)
+                          - generic [ref=f5e2211]: UKR
+                      - button "🇺🇬 أوغندا (+256) UGA" [ref=f5e2212] [cursor=pointer]:
+                        - generic [ref=f5e2213]: 🇺🇬
+                        - generic [ref=f5e2214]:
+                          - generic [ref=f5e2215]: أوغندا (+256)
+                          - generic [ref=f5e2216]: UGA
+                      - button "🇹🇺 توفالو (+688) TUV" [ref=f5e2217] [cursor=pointer]:
+                        - generic [ref=f5e2218]: 🇹🇺
+                        - generic [ref=f5e2219]:
+                          - generic [ref=f5e2220]: توفالو (+688)
+                          - generic [ref=f5e2221]: TUV
+                      - button "🇹🇰 تركمانستان (+993) TKM" [ref=f5e2222] [cursor=pointer]:
+                        - generic [ref=f5e2223]: 🇹🇰
+                        - generic [ref=f5e2224]:
+                          - generic [ref=f5e2225]: تركمانستان (+993)
+                          - generic [ref=f5e2226]: TKM
+                      - button "🇹🇺 تركيا (+90) TUR" [ref=f5e2227] [cursor=pointer]:
+                        - generic [ref=f5e2228]: 🇹🇺
+                        - generic [ref=f5e2229]:
+                          - generic [ref=f5e2230]: تركيا (+90)
+                          - generic [ref=f5e2231]: TUR
+                      - button "🇹🇺 تونس (+216) TUN" [ref=f5e2232] [cursor=pointer]:
+                        - generic [ref=f5e2233]: 🇹🇺
+                        - generic [ref=f5e2234]:
+                          - generic [ref=f5e2235]: تونس (+216)
+                          - generic [ref=f5e2236]: TUN
+                      - button "🇹🇹 ترينيداد وتوباغو (+1868) TTO" [ref=f5e2237] [cursor=pointer]:
+                        - generic [ref=f5e2238]: 🇹🇹
+                        - generic [ref=f5e2239]:
+                          - generic [ref=f5e2240]: ترينيداد وتوباغو (+1868)
+                          - generic [ref=f5e2241]: TTO
+                      - button "🇹🇴 تونغا (+676) TON" [ref=f5e2242] [cursor=pointer]:
+                        - generic [ref=f5e2243]: 🇹🇴
+                        - generic [ref=f5e2244]:
+                          - generic [ref=f5e2245]: تونغا (+676)
+                          - generic [ref=f5e2246]: TON
+                      - button "🇹🇬 توجو (+228) TGO" [ref=f5e2247] [cursor=pointer]:
+                        - generic [ref=f5e2248]: 🇹🇬
+                        - generic [ref=f5e2249]:
+                          - generic [ref=f5e2250]: توجو (+228)
+                          - generic [ref=f5e2251]: TGO
+                      - button "🇹🇭 تايلاند (+66) THA" [ref=f5e2252] [cursor=pointer]:
+                        - generic [ref=f5e2253]: 🇹🇭
+                        - generic [ref=f5e2254]:
+                          - generic [ref=f5e2255]: تايلاند (+66)
+                          - generic [ref=f5e2256]: THA
+                      - button "🇹🇿 تنزانيا (+255) TZA" [ref=f5e2257] [cursor=pointer]:
+                        - generic [ref=f5e2258]: 🇹🇿
+                        - generic [ref=f5e2259]:
+                          - generic [ref=f5e2260]: تنزانيا (+255)
+                          - generic [ref=f5e2261]: TZA
+                      - button "🇹🇯 طاجيكستان (+992) TJK" [ref=f5e2262] [cursor=pointer]:
+                        - generic [ref=f5e2263]: 🇹🇯
+                        - generic [ref=f5e2264]:
+                          - generic [ref=f5e2265]: طاجيكستان (+992)
+                          - generic [ref=f5e2266]: TJK
+                      - button "🇹🇼 تايوان (+886) TWN" [ref=f5e2267] [cursor=pointer]:
+                        - generic [ref=f5e2268]: 🇹🇼
+                        - generic [ref=f5e2269]:
+                          - generic [ref=f5e2270]: تايوان (+886)
+                          - generic [ref=f5e2271]: TWN
+                      - button "🇸🇾 سوريا (+963) SYR" [ref=f5e2272] [cursor=pointer]:
+                        - generic [ref=f5e2273]: 🇸🇾
+                        - generic [ref=f5e2274]:
+                          - generic [ref=f5e2275]: سوريا (+963)
+                          - generic [ref=f5e2276]: SYR
+                      - button "🇨🇭 سويسرا (+41) CHE" [ref=f5e2277] [cursor=pointer]:
+                        - generic [ref=f5e2278]: 🇨🇭
+                        - generic [ref=f5e2279]:
+                          - generic [ref=f5e2280]: سويسرا (+41)
+                          - generic [ref=f5e2281]: CHE
+                      - button "🇸🇼 السويد (+46) SWE" [ref=f5e2282] [cursor=pointer]:
+                        - generic [ref=f5e2283]: 🇸🇼
+                        - generic [ref=f5e2284]:
+                          - generic [ref=f5e2285]: السويد (+46)
+                          - generic [ref=f5e2286]: SWE
+                      - button "🇸🇺 سورينام (+597) SUR" [ref=f5e2287] [cursor=pointer]:
+                        - generic [ref=f5e2288]: 🇸🇺
+                        - generic [ref=f5e2289]:
+                          - generic [ref=f5e2290]: سورينام (+597)
+                          - generic [ref=f5e2291]: SUR
+                      - button "🇸🇩 السودان (+249) SDN" [ref=f5e2292] [cursor=pointer]:
+                        - generic [ref=f5e2293]: 🇸🇩
+                        - generic [ref=f5e2294]:
+                          - generic [ref=f5e2295]: السودان (+249)
+                          - generic [ref=f5e2296]: SDN
+                      - button "🇱🇰 سريلانكا (+94) LKA" [ref=f5e2297] [cursor=pointer]:
+                        - generic [ref=f5e2298]: 🇱🇰
+                        - generic [ref=f5e2299]:
+                          - generic [ref=f5e2300]: سريلانكا (+94)
+                          - generic [ref=f5e2301]: LKA
+                      - button "🇪🇸 إسبانيا (+34) ESP" [ref=f5e2302] [cursor=pointer]:
+                        - generic [ref=f5e2303]: 🇪🇸
+                        - generic [ref=f5e2304]:
+                          - generic [ref=f5e2305]: إسبانيا (+34)
+                          - generic [ref=f5e2306]: ESP
+                      - button "🇸🇸 جنوب السودان (+211) SSD" [ref=f5e2307] [cursor=pointer]:
+                        - generic [ref=f5e2308]: 🇸🇸
+                        - generic [ref=f5e2309]:
+                          - generic [ref=f5e2310]: جنوب السودان (+211)
+                          - generic [ref=f5e2311]: SSD
+                      - button "🇰🇴 كوريا الجنوبية (+82) KOR" [ref=f5e2312] [cursor=pointer]:
+                        - generic [ref=f5e2313]: 🇰🇴
+                        - generic [ref=f5e2314]:
+                          - generic [ref=f5e2315]: كوريا الجنوبية (+82)
+                          - generic [ref=f5e2316]: KOR
+                      - button "🇿🇦 جنوب أفريقيا (+27) ZAF" [ref=f5e2317] [cursor=pointer]:
+                        - generic [ref=f5e2318]: 🇿🇦
+                        - generic [ref=f5e2319]:
+                          - generic [ref=f5e2320]: جنوب أفريقيا (+27)
+                          - generic [ref=f5e2321]: ZAF
+                      - button "🇸🇴 الصومال (+252) SOM" [ref=f5e2322] [cursor=pointer]:
+                        - generic [ref=f5e2323]: 🇸🇴
+                        - generic [ref=f5e2324]:
+                          - generic [ref=f5e2325]: الصومال (+252)
+                          - generic [ref=f5e2326]: SOM
+                      - button "🇸🇱 جزر سليمان (+677) SLB" [ref=f5e2327] [cursor=pointer]:
+                        - generic [ref=f5e2328]: 🇸🇱
+                        - generic [ref=f5e2329]:
+                          - generic [ref=f5e2330]: جزر سليمان (+677)
+                          - generic [ref=f5e2331]: SLB
+                      - button "🇸🇻 سلوفينيا (+386) SVN" [ref=f5e2332] [cursor=pointer]:
+                        - generic [ref=f5e2333]: 🇸🇻
+                        - generic [ref=f5e2334]:
+                          - generic [ref=f5e2335]: سلوفينيا (+386)
+                          - generic [ref=f5e2336]: SVN
+                      - button "🇸🇻 سلوفاكيا (+421) SVK" [ref=f5e2337] [cursor=pointer]:
+                        - generic [ref=f5e2338]: 🇸🇻
+                        - generic [ref=f5e2339]:
+                          - generic [ref=f5e2340]: سلوفاكيا (+421)
+                          - generic [ref=f5e2341]: SVK
+                      - button "🇸🇬 سنغافورة (+65) SGP" [ref=f5e2342] [cursor=pointer]:
+                        - generic [ref=f5e2343]: 🇸🇬
+                        - generic [ref=f5e2344]:
+                          - generic [ref=f5e2345]: سنغافورة (+65)
+                          - generic [ref=f5e2346]: SGP
+                      - button "🇸🇱 سيراليون (+232) SLE" [ref=f5e2347] [cursor=pointer]:
+                        - generic [ref=f5e2348]: 🇸🇱
+                        - generic [ref=f5e2349]:
+                          - generic [ref=f5e2350]: سيراليون (+232)
+                          - generic [ref=f5e2351]: SLE
+                      - button "🇸🇾 سيشل (+248) SYC" [ref=f5e2352] [cursor=pointer]:
+                        - generic [ref=f5e2353]: 🇸🇾
+                        - generic [ref=f5e2354]:
+                          - generic [ref=f5e2355]: سيشل (+248)
+                          - generic [ref=f5e2356]: SYC
+                      - button "🇸🇷 صربيا (+381) SRB" [ref=f5e2357] [cursor=pointer]:
+                        - generic [ref=f5e2358]: 🇸🇷
+                        - generic [ref=f5e2359]:
+                          - generic [ref=f5e2360]: صربيا (+381)
+                          - generic [ref=f5e2361]: SRB
+                      - button "🇸🇪 السنغال (+221) SEN" [ref=f5e2362] [cursor=pointer]:
+                        - generic [ref=f5e2363]: 🇸🇪
+                        - generic [ref=f5e2364]:
+                          - generic [ref=f5e2365]: السنغال (+221)
+                          - generic [ref=f5e2366]: SEN
+                      - button "🇸🇹 ساو تومي وبرينسيب (+239) STP" [ref=f5e2367] [cursor=pointer]:
+                        - generic [ref=f5e2368]: 🇸🇹
+                        - generic [ref=f5e2369]:
+                          - generic [ref=f5e2370]: ساو تومي وبرينسيب (+239)
+                          - generic [ref=f5e2371]: STP
+                      - button "🇸🇲 سان مارينو (+378) SMR" [ref=f5e2372] [cursor=pointer]:
+                        - generic [ref=f5e2373]: 🇸🇲
+                        - generic [ref=f5e2374]:
+                          - generic [ref=f5e2375]: سان مارينو (+378)
+                          - generic [ref=f5e2376]: SMR
+                      - button "🇼🇸 ساموا (+685) WSM" [ref=f5e2377] [cursor=pointer]:
+                        - generic [ref=f5e2378]: 🇼🇸
+                        - generic [ref=f5e2379]:
+                          - generic [ref=f5e2380]: ساموا (+685)
+                          - generic [ref=f5e2381]: WSM
+                      - button "🇻🇨 سانت فنسنت وجزر غرينادين (+1784) VCT" [ref=f5e2382] [cursor=pointer]:
+                        - generic [ref=f5e2383]: 🇻🇨
+                        - generic [ref=f5e2384]:
+                          - generic [ref=f5e2385]: سانت فنسنت وجزر غرينادين (+1784)
+                          - generic [ref=f5e2386]: VCT
+                      - button "🇱🇨 سانت لوسيا (+1758) LCA" [ref=f5e2387] [cursor=pointer]:
+                        - generic [ref=f5e2388]: 🇱🇨
+                        - generic [ref=f5e2389]:
+                          - generic [ref=f5e2390]: سانت لوسيا (+1758)
+                          - generic [ref=f5e2391]: LCA
+                      - button "🇰🇳 سانت كيتس ونيفيس (+1869) KNA" [ref=f5e2392] [cursor=pointer]:
+                        - generic [ref=f5e2393]: 🇰🇳
+                        - generic [ref=f5e2394]:
+                          - generic [ref=f5e2395]: سانت كيتس ونيفيس (+1869)
+                          - generic [ref=f5e2396]: KNA
+                      - button "🇷🇼 رواندا (+250) RWA" [ref=f5e2397] [cursor=pointer]:
+                        - generic [ref=f5e2398]: 🇷🇼
+                        - generic [ref=f5e2399]:
+                          - generic [ref=f5e2400]: رواندا (+250)
+                          - generic [ref=f5e2401]: RWA
+                      - button "🇷🇺 روسيا (+7) RUS" [ref=f5e2402] [cursor=pointer]:
+                        - generic [ref=f5e2403]: 🇷🇺
+                        - generic [ref=f5e2404]:
+                          - generic [ref=f5e2405]: روسيا (+7)
+                          - generic [ref=f5e2406]: RUS
+                      - button "🇷🇴 رومانيا (+40) ROU" [ref=f5e2407] [cursor=pointer]:
+                        - generic [ref=f5e2408]: 🇷🇴
+                        - generic [ref=f5e2409]:
+                          - generic [ref=f5e2410]: رومانيا (+40)
+                          - generic [ref=f5e2411]: ROU
+                      - button "🇶🇦 قطر (+974) QAT" [ref=f5e2412] [cursor=pointer]:
+                        - generic [ref=f5e2413]: 🇶🇦
+                        - generic [ref=f5e2414]:
+                          - generic [ref=f5e2415]: قطر (+974)
+                          - generic [ref=f5e2416]: QAT
+                      - button "🇵🇷 البرتغال (+351) PRT" [ref=f5e2417] [cursor=pointer]:
+                        - generic [ref=f5e2418]: 🇵🇷
+                        - generic [ref=f5e2419]:
+                          - generic [ref=f5e2420]: البرتغال (+351)
+                          - generic [ref=f5e2421]: PRT
+                      - button "🇵🇴 بولندا (+48) POL" [ref=f5e2422] [cursor=pointer]:
+                        - generic [ref=f5e2423]: 🇵🇴
+                        - generic [ref=f5e2424]:
+                          - generic [ref=f5e2425]: بولندا (+48)
+                          - generic [ref=f5e2426]: POL
+                      - button "🇵🇭 الفلبين (+63) PHL" [ref=f5e2427] [cursor=pointer]:
+                        - generic [ref=f5e2428]: 🇵🇭
+                        - generic [ref=f5e2429]:
+                          - generic [ref=f5e2430]: الفلبين (+63)
+                          - generic [ref=f5e2431]: PHL
+                      - button "🇵🇪 بيرو (+51) PER" [ref=f5e2432] [cursor=pointer]:
+                        - generic [ref=f5e2433]: 🇵🇪
+                        - generic [ref=f5e2434]:
+                          - generic [ref=f5e2435]: بيرو (+51)
+                          - generic [ref=f5e2436]: PER
+                      - button "🇵🇷 باراغواي (+595) PRY" [ref=f5e2437] [cursor=pointer]:
+                        - generic [ref=f5e2438]: 🇵🇷
+                        - generic [ref=f5e2439]:
+                          - generic [ref=f5e2440]: باراغواي (+595)
+                          - generic [ref=f5e2441]: PRY
+                      - button "🇵🇳 بابوا غينيا الجديدة (+675) PNG" [ref=f5e2442] [cursor=pointer]:
+                        - generic [ref=f5e2443]: 🇵🇳
+                        - generic [ref=f5e2444]:
+                          - generic [ref=f5e2445]: بابوا غينيا الجديدة (+675)
+                          - generic [ref=f5e2446]: PNG
+                      - button "🇵🇦 بنما (+507) PAN" [ref=f5e2447] [cursor=pointer]:
+                        - generic [ref=f5e2448]: 🇵🇦
+                        - generic [ref=f5e2449]:
+                          - generic [ref=f5e2450]: بنما (+507)
+                          - generic [ref=f5e2451]: PAN
+                      - button "🇵🇱 بالاو (+680) PLW" [ref=f5e2452] [cursor=pointer]:
+                        - generic [ref=f5e2453]: 🇵🇱
+                        - generic [ref=f5e2454]:
+                          - generic [ref=f5e2455]: بالاو (+680)
+                          - generic [ref=f5e2456]: PLW
+                      - button "🇵🇦 باكستان (+92) PAK" [ref=f5e2457] [cursor=pointer]:
+                        - generic [ref=f5e2458]: 🇵🇦
+                        - generic [ref=f5e2459]:
+                          - generic [ref=f5e2460]: باكستان (+92)
+                          - generic [ref=f5e2461]: PAK
+                      - button "🇴🇲 عمان (+968) OMN" [ref=f5e2462] [cursor=pointer]:
+                        - generic [ref=f5e2463]: 🇴🇲
+                        - generic [ref=f5e2464]:
+                          - generic [ref=f5e2465]: عمان (+968)
+                          - generic [ref=f5e2466]: OMN
+                      - button "🇳🇴 النرويج (+47) NOR" [ref=f5e2467] [cursor=pointer]:
+                        - generic [ref=f5e2468]: 🇳🇴
+                        - generic [ref=f5e2469]:
+                          - generic [ref=f5e2470]: النرويج (+47)
+                          - generic [ref=f5e2471]: NOR
+                      - button "🇲🇰 مقدونيا الشمالية (+389) MKD" [ref=f5e2472] [cursor=pointer]:
+                        - generic [ref=f5e2473]: 🇲🇰
+                        - generic [ref=f5e2474]:
+                          - generic [ref=f5e2475]: مقدونيا الشمالية (+389)
+                          - generic [ref=f5e2476]: MKD
+                      - button "🇳🇬 نيجيريا (+234) NGA" [ref=f5e2477] [cursor=pointer]:
+                        - generic [ref=f5e2478]: 🇳🇬
+                        - generic [ref=f5e2479]:
+                          - generic [ref=f5e2480]: نيجيريا (+234)
+                          - generic [ref=f5e2481]: NGA
+                      - button "🇳🇪 النيجر (+227) NER" [ref=f5e2482] [cursor=pointer]:
+                        - generic [ref=f5e2483]: 🇳🇪
+                        - generic [ref=f5e2484]:
+                          - generic [ref=f5e2485]: النيجر (+227)
+                          - generic [ref=f5e2486]: NER
+                      - button "🇳🇮 نيكاراغوا (+505) NIC" [ref=f5e2487] [cursor=pointer]:
+                        - generic [ref=f5e2488]: 🇳🇮
+                        - generic [ref=f5e2489]:
+                          - generic [ref=f5e2490]: نيكاراغوا (+505)
+                          - generic [ref=f5e2491]: NIC
+                      - button "🇳🇿 نيوزيلندا (+64) NZL" [ref=f5e2492] [cursor=pointer]:
+                        - generic [ref=f5e2493]: 🇳🇿
+                        - generic [ref=f5e2494]:
+                          - generic [ref=f5e2495]: نيوزيلندا (+64)
+                          - generic [ref=f5e2496]: NZL
+                      - button "🇳🇱 هولندا (+31) NLD" [ref=f5e2497] [cursor=pointer]:
+                        - generic [ref=f5e2498]: 🇳🇱
+                        - generic [ref=f5e2499]:
+                          - generic [ref=f5e2500]: هولندا (+31)
+                          - generic [ref=f5e2501]: NLD
+                      - button "🇳🇵 نيبال (+977) NPL" [ref=f5e2502] [cursor=pointer]:
+                        - generic [ref=f5e2503]: 🇳🇵
+                        - generic [ref=f5e2504]:
+                          - generic [ref=f5e2505]: نيبال (+977)
+                          - generic [ref=f5e2506]: NPL
+                      - button "🇳🇷 ناورو (+674) NRU" [ref=f5e2507] [cursor=pointer]:
+                        - generic [ref=f5e2508]: 🇳🇷
+                        - generic [ref=f5e2509]:
+                          - generic [ref=f5e2510]: ناورو (+674)
+                          - generic [ref=f5e2511]: NRU
+                      - button "🇳🇦 ناميبيا (+264) NAM" [ref=f5e2512] [cursor=pointer]:
+                        - generic [ref=f5e2513]: 🇳🇦
+                        - generic [ref=f5e2514]:
+                          - generic [ref=f5e2515]: ناميبيا (+264)
+                          - generic [ref=f5e2516]: NAM
+                      - button "🇲🇲 ميانمار (+95) MMR" [ref=f5e2517] [cursor=pointer]:
+                        - generic [ref=f5e2518]: 🇲🇲
+                        - generic [ref=f5e2519]:
+                          - generic [ref=f5e2520]: ميانمار (+95)
+                          - generic [ref=f5e2521]: MMR
+                      - button "🇲🇴 موزمبيق (+258) MOZ" [ref=f5e2522] [cursor=pointer]:
+                        - generic [ref=f5e2523]: 🇲🇴
+                        - generic [ref=f5e2524]:
+                          - generic [ref=f5e2525]: موزمبيق (+258)
+                          - generic [ref=f5e2526]: MOZ
+                      - button "🇲🇦 المغرب (+212) MAR" [ref=f5e2527] [cursor=pointer]:
+                        - generic [ref=f5e2528]: 🇲🇦
+                        - generic [ref=f5e2529]:
+                          - generic [ref=f5e2530]: المغرب (+212)
+                          - generic [ref=f5e2531]: MAR
+                      - button "🇲🇳 الجبل الأسود (+382) MNE" [ref=f5e2532] [cursor=pointer]:
+                        - generic [ref=f5e2533]: 🇲🇳
+                        - generic [ref=f5e2534]:
+                          - generic [ref=f5e2535]: الجبل الأسود (+382)
+                          - generic [ref=f5e2536]: MNE
+                      - button "🇲🇳 منغوليا (+976) MNG" [ref=f5e2537] [cursor=pointer]:
+                        - generic [ref=f5e2538]: 🇲🇳
+                        - generic [ref=f5e2539]:
+                          - generic [ref=f5e2540]: منغوليا (+976)
+                          - generic [ref=f5e2541]: MNG
+                      - button "🇲🇨 موناكو (+377) MCO" [ref=f5e2542] [cursor=pointer]:
+                        - generic [ref=f5e2543]: 🇲🇨
+                        - generic [ref=f5e2544]:
+                          - generic [ref=f5e2545]: موناكو (+377)
+                          - generic [ref=f5e2546]: MCO
+                      - button "🇲🇩 مولدوفا (+373) MDA" [ref=f5e2547] [cursor=pointer]:
+                        - generic [ref=f5e2548]: 🇲🇩
+                        - generic [ref=f5e2549]:
+                          - generic [ref=f5e2550]: مولدوفا (+373)
+                          - generic [ref=f5e2551]: MDA
+                      - button "🇫🇸 ميكرونيزيا (+691) FSM" [ref=f5e2552] [cursor=pointer]:
+                        - generic [ref=f5e2553]: 🇫🇸
+                        - generic [ref=f5e2554]:
+                          - generic [ref=f5e2555]: ميكرونيزيا (+691)
+                          - generic [ref=f5e2556]: FSM
+                      - button "🇲🇪 المكسيك (+52) MEX" [ref=f5e2557] [cursor=pointer]:
+                        - generic [ref=f5e2558]: 🇲🇪
+                        - generic [ref=f5e2559]:
+                          - generic [ref=f5e2560]: المكسيك (+52)
+                          - generic [ref=f5e2561]: MEX
+                      - button "🇲🇺 موريشيوس (+230) MUS" [ref=f5e2562] [cursor=pointer]:
+                        - generic [ref=f5e2563]: 🇲🇺
+                        - generic [ref=f5e2564]:
+                          - generic [ref=f5e2565]: موريشيوس (+230)
+                          - generic [ref=f5e2566]: MUS
+                      - button "🇲🇷 موريتانيا (+222) MRT" [ref=f5e2567] [cursor=pointer]:
+                        - generic [ref=f5e2568]: 🇲🇷
+                        - generic [ref=f5e2569]:
+                          - generic [ref=f5e2570]: موريتانيا (+222)
+                          - generic [ref=f5e2571]: MRT
+                      - button "🇲🇭 جزر مارشال (+692) MHL" [ref=f5e2572] [cursor=pointer]:
+                        - generic [ref=f5e2573]: 🇲🇭
+                        - generic [ref=f5e2574]:
+                          - generic [ref=f5e2575]: جزر مارشال (+692)
+                          - generic [ref=f5e2576]: MHL
+                      - button "🇲🇱 مالطا (+356) MLT" [ref=f5e2577] [cursor=pointer]:
+                        - generic [ref=f5e2578]: 🇲🇱
+                        - generic [ref=f5e2579]:
+                          - generic [ref=f5e2580]: مالطا (+356)
+                          - generic [ref=f5e2581]: MLT
+                      - button "🇲🇱 مالي (+223) MLI" [ref=f5e2582] [cursor=pointer]:
+                        - generic [ref=f5e2583]: 🇲🇱
+                        - generic [ref=f5e2584]:
+                          - generic [ref=f5e2585]: مالي (+223)
+                          - generic [ref=f5e2586]: MLI
+                      - button "🇲🇩 جزر المالديف (+960) MDV" [ref=f5e2587] [cursor=pointer]:
+                        - generic [ref=f5e2588]: 🇲🇩
+                        - generic [ref=f5e2589]:
+                          - generic [ref=f5e2590]: جزر المالديف (+960)
+                          - generic [ref=f5e2591]: MDV
+                      - button "🇲🇾 ماليزيا (+60) MYS" [ref=f5e2592] [cursor=pointer]:
+                        - generic [ref=f5e2593]: 🇲🇾
+                        - generic [ref=f5e2594]:
+                          - generic [ref=f5e2595]: ماليزيا (+60)
+                          - generic [ref=f5e2596]: MYS
+                      - button "🇲🇼 مالاوي (+265) MWI" [ref=f5e2597] [cursor=pointer]:
+                        - generic [ref=f5e2598]: 🇲🇼
+                        - generic [ref=f5e2599]:
+                          - generic [ref=f5e2600]: مالاوي (+265)
+                          - generic [ref=f5e2601]: MWI
+                      - button "🇲🇩 مدغشقر (+261) MDG" [ref=f5e2602] [cursor=pointer]:
+                        - generic [ref=f5e2603]: 🇲🇩
+                        - generic [ref=f5e2604]:
+                          - generic [ref=f5e2605]: مدغشقر (+261)
+                          - generic [ref=f5e2606]: MDG
+                      - button "🇱🇺 لوكسمبورغ (+352) LUX" [ref=f5e2607] [cursor=pointer]:
+                        - generic [ref=f5e2608]: 🇱🇺
+                        - generic [ref=f5e2609]:
+                          - generic [ref=f5e2610]: لوكسمبورغ (+352)
+                          - generic [ref=f5e2611]: LUX
+                      - button "🇱🇹 ليتوانيا (+370) LTU" [ref=f5e2612] [cursor=pointer]:
+                        - generic [ref=f5e2613]: 🇱🇹
+                        - generic [ref=f5e2614]:
+                          - generic [ref=f5e2615]: ليتوانيا (+370)
+                          - generic [ref=f5e2616]: LTU
+                      - button "🇱🇮 ليختنشتاين (+423) LIE" [ref=f5e2617] [cursor=pointer]:
+                        - generic [ref=f5e2618]: 🇱🇮
+                        - generic [ref=f5e2619]:
+                          - generic [ref=f5e2620]: ليختنشتاين (+423)
+                          - generic [ref=f5e2621]: LIE
+                      - button "🇱🇧 ليبيا (+218) LBY" [ref=f5e2622] [cursor=pointer]:
+                        - generic [ref=f5e2623]: 🇱🇧
+                        - generic [ref=f5e2624]:
+                          - generic [ref=f5e2625]: ليبيا (+218)
+                          - generic [ref=f5e2626]: LBY
+                      - button "🇱🇧 ليبيريا (+231) LBR" [ref=f5e2627] [cursor=pointer]:
+                        - generic [ref=f5e2628]: 🇱🇧
+                        - generic [ref=f5e2629]:
+                          - generic [ref=f5e2630]: ليبيريا (+231)
+                          - generic [ref=f5e2631]: LBR
+                      - button "🇱🇸 ليسوتو (+266) LSO" [ref=f5e2632] [cursor=pointer]:
+                        - generic [ref=f5e2633]: 🇱🇸
+                        - generic [ref=f5e2634]:
+                          - generic [ref=f5e2635]: ليسوتو (+266)
+                          - generic [ref=f5e2636]: LSO
+                      - button "🇱🇧 لبنان (+961) LBN" [ref=f5e2637] [cursor=pointer]:
+                        - generic [ref=f5e2638]: 🇱🇧
+                        - generic [ref=f5e2639]:
+                          - generic [ref=f5e2640]: لبنان (+961)
+                          - generic [ref=f5e2641]: LBN
+                      - button "🇱🇻 لاتفيا (+371) LVA" [ref=f5e2642] [cursor=pointer]:
+                        - generic [ref=f5e2643]: 🇱🇻
+                        - generic [ref=f5e2644]:
+                          - generic [ref=f5e2645]: لاتفيا (+371)
+                          - generic [ref=f5e2646]: LVA
+                      - button "🇱🇦 لاوس (+856) LAO" [ref=f5e2647] [cursor=pointer]:
+                        - generic [ref=f5e2648]: 🇱🇦
+                        - generic [ref=f5e2649]:
+                          - generic [ref=f5e2650]: لاوس (+856)
+                          - generic [ref=f5e2651]: LAO
+                      - button "🇰🇬 قرغيزستان (+996) KGZ" [ref=f5e2652] [cursor=pointer]:
+                        - generic [ref=f5e2653]: 🇰🇬
+                        - generic [ref=f5e2654]:
+                          - generic [ref=f5e2655]: قرغيزستان (+996)
+                          - generic [ref=f5e2656]: KGZ
+                      - button "🇰🇼 الكويت (+965) KWT" [ref=f5e2657] [cursor=pointer]:
+                        - generic [ref=f5e2658]: 🇰🇼
+                        - generic [ref=f5e2659]:
+                          - generic [ref=f5e2660]: الكويت (+965)
+                          - generic [ref=f5e2661]: KWT
+                      - button "🇽🇰 كوسوفو (+383) XKX" [ref=f5e2662] [cursor=pointer]:
+                        - generic [ref=f5e2663]: 🇽🇰
+                        - generic [ref=f5e2664]:
+                          - generic [ref=f5e2665]: كوسوفو (+383)
+                          - generic [ref=f5e2666]: XKX
+                      - button "🇰🇮 كيريباتي (+686) KIR" [ref=f5e2667] [cursor=pointer]:
+                        - generic [ref=f5e2668]: 🇰🇮
+                        - generic [ref=f5e2669]:
+                          - generic [ref=f5e2670]: كيريباتي (+686)
+                          - generic [ref=f5e2671]: KIR
+                      - button "🇰🇪 كينيا (+254) KEN" [ref=f5e2672] [cursor=pointer]:
+                        - generic [ref=f5e2673]: 🇰🇪
+                        - generic [ref=f5e2674]:
+                          - generic [ref=f5e2675]: كينيا (+254)
+                          - generic [ref=f5e2676]: KEN
+                      - button "🇰🇦 كازاخستان (+7) KAZ" [ref=f5e2677] [cursor=pointer]:
+                        - generic [ref=f5e2678]: 🇰🇦
+                        - generic [ref=f5e2679]:
+                          - generic [ref=f5e2680]: كازاخستان (+7)
+                          - generic [ref=f5e2681]: KAZ
+                      - button "🇯🇴 الأردن (+962) JOR" [ref=f5e2682] [cursor=pointer]:
+                        - generic [ref=f5e2683]: 🇯🇴
+                        - generic [ref=f5e2684]:
+                          - generic [ref=f5e2685]: الأردن (+962)
+                          - generic [ref=f5e2686]: JOR
+                      - button "🇯🇵 اليابان (+81) JPN" [ref=f5e2687] [cursor=pointer]:
+                        - generic [ref=f5e2688]: 🇯🇵
+                        - generic [ref=f5e2689]:
+                          - generic [ref=f5e2690]: اليابان (+81)
+                          - generic [ref=f5e2691]: JPN
+                      - button "🇯🇦 جامايكا (+1-876) JAM" [ref=f5e2692] [cursor=pointer]:
+                        - generic [ref=f5e2693]: 🇯🇦
+                        - generic [ref=f5e2694]:
+                          - generic [ref=f5e2695]: جامايكا (+1-876)
+                          - generic [ref=f5e2696]: JAM
+                      - button "🇮🇹 إيطاليا (+39) ITA" [ref=f5e2697] [cursor=pointer]:
+                        - generic [ref=f5e2698]: 🇮🇹
+                        - generic [ref=f5e2699]:
+                          - generic [ref=f5e2700]: إيطاليا (+39)
+                          - generic [ref=f5e2701]: ITA
+                      - button "🇮🇷 أيرلندا (+353) IRL" [ref=f5e2702] [cursor=pointer]:
+                        - generic [ref=f5e2703]: 🇮🇷
+                        - generic [ref=f5e2704]:
+                          - generic [ref=f5e2705]: أيرلندا (+353)
+                          - generic [ref=f5e2706]: IRL
+                      - button "🇮🇷 العراق (+964) IRQ" [ref=f5e2707] [cursor=pointer]:
+                        - generic [ref=f5e2708]: 🇮🇷
+                        - generic [ref=f5e2709]:
+                          - generic [ref=f5e2710]: العراق (+964)
+                          - generic [ref=f5e2711]: IRQ
+                      - button "🇮🇷 إيران (+98) IRN" [ref=f5e2712] [cursor=pointer]:
+                        - generic [ref=f5e2713]: 🇮🇷
+                        - generic [ref=f5e2714]:
+                          - generic [ref=f5e2715]: إيران (+98)
+                          - generic [ref=f5e2716]: IRN
+                      - button "🇮🇩 إندونيسيا (+62) IDN" [ref=f5e2717] [cursor=pointer]:
+                        - generic [ref=f5e2718]: 🇮🇩
+                        - generic [ref=f5e2719]:
+                          - generic [ref=f5e2720]: إندونيسيا (+62)
+                          - generic [ref=f5e2721]: IDN
+                      - button "🇮🇳 الهند (+91) IND" [ref=f5e2722] [cursor=pointer]:
+                        - generic [ref=f5e2723]: 🇮🇳
+                        - generic [ref=f5e2724]:
+                          - generic [ref=f5e2725]: الهند (+91)
+                          - generic [ref=f5e2726]: IND
+                      - button "🇮🇸 أيسلندا (+354) ISL" [ref=f5e2727] [cursor=pointer]:
+                        - generic [ref=f5e2728]: 🇮🇸
+                        - generic [ref=f5e2729]:
+                          - generic [ref=f5e2730]: أيسلندا (+354)
+                          - generic [ref=f5e2731]: ISL
+                      - button "🇭🇺 المجر (+36) HUN" [ref=f5e2732] [cursor=pointer]:
+                        - generic [ref=f5e2733]: 🇭🇺
+                        - generic [ref=f5e2734]:
+                          - generic [ref=f5e2735]: المجر (+36)
+                          - generic [ref=f5e2736]: HUN
+                      - button "🇭🇳 هندوراس (+504) HND" [ref=f5e2737] [cursor=pointer]:
+                        - generic [ref=f5e2738]: 🇭🇳
+                        - generic [ref=f5e2739]:
+                          - generic [ref=f5e2740]: هندوراس (+504)
+                          - generic [ref=f5e2741]: HND
+                      - button "🇭🇹 هايتي (+509) HTI" [ref=f5e2742] [cursor=pointer]:
+                        - generic [ref=f5e2743]: 🇭🇹
+                        - generic [ref=f5e2744]:
+                          - generic [ref=f5e2745]: هايتي (+509)
+                          - generic [ref=f5e2746]: HTI
+                      - button "🇬🇺 غيانا (+592) GUY" [ref=f5e2747] [cursor=pointer]:
+                        - generic [ref=f5e2748]: 🇬🇺
+                        - generic [ref=f5e2749]:
+                          - generic [ref=f5e2750]: غيانا (+592)
+                          - generic [ref=f5e2751]: GUY
+                      - button "🇬🇳 غينيا بيساو (+245) GNB" [ref=f5e2752] [cursor=pointer]:
+                        - generic [ref=f5e2753]: 🇬🇳
+                        - generic [ref=f5e2754]:
+                          - generic [ref=f5e2755]: غينيا بيساو (+245)
+                          - generic [ref=f5e2756]: GNB
+                      - button "🇬🇮 غينيا (+224) GIN" [ref=f5e2757] [cursor=pointer]:
+                        - generic [ref=f5e2758]: 🇬🇮
+                        - generic [ref=f5e2759]:
+                          - generic [ref=f5e2760]: غينيا (+224)
+                          - generic [ref=f5e2761]: GIN
+                      - button "🇬🇹 غواتيمالا (+502) GTM" [ref=f5e2762] [cursor=pointer]:
+                        - generic [ref=f5e2763]: 🇬🇹
+                        - generic [ref=f5e2764]:
+                          - generic [ref=f5e2765]: غواتيمالا (+502)
+                          - generic [ref=f5e2766]: GTM
+                      - button "🇬🇷 غرينادا (+1-473) GRD" [ref=f5e2767] [cursor=pointer]:
+                        - generic [ref=f5e2768]: 🇬🇷
+                        - generic [ref=f5e2769]:
+                          - generic [ref=f5e2770]: غرينادا (+1-473)
+                          - generic [ref=f5e2771]: GRD
+                      - button "🇬🇷 اليونان (+30) GRC" [ref=f5e2772] [cursor=pointer]:
+                        - generic [ref=f5e2773]: 🇬🇷
+                        - generic [ref=f5e2774]:
+                          - generic [ref=f5e2775]: اليونان (+30)
+                          - generic [ref=f5e2776]: GRC
+                      - button "🇬🇭 غانا (+233) GHA" [ref=f5e2777] [cursor=pointer]:
+                        - generic [ref=f5e2778]: 🇬🇭
+                        - generic [ref=f5e2779]:
+                          - generic [ref=f5e2780]: غانا (+233)
+                          - generic [ref=f5e2781]: GHA
+                      - button "🇩🇪 ألمانيا (+49) DEU" [ref=f5e2782] [cursor=pointer]:
+                        - generic [ref=f5e2783]: 🇩🇪
+                        - generic [ref=f5e2784]:
+                          - generic [ref=f5e2785]: ألمانيا (+49)
+                          - generic [ref=f5e2786]: DEU
+                      - button "🇬🇪 جورجيا (+995) GEO" [ref=f5e2787] [cursor=pointer]:
+                        - generic [ref=f5e2788]: 🇬🇪
+                        - generic [ref=f5e2789]:
+                          - generic [ref=f5e2790]: جورجيا (+995)
+                          - generic [ref=f5e2791]: GEO
+                      - button "🇬🇲 غامبيا (+220) GMB" [ref=f5e2792] [cursor=pointer]:
+                        - generic [ref=f5e2793]: 🇬🇲
+                        - generic [ref=f5e2794]:
+                          - generic [ref=f5e2795]: غامبيا (+220)
+                          - generic [ref=f5e2796]: GMB
+                      - button "🇬🇦 الغابون (+241) GAB" [ref=f5e2797] [cursor=pointer]:
+                        - generic [ref=f5e2798]: 🇬🇦
+                        - generic [ref=f5e2799]:
+                          - generic [ref=f5e2800]: الغابون (+241)
+                          - generic [ref=f5e2801]: GAB
+                      - button "🇫🇷 فرنسا (+33) FRA" [ref=f5e2802] [cursor=pointer]:
+                        - generic [ref=f5e2803]: 🇫🇷
+                        - generic [ref=f5e2804]:
+                          - generic [ref=f5e2805]: فرنسا (+33)
+                          - generic [ref=f5e2806]: FRA
+                      - button "🇫🇮 فنلندا (+358) FIN" [ref=f5e2807] [cursor=pointer]:
+                        - generic [ref=f5e2808]: 🇫🇮
+                        - generic [ref=f5e2809]:
+                          - generic [ref=f5e2810]: فنلندا (+358)
+                          - generic [ref=f5e2811]: FIN
+                      - button "🇫🇯 فيجي (+679) FJI" [ref=f5e2812] [cursor=pointer]:
+                        - generic [ref=f5e2813]: 🇫🇯
+                        - generic [ref=f5e2814]:
+                          - generic [ref=f5e2815]: فيجي (+679)
+                          - generic [ref=f5e2816]: FJI
+                      - button "🇪🇹 إثيوبيا (+251) ETH" [ref=f5e2817] [cursor=pointer]:
+                        - generic [ref=f5e2818]: 🇪🇹
+                        - generic [ref=f5e2819]:
+                          - generic [ref=f5e2820]: إثيوبيا (+251)
+                          - generic [ref=f5e2821]: ETH
+                      - button "🇸🇼 إسواتيني (+268) SWZ" [ref=f5e2822] [cursor=pointer]:
+                        - generic [ref=f5e2823]: 🇸🇼
+                        - generic [ref=f5e2824]:
+                          - generic [ref=f5e2825]: إسواتيني (+268)
+                          - generic [ref=f5e2826]: SWZ
+                      - button "🇪🇸 إستونيا (+372) EST" [ref=f5e2827] [cursor=pointer]:
+                        - generic [ref=f5e2828]: 🇪🇸
+                        - generic [ref=f5e2829]:
+                          - generic [ref=f5e2830]: إستونيا (+372)
+                          - generic [ref=f5e2831]: EST
+                      - button "🇪🇷 إريتريا (+291) ERI" [ref=f5e2832] [cursor=pointer]:
+                        - generic [ref=f5e2833]: 🇪🇷
+                        - generic [ref=f5e2834]:
+                          - generic [ref=f5e2835]: إريتريا (+291)
+                          - generic [ref=f5e2836]: ERI
+                      - button "🇬🇳 غينيا الاستوائية (+240) GNQ" [ref=f5e2837] [cursor=pointer]:
+                        - generic [ref=f5e2838]: 🇬🇳
+                        - generic [ref=f5e2839]:
+                          - generic [ref=f5e2840]: غينيا الاستوائية (+240)
+                          - generic [ref=f5e2841]: GNQ
+                      - button "🇸🇱 السلفادور (+503) SLV" [ref=f5e2842] [cursor=pointer]:
+                        - generic [ref=f5e2843]: 🇸🇱
+                        - generic [ref=f5e2844]:
+                          - generic [ref=f5e2845]: السلفادور (+503)
+                          - generic [ref=f5e2846]: SLV
+                      - button "🇪🇨 الإكوادور (+593) ECU" [ref=f5e2847] [cursor=pointer]:
+                        - generic [ref=f5e2848]: 🇪🇨
+                        - generic [ref=f5e2849]:
+                          - generic [ref=f5e2850]: الإكوادور (+593)
+                          - generic [ref=f5e2851]: ECU
+                      - button "🇩🇴 جمهورية الدومينيكان (+1-809) DOM" [ref=f5e2852] [cursor=pointer]:
+                        - generic [ref=f5e2853]: 🇩🇴
+                        - generic [ref=f5e2854]:
+                          - generic [ref=f5e2855]: جمهورية الدومينيكان (+1-809)
+                          - generic [ref=f5e2856]: DOM
+                      - button "🇩🇲 دومينيكا (+1-767) DMA" [ref=f5e2857] [cursor=pointer]:
+                        - generic [ref=f5e2858]: 🇩🇲
+                        - generic [ref=f5e2859]:
+                          - generic [ref=f5e2860]: دومينيكا (+1-767)
+                          - generic [ref=f5e2861]: DMA
+                      - button "🇩🇯 جيبوتي (+253) DJI" [ref=f5e2862] [cursor=pointer]:
+                        - generic [ref=f5e2863]: 🇩🇯
+                        - generic [ref=f5e2864]:
+                          - generic [ref=f5e2865]: جيبوتي (+253)
+                          - generic [ref=f5e2866]: DJI
+                      - button "🇩🇳 الدنمارك (+45) DNK" [ref=f5e2867] [cursor=pointer]:
+                        - generic [ref=f5e2868]: 🇩🇳
+                        - generic [ref=f5e2869]:
+                          - generic [ref=f5e2870]: الدنمارك (+45)
+                          - generic [ref=f5e2871]: DNK
+                      - button "🇨🇿 جمهورية التشيك (+420) CZE" [ref=f5e2872] [cursor=pointer]:
+                        - generic [ref=f5e2873]: 🇨🇿
+                        - generic [ref=f5e2874]:
+                          - generic [ref=f5e2875]: جمهورية التشيك (+420)
+                          - generic [ref=f5e2876]: CZE
+                      - button "🇨🇾 قبرص (+357) CYP" [ref=f5e2877] [cursor=pointer]:
+                        - generic [ref=f5e2878]: 🇨🇾
+                        - generic [ref=f5e2879]:
+                          - generic [ref=f5e2880]: قبرص (+357)
+                          - generic [ref=f5e2881]: CYP
+                      - button "🇨🇺 كوبا (+53) CUB" [ref=f5e2882] [cursor=pointer]:
+                        - generic [ref=f5e2883]: 🇨🇺
+                        - generic [ref=f5e2884]:
+                          - generic [ref=f5e2885]: كوبا (+53)
+                          - generic [ref=f5e2886]: CUB
+                      - button "🇭🇷 كرواتيا (+385) HRV" [ref=f5e2887] [cursor=pointer]:
+                        - generic [ref=f5e2888]: 🇭🇷
+                        - generic [ref=f5e2889]:
+                          - generic [ref=f5e2890]: كرواتيا (+385)
+                          - generic [ref=f5e2891]: HRV
+                      - button "🇨🇷 كوستاريكا (+506) CRI" [ref=f5e2892] [cursor=pointer]:
+                        - generic [ref=f5e2893]: 🇨🇷
+                        - generic [ref=f5e2894]:
+                          - generic [ref=f5e2895]: كوستاريكا (+506)
+                          - generic [ref=f5e2896]: CRI
+                      - button "🇨🇴 الكونغو (+242) COG" [ref=f5e2897] [cursor=pointer]:
+                        - generic [ref=f5e2898]: 🇨🇴
+                        - generic [ref=f5e2899]:
+                          - generic [ref=f5e2900]: الكونغو (+242)
+                          - generic [ref=f5e2901]: COG
+                      - button "🇨🇴 جزر القمر (+269) COM" [ref=f5e2902] [cursor=pointer]:
+                        - generic [ref=f5e2903]: 🇨🇴
+                        - generic [ref=f5e2904]:
+                          - generic [ref=f5e2905]: جزر القمر (+269)
+                          - generic [ref=f5e2906]: COM
+                      - button "🇨🇴 كولومبيا (+57) COL" [ref=f5e2907] [cursor=pointer]:
+                        - generic [ref=f5e2908]: 🇨🇴
+                        - generic [ref=f5e2909]:
+                          - generic [ref=f5e2910]: كولومبيا (+57)
+                          - generic [ref=f5e2911]: COL
+                      - button "🇨🇭 الصين (+86) CHN" [ref=f5e2912] [cursor=pointer]:
+                        - generic [ref=f5e2913]: 🇨🇭
+                        - generic [ref=f5e2914]:
+                          - generic [ref=f5e2915]: الصين (+86)
+                          - generic [ref=f5e2916]: CHN
+                      - button "🇨🇭 تشيلي (+56) CHL" [ref=f5e2917] [cursor=pointer]:
+                        - generic [ref=f5e2918]: 🇨🇭
+                        - generic [ref=f5e2919]:
+                          - generic [ref=f5e2920]: تشيلي (+56)
+                          - generic [ref=f5e2921]: CHL
+                      - button "🇹🇨 تشاد (+235) TCD" [ref=f5e2922] [cursor=pointer]:
+                        - generic [ref=f5e2923]: 🇹🇨
+                        - generic [ref=f5e2924]:
+                          - generic [ref=f5e2925]: تشاد (+235)
+                          - generic [ref=f5e2926]: TCD
+                      - button "🇨🇦 كندا (+1) CAN" [ref=f5e2927] [cursor=pointer]:
+                        - generic [ref=f5e2928]: 🇨🇦
+                        - generic [ref=f5e2929]:
+                          - generic [ref=f5e2930]: كندا (+1)
+                          - generic [ref=f5e2931]: CAN
+                      - button "🇨🇲 الكاميرون (+237) CMR" [ref=f5e2932] [cursor=pointer]:
+                        - generic [ref=f5e2933]: 🇨🇲
+                        - generic [ref=f5e2934]:
+                          - generic [ref=f5e2935]: الكاميرون (+237)
+                          - generic [ref=f5e2936]: CMR
+                      - button "🇰🇭 كمبوديا (+855) KHM" [ref=f5e2937] [cursor=pointer]:
+                        - generic [ref=f5e2938]: 🇰🇭
+                        - generic [ref=f5e2939]:
+                          - generic [ref=f5e2940]: كمبوديا (+855)
+                          - generic [ref=f5e2941]: KHM
+                      - button "🇧🇩 بوروندي (+257) BDI" [ref=f5e2942] [cursor=pointer]:
+                        - generic [ref=f5e2943]: 🇧🇩
+                        - generic [ref=f5e2944]:
+                          - generic [ref=f5e2945]: بوروندي (+257)
+                          - generic [ref=f5e2946]: BDI
+                      - button "🇧🇬 بلغاريا (+359) BGR" [ref=f5e2947] [cursor=pointer]:
+                        - generic [ref=f5e2948]: 🇧🇬
+                        - generic [ref=f5e2949]:
+                          - generic [ref=f5e2950]: بلغاريا (+359)
+                          - generic [ref=f5e2951]: BGR
+                      - button "🇧🇷 بروناي (+673) BRN" [ref=f5e2952] [cursor=pointer]:
+                        - generic [ref=f5e2953]: 🇧🇷
+                        - generic [ref=f5e2954]:
+                          - generic [ref=f5e2955]: بروناي (+673)
+                          - generic [ref=f5e2956]: BRN
+                      - button "🇧🇷 البرازيل (+55) BRA" [ref=f5e2957] [cursor=pointer]:
+                        - generic [ref=f5e2958]: 🇧🇷
+                        - generic [ref=f5e2959]:
+                          - generic [ref=f5e2960]: البرازيل (+55)
+                          - generic [ref=f5e2961]: BRA
+                      - button "🇧🇹 بوتان (+975) BTN" [ref=f5e2962] [cursor=pointer]:
+                        - generic [ref=f5e2963]: 🇧🇹
+                        - generic [ref=f5e2964]:
+                          - generic [ref=f5e2965]: بوتان (+975)
+                          - generic [ref=f5e2966]: BTN
+                      - button "🇧🇪 بنين (+229) BEN" [ref=f5e2967] [cursor=pointer]:
+                        - generic [ref=f5e2968]: 🇧🇪
+                        - generic [ref=f5e2969]:
+                          - generic [ref=f5e2970]: بنين (+229)
+                          - generic [ref=f5e2971]: BEN
+                      - button "🇧🇪 بلجيكا (+32) BEL" [ref=f5e2972] [cursor=pointer]:
+                        - generic [ref=f5e2973]: 🇧🇪
+                        - generic [ref=f5e2974]:
+                          - generic [ref=f5e2975]: بلجيكا (+32)
+                          - generic [ref=f5e2976]: BEL
+                      - button "🇧🇱 بيلاروسيا (+375) BLR" [ref=f5e2977] [cursor=pointer]:
+                        - generic [ref=f5e2978]: 🇧🇱
+                        - generic [ref=f5e2979]:
+                          - generic [ref=f5e2980]: بيلاروسيا (+375)
+                          - generic [ref=f5e2981]: BLR
+                      - button "🇧🇷 باربادوس (+1-246) BRB" [ref=f5e2982] [cursor=pointer]:
+                        - generic [ref=f5e2983]: 🇧🇷
+                        - generic [ref=f5e2984]:
+                          - generic [ref=f5e2985]: باربادوس (+1-246)
+                          - generic [ref=f5e2986]: BRB
+                      - button "🇧🇬 بنغلاديش (+880) BGD" [ref=f5e2987] [cursor=pointer]:
+                        - generic [ref=f5e2988]: 🇧🇬
+                        - generic [ref=f5e2989]:
+                          - generic [ref=f5e2990]: بنغلاديش (+880)
+                          - generic [ref=f5e2991]: BGD
+                      - button "🇧🇭 البحرين (+973) BHR" [ref=f5e2992] [cursor=pointer]:
+                        - generic [ref=f5e2993]: 🇧🇭
+                        - generic [ref=f5e2994]:
+                          - generic [ref=f5e2995]: البحرين (+973)
+                          - generic [ref=f5e2996]: BHR
+                      - button "🇦🇿 أذربيجان (+994) AZE" [ref=f5e2997] [cursor=pointer]:
+                        - generic [ref=f5e2998]: 🇦🇿
+                        - generic [ref=f5e2999]:
+                          - generic [ref=f5e3000]: أذربيجان (+994)
+                          - generic [ref=f5e3001]: AZE
+                      - button "🇦🇺 النمسا (+43) AUT" [ref=f5e3002] [cursor=pointer]:
+                        - generic [ref=f5e3003]: 🇦🇺
+                        - generic [ref=f5e3004]:
+                          - generic [ref=f5e3005]: النمسا (+43)
+                          - generic [ref=f5e3006]: AUT
+                      - button "🇦🇺 أستراليا (+61) AUS" [ref=f5e3007] [cursor=pointer]:
+                        - generic [ref=f5e3008]: 🇦🇺
+                        - generic [ref=f5e3009]:
+                          - generic [ref=f5e3010]: أستراليا (+61)
+                          - generic [ref=f5e3011]: AUS
+                      - button "🇦🇷 أرمينيا (+374) ARM" [ref=f5e3012] [cursor=pointer]:
+                        - generic [ref=f5e3013]: 🇦🇷
+                        - generic [ref=f5e3014]:
+                          - generic [ref=f5e3015]: أرمينيا (+374)
+                          - generic [ref=f5e3016]: ARM
+                      - button "🇦🇷 الأرجنتين (+54) ARG" [ref=f5e3017] [cursor=pointer]:
+                        - generic [ref=f5e3018]: 🇦🇷
+                        - generic [ref=f5e3019]:
+                          - generic [ref=f5e3020]: الأرجنتين (+54)
+                          - generic [ref=f5e3021]: ARG
+                      - button "🇦🇬 أنغولا (+244) AGO" [ref=f5e3022] [cursor=pointer]:
+                        - generic [ref=f5e3023]: 🇦🇬
+                        - generic [ref=f5e3024]:
+                          - generic [ref=f5e3025]: أنغولا (+244)
+                          - generic [ref=f5e3026]: AGO
+                      - button "🇦🇳 أندورا (+376) AND" [ref=f5e3027] [cursor=pointer]:
+                        - generic [ref=f5e3028]: 🇦🇳
+                        - generic [ref=f5e3029]:
+                          - generic [ref=f5e3030]: أندورا (+376)
+                          - generic [ref=f5e3031]: AND
+                      - button "🇩🇿 الجزائر (+213) DZA" [ref=f5e3032] [cursor=pointer]:
+                        - generic [ref=f5e3033]: 🇩🇿
+                        - generic [ref=f5e3034]:
+                          - generic [ref=f5e3035]: الجزائر (+213)
+                          - generic [ref=f5e3036]: DZA
+                      - button "🇦🇱 ألبانيا (+355) ALB" [ref=f5e3037] [cursor=pointer]:
+                        - generic [ref=f5e3038]: 🇦🇱
+                        - generic [ref=f5e3039]:
+                          - generic [ref=f5e3040]: ألبانيا (+355)
+                          - generic [ref=f5e3041]: ALB
+                      - button "🇦🇫 أفغانستان (+93) AFG" [ref=f5e3042] [cursor=pointer]:
+                        - generic [ref=f5e3043]: 🇦🇫
+                        - generic [ref=f5e3044]:
+                          - generic [ref=f5e3045]: أفغانستان (+93)
+                          - generic [ref=f5e3046]: AFG
+                      - button "🇸🇦 المملكة العربية السعودية (+966) SAU" [ref=f5e3047] [cursor=pointer]:
+                        - generic [ref=f5e3048]: 🇸🇦
+                        - generic [ref=f5e3049]:
+                          - generic [ref=f5e3050]: المملكة العربية السعودية (+966)
+                          - generic [ref=f5e3051]: SAU
+                      - button "🇪🇬 مصر (+20) EGY" [ref=f5e3052] [cursor=pointer]:
+                        - generic [ref=f5e3053]: 🇪🇬
+                        - generic [ref=f5e3054]:
+                          - generic [ref=f5e3055]: مصر (+20)
+                          - generic [ref=f5e3056]: EGY
+                - generic [ref=f5e2117]:
+                  - text: الهاتف
+                  - textbox "الهاتف رقم الهاتف يجب أن يتكون من 9 أرقام." [ref=f5e2118]: "123456789"
+                  - generic [ref=f5e2119]: رقم الهاتف يجب أن يتكون من 9 أرقام.
+          - generic [ref=f5e2120]:
+            - heading "بيانات الأمان" [level=2] [ref=f5e2122]
+            - generic [ref=f5e2123]:
+              - generic [ref=f5e2124]:
+                - generic [ref=f5e2125]: كلمة المرور
+                - textbox "كلمة المرور" [ref=f5e2126]
+              - generic [ref=f5e2127]:
+                - generic [ref=f5e2128]: تأكيد كلمة المرور
+                - textbox "تأكيد كلمة المرور" [ref=f5e2129]
+          - generic [ref=f5e2130]:
+            - heading "الأدوار" [level=2] [ref=f5e2132]
+            - generic [ref=f5e2133]:
+              - button "default_role" [ref=f5e2134] [cursor=pointer]
+              - button "admin" [ref=f5e2135] [cursor=pointer]
+          - generic [ref=f5e2136]:
+            - heading "الصورة الشخصية" [level=2] [ref=f5e2138]
+            - generic [ref=f5e2139]:
+              - text: الصورة الشخصية
+              - button "الصورة الشخصية" [ref=f5e2140]
+          - generic [ref=f5e2141]:
+            - link "إلغاء" [ref=f5e2142] [cursor=pointer]:
+              - /url: /users
+            - button "حفظ" [ref=f5e2143] [cursor=pointer]
