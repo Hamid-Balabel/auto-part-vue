@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ArrowRightLeft } from '@lucide/vue'
 import { computed, onMounted } from 'vue'
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -17,11 +18,13 @@ import RowActions from '@/components/ui/RowActions.vue'
 import { ApiError } from '@/api/http'
 import { useCrudList } from '@/composables/useCrudList'
 import { useResourcePermissions } from '@/composables/useResourcePermissions'
+import { usePermissions } from '@/composables/usePermissions'
 import { getStock, listStocks } from '../api'
 import type { Stock } from '../types'
 
 const { t, locale } = useI18n()
 const permissions = useResourcePermissions('stock')
+const { can } = usePermissions()
 const canCreate = permissions.canCreate
 const canUpdate = permissions.canUpdate
 const canView = computed(() => true)
@@ -91,11 +94,12 @@ onMounted(list.load)
 <template>
   <PageHeader :title="t('inventory.stocksTitle')" :description="t('inventory.stocksDescription')">
     <template #actions>
+      <BaseButton v-if="can('transfer-stock')" variant="secondary" :to="{ name: 'stocks.transfer' }"><ArrowRightLeft class="size-4" />{{ t('inventory.stockTransfer') }}</BaseButton>
       <BaseButton v-if="canCreate" :to="{ name: 'stocks.create' }">{{ t('actions.create') }}</BaseButton>
     </template>
   </PageHeader>
 
-  <CrudToolbar :loading="list.loading.value" :search-disabled="true" :search-placeholder="t('crud.searchUnavailable')" @refresh="list.load" />
+  <CrudToolbar :search="list.search.value" :loading="list.loading.value" :search-placeholder="t('inventory.searchStocks')" @search="list.applySearch" @refresh="list.load" />
 
   <DataTable
     :columns="columns"
@@ -117,6 +121,7 @@ onMounted(list.load)
     <template #cell-quantity="{ value }">{{ formatNumber(value as string | number | null) }}</template>
     <template #cell-actions="{ row }">
       <div class="flex flex-wrap justify-end gap-2">
+        <BaseButton v-if="can('transfer-stock')" variant="ghost" size="sm" :to="{ name: 'stocks.transfer', query: { from_warehouse_id: row.warehouse_id, product_item_id: row.item_id } }" :aria-label="t('inventory.stockTransfer')" :title="t('inventory.stockTransfer')"><ArrowRightLeft class="size-4" /></BaseButton>
         <CrudShowButton v-if="canView" :loading="detailsLoadingId === row.id" :disabled="detailsLoading" @click="openDetails(row.id)" />
         <RowActions
           :can-edit="canUpdate"
@@ -144,7 +149,7 @@ onMounted(list.load)
           <RelationshipCard :title="displayName(selectedStock.warehouse)" :subtitle="selectedStock.warehouse?.address ?? selectedStock.warehouse?.description ?? t('details.noRelatedData')">
             <template #badge><DetailsBadge :value="selectedStock.warehouse?.is_active" /></template>
           </RelationshipCard>
-          <RelationshipCard :title="selectedStock.item?.sku ?? '—'" :subtitle="selectedStock.item?.barcode">
+          <RelationshipCard :title="selectedStock.item?.sku ?? '—'" :subtitle="selectedStock.item?.merchant?.name">
             <template #badge><DetailsBadge :value="selectedStock.item?.is_active" /></template>
             <DetailsField :label="t('table.price')" :value="formatNumber(selectedStock.item?.current_price)" />
           </RelationshipCard>

@@ -4,6 +4,7 @@ import { computed } from 'vue'
 const props = defineProps<{
   src?: string | null
   alt?: string | null
+  contain?: boolean
 }>()
 
 const normalizedSrc = computed(() => {
@@ -25,7 +26,7 @@ const normalizedSrc = computed(() => {
 
 <template>
   <div class="overflow-hidden rounded-[var(--radius-lg)] border border-border bg-background">
-    <img v-if="normalizedSrc" :src="normalizedSrc" :alt="alt ?? ''" class="aspect-video w-full object-cover" loading="lazy" />
+    <img v-if="normalizedSrc" :src="normalizedSrc" :alt="alt ?? ''" class="aspect-video w-full" :class="contain ? 'object-contain p-3' : 'object-cover'" loading="lazy" />
     <div v-else class="flex aspect-video items-center justify-center px-4 text-center text-sm text-text-muted">
       {{ $t('details.noImage') }}
     </div>

@@ -67,8 +67,9 @@ router.beforeEach(async (to) => {
   }
 
   const requiredPermission = to.meta.permission as string | string[] | undefined
+  const requiredAllPermissions = to.meta.permissionAll as string[] | undefined
 
-  if (!hasPermission(auth.permissions, requiredPermission)) {
+  if (!hasPermission(auth.permissions, requiredPermission) || requiredAllPermissions?.some((permission) => !hasPermission(auth.permissions, permission))) {
     return { name: 'forbidden' }
   }
 

@@ -1,9 +1,22 @@
 import { http, unwrapData } from '@/api/http'
 import type { ApiEnvelope, Paginated } from '@/types/api'
-import type { CartLine, CartPayload, CartSummary, CheckoutPayload, Installment, Order, OrderCreatePayload, OrderListQuery, OrderStatusPayload, PaidInstallmentPayload } from './types'
+import type {
+  CartLine,
+  CartPayload,
+  CartSummary,
+  CheckoutPayload,
+  Installment,
+  Order,
+  OrderCreatePayload,
+  OrderListQuery,
+  OrderStatusPayload,
+  OrderUpdatePayload,
+  PaidInstallmentPayload,
+} from './types'
 
 export async function listMyCart(): Promise<CartLine[]> {
-  const response = await http.get<ApiEnvelope<{ cart?: CartLine[] }>>('/carts/me')
+  const response =
+    await http.get<ApiEnvelope<{ cart?: CartLine[] }>>('/carts/me')
   return unwrapData(response).cart ?? []
 }
 
@@ -17,8 +30,14 @@ export async function addCartLine(payload: CartPayload): Promise<CartLine> {
   return unwrapData(response)
 }
 
-export async function updateCartLine(id: number, payload: CartPayload): Promise<CartLine> {
-  const response = await http.put<ApiEnvelope<CartLine>>(`/carts/${id}`, payload)
+export async function updateCartLine(
+  id: number,
+  payload: CartPayload,
+): Promise<CartLine> {
+  const response = await http.put<ApiEnvelope<CartLine>>(
+    `/carts/${id}`,
+    payload,
+  )
   return unwrapData(response)
 }
 
@@ -31,12 +50,20 @@ export async function clearCart(): Promise<void> {
 }
 
 export async function checkout(payload: CheckoutPayload): Promise<Order> {
-  const response = await http.post<ApiEnvelope<Order>>('/orders/checkout', payload)
+  const response = await http.post<ApiEnvelope<Order>>(
+    '/orders/checkout',
+    payload,
+  )
   return unwrapData(response)
 }
 
-export async function listOrders(query: OrderListQuery = {}): Promise<Paginated<Order> | Order[]> {
-  const response = await http.get<ApiEnvelope<Paginated<Order> | Order[]>>('/orders', { params: query })
+export async function listOrders(
+  query: OrderListQuery = {},
+): Promise<Paginated<Order> | Order[]> {
+  const response = await http.get<ApiEnvelope<Paginated<Order> | Order[]>>(
+    '/orders',
+    { params: query },
+  )
   return unwrapData(response)
 }
 
@@ -45,8 +72,21 @@ export async function createOrder(payload: OrderCreatePayload): Promise<Order> {
   return unwrapData(response)
 }
 
-export async function createPaidInstallment(payload: PaidInstallmentPayload): Promise<Installment> {
-  const response = await http.post<ApiEnvelope<Installment>>('/installments', payload)
+export async function updateOrder(
+  id: number,
+  payload: OrderUpdatePayload,
+): Promise<Order> {
+  const response = await http.put<ApiEnvelope<Order>>(`/orders/${id}`, payload)
+  return unwrapData(response)
+}
+
+export async function createPaidInstallment(
+  payload: PaidInstallmentPayload,
+): Promise<Installment> {
+  const response = await http.post<ApiEnvelope<Installment>>(
+    '/installments',
+    payload,
+  )
   return unwrapData(response)
 }
 
@@ -59,7 +99,13 @@ export async function deleteOrder(id: number): Promise<void> {
   await http.delete(`/orders/${id}`)
 }
 
-export async function changeOrderStatus(id: number, payload: OrderStatusPayload): Promise<Order> {
-  const response = await http.put<ApiEnvelope<Order>>(`/orders/${id}/status`, payload)
+export async function changeOrderStatus(
+  id: number,
+  payload: OrderStatusPayload,
+): Promise<Order> {
+  const response = await http.put<ApiEnvelope<Order>>(
+    `/orders/${id}/status`,
+    payload,
+  )
   return unwrapData(response)
 }

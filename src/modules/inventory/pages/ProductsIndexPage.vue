@@ -50,7 +50,7 @@ const columns = computed<DataTableColumn<Product>[]>(() => [
 ])
 const itemColumns = computed<DetailsTableColumn<ProductItem>[]>(() => [
   { key: 'sku', label: t('table.sku') },
-  { key: 'barcode', label: t('table.barcode') },
+  { key: 'merchant', label: t('inventory.merchant') },
   { key: 'current_price', label: t('table.price') },
   { key: 'total_stock', label: t('table.stock') },
   { key: 'option_values', label: t('details.attributes') },
@@ -166,6 +166,7 @@ onMounted(list.load)
       <DetailsSection :title="t('inventory.productItemsTitle')">
         <DetailsTable :columns="itemColumns" :rows="selectedProduct.product_items ?? []" :empty-text="t('details.noRelatedData')">
           <template #cell-current_price="{ value }">{{ formatNumber(value as string | number | null) }}</template>
+          <template #cell-merchant="{ row }">{{ row.merchant?.name ?? '—' }}</template>
           <template #cell-total_stock="{ value }">{{ formatNumber(value as string | number | null) }}</template>
           <template #cell-option_values="{ value }">{{ Array.isArray(value) && value.length ? ((value as ProductItem['option_values']) ?? []).map((item) => displayName(item)).join(', ') : t('details.noRelatedData') }}</template>
           <template #cell-images="{ value }">{{ Array.isArray(value) ? formatNumber(value.length) : '—' }}</template>

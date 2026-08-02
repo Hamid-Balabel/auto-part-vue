@@ -3,6 +3,7 @@ import { computed, onMounted, reactive, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import FormInput from '@/components/forms/FormInput.vue'
+import SearchableSelectInput from '@/components/forms/SearchableSelectInput.vue'
 import BooleanField from '@/components/forms/BooleanField.vue'
 import TranslatableFields from '@/components/forms/TranslatableFields.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
@@ -10,6 +11,7 @@ import FormPageLayout from '@/components/ui/FormPageLayout.vue'
 import { ApiError } from '@/api/http'
 import { useResourcePermissions } from '@/composables/useResourcePermissions'
 import { useToastStore } from '@/stores/toast'
+import { useAuthStore } from '@/stores/auth'
 import { createWarehouse, getWarehouse, updateWarehouse } from '../api'
 import type { WarehousePayload } from '../types'
 import { normalizeBoolean } from '@/utils/boolean'
@@ -19,6 +21,7 @@ const props = defineProps<{ id?: string }>()
 const router = useRouter()
 const { t } = useI18n()
 const toast = useToastStore()
+const auth = useAuthStore()
 const permissions = useResourcePermissions('warehouse')
 const canSave = computed(() => props.id ? permissions.canUpdate.value : permissions.canCreate.value)
 const loading = ref(false)
@@ -26,21 +29,33 @@ const saving = ref(false)
 const errors = ref<Record<string, string[]>>({})
 const errorMessage = ref('')
 const form = reactive<WarehousePayload>({
+  branch_id: null,
   name: { ar: '', en: '' },
   description: { ar: '', en: '' },
   address: '',
   is_active: true,
 })
 const isEdit = computed(() => Boolean(props.id))
+const branchOptions = computed(() =>
+  auth.branches.map((branch) => ({
+    value: branch.id,
+    label: branch.name ?? branch.translation_name?.ar ?? branch.translation_name?.en ?? '—',
+    description: branch.address || undefined,
+  })),
+)
 async function loadRecord() {
-  if (!props.id) return
   loading.value = true
   try {
+    if (!auth.branchesLoaded) await auth.refreshBranches()
+    if (!props.id) return
     const warehouse = await getWarehouse(props.id)
+    form.branch_id = warehouse.branch_id
     form.name = warehouse.translation_name ?? { ar: '', en: '' }
     form.description = warehouse.translation_description ?? { ar: '', en: '' }
     form.address = warehouse.address ?? ''
     form.is_active = normalizeBoolean(warehouse.is_active, true)
+  } catch (error) {
+    errorMessage.value = error instanceof ApiError ? error.message : t('details.failedToLoad')
   } finally {
     loading.value = false
   }
@@ -52,6 +67,7 @@ async function submit() {
   errorMessage.value = ''
   try {
     const payload: WarehousePayload = {
+      branch_id: form.branch_id,
       name: form.name,
       description: form.description,
       address: form.address || null,
@@ -83,6 +99,19 @@ onMounted(loadRecord)
     @submit="submit"
   >
     <div class="grid gap-4 md:grid-cols-2">
+      <SearchableSelectInput
+        id="warehouse_branch"
+        v-model="form.branch_id"
+        :label="t('inventory.branch')"
+        :options="branchOptions"
+        :placeholder="t('inventory.selectBranch')"
+        :search-placeholder="t('inventory.searchBranches')"
+        :empty-text="t('inventory.noBranchesAvailable')"
+        :loading="auth.branchesLoading"
+        :error="errors.branch_id?.[0]"
+        required
+        data-testid="warehouse-branch-select"
+      />
       <TranslatableFields
         id="warehouse_name"
         v-model="form.name"

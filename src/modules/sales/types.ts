@@ -1,7 +1,13 @@
-import type { Customer, ProductItem, Warehouse } from '@/modules/inventory/types'
+import type {
+  Customer,
+  ProductItem,
+  Stock,
+  Warehouse,
+} from '@/modules/inventory/types'
 import type { ListQuery } from '@/types/api'
 
-export type OrderStatus = 'pending' | 'paid' | 'completed' | 'cancelled' | 'refunded'
+export type OrderStatus =
+  'pending' | 'paid' | 'completed' | 'cancelled' | 'refunded'
 export type PaymentStatus = 'pending' | 'partial' | 'paid'
 export type PaymentMethod = 'cash' | 'card' | 'transfer'
 export type QuickSalePaymentMode = 'cash' | 'card' | 'partial'
@@ -96,20 +102,36 @@ export interface Order {
   creator?: { id?: number; name?: string | null; email?: string | null } | null
   created_at?: string | null
   updated_at?: string | null
-  buttons?: Array<{ label: string; key: Exclude<OrderStatus, 'pending'>; type: 'action' | 'modal' | string }>
+  buttons?: Array<{
+    label: string
+    key: Exclude<OrderStatus, 'pending'>
+    type: 'action' | 'modal' | string
+  }>
 }
 
-export interface OrderListQuery extends Pick<ListQuery, 'page' | 'per_page' | 'sort_column' | 'sort_direction'> {}
+export interface OrderListQuery extends Pick<
+  ListQuery,
+  'page' | 'per_page' | 'sort_column' | 'sort_direction'
+> {}
 
 export interface OrderCreateItemPayload {
   item_id: number
   quantity: number
-  warehouse_id?: number | null
+  warehouse_id: number
+  price?: string
 }
 
 export interface QuickSaleLine {
+  lineId: string
   item: ProductItem
   quantity: number
+  systemPrice: string
+  unitPrice: string
+  persistedPrice?: string
+  priceDirty: boolean
+  warehouseId: number | null
+  warehouseStocks: Stock[]
+  availableQuantity: number
 }
 
 export interface OrderCreatePayload {
@@ -118,6 +140,8 @@ export interface OrderCreatePayload {
   payment_method: PaymentMethod
   items: OrderCreateItemPayload[]
 }
+
+export type OrderUpdatePayload = Partial<OrderCreatePayload>
 
 export interface PaidInstallmentPayload {
   order_id: number

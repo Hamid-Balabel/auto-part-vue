@@ -12,65 +12,66 @@ Generated from source inspection of `C:\laragon\www\auto-part`. Laravel Boost MC
 
 ## Public Auth
 
-| Method | Endpoint | Request | Response |
-| --- | --- | --- | --- |
-| POST | `/api/login` | `email`, `password`, optional/required `otp` depending backend config, `meta` | `token`, `user` with `id,name,email,phone,avatar,roles,permissions`; roles/permissions may be encrypted |
-| POST | `/api/logout` | authenticated; `all_devices`, `token_id` optional | success helper |
-| GET | `/api/captcha` | none | `{ token, captcha_code }` |
-| POST | `/api/captcha/verify` | `captcha`, `token` | success/fail helper |
-| POST | `/api/send-otp` | `email`, `type` | success/fail helper |
-| POST | `/api/check-otp` | `email`, `otp`, `type` | success/fail helper |
-| POST | `/api/verify-otp` | `email`, `otp`, `type` | success/fail helper |
-| POST | `/api/reset-password` | `email`, `otp`, `password`, `password_confirmation` | success helper |
+| Method | Endpoint              | Request                                                                       | Response                                                                                                |
+| ------ | --------------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| POST   | `/api/login`          | `email`, `password`, optional/required `otp` depending backend config, `meta` | `token`, `user` with `id,name,email,phone,avatar,roles,permissions`; roles/permissions may be encrypted |
+| POST   | `/api/logout`         | authenticated; `all_devices`, `token_id` optional                             | success helper                                                                                          |
+| GET    | `/api/captcha`        | none                                                                          | `{ token, captcha_code }`                                                                               |
+| POST   | `/api/captcha/verify` | `captcha`, `token`                                                            | success/fail helper                                                                                     |
+| POST   | `/api/send-otp`       | `email`, `type`                                                               | success/fail helper                                                                                     |
+| POST   | `/api/check-otp`      | `email`, `otp`, `type`                                                        | success/fail helper                                                                                     |
+| POST   | `/api/verify-otp`     | `email`, `otp`, `type`                                                        | success/fail helper                                                                                     |
+| POST   | `/api/reset-password` | `email`, `otp`, `password`, `password_confirmation`                           | success helper                                                                                          |
 
 ## Authenticated Profile
 
-| Method | Endpoint | Notes |
-| --- | --- | --- |
-| GET | `/api/me` | returns `sessions` and `user` resource |
-| POST | `/api/update-profile` | multipart if `avatar`; `name`, phone fields, optional password confirmation |
-| POST | `/api/destroy-avatar` | deletes current avatar |
+| Method | Endpoint              | Notes                                                                       |
+| ------ | --------------------- | --------------------------------------------------------------------------- |
+| GET    | `/api/me`             | returns `sessions` and `user` resource                                      |
+| POST   | `/api/update-profile` | multipart if `avatar`; `name`, phone fields, optional password confirmation |
+| POST   | `/api/destroy-avatar` | deletes current avatar                                                      |
 
 ## Core Modules
 
 Most resource modules follow `GET`, `POST`, `GET /{id}`, `PUT/PATCH /{id}` plus module-specific bulk operations. Bulk delete bodies use `id` or `ids` from backend traits.
 
-| Module | Base | Extra Actions | Known Permissions/Authz |
-| --- | --- | --- | --- |
-| Permissions | `/api/permissions` | index only registered | `read-permission` |
-| Roles | `/api/roles` | `DELETE /delete` | `RolePolicy`; permissions like `view-all-role`, `create-role`, `update-role`, `delete-role` |
-| Users | `/api/users` | `delete`, `force-delete`, `restore`, `toggle-active` | `UserPolicy`; root/current user protected |
-| Countries | `/api/countries` | `delete`, `force-delete`, `restore`, `toggle-active` | create/update middleware; delete traits fallback to permission names |
-| Categories | `/api/categories` | `delete`, `force-delete`, `restore`, `toggle-active` | create/update middleware; `CategoryPolicy` for destructive actions |
-| Brands | `/api/brands` | `delete`, `force-delete`, `restore`, `toggle-active` | create/update middleware; `BrandPolicy` for destructive actions |
-| Products | `/api/products` | `delete`, `force-delete`, `restore`, `toggle-active` | create/update middleware; `ProductPolicy` for destructive actions |
-| Product Items | `/api/product-items` | `delete`, `force-delete`, `restore`, `toggle-active`, `POST /bulck`, image routes | create/update middleware; note typo `bulck` is real route |
-| Product Options | `/api/product-options` | `delete`, `force-delete`, `restore`, `toggle-active` | create/update middleware |
-| Option Values | `/api/option-values` | `delete`, `force-delete`, `restore`, `toggle-active` | create/update middleware |
-| Item Prices | `/api/item-prices` | `DELETE /delete` | no visible controller Gate/middleware |
-| Warehouses | `/api/warehouses` | `delete`, `force-delete`, `restore`, `toggle-active` | create/update middleware; `WarehousePolicy` destructive actions |
-| Stocks | `/api/stocks` | `delete`, `restore`, `toggle-active` | stock authz appears inconsistent; no policy found |
-| Customers | `/api/customers` | `delete`, `force-delete`, `restore`, `toggle-active` | create/update middleware; `CustomerPolicy` destructive actions |
-| Carts | `/api/carts` | `GET /me`, `GET /summary`, `DELETE /clear` | `CartPolicy`; cart rows belong to the authenticated user |
-| Orders | `/api/orders` | checkout, status, item add/remove, logs, installments | `OrderPolicy`; owner or view-all scope |
-| Installments | `/api/installments` | order installments under `/orders/{order}/installments` | create/update/delete middleware |
-| Order Logs | `/api/order-logs` | read-only | `view-order` on index/show |
+| Module          | Base                   | Extra Actions                                                                     | Known Permissions/Authz                                                                     |
+| --------------- | ---------------------- | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| Permissions     | `/api/permissions`     | index only registered                                                             | `read-permission`                                                                           |
+| Roles           | `/api/roles`           | `DELETE /delete`                                                                  | `RolePolicy`; permissions like `view-all-role`, `create-role`, `update-role`, `delete-role` |
+| Users           | `/api/users`           | `delete`, `force-delete`, `restore`, `toggle-active`                              | `UserPolicy`; root/current user protected                                                   |
+| Countries       | `/api/countries`       | `delete`, `force-delete`, `restore`, `toggle-active`                              | create/update middleware; delete traits fallback to permission names                        |
+| Categories      | `/api/categories`      | `delete`, `force-delete`, `restore`, `toggle-active`                              | create/update middleware; `CategoryPolicy` for destructive actions                          |
+| Brands          | `/api/brands`          | `delete`, `force-delete`, `restore`, `toggle-active`                              | create/update middleware; `BrandPolicy` for destructive actions                             |
+| Products        | `/api/products`        | `delete`, `force-delete`, `restore`, `toggle-active`                              | create/update middleware; `ProductPolicy` for destructive actions                           |
+| Product Items   | `/api/product-items`   | `delete`, `force-delete`, `restore`, `toggle-active`, `POST /bulck`, image routes | create/update middleware; note typo `bulck` is real route                                   |
+| Product Options | `/api/product-options` | `delete`, `force-delete`, `restore`, `toggle-active`                              | create/update middleware                                                                    |
+| Option Values   | `/api/option-values`   | `delete`, `force-delete`, `restore`, `toggle-active`                              | create/update middleware                                                                    |
+| Item Prices     | `/api/item-prices`     | `DELETE /delete`                                                                  | no visible controller Gate/middleware                                                       |
+| Warehouses      | `/api/warehouses`      | `delete`, `force-delete`, `restore`, `toggle-active`                              | create/update middleware; `WarehousePolicy` destructive actions                             |
+| Stocks          | `/api/stocks`          | `delete`, `restore`, `toggle-active`                                              | stock authz appears inconsistent; no policy found                                           |
+| Stock Transfer Logs | `/api/stock-transfer-logs` | read-only index/show                                                           | exact permission `read-stock-transfer`                                                       |
+| Customers       | `/api/customers`       | `delete`, `force-delete`, `restore`, `toggle-active`                              | create/update middleware; `CustomerPolicy` destructive actions                              |
+| Carts           | `/api/carts`           | `GET /me`, `GET /summary`, `DELETE /clear`                                        | `CartPolicy`; cart rows belong to the authenticated user                                    |
+| Orders          | `/api/orders`          | checkout, status, item add/remove, logs, installments                             | `OrderPolicy`; owner or view-all scope                                                      |
+| Installments    | `/api/installments`    | order installments under `/orders/{order}/installments`                           | create/update/delete middleware                                                             |
+| Order Logs      | `/api/order-logs`      | read-only                                                                         | `view-order` on index/show                                                                  |
 
 ## Global Utilities
 
-| Method | Endpoint | Notes |
-| --- | --- | --- |
-| GET/PUT | `/api/settings` | see Settings Contract below |
-| POST | `/api/send-test-mail` | `update-setting`; `email`, `body` |
-| GET | `/api/report` | report builder payload; filters include date range/config/chart |
-| GET | `/api/export` | binary file; `start`, `end`, `page`, optional columns |
-| GET | `/api/activity-logs` | `read-log`; filters search/model/user/operation/date/sort |
-| GET | `/api/activity-logs/{activity}` | detail |
-| GET | `/api/help-configs` | lookup helper |
-| GET | `/api/help-models` | lookup helper |
-| GET | `/api/help-enums` | lookup helper |
-| GET/PUT | `/api/notifications` | `PUT` action `open` or `read`; ids required for read |
-| POST | `/api/chunk-file` | `file_name`, `chunk_number`, `chunk_file`; controller also reads `path`, `is_final` |
+| Method  | Endpoint                        | Notes                                                                               |
+| ------- | ------------------------------- | ----------------------------------------------------------------------------------- |
+| GET/PUT | `/api/settings`                 | see Settings Contract below                                                         |
+| POST    | `/api/send-test-mail`           | `update-setting`; `email`, `body`                                                   |
+| GET     | `/api/report`                   | report builder payload; filters include date range/config/chart                     |
+| GET     | `/api/export`                   | binary file; `start`, `end`, `page`, optional columns                               |
+| GET     | `/api/activity-logs`            | `read-log`; filters search/model/user/operation/date/sort                           |
+| GET     | `/api/activity-logs/{activity}` | detail                                                                              |
+| GET     | `/api/help-configs`             | lookup helper                                                                       |
+| GET     | `/api/help-models`              | lookup helper                                                                       |
+| GET     | `/api/help-enums`               | lookup helper                                                                       |
+| GET/PUT | `/api/notifications`            | `PUT` action `open` or `read`; ids required for read                                |
+| POST    | `/api/chunk-file`               | `file_name`, `chunk_number`, `chunk_file`; controller also reads `path`, `is_final` |
 
 ## Important Backend Risks To Respect
 
@@ -140,7 +141,7 @@ Most resource modules follow `GET`, `POST`, `GET /{id}`, `PUT/PATCH /{id}` plus 
 - Request fields: `name` required translatable array, `description` optional nullable array, `category_id` required existing categories, `brand_id` required existing brands, `is_active` optional boolean.
 - Resource fields: `id`, `name`, `translation_name`, `description`, `translation_description`, `is_active`, `category_id`, `brand_id`, optional `category`, optional `brand`, optional `product_items`, optional `creator`, `created_at`.
 - Relations: belongs to category/brand/creator, has many product items.
-- Show loads `category`, `brand`, `creator`, `items.prices`, `items.stocks`.
+- Show loads `category`, `brand`, `creator`, `items.merchant`, `items.prices`, and `items.stocks`.
 - Index pipeline: `JsonDisplayNameFilter`, `OrderByFilter`. Caveat: `search` likely broken because filter targets `display_name` while products use `name`.
 - No product image field exists. Product item images belong to product items.
 - Select dependencies: categories from `/api/categories?per_page=-1`, brands from `/api/brands?per_page=-1`.
@@ -149,15 +150,16 @@ Most resource modules follow `GET`, `POST`, `GET /{id}`, `PUT/PATCH /{id}` plus 
 
 - Endpoints: `GET/POST /api/product-items`, `GET/PUT/PATCH /api/product-items/{product_item}`, `DELETE /api/product-items/delete`, `POST /api/product-items/restore`, `DELETE /api/product-items/force-delete`, `PUT /api/product-items/toggle-active`, `POST /api/product-items/bulck`.
 - The route typo `bulck` is real.
-- Bulk create contract: `POST /api/product-items/bulck` uses multipart `ProductWithItemsRequest` and creates a new product plus all `items` in one database transaction. Product fields are `name`, optional `description`, `category_id`, `brand_id`, optional `is_active`. Each item requires unique `sku`, `price >= 0.01`; accepts nullable unique `barcode`, `option_value_ids[]`, `stocks[]` with warehouse and non-negative integer quantity, and `images[]` (`jpg/jpeg/png/webp`, max 50MB each).
+- Bulk create contract: `POST /api/product-items/bulck` uses multipart `ProductWithItemsRequest` and creates a new product plus all `items` in one database transaction. Product fields are `name`, optional `description`, `category_id`, `brand_id`, optional `is_active`. Each item requires `price >= 0.01`; accepts nullable existing `merchant_id`, `option_value_ids[]`, `stocks[]` with warehouse and non-negative integer quantity, and `images[]` (`jpg/jpeg/png/webp`, max 50MB each). `items.*.sku` and `items.*.barcode` are prohibited.
 - Image endpoints: `POST /api/product-items/{product_item}/images`, `POST /api/product-items/images/{item_image}/replace`, `DELETE /api/product-items/images/{item_image}`.
 - Middleware: `create-product-item` on store, `update-product-item` on update. Delete/restore/force/toggle authorize through `ProductItemPolicy`.
-- Request fields: `sku` required unique string, `barcode` optional nullable unique string, `product_id` required existing products, `is_active` optional boolean, `option_value_ids[]` optional existing product option values, `price` required numeric min `0.01`, `stocks[]` optional, `stocks.*.warehouse_id` required existing warehouses, `stocks.*.quantity` required integer min `0`, `images[]` optional jpg/jpeg/png/webp max 50MB.
-- DB caveat: `product_items.barcode` is unique and not nullable in migration, while request allows nullable. Avoid sending null/empty barcode unless backend/schema is fixed.
-- Resource fields: `id`, `sku`, `barcode`, `is_active`, `product_id`, optional `product`, optional `option_values`, optional `images`, `total_stock`, optional `stocks`, `current_price`, optional `prices`, optional `creator`, `created_at`.
-- Relations: belongs to product/creator, has many images/stocks/prices, belongs to many option values, belongs to many orders through order items.
+- Request fields: `sku` and `barcode` prohibited, `product_id` required existing products, `merchant_id` optional nullable existing non-deleted merchant, `is_active` optional boolean, `option_value_ids[]` optional existing product option values, `price` required numeric min `0.01`, `stocks[]` optional, `stocks.*.warehouse_id` required existing warehouses, `stocks.*.quantity` required integer min `0`, `images[]` optional jpg/jpeg/png/webp max 50MB.
+- SKU is generated as a unique eight-character uppercase alphanumeric string by `ProductItemService`. Frontend must never generate or submit it.
+- `BarcodeGeneratorService` generates a Code 128 SVG from the SKU once during creation. The media path is stored in `product_items.barcode` under `barcodes/`.
+- Resource fields: `id`, `sku`, `barcode` (resolved media URL), `is_active`, `product_id`, optional `product`, `merchant_id`, optional `merchant`, optional `option_values`, optional `images`, `total_stock`, optional `stocks`, `current_price`, optional `prices`, optional `creator`, `created_at`.
+- Relations: belongs to product/merchant/creator, has many images/stocks/prices, belongs to many option values, belongs to many orders through order items.
 - Create/update behavior: option values sync; price creates a new active `ItemPrice` when different; stocks overwrite absolute quantity per warehouse; images append new `ItemImage` records.
-- Index pipeline only has `OrderByFilter`; no backend `search`, `product_id`, warehouse, stock, or active filters.
+- Index supports search by SKU/barcode/product name and product, merchant, category, brand, option, warehouse, active, trashed, date, and sorting filters.
 - UX decision: product items should be managed as product variants/items inside Product detail/edit, with a dedicated product-items CRUD route available. Product update cannot update items, and bulk create has no bulk update equivalent.
 
 ### Customers
@@ -172,30 +174,74 @@ Most resource modules follow `GET`, `POST`, `GET /{id}`, `PUT/PATCH /{id}` plus 
 - Index pipeline only has `OrderByFilter`; no backend `search`, phone, email, active, or trashed filter is applied.
 - Select dependencies: countries from `/api/countries?per_page=-1` for phone code.
 
+### Merchants
+
+- Endpoints: `GET/POST /api/merchants`, `GET/PUT/PATCH /api/merchants/{merchant}`, `DELETE /api/merchants/delete`, `POST /api/merchants/restore`, `DELETE /api/merchants/force-delete`, `PUT /api/merchants/toggle-active`.
+- Request fields: `name` required string max 191, `email` optional nullable email max 191 unique across merchants including soft-deleted rows, `phone` optional nullable string max 191, `is_active` optional boolean.
+- Resource fields: `id`, `name`, `email`, `phone`, `is_active`, optional `creator`, `created_at`, `updated_at`. Product items are not included in the merchant resource.
+- Filters: `search` across name/email/phone, `name`, exact `email`, `phone`, `created_by`, `has_product_items`, active/trashed/date filters, pagination, and allowlisted sorting.
+- Exact permissions: `read-merchant`, `view-all-merchant`, `view-own-merchant`, `create-merchant`, `update-merchant`, `delete-merchant`, `restore-merchant`, `force-delete-merchant`, `toggle-active-merchant`.
+- Index/show require `read-merchant` plus ownership through `view-own-merchant` or global access through `view-all-merchant`. Mutations also require the matching operation permission and ownership/global access.
+
 ### Warehouses
 
 - Endpoints: `GET/POST /api/warehouses`, `GET/PUT/PATCH /api/warehouses/{warehouse}`, `DELETE /api/warehouses/delete`, `POST /api/warehouses/restore`, `DELETE /api/warehouses/force-delete`, `PUT /api/warehouses/toggle-active`.
 - Middleware: `create-warehouse` on store, `update-warehouse` on update. Delete/restore/force/toggle authorize through `WarehousePolicy`.
 - Policy permissions include `view-warehouse`, `view-all-warehouse`, `view-own-warehouse`, `create-warehouse`, `update-warehouse`, `delete-warehouse`, `restore-warehouse`, `force-delete-warehouse`, `toggle-active-warehouse`.
-- Request fields: `name` required translatable array, `description` optional nullable array, `address` optional nullable string max 191, `is_active` optional boolean.
-- Resource fields: `id`, `name`, `translation_name`, `description`, `translation_description`, `address`, `is_active`, optional `stocks`, optional `creator`, `created_at`.
-- Relations: has many stocks, belongs to creator.
+- Request fields: required `branch_id` referencing an active, non-deleted branch; `name` required translatable array, `description` optional nullable array, `address` optional nullable string max 191, `is_active` optional boolean. The same request is used for create and update, so `branch_id` and `name` remain required on update.
+- Resource fields: `id`, `branch_id`, `name`, `translation_name`, `description`, `translation_description`, `address`, `is_active`, `is_current`, optional `branch`, optional `stocks`, optional `creator`, `created_at`.
+- `is_current` means the related branch has `is_current=true`; it is not a warehouse-level selection field. Warehouse CRUD controller responses eager-load `branch`, so this value is accurate there.
+- Relations: belongs to branch/creator and has many stocks.
 - Index pipeline only has `OrderByFilter`; no backend search, active, address, or trashed filter.
 - Force-deleting a warehouse can cascade-delete stock rows due to DB FK cascade.
 
+### Branches
+
+- Endpoints: `GET/POST /api/branches`, `GET/PUT/PATCH /api/branches/{branch}`, `PATCH /api/branches/{branch}/status`, `PATCH /api/branches/{branch}/set-current`, `DELETE /api/branches/delete`, `POST /api/branches/restore`, `DELETE /api/branches/force-delete`.
+- Exact permissions: `read-branch`, `create-branch`, `update-branch`, `delete-branch`, `restore-branch`, `force-delete-branch`, `toggle-active-branch`, `set-current-branch`.
+- Create fields: required translated `name` with Arabic required and optional English; optional nullable `address`; optional boolean `is_active`; optional boolean `is_current`.
+- Update accepts the same fields as optional partial values. `PATCH /status` requires `{ is_active: boolean }`. `PATCH /set-current` has no request body.
+- Resource fields: `id`, localized `name`, `translation_name`, `address`, `is_current`, `is_active`, optional `creator`, `created_at`.
+- Index supports `search`, `name`, `address`, `is_current`, `is_active`, `created_by`, trashed/date filters, pagination, and allowlisted sorting.
+- Current branch is one global database flag, not a per-user or per-session preference. Setting a branch current unsets all other branches transactionally. An inactive branch cannot be current; deactivating the current branch clears current state.
+- There is no dedicated current-branch GET endpoint and login/profile resources do not include branch context. Query `GET /api/branches?is_current=true` or the cached active branch list after authentication.
+- Current branches and branches with any warehouses, including soft-deleted warehouses, cannot be deleted.
+
 ### Stocks
 
-- Endpoints: `GET/POST /api/stocks`, `GET/PUT/PATCH /api/stocks/{stock}`, `DELETE /api/stocks/delete`, `POST /api/stocks/restore`, `PUT /api/stocks/toggle-active`.
+- Endpoints: `GET/POST /api/stocks`, `GET/PUT/PATCH /api/stocks/{stock}`, `POST /api/stocks/transfer`, `DELETE /api/stocks/delete`, `POST /api/stocks/restore`, `PUT /api/stocks/toggle-active`.
 - Create/update permission middleware is commented out in `StockController`; currently auth-only for index/show/store/update.
 - No `StockPolicy` is registered/found.
 - Request fields: `warehouse_id` required existing warehouses, `item_id` required existing product items, `quantity` required integer min 0.
 - Store behavior is upsert by `(warehouse_id, item_id)` and sets absolute quantity. It is not a movement/increment.
 - Update validates `warehouse_id` and `item_id`, but only updates `quantity`; warehouse/item changes are ignored.
-- Resource fields: `id`, `warehouse_id`, optional `warehouse`, `item_id`, `quantity`, `created_at`. Controller loads `item`, but `StockResource` does not expose it.
+- Resource fields: `id`, `warehouse_id`, optional `warehouse`, `item_id`, optional `item`, `quantity`, `created_at`.
 - DB unique key: `warehouse_id + item_id`.
-- Index pipeline only has `OrderByFilter`; no warehouse/product/item/quantity filters.
+- Index filters include search, warehouse/item IDs, quantity ranges, `in_stock`, product/category/brand, dates, pagination, and sorting.
 - Unsupported/broken actions: hide stock delete/restore/toggle in frontend for now. `DELETE /api/stocks/delete` route lacks a `{stock}` parameter for `destroy(Stock $stock)`, `restore` is invalid because Stock has no SoftDeletes, and toggle is invalid because Stock has no `is_active` column.
 - Stock UI must label quantity changes as setting/overwriting quantity, not adding stock. For item details, fetch product item/product separately because stock index does not expose item relation.
+- Transfer payload: `{ from_warehouse_id, to_warehouse_id, product_item_id, quantity, notes? }`. Warehouses must differ and be active/non-deleted, item must be active/non-deleted, quantity must be a positive integer, and source/destination stock rows must already exist.
+- Transfer requires exact permission `transfer-stock`. The transaction locks warehouses, item, and both stock rows; decrements source, increments destination, and creates `stock_transfers` audit data atomically.
+- Successful transfer returns `StockTransferResource`, including `id`, `reference_number`, warehouse aliases, creator, item summaries, item snapshots, and transient top-level `source_quantity` and `destination_quantity`.
+- Transfer logs are read through `GET /api/stock-transfer-logs` and `GET /api/stock-transfer-logs/{stock_transfer_log}` with exact permission `read-stock-transfer`. There are no create/update/delete/reversal log endpoints.
+- Log index filters: `search`, `reference_number`, `from_warehouse_id`/`source_warehouse_id`, `to_warehouse_id`/`destination_warehouse_id`, `warehouse_id`, `product_item_id`, `created_by`, `from_date`, `to_date`, `created_from`, and `created_to`. Dates use `YYYY-MM-DD`.
+- Log sorting uses `sort_column`/`sort_direction`; allowed columns are `id`, timestamps, `reference_number`, source/destination IDs, `created_by`, and `transferred_at`. Default is `id desc`.
+- Log list responses include `items_count` and `total_quantity` but return `items: []`. Show responses include item-level `quantity`, `source_quantity_before/after`, and `destination_quantity_before/after` historical snapshots.
+
+### Product Options And Values
+
+- Product option endpoints: `GET/POST /api/product-options`, `GET/PUT/PATCH /api/product-options/{product_option}`, `DELETE /api/product-options/delete`, `POST /api/product-options/restore`, `DELETE /api/product-options/force-delete`, `PUT /api/product-options/toggle-active`.
+- Product option create payload: `name` required translation map with required Arabic and optional English, optional translation-map `description`, optional boolean `is_active`, and required nonempty `values[]`.
+- Nested value create fields: `name` translation map with required Arabic and optional English, optional translation-map `description`, optional boolean `is_active`; `id` and `product_option_id` are prohibited on option create.
+- Product option update uses full replacement semantics for active values. `values` remains required and nonempty. Existing entries must include an `id` belonging to that option; new entries omit `id`; omitted existing values are soft-deleted unless attached to a product item, in which case the complete transaction fails with a `422 values` error.
+- Duplicate translated value signatures inside one option request fail validation at `values.{index}.name`.
+- Product option resource: `id`, localized `name`, `translation_name`, localized `description`, `translation_description`, `is_active`, loaded `values`, optional `creator`, and `created_at`.
+- Product option filters: `search`, `created_by`, `has_values`, active/trashed/date filters, pagination, and sorting. Allowed option sorts include `id`, timestamps, `name`, `name.ar`, `name.en`, `is_active`, `created_by`, and `deleted_at`.
+- Standalone value endpoints use `/api/option-values` with the same CRUD lifecycle. Create/update payload is `name`, optional `description`, required `product_option_id`, and optional `is_active`.
+- Standalone value creation is the supported quick-add-value contract. It persists a value before the frontend associates its ID with a product item.
+- Product items associate values with `option_value_ids: number[]`; create syncs a nonempty array and update syncs whenever the key is present, including clearing with an empty array. SKU remains prohibited.
+- Exact generated permissions use `product-option` and `product-option-value`, including `create-*`, `read-*`, `update-*`, `delete-*`, `view-all-*`, `view-own-*`, `restore-*`, `force-delete-*`, and `toggle-active-*`.
+- Current authorization caveat: product option/value index and show do not enforce read/view policies, while store/update enforce create/update middleware and lifecycle actions invoke policies. Nested option creation manages nested values under the product-option permission and does not require separate value permissions.
 
 - Do not rely on client-calculated order/cart totals; backend resolves prices and stock changes transactionally.
 - Roles and permissions returned by login may be encrypted by backend config.
@@ -238,7 +284,9 @@ Most resource modules follow `GET`, `POST`, `GET /{id}`, `PUT/PATCH /{id}` plus 
 - `OrderResource` now has contexts. List/index uses summary fields only and does not include items/installments/logs/buttons. Show/create/update/status responses use `details` and additionally return `buttons`, `stock_restored_at`, `items`, `installments`, and `logs`.
 - Detailed `buttons` are generated by the current status strategy then filtered through `OrderPolicy::changeStatus`; frontend status actions must come from this array rather than duplicate a transition matrix.
 - For every detailed action button, display the backend-provided `label` and submit its `key` as the `status` value. Do not replace the backend label with a frontend translation.
-- Order item resource: `id`, `order_id`, `item_id`, `warehouse_id`, `price`, `quantity`, `subtotal`, optional `product_item`, optional `warehouse`, `created_at`.
+- Order item resource: `id`, `order_id`, `item_id`, `warehouse_id`, `price`, `quantity`, `subtotal`, optional `product_item`, optional `warehouse`, `created_at`. An order-line identity is `order_id + item_id + warehouse_id`, so one item may be sold from multiple warehouses as separate rows.
+- Direct create/update/add-item requests accept optional `items.*.price`. The validated range is `0..99999999.99` with at most two decimal places. Supplying a non-null price requires `override-price-order`; otherwise the backend selects the current effective system price. The value is stored only in `order_items.price`, and subtotal/total are recalculated from it without updating `product_items` or `item_prices`.
+- Pending orders can be updated through `PUT/PATCH /api/orders/{order}`. Supplying `items` replaces the line set. Existing stored prices are preserved when `price` is omitted. Explicit price changes are rejected once the order has installments.
 - Statuses: `pending`, `paid`, `completed`, `cancelled`, `refunded`. Payment statuses: `pending`, `partial`, `paid`.
 - Status payload: `{ status, notes? }`; target can only be `paid`, `cancelled`, `completed`, or `refunded`; notes are nullable string max 1500 and `payment_status` is prohibited.
 - Allowed transitions: pending -> paid only when payment status is paid; pending -> cancelled; paid -> completed only when payment status is paid; paid -> refunded; completed -> refunded. Cancelled/refunded are terminal.
@@ -251,7 +299,7 @@ Most resource modules follow `GET`, `POST`, `GET /{id}`, `PUT/PATCH /{id}` plus 
 ### Quick Sale And Payments
 
 - Quick Sale creates orders directly with `POST /api/orders`; the standalone Cart UI is intentionally not registered or linked.
-- Direct create payload is `{ invoice_no, customer_id, payment_method, items: [{ item_id, quantity, warehouse_id? }] }`. Client `total`, item `price`, and item `subtotal` are not sent because the backend recalculates them.
+- Direct create payload is `{ invoice_no, customer_id, payment_method, items: [{ item_id, quantity, warehouse_id, price? }] }`. `warehouse_id` is required and must reference an active, non-deleted warehouse. Duplicate `item_id + warehouse_id` pairs are rejected, while the same item may appear once per warehouse. `price` is sent only for an authorized custom order-item selling price. Client `total` and item `subtotal` are never sent because the backend recalculates them.
 - `OrderPaymentMethodEnum` values are `cash`, `card`, and `transfer`. `partial` is not a payment method.
 - `OrderPaymentStatusEnum` values are `pending`, `paid`, and `partial`. The request prohibits setting `payment_status`; `InstallmentService` calculates it from paid installments.
 - `InstallemntsStatusEnum` values are `pending`, `paid`, and `overdue`.

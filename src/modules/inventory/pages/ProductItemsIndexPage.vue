@@ -45,8 +45,8 @@ const columns = computed<DataTableColumn<ProductItem>[]>(() => [
   { key: 'id', label: t('table.id'), sortable: true },
   { key: 'sku', label: t('table.sku'), sortable: true },
   { key: 'product', label: t('table.product') },
+  { key: 'merchant', label: t('inventory.merchant') },
   { key: 'option_values', label: t('inventory.optionValues') },
-  { key: 'barcode', label: t('table.barcode') },
   { key: 'current_price', label: t('table.price') },
   { key: 'total_stock', label: t('table.stock') },
   { key: 'is_active', label: t('table.status') },
@@ -148,9 +148,10 @@ onMounted(list.load)
       <BaseButton v-if="canCreate" :to="{ name: 'product-items.create' }">{{ t('actions.create') }}</BaseButton>
     </template>
   </PageHeader>
-  <CrudToolbar :loading="list.loading.value" :search-disabled="true" :search-placeholder="t('crud.searchUnavailable')" @refresh="list.load" />
+  <CrudToolbar :search="list.search.value" :loading="list.loading.value" :search-placeholder="t('sales.searchProductsPlaceholder')" @search="list.applySearch" @refresh="list.load" />
   <DataTable :columns="columns" :rows="list.rows.value" :loading="list.loading.value" :sort-column="list.sortColumn.value" :sort-direction="list.sortDirection.value" @sort="list.sortBy">
     <template #cell-product="{ row }">{{ displayName(row.product) }}</template>
+    <template #cell-merchant="{ row }">{{ row.merchant?.name ?? '—' }}</template>
     <template #cell-option_values="{ row }">
       <div v-if="groupedOptionValues(row).length" class="flex min-w-48 max-w-80 flex-wrap gap-1.5">
         <div
@@ -185,7 +186,6 @@ onMounted(list.load)
       <DetailsSection :title="t('details.mainInformation')">
         <dl class="grid gap-3 md:grid-cols-3">
           <DetailsField :label="t('table.sku')" :value="selectedItem.sku" />
-          <DetailsField :label="t('table.barcode')" :value="selectedItem.barcode" />
           <DetailsField :label="t('table.price')" :value="formatNumber(selectedItem.current_price)" />
           <DetailsField :label="t('table.stock')" :value="formatNumber(selectedItem.total_stock)" />
           <DetailsField :label="t('table.status')"><DetailsBadge :value="selectedItem.is_active" /></DetailsField>
@@ -193,12 +193,23 @@ onMounted(list.load)
         </dl>
       </DetailsSection>
 
+      <DetailsSection :title="t('table.barcode')">
+        <div class="max-w-md">
+          <DetailsImage :src="selectedItem.barcode" :alt="selectedItem.sku" contain />
+        </div>
+      </DetailsSection>
+
       <DetailsSection :title="t('table.product')">
-        <RelationshipCard :title="displayName(selectedItem.product)" :subtitle="selectedItem.product?.description ?? t('details.noRelatedData')">
-          <template #badge><DetailsBadge :value="selectedItem.product?.is_active" /></template>
-          <DetailsField :label="t('table.category')" :value="displayName(selectedItem.product?.category)" />
-          <DetailsField :label="t('table.brand')" :value="displayName(selectedItem.product?.brand)" />
-        </RelationshipCard>
+        <div class="grid gap-3 md:grid-cols-2">
+          <RelationshipCard :title="displayName(selectedItem.product)" :subtitle="selectedItem.product?.description ?? t('details.noRelatedData')">
+            <template #badge><DetailsBadge :value="selectedItem.product?.is_active" /></template>
+            <DetailsField :label="t('table.category')" :value="displayName(selectedItem.product?.category)" />
+            <DetailsField :label="t('table.brand')" :value="displayName(selectedItem.product?.brand)" />
+          </RelationshipCard>
+          <RelationshipCard :title="selectedItem.merchant?.name ?? t('details.noRelatedData')" :subtitle="selectedItem.merchant?.email ?? selectedItem.merchant?.phone">
+            <template #badge><DetailsBadge :value="selectedItem.merchant?.is_active" /></template>
+          </RelationshipCard>
+        </div>
       </DetailsSection>
 
       <DetailsSection :title="t('details.attributes')">

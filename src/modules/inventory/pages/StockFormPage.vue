@@ -38,9 +38,8 @@ const warehouseOptions = computed<SearchableSelectOption<number>[]>(() => wareho
 const itemOptions = computed<SearchableSelectOption<number>[]>(() => productItems.value.map((item) => ({
   label: item.sku,
   value: item.id,
-  description: item.barcode ?? undefined,
   meta: item.current_price ? `${t('table.price')}: ${item.current_price}` : undefined,
-  searchText: [item.sku, item.barcode, item.id].filter(Boolean).join(' '),
+  searchText: [item.sku, item.id].filter(Boolean).join(' '),
 })))
 
 function normalizeList<T>(response: T[] | { data: T[] }): T[] {
