@@ -53,6 +53,16 @@ const canSubmit = computed(
     (editing.value || canRecordPayment.value),
 )
 
+async function scanProduct(value: string) {
+  try {
+    const added = await sale.addScannedProduct(value)
+    if (added) toast.success(t('sales.itemAdded'))
+    else toast.error(t('sales.noProductsFound'))
+  } catch (error) {
+    toast.error(error instanceof ApiError ? error.message : t('sales.noProductsFound'))
+  }
+}
+
 function firstError(field: string) {
   const value = sale.errors.value[field]?.[0]
   if (value === 'required') return t('sales.validation.required')
@@ -199,12 +209,14 @@ onMounted(async () => {
         :selected-items="sale.selectedItems.value"
         :loading="sale.productsLoading.value"
         :items-loading="sale.itemsLoading.value"
+        :scanning="sale.scanning.value"
         :has-more="sale.hasMoreProducts.value"
         :search="sale.productSearch.value"
         @update:search="sale.productSearch.value = $event"
         @select-product="sale.selectProduct"
         @close-product="sale.closeProduct"
         @add-item="sale.addProduct"
+        @scan="scanProduct"
         @load-more="sale.loadMoreProducts"
       />
     </main>

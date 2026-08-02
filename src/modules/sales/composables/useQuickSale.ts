@@ -58,6 +58,7 @@ export function useQuickSale(
   const loading = ref(true)
   const productsLoading = ref(false)
   const itemsLoading = ref(false)
+  const scanning = ref(false)
   const submitting = ref(false)
   const products = ref<Product[]>([])
   const productPage = ref(1)
@@ -356,6 +357,34 @@ export function useQuickSale(
     }
   }
 
+  async function addScannedProduct(value: string): Promise<boolean> {
+    const sku = value.trim()
+    if (!sku || scanning.value) return false
+
+    scanning.value = true
+    try {
+      const result = await listProductItems({
+        search: sku,
+        per_page: 24,
+        is_active: 1,
+      })
+      const items = Array.isArray(result) ? result : result.data
+      const item = items.find(
+        (candidate) => candidate.sku.toLocaleLowerCase() === sku.toLocaleLowerCase(),
+      )
+
+      if (!item || item.current_price === null) return false
+
+      item.stocks = activeWarehouseStocks(item)
+      addProduct(item)
+      productSearch.value = ''
+
+      return true
+    } finally {
+      scanning.value = false
+    }
+  }
+
   function updateQuantity(lineId: string, quantity: number) {
     const line = lines.value.find((item) => item.lineId === lineId)
     if (line)
@@ -535,6 +564,7 @@ export function useQuickSale(
     loading,
     productsLoading,
     itemsLoading,
+    scanning,
     submitting,
     products,
     productSearch,
@@ -558,6 +588,7 @@ export function useQuickSale(
     selectProduct,
     closeProduct,
     addProduct,
+    addScannedProduct,
     updateQuantity,
     updateWarehouse,
     updatePrice,

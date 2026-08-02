@@ -11,6 +11,7 @@ defineProps<{
   selectedItems: ProductItem[]
   loading?: boolean
   itemsLoading?: boolean
+  scanning?: boolean
   hasMore?: boolean
   search: string
 }>()
@@ -20,6 +21,7 @@ const emit = defineEmits<{
   selectProduct: [product: Product]
   closeProduct: []
   addItem: [item: ProductItem]
+  scan: [value: string]
   loadMore: []
 }>()
 
@@ -61,8 +63,12 @@ function translatedName(
           :value="search"
           :placeholder="$t('sales.searchProductsPlaceholder')"
           data-testid="order-product-search"
+          :aria-busy="scanning"
           @input="
             emit('update:search', ($event.target as HTMLInputElement).value)
+          "
+          @keydown.enter.prevent="
+            emit('scan', ($event.target as HTMLInputElement).value)
           "
         />
       </div>
