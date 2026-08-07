@@ -7,6 +7,7 @@ import DateInput from "@/components/forms/DateInput.vue";
 import FormInput from "@/components/forms/FormInput.vue";
 import BaseBadge from "@/components/ui/BaseBadge.vue";
 import BaseButton from "@/components/ui/BaseButton.vue";
+import CrudFilterPanel from "@/components/ui/CrudFilterPanel.vue";
 import CrudShowButton from "@/components/ui/CrudShowButton.vue";
 import CrudToolbar from "@/components/ui/CrudToolbar.vue";
 import DataTable, { type DataTableColumn } from "@/components/ui/DataTable.vue";
@@ -60,7 +61,7 @@ const allowedSortColumns = [
   "transferred_at",
 ];
 
-const filters = reactive({
+const emptyFilters = () => ({
   reference_number: "",
   warehouse_id: null as number | null,
   source_warehouse_id: null as number | null,
@@ -72,6 +73,8 @@ const filters = reactive({
   created_from: "",
   created_to: "",
 });
+const filters = reactive(emptyFilters());
+const appliedFilters = reactive(emptyFilters());
 
 const canLoadUsers = computed(() => can(["view-all-user", "view-own-user"]));
 const displayedError = computed(() =>
@@ -80,20 +83,23 @@ const displayedError = computed(() =>
 const hasFilters = computed(() =>
   Boolean(
     search.value.trim() ||
-      filters.reference_number ||
-      filters.warehouse_id ||
-      filters.source_warehouse_id ||
-      filters.destination_warehouse_id ||
-      filters.product_item_id ||
-      filters.created_by ||
-      filters.from_date ||
-      filters.to_date ||
-      filters.created_from ||
-      filters.created_to,
+      appliedFilters.reference_number ||
+      appliedFilters.warehouse_id ||
+      appliedFilters.source_warehouse_id ||
+      appliedFilters.destination_warehouse_id ||
+      appliedFilters.product_item_id ||
+      appliedFilters.created_by ||
+      appliedFilters.from_date ||
+      appliedFilters.to_date ||
+      appliedFilters.created_from ||
+      appliedFilters.created_to,
   ),
 );
+const activeFiltersCount = computed(() =>
+  Object.values(appliedFilters).filter((value) => value !== null && value !== "").length,
+);
 const selectedWarehouse = computed(() =>
-  warehouses.value.find((warehouse) => warehouse.id === filters.warehouse_id),
+  warehouses.value.find((warehouse) => warehouse.id === appliedFilters.warehouse_id),
 );
 const pageTitle = computed(() =>
   selectedWarehouse.value
@@ -113,7 +119,7 @@ const columns = computed<DataTableColumn<StockTransfer>[]>(() => {
       label: t("stockTransferLogs.destinationWarehouse"),
     },
   ];
-  if (filters.warehouse_id)
+  if (appliedFilters.warehouse_id)
     result.push({ key: "direction", label: t("stockTransferLogs.direction") });
   result.push(
     { key: "items_count", label: t("stockTransferLogs.itemsCount"), align: "center" },
@@ -183,11 +189,11 @@ function formatDate(value?: string | null) {
 }
 
 function direction(log: StockTransfer) {
-  if (!filters.warehouse_id) return null;
+  if (!appliedFilters.warehouse_id) return null;
   const sourceId = log.source_warehouse_id ?? log.from_warehouse_id;
   const destinationId = log.destination_warehouse_id ?? log.to_warehouse_id;
-  if (sourceId === filters.warehouse_id) return "outgoing";
-  if (destinationId === filters.warehouse_id) return "incoming";
+  if (sourceId === appliedFilters.warehouse_id) return "outgoing";
+  if (destinationId === appliedFilters.warehouse_id) return "incoming";
   return null;
 }
 
@@ -222,6 +228,7 @@ function hydrateFromQuery() {
     typeof route.query.created_from === "string" ? route.query.created_from : "";
   filters.created_to =
     typeof route.query.created_to === "string" ? route.query.created_to : "";
+  Object.assign(appliedFilters, filters);
 }
 
 function queryParams(): StockTransferLogListQuery {
@@ -231,18 +238,18 @@ function queryParams(): StockTransferLogListQuery {
     sort_column: sortColumn.value,
     sort_direction: sortDirection.value,
     ...(search.value.trim() ? { search: search.value.trim() } : {}),
-    ...(filters.reference_number.trim()
-      ? { reference_number: filters.reference_number.trim() }
+    ...(appliedFilters.reference_number.trim()
+      ? { reference_number: appliedFilters.reference_number.trim() }
       : {}),
-    ...(filters.warehouse_id ? { warehouse_id: filters.warehouse_id } : {}),
-    ...(filters.source_warehouse_id ? { source_warehouse_id: filters.source_warehouse_id } : {}),
-    ...(filters.destination_warehouse_id ? { destination_warehouse_id: filters.destination_warehouse_id } : {}),
-    ...(filters.product_item_id ? { product_item_id: filters.product_item_id } : {}),
-    ...(filters.created_by ? { created_by: filters.created_by } : {}),
-    ...(filters.from_date ? { from_date: filters.from_date } : {}),
-    ...(filters.to_date ? { to_date: filters.to_date } : {}),
-    ...(filters.created_from ? { created_from: filters.created_from } : {}),
-    ...(filters.created_to ? { created_to: filters.created_to } : {}),
+    ...(appliedFilters.warehouse_id ? { warehouse_id: appliedFilters.warehouse_id } : {}),
+    ...(appliedFilters.source_warehouse_id ? { source_warehouse_id: appliedFilters.source_warehouse_id } : {}),
+    ...(appliedFilters.destination_warehouse_id ? { destination_warehouse_id: appliedFilters.destination_warehouse_id } : {}),
+    ...(appliedFilters.product_item_id ? { product_item_id: appliedFilters.product_item_id } : {}),
+    ...(appliedFilters.created_by ? { created_by: appliedFilters.created_by } : {}),
+    ...(appliedFilters.from_date ? { from_date: appliedFilters.from_date } : {}),
+    ...(appliedFilters.to_date ? { to_date: appliedFilters.to_date } : {}),
+    ...(appliedFilters.created_from ? { created_from: appliedFilters.created_from } : {}),
+    ...(appliedFilters.created_to ? { created_to: appliedFilters.created_to } : {}),
   };
 }
 
@@ -291,27 +298,15 @@ function applySearch(value: string) {
 }
 
 function applyFilters() {
+  Object.assign(appliedFilters, filters);
   page.value = 1;
   void updateRoute();
 }
 
 function resetFilters() {
-  search.value = "";
-  Object.assign(filters, {
-    reference_number: "",
-    warehouse_id: null,
-    source_warehouse_id: null,
-    destination_warehouse_id: null,
-    product_item_id: null,
-    created_by: null,
-    from_date: "",
-    to_date: "",
-    created_from: "",
-    created_to: "",
-  });
+  Object.assign(filters, emptyFilters());
+  Object.assign(appliedFilters, emptyFilters());
   page.value = 1;
-  sortColumn.value = "id";
-  sortDirection.value = "desc";
   void updateRoute();
 }
 
@@ -381,72 +376,80 @@ onMounted(() => void loadLookups());
     @refresh="load"
   />
 
-  <section class="panel mb-5 p-4" :aria-label="t('stockTransferLogs.filters')">
-    <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-      <FormInput
-        id="transfer-log-reference"
-        v-model="filters.reference_number"
-        :label="t('stockTransferLogs.reference')"
-        :placeholder="t('stockTransferLogs.referencePlaceholder')"
-      />
-      <BaseSelect
-        id="transfer-log-warehouse"
-        v-model="filters.warehouse_id"
-        :label="t('stockTransferLogs.relatedWarehouse')"
-        :options="warehouseOptions"
-        :loading="lookupsLoading"
-        searchable
-        clearable
-      />
-      <BaseSelect
-        id="transfer-log-source"
-        v-model="filters.source_warehouse_id"
-        :label="t('stockTransferLogs.sourceWarehouse')"
-        :options="warehouseOptions"
-        :loading="lookupsLoading"
-        searchable
-        clearable
-      />
-      <BaseSelect
-        id="transfer-log-destination"
-        v-model="filters.destination_warehouse_id"
-        :label="t('stockTransferLogs.destinationWarehouse')"
-        :options="warehouseOptions"
-        :loading="lookupsLoading"
-        searchable
-        clearable
-      />
-      <BaseSelect
-        id="transfer-log-product-item"
-        v-model="filters.product_item_id"
-        :label="t('table.productItem')"
-        :options="productItemOptions"
-        :loading="lookupsLoading"
-        searchable
-        clearable
-      />
-      <BaseSelect
-        v-if="canLoadUsers"
-        id="transfer-log-user"
-        v-model="filters.created_by"
-        :label="t('stockTransferLogs.transferredBy')"
-        :options="userOptions"
-        :loading="lookupsLoading"
-        searchable
-        clearable
-      />
-      <DateInput id="transfer-log-from-date" v-model="filters.from_date" :label="t('stockTransferLogs.fromDate')" />
-      <DateInput id="transfer-log-to-date" v-model="filters.to_date" :label="t('stockTransferLogs.toDate')" />
-    </div>
-    <div class="mt-4 flex flex-wrap justify-end gap-2">
-      <BaseButton variant="ghost" type="button" :disabled="!hasFilters || loading" @click="resetFilters">
-        {{ t("stockTransferLogs.resetFilters") }}
-      </BaseButton>
-      <BaseButton variant="secondary" type="button" :disabled="loading" @click="applyFilters">
-        {{ t("stockTransferLogs.applyFilters") }}
-      </BaseButton>
-    </div>
-  </section>
+  <CrudFilterPanel
+    :active-count="activeFiltersCount"
+    :loading="loading"
+    :reset-disabled="!activeFiltersCount"
+    :title="t('stockTransferLogs.filterTitle')"
+    :hint="t('stockTransferLogs.filterHint')"
+    @apply="applyFilters"
+    @reset="resetFilters"
+  >
+    <FormInput
+      id="transfer-log-reference"
+      v-model="filters.reference_number"
+      :label="t('stockTransferLogs.reference')"
+      :placeholder="t('stockTransferLogs.referencePlaceholder')"
+    />
+    <BaseSelect
+      id="transfer-log-warehouse"
+      v-model="filters.warehouse_id"
+      :label="t('stockTransferLogs.relatedWarehouse')"
+      :options="warehouseOptions"
+      :loading="lookupsLoading"
+      searchable
+      clearable
+    />
+    <BaseSelect
+      id="transfer-log-source"
+      v-model="filters.source_warehouse_id"
+      :label="t('stockTransferLogs.sourceWarehouse')"
+      :options="warehouseOptions"
+      :loading="lookupsLoading"
+      searchable
+      clearable
+    />
+    <BaseSelect
+      id="transfer-log-destination"
+      v-model="filters.destination_warehouse_id"
+      :label="t('stockTransferLogs.destinationWarehouse')"
+      :options="warehouseOptions"
+      :loading="lookupsLoading"
+      searchable
+      clearable
+    />
+    <BaseSelect
+      id="transfer-log-product-item"
+      v-model="filters.product_item_id"
+      :label="t('table.productItem')"
+      :options="productItemOptions"
+      :loading="lookupsLoading"
+      searchable
+      clearable
+    />
+    <BaseSelect
+      v-if="canLoadUsers"
+      id="transfer-log-user"
+      v-model="filters.created_by"
+      :label="t('stockTransferLogs.transferredBy')"
+      :options="userOptions"
+      :loading="lookupsLoading"
+      searchable
+      clearable
+    />
+    <DateInput id="transfer-log-from-date" v-model="filters.from_date" :label="t('stockTransferLogs.fromDate')" />
+    <DateInput id="transfer-log-to-date" v-model="filters.to_date" :label="t('stockTransferLogs.toDate')" />
+    <DateInput
+      id="transfer-log-created-from"
+      v-model="filters.created_from"
+      :label="`${t('table.createdAt')} - ${t('stockTransferLogs.fromDate')}`"
+    />
+    <DateInput
+      id="transfer-log-created-to"
+      v-model="filters.created_to"
+      :label="`${t('table.createdAt')} - ${t('stockTransferLogs.toDate')}`"
+    />
+  </CrudFilterPanel>
 
   <div v-if="displayedError" class="panel border-danger/30 p-6 text-danger" role="alert">
     <p class="font-semibold">{{ displayedError }}</p>

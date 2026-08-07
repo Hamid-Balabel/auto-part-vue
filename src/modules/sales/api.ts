@@ -1,4 +1,5 @@
 import { http, unwrapData } from '@/api/http'
+import type { ProductItem } from '@/modules/inventory/types'
 import type { ApiEnvelope, Paginated } from '@/types/api'
 import type {
   CartLine,
@@ -77,6 +78,15 @@ export async function updateOrder(
   payload: OrderUpdatePayload,
 ): Promise<Order> {
   const response = await http.put<ApiEnvelope<Order>>(`/orders/${id}`, payload)
+  return unwrapData(response)
+}
+
+export async function syncOrderStock(
+  productItemIds: number[],
+): Promise<ProductItem[]> {
+  const response = await http.get<ApiEnvelope<ProductItem[]>>('/stocks/sync', {
+    params: { product_item_ids: productItemIds },
+  })
   return unwrapData(response)
 }
 

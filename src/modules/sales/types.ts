@@ -111,8 +111,22 @@ export interface Order {
 
 export interface OrderListQuery extends Pick<
   ListQuery,
-  'page' | 'per_page' | 'sort_column' | 'sort_direction'
-> {}
+  'page' | 'per_page' | 'sort_column' | 'sort_direction' | 'search'
+> {
+  invoice_no?: string
+  customer_id?: number
+  status?: OrderStatus
+  payment_method?: PaymentMethod
+  payment_status?: PaymentStatus
+  total_min?: string
+  total_max?: string
+  paid_amount_min?: string
+  paid_amount_max?: string
+  remaining_amount_min?: string
+  remaining_amount_max?: string
+  created_from?: string
+  created_to?: string
+}
 
 export interface OrderCreateItemPayload {
   item_id: number
@@ -132,6 +146,9 @@ export interface QuickSaleLine {
   warehouseId: number | null
   warehouseStocks: Stock[]
   availableQuantity: number
+  reservedWarehouseId?: number | null
+  reservedQuantity?: number
+  stockChanged: boolean
 }
 
 export interface OrderCreatePayload {

@@ -1,11 +1,15 @@
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue'
+import { computed, onMounted, reactive, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import ConfirmDialog from '@/components/modals/ConfirmDialog.vue'
+import BaseSelect from '@/components/forms/BaseSelect.vue'
+import DateInput from '@/components/forms/DateInput.vue'
+import FormInput from '@/components/forms/FormInput.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import CrudToolbar from '@/components/ui/CrudToolbar.vue'
 import ActiveStatusSwitch from '@/components/ui/ActiveStatusSwitch.vue'
 import CrudDetailsModal from '@/components/ui/CrudDetailsModal.vue'
+import CrudFilterPanel from '@/components/ui/CrudFilterPanel.vue'
 import CrudShowButton from '@/components/ui/CrudShowButton.vue'
 import DataTable, { type DataTableColumn } from '@/components/ui/DataTable.vue'
 import DetailsBadge from '@/components/ui/DetailsBadge.vue'
@@ -20,6 +24,8 @@ import { ApiError } from '@/api/http'
 import { useCrudList } from '@/composables/useCrudList'
 import { useResourcePermissions } from '@/composables/useResourcePermissions'
 import { useToastStore } from '@/stores/toast'
+import { listResource } from '@/modules/data-entry/api'
+import type { Brand, Category } from '@/modules/data-entry/types'
 import { deleteProduct, getProduct, listProducts, toggleProduct } from '../api'
 import type { Product, ProductItem } from '../types'
 
@@ -37,8 +43,39 @@ const detailsLoading = ref(false)
 const detailsLoadingId = ref<number | null>(null)
 const detailsError = ref('')
 const selectedProduct = ref<Product | null>(null)
+const categories = ref<Category[]>([])
+const brands = ref<Brand[]>([])
+const lookupsLoading = ref(false)
+const emptyFilters = () => ({
+  category_id: null as number | null,
+  brand_id: null as number | null,
+  has_items: '',
+  sku: '',
+  barcode: '',
+  is_active: '',
+  trashed: '',
+  created_from: '',
+  created_to: '',
+})
+const filters = reactive(emptyFilters())
+const appliedFilters = reactive(emptyFilters())
 let detailsRequestId = 0
-const list = useCrudList<Product>({ list: listProducts, defaultSortColumn: 'id', defaultSortDirection: 'desc' })
+const list = useCrudList<Product>({
+  list: (query) => listProducts({
+    ...query,
+    ...(appliedFilters.category_id ? { category_id: appliedFilters.category_id } : {}),
+    ...(appliedFilters.brand_id ? { brand_id: appliedFilters.brand_id } : {}),
+    ...(appliedFilters.has_items ? { has_items: appliedFilters.has_items } : {}),
+    ...(appliedFilters.sku ? { sku: appliedFilters.sku } : {}),
+    ...(appliedFilters.barcode ? { barcode: appliedFilters.barcode } : {}),
+    ...(appliedFilters.is_active ? { is_active: appliedFilters.is_active } : {}),
+    ...(appliedFilters.trashed ? { trashed: appliedFilters.trashed as 'with' | 'only' } : {}),
+    ...(appliedFilters.created_from ? { created_from: appliedFilters.created_from } : {}),
+    ...(appliedFilters.created_to ? { created_to: appliedFilters.created_to } : {}),
+  }),
+  defaultSortColumn: 'id',
+  defaultSortDirection: 'desc',
+})
 
 const columns = computed<DataTableColumn<Product>[]>(() => [
   { key: 'id', label: t('table.id'), sortable: true },
@@ -58,6 +95,24 @@ const itemColumns = computed<DetailsTableColumn<ProductItem>[]>(() => [
   { key: 'stocks', label: t('inventory.warehouseQuantities') },
   { key: 'is_active', label: t('table.status') },
   { key: 'created_at', label: t('table.createdAt') },
+])
+const activeFiltersCount = computed(() => Object.values(appliedFilters).filter((value) => value !== '' && value !== null).length)
+const categoryOptions = computed(() => categories.value.map((category) => ({ value: category.id, label: displayName(category) })))
+const brandOptions = computed(() => brands.value.map((brand) => ({ value: brand.id, label: displayName(brand) })))
+const booleanOptions = computed(() => [
+  { value: '', label: t('crud.all') },
+  { value: 'true', label: t('crud.yes') },
+  { value: 'false', label: t('crud.no') },
+])
+const statusOptions = computed(() => [
+  { value: '', label: t('crud.all') },
+  { value: 'true', label: t('crud.active') },
+  { value: 'false', label: t('crud.inactive') },
+])
+const trashedOptions = computed(() => [
+  { value: '', label: t('crud.active') },
+  { value: 'with', label: t('crud.withDeleted') },
+  { value: 'only', label: t('crud.onlyDeleted') },
 ])
 
 function displayName(record?: { name?: string | null; translation_name?: { ar?: string | null; en?: string | null } } | null) {
@@ -112,7 +167,34 @@ async function confirmDelete() {
   selectedId.value = null
 }
 
-onMounted(list.load)
+async function loadLookups() {
+  lookupsLoading.value = true
+  try {
+    const [categoryResponse, brandResponse] = await Promise.all([
+      listResource('categories', { per_page: -1 }),
+      listResource('brands', { per_page: -1 }),
+    ])
+    categories.value = Array.isArray(categoryResponse) ? categoryResponse : categoryResponse.data
+    brands.value = Array.isArray(brandResponse) ? brandResponse : brandResponse.data
+  } finally {
+    lookupsLoading.value = false
+  }
+}
+
+function applyFilters() {
+  Object.assign(appliedFilters, filters)
+  list.page.value = 1
+  void list.load()
+}
+
+function resetFilters() {
+  Object.assign(filters, emptyFilters())
+  Object.assign(appliedFilters, emptyFilters())
+  list.page.value = 1
+  void list.load()
+}
+
+onMounted(() => Promise.all([list.load(), loadLookups()]))
 </script>
 
 <template>
@@ -123,7 +205,19 @@ onMounted(list.load)
     </template>
   </PageHeader>
 
-  <CrudToolbar :loading="list.loading.value" :search-disabled="true" :search-placeholder="t('crud.searchUnavailable')" @refresh="list.load" />
+  <CrudToolbar :search="list.search.value" :loading="list.loading.value" :search-placeholder="t('crud.searchPlaceholder')" @search="list.applySearch" @refresh="list.load" />
+
+  <CrudFilterPanel :active-count="activeFiltersCount" :loading="list.loading.value" @apply="applyFilters" @reset="resetFilters">
+    <BaseSelect id="product-category-filter" v-model="filters.category_id" :label="t('crud.category')" :options="categoryOptions" :placeholder="t('crud.all')" :loading="lookupsLoading" searchable clearable />
+    <BaseSelect id="product-brand-filter" v-model="filters.brand_id" :label="t('crud.brand')" :options="brandOptions" :placeholder="t('crud.all')" :loading="lookupsLoading" searchable clearable />
+    <BaseSelect id="product-items-filter" v-model="filters.has_items" :label="t('crud.hasItems')" :options="booleanOptions" />
+    <FormInput id="product-sku-filter" v-model="filters.sku" :label="t('crud.sku')" />
+    <FormInput id="product-barcode-filter" v-model="filters.barcode" :label="t('crud.barcode')" />
+    <BaseSelect id="product-active-filter" v-model="filters.is_active" :label="t('crud.status')" :options="statusOptions" />
+    <BaseSelect id="product-trashed-filter" v-model="filters.trashed" :label="t('crud.deletedRecords')" :options="trashedOptions" />
+    <DateInput id="product-created-from-filter" v-model="filters.created_from" :label="t('crud.fromDate')" />
+    <DateInput id="product-created-to-filter" v-model="filters.created_to" :label="t('crud.toDate')" />
+  </CrudFilterPanel>
 
   <DataTable :columns="columns" :rows="list.rows.value" :loading="list.loading.value" :sort-column="list.sortColumn.value" :sort-direction="list.sortDirection.value" @sort="list.sortBy">
     <template #cell-category="{ row }">{{ displayName(row.category) }}</template>

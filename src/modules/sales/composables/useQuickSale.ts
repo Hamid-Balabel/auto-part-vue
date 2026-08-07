@@ -19,6 +19,7 @@ import {
   createOrder,
   createPaidInstallment,
   getOrder,
+  syncOrderStock,
   updateOrder,
 } from '../api'
 import type {
@@ -60,6 +61,7 @@ export function useQuickSale(
   const itemsLoading = ref(false)
   const scanning = ref(false)
   const submitting = ref(false)
+  const syncingStock = ref(false)
   const products = ref<Product[]>([])
   const productPage = ref(1)
   const productLastPage = ref(1)
@@ -107,6 +109,14 @@ export function useQuickSale(
   )
   const priceLocked = computed(() =>
     Boolean(orderId && originalOrder.value?.installments?.length),
+  )
+  const hasStockConflicts = computed(() =>
+    lines.value.some(
+      (line) =>
+        !line.warehouseId ||
+        line.availableQuantity <= 0 ||
+        line.quantity > line.availableQuantity,
+    ),
   )
 
   function nextLineId(itemId: number, warehouseId: number | null) {
@@ -308,6 +318,9 @@ export function useQuickSale(
               warehouseId: orderItem.warehouse_id ?? null,
               warehouseStocks,
               availableQuantity: Number(selectedStock?.quantity ?? 0),
+              reservedWarehouseId: orderItem.warehouse_id ?? null,
+              reservedQuantity: orderItem.quantity,
+              stockChanged: false,
             },
           ]
         })
@@ -353,6 +366,9 @@ export function useQuickSale(
         warehouseId,
         warehouseStocks,
         availableQuantity: warehouseId ? max : 0,
+        reservedWarehouseId: null,
+        reservedQuantity: 0,
+        stockChanged: false,
       })
     }
   }
@@ -449,6 +465,56 @@ export function useQuickSale(
     form.customer_id = customer.id
   }
 
+  async function synchronizeStock(): Promise<boolean> {
+    if (syncingStock.value) return !hasStockConflicts.value
+    if (!lines.value.length) return true
+
+    syncingStock.value = true
+    try {
+      const itemIds = [...new Set(lines.value.map((line) => line.item.id))]
+      const syncedItems = await syncOrderStock(itemIds)
+      const syncedById = new Map(syncedItems.map((item) => [item.id, item]))
+
+      selectedItems.value.forEach((item) => {
+        const syncedItem = syncedById.get(item.id)
+        if (syncedItem) item.stocks = syncedItem.stocks ?? []
+      })
+
+      lines.value.forEach((line) => {
+        const previousAvailable = line.availableQuantity
+        const syncedItem = syncedById.get(line.item.id)
+        let warehouseStocks = activeWarehouseStocks(
+          { ...line.item, stocks: syncedItem?.stocks ?? [] },
+          line.warehouseId,
+        )
+
+        if (line.reservedWarehouseId && line.reservedQuantity) {
+          warehouseStocks = warehouseStocks.map((stock) =>
+            stock.warehouse_id === line.reservedWarehouseId
+              ? {
+                  ...stock,
+                  quantity: Number(stock.quantity) + line.reservedQuantity!,
+                }
+              : stock,
+          )
+        }
+
+        line.item.stocks = syncedItem?.stocks ?? []
+        line.warehouseStocks = warehouseStocks
+        line.availableQuantity = Number(
+          warehouseStocks.find(
+            (stock) => stock.warehouse_id === line.warehouseId,
+          )?.quantity ?? 0,
+        )
+        line.stockChanged = previousAvailable !== line.availableQuantity
+      })
+
+      return !hasStockConflicts.value
+    } finally {
+      syncingStock.value = false
+    }
+  }
+
   function validate(): boolean {
     errors.value = {}
     if (!lines.value.length) errors.value.items = ['required']
@@ -490,12 +556,15 @@ export function useQuickSale(
   }
 
   async function submit(): Promise<Order | null> {
-    if (!validate() || submitting.value) return null
+    if (submitting.value || syncingStock.value) return null
     submitting.value = true
     errors.value = {}
     createdOrder.value = null
 
     try {
+      await synchronizeStock()
+      if (!validate()) return null
+
       const paymentMethod: PaymentMethod =
         form.payment_mode === 'partial'
           ? form.partial_payment_method
@@ -566,6 +635,7 @@ export function useQuickSale(
     itemsLoading,
     scanning,
     submitting,
+    syncingStock,
     products,
     productSearch,
     selectedProduct,
@@ -582,6 +652,7 @@ export function useQuickSale(
     previewRemaining,
     hasMoreProducts,
     priceLocked,
+    hasStockConflicts,
     loadDependencies,
     loadProducts,
     loadMoreProducts,
@@ -595,6 +666,7 @@ export function useQuickSale(
     resetPrice,
     removeProduct,
     selectCustomer,
+    synchronizeStock,
     submit,
     reset,
   }

@@ -50,6 +50,8 @@ const canSubmit = computed(
   () =>
     sale.lines.value.length > 0 &&
     Boolean(sale.form.customer_id) &&
+    !sale.hasStockConflicts.value &&
+    !sale.syncingStock.value &&
     (editing.value || canRecordPayment.value),
 )
 
@@ -76,7 +78,11 @@ async function submitSale() {
   if (!editing.value && !canRecordPayment.value) return
   try {
     const order = await sale.submit()
-    if (!order) return
+    if (!order) {
+      if (sale.hasStockConflicts.value)
+        toast.error(t('sales.stockChangedPreventedSale'))
+      return
+    }
     toast.success(
       editing.value
         ? t('sales.orderUpdated')
@@ -95,6 +101,17 @@ async function submitSale() {
             invoice: sale.createdOrder.value.invoice_no,
           })
         : message,
+    )
+  }
+}
+
+async function synchronizeStock() {
+  try {
+    await sale.synchronizeStock()
+    toast.success(t('sales.stockSyncSuccess'))
+  } catch (error) {
+    toast.error(
+      error instanceof ApiError ? error.message : t('sales.stockSyncFailed'),
     )
   }
 }
@@ -229,11 +246,13 @@ onMounted(async () => {
         :can-edit-price="canOverridePrice"
         :price-locked="sale.priceLocked.value"
         :errors="sale.errors.value"
+        :syncing-stock="sale.syncingStock.value"
         @quantity="sale.updateQuantity"
         @warehouse="sale.updateWarehouse"
         @price="sale.updatePrice"
         @reset-price="sale.resetPrice"
         @remove="sale.removeProduct"
+        @sync="synchronizeStock"
       />
       <p v-if="firstError('items')" class="form-error">
         {{ firstError('items') }}
@@ -342,7 +361,7 @@ onMounted(async () => {
         full-width
         size="lg"
         type="button"
-        :loading="sale.submitting.value"
+        :loading="sale.submitting.value || sale.syncingStock.value"
         :disabled="!canSubmit"
         @click="submitSale"
         >{{ editing ? t('actions.save') : t('sales.completeSale') }} ·

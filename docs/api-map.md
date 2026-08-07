@@ -1,6 +1,6 @@
 # Auto Part Laravel API Map
 
-Generated from source inspection of `C:\laragon\www\auto-part`. Laravel Boost MCP is configured but currently blocked by the active PHP CLI version; backend dependencies require PHP `>=8.4.0`, while `php` resolves to `8.1.10`.
+Verified from source inspection of `D:\Me\auto-part`.
 
 ## Response And Pagination
 
@@ -9,6 +9,32 @@ Generated from source inspection of `C:\laragon\www\auto-part`. Laravel Boost MC
 - Authenticated routes use `auth:sanctum`.
 - Pagination uses `per_page`; `per_page=-1` returns all records where `wrapPaginate` is used.
 - Common sorting params are `sort_column` and `sort_direction` where controllers apply `OrderByFilter`.
+
+## CRUD Index Search And Filter Contracts
+
+- Every endpoint below is `GET`, requires `auth:sanctum`, accepts `page` and `per_page`, and uses `per_page=-1` for an unpaginated result.
+- `D` below means created-date filters `created_from`/`created_to` (aliases `start`/`end`), formatted `YYYY-MM-DD`. `A` means boolean `is_active`. `T` means `trashed=with|only`; `is_trashed=true` is also accepted for only-trashed rows. ID arrays use query arrays such as `product_ids[]=1`.
+- Search on translated JSON names checks configured locales (currently Arabic and English). Unless stated otherwise, matching is partial; fields described as exact are equality filters.
+- All listed indexes use allowlisted sorting: `sort_column` (legacy alias `order_by`) and `sort_direction=asc|desc`; default and invalid-column fallback are `id desc`. Every module allows `id`, `created_at`, and `updated_at`; the table lists additional allowed columns.
+
+| Resource / endpoint | `search` fields | Supported filters (besides pagination/search/sort) | Additional sortable columns | Index authorization / owner scope |
+| --- | --- | --- | --- | --- |
+| Users `/api/users` | `name`, `email`, `phone` | `phone_code_id`, `created_by`, `gender`, `last_login_from`, `last_login_to`, `role_id`, exact role `role`, A, T, D | `name`, `email`, `phone`, `gender`, `is_active`, `last_login`, `phone_code_id`, `created_by`, `deleted_at` | Gate requires `view-all-user` or `view-own-user`; without view-all, `related()` scopes the query to `created_by=auth()->id()`. |
+| Roles `/api/roles` | translated `display_name` | exact `guard_name`, `created_by`, `permission_id`, A, D | `name`, `display_name.ar`, `display_name.en`, `guard_name`, `is_active`, `created_by` | Gate requires `view-all-role` or `view-own-role`; without view-all, `related()` scopes to `created_by=auth()->id()`. Root and the authenticated user's assigned roles are always excluded. |
+| Permissions `/api/permissions` | translated `display_name` | exact `group`, exact `guard_name`, `role_id`, D | `name`, `display_name.ar`, `display_name.en`, `group`, `guard_name` | Requires `read-permission`; no owner scope. |
+| Countries `/api/countries` | translated `name` | exact `code`, exact `phone_code`, `phone_length_min`, `phone_length_max`, A, T, D | localized `name`, `name.ar`, `name.en`, `nationality.ar`, `nationality.en`, `code`, `phone_code`, `phone_length`, `is_active`, `deleted_at` | Authenticated only; no index read permission or owner scope. |
+| Categories `/api/categories` | translated `name` | `parent_id`, `created_by`, `is_root=true`, `has_products`, A, T, D | localized `name`, `name.ar`, `name.en`, `is_active`, `parent_id`, `created_by`, `deleted_at` | Authenticated only; no index read permission or owner scope. |
+| Brands `/api/brands` | translated `name` | `created_by`, `has_products`, A, T, D | localized `name`, `name.ar`, `name.en`, `is_active`, `created_by`, `deleted_at` | Authenticated only; no index read permission or owner scope. |
+| Branches `/api/branches` | translated `name` | translated-name `name`, partial `address`, `is_current`, `created_by`, A, T, D | localized `name`, `name.ar`, `name.en`, `address`, `is_current`, `is_active`, `created_by`, `deleted_at` | Requires `read-branch`; no owner scope. |
+| Warehouses `/api/warehouses` | translated `name` | partial `address`, `branch_id`, `created_by`, `has_stock`, `item_id`, A, T, D | localized `name`, `name.ar`, `name.en`, `branch_id`, `address`, `is_active`, `created_by`, `deleted_at` | Authenticated only; no index read permission or owner scope. |
+| Products `/api/products` | translated `name` | `category_id`, `brand_id`, `category_ids[]`, `brand_ids[]`, `created_by`, `has_items`, partial item `sku`, partial item `barcode`, A, T, D | localized `name`, `name.ar`, `name.en`, `is_active`, `category_id`, `brand_id`, `created_by`, `deleted_at` | Authenticated only; no index read permission or owner scope. |
+| Product items `/api/product-items` | `sku`, `barcode`, translated product `name` | partial `sku`, partial `barcode`, `product_id`, `product_ids[]`, `merchant_id`, `merchant_ids[]`, `created_by`, `category_id`, `brand_id`, `option_value_id`, `warehouse_id`, A, T, D | `sku`, `barcode`, `is_active`, `product_id`, `merchant_id`, `created_by`, `deleted_at` | Authenticated only; no index read permission or owner scope. |
+| Product options `/api/product-options` | translated `name` | `created_by`, `has_values`, A, T, D | localized `name`, `name.ar`, `name.en`, `is_active`, `created_by`, `deleted_at` | Authenticated only; no index read permission or owner scope. |
+| Stocks `/api/stocks` | item `sku`/`barcode`, translated product name, translated warehouse name, warehouse address | `warehouse_id`, `warehouse_ids[]`, `item_id`, `item_ids[]`, `quantity_min`, `quantity_max`, `in_stock`, `product_id`, `category_id`, `brand_id`, D | `warehouse_id`, `item_id`, `quantity` | Authenticated only; no index read permission or owner scope. |
+| Stock transfer logs `/api/stock-transfer-logs` | `reference_number`, `notes`, source/destination warehouse names, item SKU/product name, creator name | partial `reference_number`, `from_warehouse_id` (alias `source_warehouse_id`), `to_warehouse_id` (alias `destination_warehouse_id`), either-side `warehouse_id`, `product_item_id`, `created_by`, transferred-date `from_date`/`to_date`, D | `reference_number`, `from_warehouse_id`, `to_warehouse_id`, `created_by`, `transferred_at` | Requires `read-stock-transfer`; no owner scope. |
+| Customers `/api/customers` | `name`, `email`, `phone`, country `phone_code` | partial `name`, exact `email`, partial `phone`, `phone_code_id`, `created_by`, `has_orders`, A, T, D | `name`, `email`, `phone`, `phone_code_id`, `is_active`, `created_by`, `deleted_at` | Authenticated only; no index read permission or owner scope. |
+| Merchants `/api/merchants` | `name`, `email`, `phone` | partial `name`, exact `email`, partial `phone`, `created_by`, `has_product_items`, A, T, D | `name`, `email`, `phone`, `is_active`, `created_by`, `deleted_at` | Requires `read-merchant` plus `view-all-merchant` or `view-own-merchant`; without view-all, query is scoped to `created_by=auth()->id()`. |
+| Orders `/api/orders` | `invoice_no`; customer `name`/`email`/`phone`; creator `name`/`email` | partial `invoice_no`, `customer_id`, `created_by`, exact enum `status`, `payment_method`, `payment_status`, `total_min`, `total_max`, `paid_amount_min`, `paid_amount_max`, `remaining_amount_min`, `remaining_amount_max`, `stock_restored_at_from`, `stock_restored_at_to`, D | `invoice_no`, `total`, `status`, `payment_method`, `payment_status`, `customer_id`, `created_by`, `stock_restored_at` | Requires `view-all-order` or `view-own-order`; without view-all, query is scoped to `created_by=auth()->id()`. |
 
 ## Public Auth
 
@@ -117,8 +143,7 @@ Most resource modules follow `GET`, `POST`, `GET /{id}`, `PUT/PATCH /{id}` plus 
 - Request fields: `name` required translatable array, `description` optional nullable array, `parent_id` optional nullable existing `categories.id`, `is_active` optional boolean.
 - Resource fields: `id`, `name`, `translation_name`, `description`, `translation_description`, `is_active`, `parent_id`, optional `parent`, optional `children`, optional `creator`, `created_at`.
 - Relations: self `parent`, self `children`, has many products, belongs to creator.
-- List pipeline: `JsonDisplayNameFilter`, `OrderByFilter`. Caveat: filter searches `display_name`, but table has `name`, so `search` is likely broken until backend changes to `JsonNameFilter`.
-- No backend `is_active` or trashed filter is applied on index.
+- Index search/filter/sort behavior is defined in **CRUD Index Search And Filter Contracts** above.
 - Use `GET /api/categories?per_page=-1` for parent/category selects. Exclude current category on edit client-side; backend does not prevent parent loops beyond existence.
 
 ### Brands
@@ -129,8 +154,7 @@ Most resource modules follow `GET`, `POST`, `GET /{id}`, `PUT/PATCH /{id}` plus 
 - Request fields: `name` required translatable array, `description` optional nullable array, `is_active` optional boolean.
 - Resource fields: `id`, `name`, `translation_name`, `description`, `translation_description`, `is_active`, optional `creator`, `created_at`.
 - Relations: has many products, belongs to creator.
-- List pipeline: `JsonDisplayNameFilter`, `OrderByFilter`. Caveat: filter searches `display_name`, but table has `name`, so `search` is likely broken until backend changes to `JsonNameFilter`.
-- No backend `is_active` or trashed filter is applied on index.
+- Index search/filter/sort behavior is defined in **CRUD Index Search And Filter Contracts** above.
 - Use `GET /api/brands?per_page=-1` for product brand selects.
 
 ### Products
@@ -142,7 +166,7 @@ Most resource modules follow `GET`, `POST`, `GET /{id}`, `PUT/PATCH /{id}` plus 
 - Resource fields: `id`, `name`, `translation_name`, `description`, `translation_description`, `is_active`, `category_id`, `brand_id`, optional `category`, optional `brand`, optional `product_items`, optional `creator`, `created_at`.
 - Relations: belongs to category/brand/creator, has many product items.
 - Show loads `category`, `brand`, `creator`, `items.merchant`, `items.prices`, and `items.stocks`.
-- Index pipeline: `JsonDisplayNameFilter`, `OrderByFilter`. Caveat: `search` likely broken because filter targets `display_name` while products use `name`.
+- Index search/filter/sort behavior is defined in **CRUD Index Search And Filter Contracts** above.
 - No product image field exists. Product item images belong to product items.
 - Select dependencies: categories from `/api/categories?per_page=-1`, brands from `/api/brands?per_page=-1`.
 
@@ -171,7 +195,7 @@ Most resource modules follow `GET`, `POST`, `GET /{id}`, `PUT/PATCH /{id}` plus 
 - `is_active` exists in DB/model but is not accepted by `CustomerRequest`; change it only via toggle endpoint.
 - Resource fields: `id`, `name`, `phone_code_id`, optional `phone_code`, `phone`, `email`, `is_active`, optional `creator`, `created_at`.
 - Relations: belongs to country phoneCode, belongs to creator, has many orders.
-- Index pipeline only has `OrderByFilter`; no backend `search`, phone, email, active, or trashed filter is applied.
+- Index search/filter/sort behavior is defined in **CRUD Index Search And Filter Contracts** above.
 - Select dependencies: countries from `/api/countries?per_page=-1` for phone code.
 
 ### Merchants
@@ -192,7 +216,7 @@ Most resource modules follow `GET`, `POST`, `GET /{id}`, `PUT/PATCH /{id}` plus 
 - Resource fields: `id`, `branch_id`, `name`, `translation_name`, `description`, `translation_description`, `address`, `is_active`, `is_current`, optional `branch`, optional `stocks`, optional `creator`, `created_at`.
 - `is_current` means the related branch has `is_current=true`; it is not a warehouse-level selection field. Warehouse CRUD controller responses eager-load `branch`, so this value is accurate there.
 - Relations: belongs to branch/creator and has many stocks.
-- Index pipeline only has `OrderByFilter`; no backend search, active, address, or trashed filter.
+- Index search/filter/sort behavior is defined in **CRUD Index Search And Filter Contracts** above.
 - Force-deleting a warehouse can cascade-delete stock rows due to DB FK cascade.
 
 ### Branches
@@ -210,6 +234,7 @@ Most resource modules follow `GET`, `POST`, `GET /{id}`, `PUT/PATCH /{id}` plus 
 ### Stocks
 
 - Endpoints: `GET/POST /api/stocks`, `GET/PUT/PATCH /api/stocks/{stock}`, `POST /api/stocks/transfer`, `DELETE /api/stocks/delete`, `POST /api/stocks/restore`, `PUT /api/stocks/toggle-active`.
+- Quick Sale synchronization: `GET /api/stocks/sync` requires authentication and `create-order`. Optional query `product_item_ids[]` accepts up to 100 distinct active Product Item IDs. The response uses the standard envelope and returns `ProductItemResource[]` with product details and current stock rows, including warehouse and branch metadata, restricted to active warehouses accessible through the existing warehouse ownership/view permissions.
 - Create/update permission middleware is commented out in `StockController`; currently auth-only for index/show/store/update.
 - No `StockPolicy` is registered/found.
 - Request fields: `warehouse_id` required existing warehouses, `item_id` required existing product items, `quantity` required integer min 0.
@@ -279,7 +304,7 @@ Most resource modules follow `GET`, `POST`, `GET /{id}`, `PUT/PATCH /{id}` plus 
 ### Orders
 
 - Endpoints: `GET/POST /api/orders`, `GET/PUT/PATCH/DELETE /api/orders/{order}`, `POST /api/orders/{order}/items`, `DELETE /api/orders/{order}/items/{itemId}`, `PUT /api/orders/{order}/status`, `GET /api/orders/{order}/logs`.
-- List supports pagination and generic sorting only. It has no backend filters for invoice, customer, phone, status, payment, payment method, or date; the frontend must not expose fake filters that break pagination.
+- Index search/filter/sort and owner-scope behavior is defined in **CRUD Index Search And Filter Contracts** above.
 - Order resource: `id`, `invoice_no`, `total`, `paid_amount`, `remaining_amount`, `status`, `payment_method`, `payment_status`, `stock_restored_at`, optional `customer`, `items`, `installments`, `logs`, `creator`, `created_at`, `updated_at`.
 - `OrderResource` now has contexts. List/index uses summary fields only and does not include items/installments/logs/buttons. Show/create/update/status responses use `details` and additionally return `buttons`, `stock_restored_at`, `items`, `installments`, and `logs`.
 - Detailed `buttons` are generated by the current status strategy then filtered through `OrderPolicy::changeStatus`; frontend status actions must come from this array rather than duplicate a transition matrix.
@@ -300,6 +325,7 @@ Most resource modules follow `GET`, `POST`, `GET /{id}`, `PUT/PATCH /{id}` plus 
 
 - Quick Sale creates orders directly with `POST /api/orders`; the standalone Cart UI is intentionally not registered or linked.
 - Direct create payload is `{ invoice_no, customer_id, payment_method, items: [{ item_id, quantity, warehouse_id, price? }] }`. `warehouse_id` is required and must reference an active, non-deleted warehouse. Duplicate `item_id + warehouse_id` pairs are rejected, while the same item may appear once per warehouse. `price` is sent only for an authorized custom order-item selling price. Client `total` and item `subtotal` are never sent because the backend recalculates them.
+- Direct order creation/update verifies that every selected warehouse is accessible to the user. Inside the order transaction, affected stock rows are locked in deterministic warehouse/item order before validation and deduction. A stale quantity returns `422` on the exact `items.N.quantity` key and includes the latest quantity available to that line.
 - `OrderPaymentMethodEnum` values are `cash`, `card`, and `transfer`. `partial` is not a payment method.
 - `OrderPaymentStatusEnum` values are `pending`, `paid`, and `partial`. The request prohibits setting `payment_status`; `InstallmentService` calculates it from paid installments.
 - `InstallemntsStatusEnum` values are `pending`, `paid`, and `overdue`.

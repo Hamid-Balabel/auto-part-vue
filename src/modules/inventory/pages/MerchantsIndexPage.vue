@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { RotateCcw, Trash2 } from "@lucide/vue";
-import { computed, onMounted, ref } from "vue";
+import { computed, onMounted, reactive, ref } from "vue";
 import { useI18n } from "vue-i18n";
 import ConfirmDialog from "@/components/modals/ConfirmDialog.vue";
 import BaseButton from "@/components/ui/BaseButton.vue";
 import CrudDetailsModal from "@/components/ui/CrudDetailsModal.vue";
+import CrudFilterPanel from "@/components/ui/CrudFilterPanel.vue";
 import CrudShowButton from "@/components/ui/CrudShowButton.vue";
 import CrudToolbar from "@/components/ui/CrudToolbar.vue";
 import ActiveStatusSwitch from "@/components/ui/ActiveStatusSwitch.vue";
@@ -17,6 +18,8 @@ import Pagination from "@/components/ui/Pagination.vue";
 import RelationshipCard from "@/components/ui/RelationshipCard.vue";
 import RowActions from "@/components/ui/RowActions.vue";
 import BaseSelect from "@/components/forms/BaseSelect.vue";
+import DateInput from "@/components/forms/DateInput.vue";
+import FormInput from "@/components/forms/FormInput.vue";
 import { ApiError } from "@/api/http";
 import { useCrudList } from "@/composables/useCrudList";
 import { useResourcePermissions } from "@/composables/useResourcePermissions";
@@ -36,9 +39,18 @@ const toast = useToastStore();
 const permissions = useResourcePermissions("merchant");
 const selectedId = ref<number | null>(null);
 const destructiveAction = ref<"delete" | "force" | null>(null);
-const activeFilter = ref<string>("");
-const itemsFilter = ref<string>("");
-const trashedFilter = ref<string>("");
+const emptyFilters = () => ({
+  name: "",
+  email: "",
+  phone: "",
+  has_product_items: "",
+  is_active: "",
+  trashed: "",
+  created_from: "",
+  created_to: "",
+});
+const filters = reactive(emptyFilters());
+const appliedFilters = reactive(emptyFilters());
 const detailsOpen = ref(false);
 const detailsLoading = ref(false);
 const detailsLoadingId = ref<number | null>(null);
@@ -49,18 +61,35 @@ const list = useCrudList<Merchant>({
   list: (query) =>
     listMerchants({
       ...query,
-      ...(activeFilter.value !== "" ? { is_active: activeFilter.value } : {}),
-      ...(itemsFilter.value !== ""
-        ? { has_product_items: itemsFilter.value }
-        : {}),
-      ...(trashedFilter.value
-        ? { trashed: trashedFilter.value as "with" | "only" }
-        : {}),
+      ...(appliedFilters.name ? { name: appliedFilters.name } : {}),
+      ...(appliedFilters.email ? { email: appliedFilters.email } : {}),
+      ...(appliedFilters.phone ? { phone: appliedFilters.phone } : {}),
+      ...(appliedFilters.has_product_items ? { has_product_items: appliedFilters.has_product_items } : {}),
+      ...(appliedFilters.is_active ? { is_active: appliedFilters.is_active } : {}),
+      ...(appliedFilters.trashed ? { trashed: appliedFilters.trashed as "with" | "only" } : {}),
+      ...(appliedFilters.created_from ? { created_from: appliedFilters.created_from } : {}),
+      ...(appliedFilters.created_to ? { created_to: appliedFilters.created_to } : {}),
     }),
   defaultSortColumn: "id",
   defaultSortDirection: "desc",
 });
-const viewingTrashed = computed(() => trashedFilter.value === "only");
+const viewingTrashed = computed(() => appliedFilters.trashed === "only");
+const activeFiltersCount = computed(() => Object.values(appliedFilters).filter(Boolean).length);
+const booleanOptions = computed(() => [
+  { value: "", label: t("crud.all") },
+  { value: "true", label: t("crud.yes") },
+  { value: "false", label: t("crud.no") },
+]);
+const statusOptions = computed(() => [
+  { value: "", label: t("crud.all") },
+  { value: "true", label: t("crud.active") },
+  { value: "false", label: t("crud.inactive") },
+]);
+const trashedOptions = computed(() => [
+  { value: "", label: t("crud.active") },
+  { value: "with", label: t("crud.withDeleted") },
+  { value: "only", label: t("crud.onlyDeleted") },
+]);
 
 const columns = computed<DataTableColumn<Merchant>[]>(() => [
   { key: "id", label: t("table.id"), sortable: true },
@@ -140,6 +169,14 @@ async function restore(id: number) {
 }
 
 function applyFilters() {
+  Object.assign(appliedFilters, filters);
+  list.page.value = 1;
+  void list.load();
+}
+
+function resetFilters() {
+  Object.assign(filters, emptyFilters());
+  Object.assign(appliedFilters, emptyFilters());
   list.page.value = 1;
   void list.load();
 }
@@ -169,41 +206,31 @@ onMounted(list.load);
     @refresh="list.load"
   />
 
-  <div class="panel mb-5 grid gap-3 p-4 sm:grid-cols-3">
+  <CrudFilterPanel :active-count="activeFiltersCount" :loading="list.loading.value" @apply="applyFilters" @reset="resetFilters">
+    <FormInput id="merchant-name-filter" v-model="filters.name" :label="t('table.name')" />
+    <FormInput id="merchant-email-filter" v-model="filters.email" :label="t('crud.email')" />
+    <FormInput id="merchant-phone-filter" v-model="filters.phone" :label="t('crud.phone')" />
     <BaseSelect
       id="merchant_active_filter"
-      v-model="activeFilter"
-      :label="t('table.status')"
-      :options="[
-        { value: '', label: t('inventory.allStatuses') },
-        { value: 'true', label: t('dataEntry.active') },
-        { value: 'false', label: t('dataEntry.inactive') },
-      ]"
-      @update:model-value="applyFilters"
+      v-model="filters.is_active"
+      :label="t('crud.status')"
+      :options="statusOptions"
     />
     <BaseSelect
       id="merchant_items_filter"
-      v-model="itemsFilter"
-      :label="t('inventory.productItemRelation')"
-      :options="[
-        { value: '', label: t('inventory.allMerchants') },
-        { value: 'true', label: t('inventory.withProductItems') },
-        { value: 'false', label: t('inventory.withoutProductItems') },
-      ]"
-      @update:model-value="applyFilters"
+      v-model="filters.has_product_items"
+      :label="t('crud.hasItems')"
+      :options="booleanOptions"
     />
     <BaseSelect
       id="merchant_trashed_filter"
-      v-model="trashedFilter"
-      :label="t('inventory.recordScope')"
-      :options="[
-        { value: '', label: t('inventory.activeRecords') },
-        { value: 'with', label: t('inventory.withDeletedRecords') },
-        { value: 'only', label: t('inventory.deletedRecords') },
-      ]"
-      @update:model-value="applyFilters"
+      v-model="filters.trashed"
+      :label="t('crud.deletedRecords')"
+      :options="trashedOptions"
     />
-  </div>
+    <DateInput id="merchant-created-from-filter" v-model="filters.created_from" :label="t('crud.fromDate')" />
+    <DateInput id="merchant-created-to-filter" v-model="filters.created_to" :label="t('crud.toDate')" />
+  </CrudFilterPanel>
 
   <DataTable
     :columns="columns"

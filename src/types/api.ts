@@ -26,6 +26,7 @@ export interface ApiErrorPayload {
 }
 
 export interface ListQuery {
+  [key: string]: unknown
   page?: number
   per_page?: number
   sort_column?: string

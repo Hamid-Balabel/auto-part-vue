@@ -1,0 +1,135 @@
+- generic [ref=f2e3]:
+  - complementary [ref=f2e4]:
+    - generic [ref=f2e5]:
+      - generic [ref=f2e9]:
+        - paragraph [ref=f2e10]: Auto Part Admin
+        - paragraph [ref=f2e11]: Inventory and sales
+      - button "Close sidebar" [ref=f2e373] [cursor=pointer]
+    - navigation [ref=f2e12]:
+      - link "Dashboard" [ref=f2e374] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f2e17]:
+        - button "Data Entry" [expanded] [ref=f2e375] [cursor=pointer]
+        - generic [ref=f2e26]:
+          - link "Products" [ref=f2e376] [cursor=pointer]:
+            - /url: /products
+          - link "Product Items" [ref=f2e377] [cursor=pointer]:
+            - /url: /product-items
+          - link "Product Item Options" [ref=f2e378] [cursor=pointer]:
+            - /url: /product-options
+          - link "Categories" [ref=f2e379] [cursor=pointer]:
+            - /url: /categories
+          - link "Brands" [ref=f2e380] [cursor=pointer]:
+            - /url: /brands
+          - link "Customers" [ref=f2e381] [cursor=pointer]:
+            - /url: /customers
+          - link "Merchants" [ref=f2e382] [cursor=pointer]:
+            - /url: /merchants
+          - link "Branches" [ref=f2e383] [cursor=pointer]:
+            - /url: /branches
+          - link "Countries" [ref=f2e384] [cursor=pointer]:
+            - /url: /countries
+      - button "Warehouses" [ref=f2e385] [cursor=pointer]
+      - button "Sales" [ref=f2e386] [cursor=pointer]
+      - button "User Management" [ref=f2e387] [cursor=pointer]
+      - button "Settings" [ref=f2e388] [cursor=pointer]
+  - generic [ref=f2e119]:
+    - banner [ref=f2e120]:
+      - generic [ref=f2e121]:
+        - button "Open sidebar" [ref=f2e389] [cursor=pointer]
+        - generic "Language" [ref=f2e390]:
+          - button "العربية" [ref=f2e132] [cursor=pointer]
+          - button "English" [active] [ref=f2e133] [cursor=pointer]
+        - button "Logout" [ref=f2e391] [cursor=pointer]
+    - main [ref=f2e144]:
+      - generic [ref=f2e145]:
+        - generic [ref=f2e146]:
+          - heading "Products" [level=1] [ref=f2e392]
+          - paragraph [ref=f2e148]: Product master records are linked to backend categories and brands.
+        - generic [ref=f2e149]:
+          - link "Product with items" [ref=f2e393] [cursor=pointer]:
+            - /url: /products/create-with-items
+          - link "Create" [ref=f2e394] [cursor=pointer]:
+            - /url: /products/create
+      - generic [ref=f2e152]:
+        - generic [ref=f2e153]:
+          - searchbox "Search backend-supported fields..." [ref=f2e395]: test
+          - generic [ref=f2e155]:
+            - button "Search" [ref=f2e396] [cursor=pointer]
+            - button "Clear" [ref=f2e397] [cursor=pointer]
+        - button "Refresh" [ref=f2e398] [cursor=pointer]
+      - region "Filters" [ref=f2e399]:
+        - button "Filters Open the available result filter options 2 active" [expanded] [ref=f2e400] [cursor=pointer]:
+          - generic [ref=f2e163]:
+            - generic [ref=f2e164]: Filters
+            - generic [ref=f2e165]: Open the available result filter options
+          - generic [ref=f2e320]: 2 active
+        - generic [ref=f2e262]:
+          - generic [ref=f2e263]:
+            - generic [ref=f2e264]:
+              - generic [ref=f2e265]: Category
+              - combobox "Category" [ref=f2e401] [cursor=pointer]:
+                - generic [ref=f2e269]: All
+            - generic [ref=f2e272]:
+              - generic [ref=f2e273]: Brand
+              - combobox "Brand" [ref=f2e402] [cursor=pointer]:
+                - generic [ref=f2e277]: All
+            - generic [ref=f2e280]:
+              - generic [ref=f2e281]: Has items
+              - combobox "Has items" [ref=f2e403] [cursor=pointer]:
+                - generic [ref=f2e285]: All
+            - generic [ref=f2e288]:
+              - generic [ref=f2e289]: SKU
+              - textbox "SKU" [ref=f2e290]
+            - generic [ref=f2e291]:
+              - generic [ref=f2e292]: Barcode
+              - textbox "Barcode" [ref=f2e404]
+            - generic [ref=f2e294]:
+              - generic [ref=f2e295]: Status
+              - combobox "Status" [ref=f2e405] [cursor=pointer]:
+                - generic [ref=f2e299]: All
+            - generic [ref=f2e302]:
+              - generic [ref=f2e303]: Deleted records
+              - combobox "Deleted records" [ref=f2e406] [cursor=pointer]:
+                - generic [ref=f2e307]: Active
+            - generic [ref=f2e310]:
+              - generic [ref=f2e311]: Created from
+              - textbox "Created from" [ref=f2e407]: 2026-01-01
+            - generic [ref=f2e313]:
+              - generic [ref=f2e314]: Created to
+              - textbox "Created to" [ref=f2e408]
+          - generic [ref=f2e316]:
+            - button "Reset Filters" [ref=f2e409] [cursor=pointer]
+            - button "Apply Filters" [ref=f2e410] [cursor=pointer]
+      - table [ref=f2e324]:
+        - rowgroup [ref=f2e325]:
+          - row [ref=f2e411]:
+            - columnheader [ref=f2e412]:
+              - button "ID" [ref=f2e413] [cursor=pointer]:
+                - generic [ref=f2e331]: DESC
+            - columnheader "Name" [ref=f2e414]
+            - columnheader "Category" [ref=f2e415]
+            - columnheader "Brand" [ref=f2e416]
+            - columnheader "Status" [ref=f2e417]
+            - columnheader "Actions" [ref=f2e418]
+        - rowgroup [ref=f2e342]:
+          - row [ref=f2e419]:
+            - cell "1" [ref=f2e344]
+            - cell "test ars21" [ref=f2e346]
+            - cell "test ars21" [ref=f2e348]
+            - cell "test ars21e" [ref=f2e350]
+            - cell [ref=f2e420]:
+              - switch "Active" [checked] [ref=f2e421] [cursor=pointer]
+            - cell [ref=f2e422]:
+              - generic [ref=f2e359]:
+                - button "View" [ref=f2e423] [cursor=pointer]
+                - generic [ref=f2e365]:
+                  - link "Edit" [ref=f2e424] [cursor=pointer]:
+                    - /url: /products/1/edit
+                  - button "Delete" [ref=f2e425] [cursor=pointer]
+      - generic [ref=f2e250]:
+        - paragraph [ref=f2e251]: Showing 1 to 1 of 1 records
+        - generic [ref=f2e252]:
+          - button "Previous" [disabled] [ref=f2e426]
+          - generic [ref=f2e254]: Page 1 of 1
+          - button "Next" [disabled] [ref=f2e427]

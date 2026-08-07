@@ -34,6 +34,19 @@ export interface MerchantListQuery extends ListQuery {
   phone?: string;
   created_by?: number;
   has_product_items?: boolean | string;
+  is_active?: boolean | number | string;
+  trashed?: "with" | "only";
+  created_from?: string;
+  created_to?: string;
+}
+
+export interface CustomerListQuery extends ListQuery {
+  name?: string;
+  email?: string;
+  phone?: string;
+  phone_code_id?: number;
+  has_orders?: boolean | string;
+  is_active?: boolean | number | string;
   trashed?: "with" | "only";
   created_from?: string;
   created_to?: string;
@@ -85,6 +98,7 @@ export interface BranchListQuery extends ListQuery {
   name?: string;
   address?: string;
   is_current?: boolean | string;
+  is_active?: boolean | number | string;
   created_by?: number;
   trashed?: "with" | "only";
   created_from?: string;
@@ -127,6 +141,7 @@ export interface WarehouseListQuery extends ListQuery {
   created_by?: number;
   has_stock?: boolean | string;
   item_id?: number;
+  is_active?: boolean | number | string;
   trashed?: "with" | "only";
   created_from?: string;
   created_to?: string;
@@ -182,6 +197,18 @@ export interface ProductPayload {
   is_active: boolean;
 }
 
+export interface ProductListQuery extends ListQuery {
+  category_id?: number;
+  brand_id?: number;
+  has_items?: boolean | string;
+  sku?: string;
+  barcode?: string;
+  is_active?: boolean | number | string;
+  trashed?: "with" | "only";
+  created_from?: string;
+  created_to?: string;
+}
+
 export interface ProductOption {
   id: number;
   name?: string | null;
@@ -233,6 +260,7 @@ export interface ProductOptionPayload {
 export interface ProductOptionListQuery extends ListQuery {
   created_by?: number;
   has_values?: boolean | string;
+  is_active?: boolean | number | string;
   trashed?: "with" | "only";
   created_from?: string;
   created_to?: string;
@@ -279,10 +307,17 @@ export interface ProductItem {
 }
 
 export interface ProductItemListQuery extends ListQuery {
+  sku?: string;
+  barcode?: string;
   product_id?: number;
+  merchant_id?: number;
   category_id?: number;
   brand_id?: number;
   warehouse_id?: number;
+  is_active?: boolean | number | string;
+  trashed?: "with" | "only";
+  created_from?: string;
+  created_to?: string;
 }
 
 export interface ProductItemPayload {
@@ -314,7 +349,14 @@ export interface StockPayload {
 export interface StockListQuery extends ListQuery {
   warehouse_id?: number;
   item_id?: number;
-  in_stock?: boolean;
+  quantity_min?: number;
+  quantity_max?: number;
+  in_stock?: boolean | string;
+  product_id?: number;
+  category_id?: number;
+  brand_id?: number;
+  created_from?: string;
+  created_to?: string;
 }
 
 export interface StockTransferPayload {

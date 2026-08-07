@@ -1,0 +1,191 @@
+- generic [ref=f1e3]:
+  - complementary [ref=f1e4]:
+    - generic [ref=f1e9]:
+      - paragraph [ref=f1e10]: Auto Part Admin
+      - paragraph [ref=f1e11]: Inventory and sales
+    - navigation [ref=f1e12]:
+      - link "Dashboard" [ref=f1e13] [cursor=pointer]:
+        - /url: /
+      - button "Data Entry" [ref=f1e18] [cursor=pointer]
+      - button "Warehouses" [ref=f1e27] [cursor=pointer]
+      - generic [ref=f1e34]:
+        - button "Sales" [expanded] [ref=f1e35] [cursor=pointer]
+        - generic [ref=f1e43]:
+          - link "Orders" [ref=f1e44] [cursor=pointer]:
+            - /url: /orders
+          - link "Installments" [ref=f1e49] [cursor=pointer]:
+            - /url: /modules/installments
+      - button "User Management" [ref=f1e54] [cursor=pointer]
+      - button "Settings" [ref=f1e64] [cursor=pointer]
+  - generic [ref=f1e71]:
+    - banner [ref=f1e72]:
+      - generic [ref=f1e73]:
+        - generic [ref=f1e74]: Backend-supported filters appear inside each module.
+        - generic "Language" [ref=f1e79]:
+          - button "العربية" [ref=f1e84] [cursor=pointer]
+          - button "English" [ref=f1e85] [cursor=pointer]
+        - button "Main Branch" [ref=f1e86] [cursor=pointer]
+        - generic [ref=f1e92]:
+          - paragraph [ref=f1e93]: root
+          - paragraph [ref=f1e94]: root@jervis.com
+        - button "Logout" [ref=f1e95] [cursor=pointer]
+    - main [ref=f1e96]:
+      - generic [ref=f1e97]:
+        - generic [ref=f1e98]:
+          - heading "Quick Sale" [level=1] [ref=f1e99]
+          - paragraph [ref=f1e100]: Find products, set quantities, collect payment, and finish the sale from one screen.
+        - link "Back to orders" [ref=f1e102] [cursor=pointer]:
+          - /url: /orders
+      - generic [ref=f1e105]:
+        - main [ref=f1e106]:
+          - generic [ref=f1e107]:
+            - generic [ref=f1e108]:
+              - text: Product search
+              - searchbox "Product search" [ref=f1e110]
+              - paragraph [ref=f1e111]: Search runs over product items returned by the backend. Prices shown here are previews until the order is created.
+            - generic [ref=f1e113]:
+              - button "Active الاسم بالإنجليزية test ens21 · test ens21e" [ref=f1e114] [cursor=pointer]:
+                - generic [ref=f1e115]: Active
+                - heading "الاسم بالإنجليزية" [level=3] [ref=f1e124]
+                - paragraph [ref=f1e125]: test ens21 · test ens21e
+              - button "Active Test Product test ens21 · test ens21e" [active] [ref=f1e126] [cursor=pointer]:
+                - generic [ref=f1e127]: Active
+                - heading "Test Product" [level=3] [ref=f1e136]
+                - paragraph [ref=f1e137]: test ens21 · test ens21e
+              - button "Active test ens21s test ens21 · test ens21e" [ref=f1e138] [cursor=pointer]:
+                - generic [ref=f1e139]: Active
+                - heading "test ens21s" [level=3] [ref=f1e148]
+                - paragraph [ref=f1e149]: test ens21 · test ens21e
+              - button "Active test ens21 test ens21 · test ens21e" [ref=f1e150] [cursor=pointer]:
+                - generic [ref=f1e151]: Active
+                - heading "test ens21" [level=3] [ref=f1e160]
+                - paragraph [ref=f1e161]: test ens21 · test ens21e
+            - generic [ref=f1e226]:
+              - generic [ref=f1e227]:
+                - generic [ref=f1e228]:
+                  - paragraph [ref=f1e229]: Product items
+                  - heading "Test Product" [level=2] [ref=f1e230]
+                - button "Close" [ref=f1e231] [cursor=pointer]
+              - generic [ref=f1e235]:
+                - text: Search product items
+                - searchbox "Search product items" [ref=f1e237]
+              - generic [ref=f1e239]:
+                - article [ref=f1e240]:
+                  - generic [ref=f1e241]:
+                    - img "TEST-SKU-041" [ref=f1e243]
+                    - generic [ref=f1e244]:
+                      - paragraph [ref=f1e245]: Redaas · Redaass
+                      - paragraph [ref=f1e246]: TEST-SKU-041
+                  - generic [ref=f1e247]:
+                    - paragraph [ref=f1e248]: Availability by warehouse
+                    - generic [ref=f1e250]:
+                      - generic [ref=f1e251]:
+                        - generic [ref=f1e252]: test ens21
+                        - generic [ref=f1e253]: second branch
+                      - generic [ref=f1e254]: 182 available
+                  - generic [ref=f1e255]:
+                    - generic [ref=f1e256]: EGP 100.00
+                    - button "Add to order" [ref=f1e257] [cursor=pointer]
+                - article [ref=f1e258]:
+                  - generic [ref=f1e259]:
+                    - img "TEST-SKU-012" [ref=f1e261]
+                    - generic [ref=f1e262]:
+                      - paragraph [ref=f1e263]: Redaas · Redaass
+                      - paragraph [ref=f1e264]: TEST-SKU-012
+                  - generic [ref=f1e265]:
+                    - paragraph [ref=f1e266]: Availability by warehouse
+                    - generic [ref=f1e268]:
+                      - generic [ref=f1e269]:
+                        - generic [ref=f1e270]: test ens21
+                        - generic [ref=f1e271]: second branch
+                      - generic [ref=f1e272]: 36 available
+                  - generic [ref=f1e273]:
+                    - generic [ref=f1e274]: EGP 155.00
+                    - button "Add to order" [ref=f1e275] [cursor=pointer]
+                - article [ref=f1e276]:
+                  - generic [ref=f1e277]:
+                    - img "1" [ref=f1e279]
+                    - generic [ref=f1e280]:
+                      - paragraph [ref=f1e281]: Redaas · white · dark · small
+                      - paragraph [ref=f1e282]: "1"
+                  - generic [ref=f1e283]:
+                    - paragraph [ref=f1e284]: Availability by warehouse
+                    - generic [ref=f1e285]:
+                      - generic [ref=f1e286]:
+                        - generic [ref=f1e287]:
+                          - generic [ref=f1e288]: test ens87
+                          - generic [ref=f1e289]: Main Branch
+                        - generic [ref=f1e290]: Current branch
+                        - generic [ref=f1e291]: 17 available
+                      - generic [ref=f1e292]:
+                        - generic [ref=f1e293]:
+                          - generic [ref=f1e294]: test ens21
+                          - generic [ref=f1e295]: second branch
+                        - generic [ref=f1e296]: 3 available
+                  - generic [ref=f1e297]:
+                    - generic [ref=f1e298]: EGP 20.00
+                    - button "Add to order" [ref=f1e299] [cursor=pointer]
+                - article [ref=f1e300]:
+                  - generic [ref=f1e301]:
+                    - img "FCJHFFK7" [ref=f1e303]
+                    - generic [ref=f1e304]:
+                      - paragraph [ref=f1e305]: Redaas · blue · small · taywani
+                      - paragraph [ref=f1e306]: FCJHFFK7
+                      - paragraph [ref=f1e307]: Hamid
+                  - generic [ref=f1e308]:
+                    - paragraph [ref=f1e309]: Availability by warehouse
+                    - generic [ref=f1e310]:
+                      - generic [ref=f1e311]:
+                        - generic [ref=f1e312]:
+                          - generic [ref=f1e313]: test ens87
+                          - generic [ref=f1e314]: Main Branch
+                        - generic [ref=f1e315]: Current branch
+                        - generic [ref=f1e316]: 55 available
+                      - generic [ref=f1e317]:
+                        - generic [ref=f1e318]:
+                          - generic [ref=f1e319]: test ens21
+                          - generic [ref=f1e320]: second branch
+                        - generic [ref=f1e321]: 100 available
+                  - generic [ref=f1e322]:
+                    - generic [ref=f1e323]: EGP 570.00
+                    - button "Add to order" [ref=f1e324] [cursor=pointer]
+        - complementary [ref=f1e162]:
+          - generic [ref=f1e163]:
+            - paragraph [ref=f1e169]: No products selected
+            - paragraph [ref=f1e170]: Search for a product above and select it to add it to this sale.
+          - generic [ref=f1e171]:
+            - heading "Sale information" [level=2] [ref=f1e172]
+            - generic [ref=f1e173]:
+              - generic [ref=f1e174]:
+                - generic [ref=f1e175]: Invoice number *
+                - textbox "Invoice number *" [ref=f1e176]: SALE-1786115281285
+              - generic [ref=f1e177]:
+                - generic [ref=f1e178]:
+                  - generic [ref=f1e179]: Customer *
+                  - combobox "Customer *" [ref=f1e182] [cursor=pointer]:
+                    - generic [ref=f1e183]: Select...
+                - button "Quick customer" [ref=f1e186] [cursor=pointer]
+              - group "Payment method" [ref=f1e188]:
+                - generic [ref=f1e190]:
+                  - button "Cash" [ref=f1e191] [cursor=pointer]
+                  - button "Card" [ref=f1e196] [cursor=pointer]
+                  - button "Partial payment" [ref=f1e200] [cursor=pointer]
+          - generic [ref=f1e207]:
+            - heading "Order summary" [level=2] [ref=f1e208]
+            - generic [ref=f1e209]:
+              - generic [ref=f1e210]:
+                - term [ref=f1e211]: Subtotal
+                - definition [ref=f1e212]: EGP 0.00
+              - generic [ref=f1e213]:
+                - term [ref=f1e214]: Paid amount
+                - definition [ref=f1e215]: EGP 0.00
+              - generic [ref=f1e216]:
+                - term [ref=f1e217]: Remaining amount
+                - definition [ref=f1e218]: EGP 0.00
+              - generic [ref=f1e219]:
+                - term [ref=f1e220]: Total
+                - definition [ref=f1e221]: EGP 0.00
+            - paragraph [ref=f1e222]: Prices and totals are confirmed by the backend. Tax, discount, and shipping amounts are not available in the current API.
+          - button "Complete sale · EGP 0.00" [disabled] [ref=f1e223]:
+            - text: Complete sale ·
+            - generic [ref=f1e224]: EGP 0.00

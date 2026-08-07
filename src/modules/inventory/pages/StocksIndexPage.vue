@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import { ArrowRightLeft } from '@lucide/vue'
-import { computed, onMounted } from 'vue'
-import { ref } from 'vue'
+import { computed, onMounted, reactive, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import BaseButton from '@/components/ui/BaseButton.vue'
+import BaseSelect from '@/components/forms/BaseSelect.vue'
+import DateInput from '@/components/forms/DateInput.vue'
+import FormInput from '@/components/forms/FormInput.vue'
 import CrudToolbar from '@/components/ui/CrudToolbar.vue'
 import CrudDetailsModal from '@/components/ui/CrudDetailsModal.vue'
+import CrudFilterPanel from '@/components/ui/CrudFilterPanel.vue'
 import CrudShowButton from '@/components/ui/CrudShowButton.vue'
 import DataTable, { type DataTableColumn } from '@/components/ui/DataTable.vue'
 import DetailsBadge from '@/components/ui/DetailsBadge.vue'
@@ -19,8 +22,10 @@ import { ApiError } from '@/api/http'
 import { useCrudList } from '@/composables/useCrudList'
 import { useResourcePermissions } from '@/composables/useResourcePermissions'
 import { usePermissions } from '@/composables/usePermissions'
-import { getStock, listStocks } from '../api'
-import type { Stock } from '../types'
+import { listResource } from '@/modules/data-entry/api'
+import type { Brand, Category } from '@/modules/data-entry/types'
+import { getStock, listProductItems, listProducts, listStocks, listWarehouses } from '../api'
+import type { Product, ProductItem, Stock, Warehouse } from '../types'
 
 const { t, locale } = useI18n()
 const permissions = useResourcePermissions('stock')
@@ -33,8 +38,44 @@ const detailsLoading = ref(false)
 const detailsLoadingId = ref<number | null>(null)
 const detailsError = ref('')
 const selectedStock = ref<Stock | null>(null)
+const warehouses = ref<Warehouse[]>([])
+const productItems = ref<ProductItem[]>([])
+const products = ref<Product[]>([])
+const categories = ref<Category[]>([])
+const brands = ref<Brand[]>([])
+const lookupsLoading = ref(false)
+const emptyFilters = () => ({
+  warehouse_id: null as number | null,
+  item_id: null as number | null,
+  quantity_min: '',
+  quantity_max: '',
+  in_stock: '',
+  product_id: null as number | null,
+  category_id: null as number | null,
+  brand_id: null as number | null,
+  created_from: '',
+  created_to: '',
+})
+const filters = reactive(emptyFilters())
+const appliedFilters = reactive(emptyFilters())
 let detailsRequestId = 0
-const list = useCrudList<Stock>({ list: listStocks, defaultSortColumn: 'id', defaultSortDirection: 'desc' })
+const list = useCrudList<Stock>({
+  list: (query) => listStocks({
+    ...query,
+    ...(appliedFilters.warehouse_id ? { warehouse_id: appliedFilters.warehouse_id } : {}),
+    ...(appliedFilters.item_id ? { item_id: appliedFilters.item_id } : {}),
+    ...(appliedFilters.quantity_min !== '' ? { quantity_min: Number(appliedFilters.quantity_min) } : {}),
+    ...(appliedFilters.quantity_max !== '' ? { quantity_max: Number(appliedFilters.quantity_max) } : {}),
+    ...(appliedFilters.in_stock ? { in_stock: appliedFilters.in_stock } : {}),
+    ...(appliedFilters.product_id ? { product_id: appliedFilters.product_id } : {}),
+    ...(appliedFilters.category_id ? { category_id: appliedFilters.category_id } : {}),
+    ...(appliedFilters.brand_id ? { brand_id: appliedFilters.brand_id } : {}),
+    ...(appliedFilters.created_from ? { created_from: appliedFilters.created_from } : {}),
+    ...(appliedFilters.created_to ? { created_to: appliedFilters.created_to } : {}),
+  }),
+  defaultSortColumn: 'id',
+  defaultSortDirection: 'desc',
+})
 
 const columns = computed<DataTableColumn<Stock>[]>(() => [
   { key: 'id', label: t('table.id'), sortable: true },
@@ -43,6 +84,17 @@ const columns = computed<DataTableColumn<Stock>[]>(() => [
   { key: 'product_name', label: t('table.productName') },
   { key: 'quantity', label: t('table.quantity'), sortable: true },
   { key: 'actions', label: t('table.actions'), align: 'right' },
+])
+const activeFiltersCount = computed(() => Object.values(appliedFilters).filter((value) => value !== '' && value !== null).length)
+const warehouseOptions = computed(() => warehouses.value.map((warehouse) => ({ value: warehouse.id, label: displayName(warehouse), description: warehouse.address ?? undefined })))
+const productItemOptions = computed(() => productItems.value.map((item) => ({ value: item.id, label: `${displayName(item.product)} - ${item.sku}` })))
+const productOptions = computed(() => products.value.map((product) => ({ value: product.id, label: displayName(product) })))
+const categoryOptions = computed(() => categories.value.map((category) => ({ value: category.id, label: displayName(category) })))
+const brandOptions = computed(() => brands.value.map((brand) => ({ value: brand.id, label: displayName(brand) })))
+const booleanOptions = computed(() => [
+  { value: '', label: t('crud.all') },
+  { value: 'true', label: t('crud.yes') },
+  { value: 'false', label: t('crud.no') },
 ])
 
 function displayName(record?: { name?: string | null; translation_name?: { ar?: string | null; en?: string | null } } | null) {
@@ -88,7 +140,44 @@ function closeDetails() {
   detailsError.value = ''
 }
 
-onMounted(list.load)
+function normalizeList<T>(response: T[] | { data: T[] }) {
+  return Array.isArray(response) ? response : response.data
+}
+
+async function loadLookups() {
+  lookupsLoading.value = true
+  try {
+    const [warehouseResponse, itemResponse, productResponse, categoryResponse, brandResponse] = await Promise.all([
+      listWarehouses({ per_page: -1 }),
+      listProductItems({ per_page: -1 }),
+      listProducts({ per_page: -1 }),
+      listResource('categories', { per_page: -1 }),
+      listResource('brands', { per_page: -1 }),
+    ])
+    warehouses.value = normalizeList(warehouseResponse)
+    productItems.value = normalizeList(itemResponse)
+    products.value = normalizeList(productResponse)
+    categories.value = normalizeList(categoryResponse)
+    brands.value = normalizeList(brandResponse)
+  } finally {
+    lookupsLoading.value = false
+  }
+}
+
+function applyFilters() {
+  Object.assign(appliedFilters, filters)
+  list.page.value = 1
+  void list.load()
+}
+
+function resetFilters() {
+  Object.assign(filters, emptyFilters())
+  Object.assign(appliedFilters, emptyFilters())
+  list.page.value = 1
+  void list.load()
+}
+
+onMounted(() => Promise.all([list.load(), loadLookups()]))
 </script>
 
 <template>
@@ -100,6 +189,19 @@ onMounted(list.load)
   </PageHeader>
 
   <CrudToolbar :search="list.search.value" :loading="list.loading.value" :search-placeholder="t('inventory.searchStocks')" @search="list.applySearch" @refresh="list.load" />
+
+  <CrudFilterPanel :active-count="activeFiltersCount" :loading="list.loading.value" @apply="applyFilters" @reset="resetFilters">
+    <BaseSelect id="stock-warehouse-filter" v-model="filters.warehouse_id" :label="t('crud.warehouse')" :options="warehouseOptions" :placeholder="t('crud.all')" :loading="lookupsLoading" searchable clearable />
+    <BaseSelect id="stock-item-filter" v-model="filters.item_id" :label="t('crud.productItem')" :options="productItemOptions" :placeholder="t('crud.all')" :loading="lookupsLoading" searchable clearable />
+    <FormInput id="stock-quantity-min-filter" v-model="filters.quantity_min" type="number" :label="t('crud.quantityMin')" />
+    <FormInput id="stock-quantity-max-filter" v-model="filters.quantity_max" type="number" :label="t('crud.quantityMax')" />
+    <BaseSelect id="stock-in-stock-filter" v-model="filters.in_stock" :label="t('crud.inStock')" :options="booleanOptions" />
+    <BaseSelect id="stock-product-filter" v-model="filters.product_id" :label="t('crud.product')" :options="productOptions" :placeholder="t('crud.all')" :loading="lookupsLoading" searchable clearable />
+    <BaseSelect id="stock-category-filter" v-model="filters.category_id" :label="t('crud.category')" :options="categoryOptions" :placeholder="t('crud.all')" :loading="lookupsLoading" searchable clearable />
+    <BaseSelect id="stock-brand-filter" v-model="filters.brand_id" :label="t('crud.brand')" :options="brandOptions" :placeholder="t('crud.all')" :loading="lookupsLoading" searchable clearable />
+    <DateInput id="stock-created-from-filter" v-model="filters.created_from" :label="t('crud.fromDate')" />
+    <DateInput id="stock-created-to-filter" v-model="filters.created_to" :label="t('crud.toDate')" />
+  </CrudFilterPanel>
 
   <DataTable
     :columns="columns"

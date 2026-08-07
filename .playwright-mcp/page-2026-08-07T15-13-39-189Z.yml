@@ -1,0 +1,153 @@
+- generic [ref=f1e3]:
+  - complementary [ref=f1e4]:
+    - generic [ref=f1e9]:
+      - paragraph [ref=f1e10]: إدارة قطع الغيار
+      - paragraph [ref=f1e11]: المخزون والمبيعات
+    - navigation [ref=f1e12]:
+      - link "لوحة التحكم" [ref=f1e13] [cursor=pointer]:
+        - /url: /
+      - button "إدخال البيانات" [ref=f1e18] [cursor=pointer]
+      - generic [ref=f1e26]:
+        - button "المخازن" [expanded] [ref=f1e27] [cursor=pointer]
+        - generic [ref=f1e34]:
+          - link "المستودعات" [ref=f1e35] [cursor=pointer]:
+            - /url: /warehouses
+          - link "المخزون" [ref=f1e40] [cursor=pointer]:
+            - /url: /stocks
+          - link "تحويل المخزون" [ref=f1e46] [cursor=pointer]:
+            - /url: /stocks/transfer
+          - link "سجل الحركات" [ref=f1e51] [cursor=pointer]:
+            - /url: /stock-transfer-logs
+      - button "المبيعات" [ref=f1e57] [cursor=pointer]
+      - button "المستخدمين" [ref=f1e66] [cursor=pointer]
+      - button "الإعدادات" [ref=f1e76] [cursor=pointer]
+  - generic [ref=f1e83]:
+    - banner [ref=f1e84]:
+      - generic [ref=f1e85]:
+        - generic [ref=f1e86]: الفلاتر المدعومة من الخلفية تظهر داخل كل شاشة.
+        - generic "اللغة" [ref=f1e91]:
+          - button "العربية" [ref=f1e96] [cursor=pointer]
+          - button "English" [ref=f1e97] [cursor=pointer]
+        - button "الفرع الرئيسي" [ref=f1e98] [cursor=pointer]
+        - generic [ref=f1e104]:
+          - paragraph [ref=f1e105]: root
+          - paragraph [ref=f1e106]: root@jervis.com
+        - button "تسجيل الخروج" [ref=f1e107] [cursor=pointer]
+    - main [ref=f1e108]:
+      - generic [ref=f1e288]:
+        - heading "سجل التحويلات بين المخازن" [level=1] [ref=f1e289]
+        - paragraph [ref=f1e290]: مراجعة حركات المخزون بين المخازن بالاعتماد على سجل التحويلات ولقطات الكميات من الخلفية.
+      - generic [ref=f1e291]:
+        - generic [ref=f1e292]:
+          - searchbox "ابحث برقم التحويل أو المخزن أو المنتج أو SKU أو المستخدم أو الملاحظات..." [ref=f1e293]
+          - generic [ref=f1e294]:
+            - button "بحث" [ref=f1e295] [cursor=pointer]
+            - button "مسح" [disabled] [ref=f1e296]
+        - button "تحديث" [ref=f1e297] [cursor=pointer]
+      - region "التصفية" [ref=f1e298]:
+        - button "التصفية اضغط لعرض خيارات تصفية سجل التحويلات 2 مفعّلة" [expanded] [active] [ref=f1e299] [cursor=pointer]:
+          - generic [ref=f1e302]:
+            - generic [ref=f1e303]: التصفية
+            - generic [ref=f1e304]: اضغط لعرض خيارات تصفية سجل التحويلات
+          - generic [ref=f1e305]: 2 مفعّلة
+        - generic [ref=f1e405]:
+          - generic [ref=f1e406]:
+            - generic [ref=f1e407]:
+              - generic [ref=f1e408]: رقم التحويل
+              - textbox "رقم التحويل" [ref=f1e409]:
+                - /placeholder: "مثال: TRF-..."
+                - text: TRF-LEGACY
+            - generic [ref=f1e410]:
+              - generic [ref=f1e411]: المخزن
+              - combobox "المخزن" [ref=f1e414] [cursor=pointer]:
+                - generic [ref=f1e415]: اختر...
+            - generic [ref=f1e418]:
+              - generic [ref=f1e419]: المخزن المصدر
+              - combobox "المخزن المصدر" [ref=f1e422] [cursor=pointer]:
+                - generic [ref=f1e423]: اختر...
+            - generic [ref=f1e426]:
+              - generic [ref=f1e427]: المخزن المستلم
+              - combobox "المخزن المستلم" [ref=f1e430] [cursor=pointer]:
+                - generic [ref=f1e431]: اختر...
+            - generic [ref=f1e434]:
+              - generic [ref=f1e435]: عنصر المنتج
+              - combobox "عنصر المنتج" [ref=f1e438] [cursor=pointer]:
+                - generic [ref=f1e439]: اختر...
+            - generic [ref=f1e442]:
+              - generic [ref=f1e443]: تم التحويل بواسطة
+              - combobox "تم التحويل بواسطة" [ref=f1e446] [cursor=pointer]:
+                - generic [ref=f1e447]: اختر...
+            - generic [ref=f1e450]:
+              - generic [ref=f1e451]: من تاريخ
+              - textbox "من تاريخ" [ref=f1e452]: 2026-07-01
+            - generic [ref=f1e453]:
+              - generic [ref=f1e454]: إلى تاريخ
+              - textbox "إلى تاريخ" [ref=f1e455]
+            - generic [ref=f1e456]:
+              - generic [ref=f1e457]: تاريخ الإنشاء - من تاريخ
+              - textbox "تاريخ الإنشاء - من تاريخ" [ref=f1e458]
+            - generic [ref=f1e459]:
+              - generic [ref=f1e460]: تاريخ الإنشاء - إلى تاريخ
+              - textbox "تاريخ الإنشاء - إلى تاريخ" [ref=f1e461]
+          - generic [ref=f1e462]:
+            - button "إعادة تعيين الفلاتر" [ref=f1e463] [cursor=pointer]
+            - button "تطبيق الفلاتر" [ref=f1e464] [cursor=pointer]
+      - table [ref=f1e311]:
+        - rowgroup [ref=f1e312]:
+          - row [ref=f1e313]:
+            - columnheader [ref=f1e314]:
+              - button "رقم التحويل" [ref=f1e316] [cursor=pointer]
+            - columnheader "المخزن المصدر" [ref=f1e318]
+            - columnheader "المخزن المستلم" [ref=f1e320]
+            - columnheader "عدد العناصر" [ref=f1e322]
+            - columnheader "إجمالي الكمية" [ref=f1e324]
+            - columnheader "تم التحويل بواسطة" [ref=f1e326]
+            - columnheader [ref=f1e328]:
+              - button "تاريخ التحويل" [ref=f1e330] [cursor=pointer]
+            - columnheader "ملاحظات" [ref=f1e332]
+            - columnheader "الإجراءات" [ref=f1e334]
+        - rowgroup [ref=f1e336]:
+          - row [ref=f1e337]:
+            - cell [ref=f1e338]:
+              - button "TRF-LEGACY-0000000004" [ref=f1e340] [cursor=pointer]
+            - cell "test ars8 الفرع الرئيسي" [ref=f1e341]:
+              - generic [ref=f1e342]:
+                - generic [ref=f1e343]: test ars8
+                - generic [ref=f1e344]: الفرع الرئيسي
+            - cell "test ars21 الفرع الثاني" [ref=f1e345]:
+              - generic [ref=f1e346]:
+                - generic [ref=f1e347]: test ars21
+                - generic [ref=f1e348]: الفرع الثاني
+            - cell "1" [ref=f1e349]
+            - cell [ref=f1e351]:
+              - strong [ref=f1e353]: "3"
+            - cell "root" [ref=f1e354]
+            - cell "28‏/07‏/2026، 9:42 م" [ref=f1e356]
+            - cell "—" [ref=f1e358]
+            - cell [ref=f1e361]:
+              - button "عرض" [ref=f1e363] [cursor=pointer]
+          - row [ref=f1e368]:
+            - cell [ref=f1e369]:
+              - button "TRF-LEGACY-0000000003" [ref=f1e371] [cursor=pointer]
+            - cell "test ars8 الفرع الرئيسي" [ref=f1e372]:
+              - generic [ref=f1e373]:
+                - generic [ref=f1e374]: test ars8
+                - generic [ref=f1e375]: الفرع الرئيسي
+            - cell "test ars21 الفرع الثاني" [ref=f1e376]:
+              - generic [ref=f1e377]:
+                - generic [ref=f1e378]: test ars21
+                - generic [ref=f1e379]: الفرع الثاني
+            - cell "1" [ref=f1e380]
+            - cell [ref=f1e382]:
+              - strong [ref=f1e384]: "1"
+            - cell "root" [ref=f1e385]
+            - cell "28‏/07‏/2026، 9:39 م" [ref=f1e387]
+            - cell "—" [ref=f1e389]
+            - cell [ref=f1e392]:
+              - button "عرض" [ref=f1e394] [cursor=pointer]
+      - generic [ref=f1e399]:
+        - paragraph [ref=f1e400]: عرض 1 إلى 2 من 2 سجل
+        - generic [ref=f1e401]:
+          - button "السابق" [disabled] [ref=f1e402]
+          - generic [ref=f1e403]: صفحة 1 من 1
+          - button "التالي" [disabled] [ref=f1e404]

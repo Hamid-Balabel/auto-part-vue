@@ -77,6 +77,19 @@ const filteredItems = computed(() => {
     ),
   )
 })
+
+function addExactSku() {
+  const sku = itemSearch.value.trim().toLocaleLowerCase()
+  if (!sku) return
+
+  const item = props.items.find(
+    (candidate) => candidate.sku.toLocaleLowerCase() === sku,
+  )
+  if (!item || !availableStocks(item).length) return
+
+  emit('addItem', item)
+  itemSearch.value = ''
+}
 </script>
 
 <template>
@@ -129,6 +142,7 @@ const filteredItems = computed(() => {
               class="form-control ps-10"
               type="search"
               :placeholder="$t('sales.searchProductItemsPlaceholder')"
+              @keydown.enter.prevent="addExactSku"
             />
           </div>
         </div>

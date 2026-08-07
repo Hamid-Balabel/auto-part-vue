@@ -1,12 +1,15 @@
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue'
+import { computed, onMounted, reactive, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import BaseSelect from '@/components/forms/BaseSelect.vue'
+import DateInput from '@/components/forms/DateInput.vue'
+import FormInput from '@/components/forms/FormInput.vue'
 import SwitchInput from '@/components/forms/SwitchInput.vue'
 import ConfirmDialog from '@/components/modals/ConfirmDialog.vue'
 import BaseBadge from '@/components/ui/BaseBadge.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import CrudDetailsModal from '@/components/ui/CrudDetailsModal.vue'
+import CrudFilterPanel from '@/components/ui/CrudFilterPanel.vue'
 import CrudShowButton from '@/components/ui/CrudShowButton.vue'
 import CrudToolbar from '@/components/ui/CrudToolbar.vue'
 import DataTable, { type DataTableColumn } from '@/components/ui/DataTable.vue'
@@ -36,8 +39,16 @@ const { can } = usePermissions()
 const toast = useToastStore()
 const auth = useAuthStore()
 const selectedId = ref<number | null>(null)
-const activeFilter = ref('all')
-const currentFilter = ref('all')
+const emptyFilters = () => ({
+  address: '',
+  is_current: '',
+  is_active: '',
+  trashed: '',
+  created_from: '',
+  created_to: '',
+})
+const filters = reactive(emptyFilters())
+const appliedFilters = reactive(emptyFilters())
 const statusLoadingId = ref<number | null>(null)
 const currentLoadingId = ref<number | null>(null)
 const detailsOpen = ref(false)
@@ -56,12 +67,12 @@ const list = useCrudList<Branch>({
   list: (query) =>
     listBranches({
       ...query,
-      ...(activeFilter.value !== 'all'
-        ? { is_active: activeFilter.value }
-        : {}),
-      ...(currentFilter.value !== 'all'
-        ? { is_current: currentFilter.value }
-        : {}),
+      ...(appliedFilters.address ? { address: appliedFilters.address } : {}),
+      ...(appliedFilters.is_active ? { is_active: appliedFilters.is_active } : {}),
+      ...(appliedFilters.is_current ? { is_current: appliedFilters.is_current } : {}),
+      ...(appliedFilters.trashed ? { trashed: appliedFilters.trashed as 'with' | 'only' } : {}),
+      ...(appliedFilters.created_from ? { created_from: appliedFilters.created_from } : {}),
+      ...(appliedFilters.created_to ? { created_to: appliedFilters.created_to } : {}),
     }),
   defaultSortColumn: 'id',
   defaultSortDirection: 'desc',
@@ -76,16 +87,35 @@ const columns = computed<DataTableColumn<Branch>[]>(() => [
   { key: 'created_at', label: t('table.createdAt'), sortable: true },
   { key: 'actions', label: t('table.actions'), align: 'right' },
 ])
+const activeFiltersCount = computed(() => Object.values(appliedFilters).filter(Boolean).length)
 const booleanFilterOptions = computed(() => [
-  { value: 'all', label: t('crud.all') },
-  { value: 'true', label: t('dataEntry.active') },
-  { value: 'false', label: t('dataEntry.inactive') },
+  { value: '', label: t('crud.all') },
+  { value: 'true', label: t('crud.active') },
+  { value: 'false', label: t('crud.inactive') },
 ])
 const currentFilterOptions = computed(() => [
-  { value: 'all', label: t('crud.all') },
-  { value: 'true', label: t('inventory.currentBranch') },
-  { value: 'false', label: t('inventory.notCurrentBranch') },
+  { value: '', label: t('crud.all') },
+  { value: 'true', label: t('crud.yes') },
+  { value: 'false', label: t('crud.no') },
 ])
+const trashedFilterOptions = computed(() => [
+  { value: '', label: t('crud.active') },
+  { value: 'with', label: t('crud.withDeleted') },
+  { value: 'only', label: t('crud.onlyDeleted') },
+])
+
+function applyFilters() {
+  Object.assign(appliedFilters, filters)
+  list.page.value = 1
+  void list.load()
+}
+
+function resetFilters() {
+  Object.assign(filters, emptyFilters())
+  Object.assign(appliedFilters, emptyFilters())
+  list.page.value = 1
+  void list.load()
+}
 
 function displayName(branch?: Branch | null) {
   return branch?.name ?? branch?.translation_name?.ar ?? branch?.translation_name?.en ?? '—'
@@ -214,22 +244,29 @@ onMounted(list.load)
     @refresh="list.load"
   />
 
-  <div class="panel mb-5 grid gap-3 p-4 sm:grid-cols-2">
+  <CrudFilterPanel
+    :active-count="activeFiltersCount"
+    :loading="list.loading.value"
+    @apply="applyFilters"
+    @reset="resetFilters"
+  >
+    <FormInput id="branch-address-filter" v-model="filters.address" :label="t('crud.address')" />
     <BaseSelect
       id="branch-active-filter"
-      v-model="activeFilter"
-      :label="t('table.status')"
+      v-model="filters.is_active"
+      :label="t('crud.status')"
       :options="booleanFilterOptions"
-      @update:model-value="list.load"
     />
     <BaseSelect
       id="branch-current-filter"
-      v-model="currentFilter"
+      v-model="filters.is_current"
       :label="t('inventory.currentBranch')"
       :options="currentFilterOptions"
-      @update:model-value="list.load"
     />
-  </div>
+    <BaseSelect id="branch-trashed-filter" v-model="filters.trashed" :label="t('crud.deletedRecords')" :options="trashedFilterOptions" />
+    <DateInput id="branch-created-from-filter" v-model="filters.created_from" :label="t('crud.fromDate')" />
+    <DateInput id="branch-created-to-filter" v-model="filters.created_to" :label="t('crud.toDate')" />
+  </CrudFilterPanel>
 
   <DataTable
     :columns="columns"

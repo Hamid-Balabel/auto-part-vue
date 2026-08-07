@@ -1,11 +1,15 @@
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue'
+import { computed, onMounted, reactive, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import ConfirmDialog from '@/components/modals/ConfirmDialog.vue'
+import BaseSelect from '@/components/forms/BaseSelect.vue'
+import DateInput from '@/components/forms/DateInput.vue'
+import FormInput from '@/components/forms/FormInput.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import CrudToolbar from '@/components/ui/CrudToolbar.vue'
 import ActiveStatusSwitch from '@/components/ui/ActiveStatusSwitch.vue'
 import CrudDetailsModal from '@/components/ui/CrudDetailsModal.vue'
+import CrudFilterPanel from '@/components/ui/CrudFilterPanel.vue'
 import CrudShowButton from '@/components/ui/CrudShowButton.vue'
 import DataTable, { type DataTableColumn } from '@/components/ui/DataTable.vue'
 import DetailsBadge from '@/components/ui/DetailsBadge.vue'
@@ -19,27 +23,70 @@ import RelationshipCard from '@/components/ui/RelationshipCard.vue'
 import RowActions from '@/components/ui/RowActions.vue'
 import { ApiError } from '@/api/http'
 import { useCrudList } from '@/composables/useCrudList'
+import { usePermissions } from '@/composables/usePermissions'
 import { useResourcePermissions } from '@/composables/useResourcePermissions'
 import { useToastStore } from '@/stores/toast'
-import { deleteProductItem, getProductItem, listProductItems, toggleProductItem } from '../api'
-import type { ProductItem, ProductOptionValue, Stock } from '../types'
+import { listResource } from '@/modules/data-entry/api'
+import type { Brand, Category } from '@/modules/data-entry/types'
+import { deleteProductItem, getProductItem, listMerchants, listProductItems, listProducts, listWarehouses, toggleProductItem } from '../api'
+import type { Merchant, Product, ProductItem, ProductOptionValue, Stock, Warehouse } from '../types'
 
 const { t, locale } = useI18n()
 const toast = useToastStore()
 const permissions = useResourcePermissions('product-item')
+const { can } = usePermissions()
 const canCreate = permissions.canCreate
 const canView = permissions.canView
 const canUpdate = permissions.canUpdate
 const canDelete = permissions.canDelete
 const canToggle = permissions.canToggle
+const canLoadMerchants = computed(() => can('read-merchant') && can(['view-all-merchant', 'view-own-merchant']))
 const selectedId = ref<number | null>(null)
 const detailsOpen = ref(false)
 const detailsLoading = ref(false)
 const detailsLoadingId = ref<number | null>(null)
 const detailsError = ref('')
 const selectedItem = ref<ProductItem | null>(null)
+const products = ref<Product[]>([])
+const merchants = ref<Merchant[]>([])
+const categories = ref<Category[]>([])
+const brands = ref<Brand[]>([])
+const warehouses = ref<Warehouse[]>([])
+const lookupsLoading = ref(false)
+const emptyFilters = () => ({
+  sku: '',
+  barcode: '',
+  product_id: null as number | null,
+  merchant_id: null as number | null,
+  category_id: null as number | null,
+  brand_id: null as number | null,
+  warehouse_id: null as number | null,
+  is_active: '',
+  trashed: '',
+  created_from: '',
+  created_to: '',
+})
+const filters = reactive(emptyFilters())
+const appliedFilters = reactive(emptyFilters())
 let detailsRequestId = 0
-const list = useCrudList<ProductItem>({ list: listProductItems, defaultSortColumn: 'id', defaultSortDirection: 'desc' })
+const list = useCrudList<ProductItem>({
+  list: (query) => listProductItems({
+    ...query,
+    ...(appliedFilters.sku ? { sku: appliedFilters.sku } : {}),
+    ...(appliedFilters.barcode ? { barcode: appliedFilters.barcode } : {}),
+    ...(appliedFilters.product_id ? { product_id: appliedFilters.product_id } : {}),
+    ...(appliedFilters.merchant_id ? { merchant_id: appliedFilters.merchant_id } : {}),
+    ...(appliedFilters.category_id ? { category_id: appliedFilters.category_id } : {}),
+    ...(appliedFilters.brand_id ? { brand_id: appliedFilters.brand_id } : {}),
+    ...(appliedFilters.warehouse_id ? { warehouse_id: appliedFilters.warehouse_id } : {}),
+    ...(appliedFilters.is_active ? { is_active: appliedFilters.is_active } : {}),
+    ...(appliedFilters.trashed ? { trashed: appliedFilters.trashed as 'with' | 'only' } : {}),
+    ...(appliedFilters.created_from ? { created_from: appliedFilters.created_from } : {}),
+    ...(appliedFilters.created_to ? { created_to: appliedFilters.created_to } : {}),
+  }),
+  defaultSortColumn: 'id',
+  defaultSortDirection: 'desc',
+})
 
 const columns = computed<DataTableColumn<ProductItem>[]>(() => [
   { key: 'id', label: t('table.id'), sortable: true },
@@ -68,6 +115,22 @@ const stockColumns = computed<DetailsTableColumn<Stock>[]>(() => [
   { key: 'warehouse', label: t('table.warehouse') },
   { key: 'quantity', label: t('table.quantity') },
   { key: 'created_at', label: t('table.createdAt') },
+])
+const activeFiltersCount = computed(() => Object.values(appliedFilters).filter((value) => value !== '' && value !== null).length)
+const productOptions = computed(() => products.value.map((product) => ({ value: product.id, label: displayName(product) })))
+const merchantOptions = computed(() => merchants.value.map((merchant) => ({ value: merchant.id, label: merchant.name, description: merchant.email ?? merchant.phone ?? undefined })))
+const categoryOptions = computed(() => categories.value.map((category) => ({ value: category.id, label: displayName(category) })))
+const brandOptions = computed(() => brands.value.map((brand) => ({ value: brand.id, label: displayName(brand) })))
+const warehouseOptions = computed(() => warehouses.value.map((warehouse) => ({ value: warehouse.id, label: displayName(warehouse), description: warehouse.address ?? undefined })))
+const statusOptions = computed(() => [
+  { value: '', label: t('crud.all') },
+  { value: 'true', label: t('crud.active') },
+  { value: 'false', label: t('crud.inactive') },
+])
+const trashedOptions = computed(() => [
+  { value: '', label: t('crud.active') },
+  { value: 'with', label: t('crud.withDeleted') },
+  { value: 'only', label: t('crud.onlyDeleted') },
 ])
 
 function displayName(record?: { name?: string | null; translation_name?: { ar?: string | null; en?: string | null } } | null) {
@@ -139,7 +202,44 @@ async function confirmDelete() {
   selectedId.value = null
 }
 
-onMounted(list.load)
+function normalizeList<T>(response: T[] | { data: T[] }) {
+  return Array.isArray(response) ? response : response.data
+}
+
+async function loadLookups() {
+  lookupsLoading.value = true
+  try {
+    const [productResponse, merchantResponse, categoryResponse, brandResponse, warehouseResponse] = await Promise.all([
+      listProducts({ per_page: -1 }),
+      canLoadMerchants.value ? listMerchants({ per_page: -1 }) : Promise.resolve([]),
+      listResource('categories', { per_page: -1 }),
+      listResource('brands', { per_page: -1 }),
+      listWarehouses({ per_page: -1 }),
+    ])
+    products.value = normalizeList(productResponse)
+    merchants.value = normalizeList(merchantResponse)
+    categories.value = normalizeList(categoryResponse)
+    brands.value = normalizeList(brandResponse)
+    warehouses.value = normalizeList(warehouseResponse)
+  } finally {
+    lookupsLoading.value = false
+  }
+}
+
+function applyFilters() {
+  Object.assign(appliedFilters, filters)
+  list.page.value = 1
+  void list.load()
+}
+
+function resetFilters() {
+  Object.assign(filters, emptyFilters())
+  Object.assign(appliedFilters, emptyFilters())
+  list.page.value = 1
+  void list.load()
+}
+
+onMounted(() => Promise.all([list.load(), loadLookups()]))
 </script>
 
 <template>
@@ -149,6 +249,19 @@ onMounted(list.load)
     </template>
   </PageHeader>
   <CrudToolbar :search="list.search.value" :loading="list.loading.value" :search-placeholder="t('sales.searchProductsPlaceholder')" @search="list.applySearch" @refresh="list.load" />
+  <CrudFilterPanel :active-count="activeFiltersCount" :loading="list.loading.value" @apply="applyFilters" @reset="resetFilters">
+    <FormInput id="item-sku-filter" v-model="filters.sku" :label="t('crud.sku')" />
+    <FormInput id="item-barcode-filter" v-model="filters.barcode" :label="t('crud.barcode')" />
+    <BaseSelect id="item-product-filter" v-model="filters.product_id" :label="t('crud.product')" :options="productOptions" :placeholder="t('crud.all')" :loading="lookupsLoading" searchable clearable />
+    <BaseSelect v-if="canLoadMerchants" id="item-merchant-filter" v-model="filters.merchant_id" :label="t('crud.merchant')" :options="merchantOptions" :placeholder="t('crud.all')" :loading="lookupsLoading" searchable clearable />
+    <BaseSelect id="item-category-filter" v-model="filters.category_id" :label="t('crud.category')" :options="categoryOptions" :placeholder="t('crud.all')" :loading="lookupsLoading" searchable clearable />
+    <BaseSelect id="item-brand-filter" v-model="filters.brand_id" :label="t('crud.brand')" :options="brandOptions" :placeholder="t('crud.all')" :loading="lookupsLoading" searchable clearable />
+    <BaseSelect id="item-warehouse-filter" v-model="filters.warehouse_id" :label="t('crud.warehouse')" :options="warehouseOptions" :placeholder="t('crud.all')" :loading="lookupsLoading" searchable clearable />
+    <BaseSelect id="item-active-filter" v-model="filters.is_active" :label="t('crud.status')" :options="statusOptions" />
+    <BaseSelect id="item-trashed-filter" v-model="filters.trashed" :label="t('crud.deletedRecords')" :options="trashedOptions" />
+    <DateInput id="item-created-from-filter" v-model="filters.created_from" :label="t('crud.fromDate')" />
+    <DateInput id="item-created-to-filter" v-model="filters.created_to" :label="t('crud.toDate')" />
+  </CrudFilterPanel>
   <DataTable :columns="columns" :rows="list.rows.value" :loading="list.loading.value" :sort-column="list.sortColumn.value" :sort-direction="list.sortDirection.value" @sort="list.sortBy">
     <template #cell-product="{ row }">{{ displayName(row.product) }}</template>
     <template #cell-merchant="{ row }">{{ row.merchant?.name ?? '—' }}</template>

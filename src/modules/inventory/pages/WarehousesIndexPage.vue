@@ -1,13 +1,16 @@
 <script setup lang="ts">
 import { History } from '@lucide/vue'
-import { computed, onMounted, ref } from 'vue'
+import { computed, onMounted, reactive, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import BaseSelect from '@/components/forms/BaseSelect.vue'
+import DateInput from '@/components/forms/DateInput.vue'
+import FormInput from '@/components/forms/FormInput.vue'
 import ConfirmDialog from '@/components/modals/ConfirmDialog.vue'
 import ActiveStatusSwitch from '@/components/ui/ActiveStatusSwitch.vue'
 import BaseBadge from '@/components/ui/BaseBadge.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import CrudDetailsModal from '@/components/ui/CrudDetailsModal.vue'
+import CrudFilterPanel from '@/components/ui/CrudFilterPanel.vue'
 import CrudShowButton from '@/components/ui/CrudShowButton.vue'
 import CrudToolbar from '@/components/ui/CrudToolbar.vue'
 import DataTable, { type DataTableColumn } from '@/components/ui/DataTable.vue'
@@ -27,10 +30,12 @@ import { useToastStore } from '@/stores/toast'
 import {
   deleteWarehouse,
   getWarehouse,
+  listBranches,
+  listProductItems,
   listWarehouses,
   toggleWarehouse,
 } from '../api'
-import type { Branch, Warehouse } from '../types'
+import type { Branch, ProductItem, Warehouse } from '../types'
 
 const { t, locale } = useI18n()
 const toast = useToastStore()
@@ -48,7 +53,21 @@ const canDelete = permissions.canDelete
 const canToggle = permissions.canToggle
 const canReadTransferLogs = computed(() => can('read-stock-transfer'))
 const selectedId = ref<number | null>(null)
-const branchFilter = ref<number | null>(null)
+const branches = ref<Branch[]>([])
+const productItems = ref<ProductItem[]>([])
+const lookupsLoading = ref(false)
+const emptyFilters = () => ({
+  address: '',
+  branch_id: null as number | null,
+  has_stock: '',
+  item_id: null as number | null,
+  is_active: '',
+  trashed: '',
+  created_from: '',
+  created_to: '',
+})
+const filters = reactive(emptyFilters())
+const appliedFilters = reactive(emptyFilters())
 const detailsOpen = ref(false)
 const detailsLoading = ref(false)
 const detailsLoadingId = ref<number | null>(null)
@@ -59,7 +78,14 @@ const list = useCrudList<Warehouse>({
   list: (query) =>
     listWarehouses({
       ...query,
-      ...(branchFilter.value ? { branch_id: branchFilter.value } : {}),
+      ...(appliedFilters.address ? { address: appliedFilters.address } : {}),
+      ...(appliedFilters.branch_id ? { branch_id: appliedFilters.branch_id } : {}),
+      ...(appliedFilters.has_stock ? { has_stock: appliedFilters.has_stock } : {}),
+      ...(appliedFilters.item_id ? { item_id: appliedFilters.item_id } : {}),
+      ...(appliedFilters.is_active ? { is_active: appliedFilters.is_active } : {}),
+      ...(appliedFilters.trashed ? { trashed: appliedFilters.trashed as 'with' | 'only' } : {}),
+      ...(appliedFilters.created_from ? { created_from: appliedFilters.created_from } : {}),
+      ...(appliedFilters.created_to ? { created_to: appliedFilters.created_to } : {}),
     }),
   defaultSortColumn: 'id',
   defaultSortDirection: 'desc',
@@ -75,14 +101,35 @@ const columns = computed<DataTableColumn<Warehouse>[]>(() => [
   { key: 'actions', label: t('table.actions'), align: 'right' },
 ])
 const branchOptions = computed(() =>
-  auth.branches.map((branch) => ({
+  branches.value.map((branch) => ({
     value: branch.id,
     label: displayName(branch),
     description: branch.address || undefined,
   })),
 )
+const productItemOptions = computed(() => productItems.value.map((item) => ({
+  value: item.id,
+  label: `${displayName(item.product)} - ${item.sku}`,
+  searchText: [item.sku, item.product?.name, item.product?.translation_name?.ar, item.product?.translation_name?.en].filter(Boolean).join(' '),
+})))
+const activeFiltersCount = computed(() => Object.values(appliedFilters).filter((value) => value !== '' && value !== null).length)
+const booleanOptions = computed(() => [
+  { value: '', label: t('crud.all') },
+  { value: 'true', label: t('crud.yes') },
+  { value: 'false', label: t('crud.no') },
+])
+const statusOptions = computed(() => [
+  { value: '', label: t('crud.all') },
+  { value: 'true', label: t('crud.active') },
+  { value: 'false', label: t('crud.inactive') },
+])
+const trashedOptions = computed(() => [
+  { value: '', label: t('crud.active') },
+  { value: 'with', label: t('crud.withDeleted') },
+  { value: 'only', label: t('crud.onlyDeleted') },
+])
 
-function displayName(record?: Branch | Warehouse | null) {
+function displayName(record?: { name?: string | null; translation_name?: { ar?: string | null; en?: string | null } } | null) {
   return record?.name ?? record?.translation_name?.ar ?? record?.translation_name?.en ?? '—'
 }
 
@@ -142,19 +189,38 @@ async function confirmDelete() {
   }
 }
 
-onMounted(async () => {
-  const branchRequest =
-    auth.branchesLoaded || !auth.canReadBranches
-      ? Promise.resolve()
-      : auth.refreshBranches().catch((error) => {
-          toast.error(
-            error instanceof ApiError
-              ? error.message
-              : t('inventory.branchSelectionFailed'),
-          )
-        })
-  await Promise.all([list.load(), branchRequest])
-})
+function normalizeList<T>(response: T[] | { data: T[] }) {
+  return Array.isArray(response) ? response : response.data
+}
+
+async function loadLookups() {
+  lookupsLoading.value = true
+  try {
+    const [branchResponse, itemResponse] = await Promise.all([
+      auth.canReadBranches ? listBranches({ per_page: -1 }) : Promise.resolve([]),
+      listProductItems({ per_page: -1 }),
+    ])
+    branches.value = normalizeList(branchResponse)
+    productItems.value = normalizeList(itemResponse)
+  } finally {
+    lookupsLoading.value = false
+  }
+}
+
+function applyFilters() {
+  Object.assign(appliedFilters, filters)
+  list.page.value = 1
+  void list.load()
+}
+
+function resetFilters() {
+  Object.assign(filters, emptyFilters())
+  Object.assign(appliedFilters, emptyFilters())
+  list.page.value = 1
+  void list.load()
+}
+
+onMounted(() => Promise.all([list.load(), loadLookups()]))
 </script>
 
 <template>
@@ -177,18 +243,26 @@ onMounted(async () => {
     @refresh="list.load"
   />
 
-  <div v-if="auth.canReadBranches" class="panel mb-5 p-4">
+  <CrudFilterPanel :active-count="activeFiltersCount" :loading="list.loading.value" @apply="applyFilters" @reset="resetFilters">
+    <FormInput id="warehouse-address-filter" v-model="filters.address" :label="t('crud.address')" />
     <BaseSelect
+      v-if="auth.canReadBranches"
       id="warehouse-branch-filter"
-      v-model="branchFilter"
-      :label="t('inventory.branch')"
+      v-model="filters.branch_id"
+      :label="t('crud.branch')"
       :options="branchOptions"
-      :placeholder="t('inventory.allBranches')"
+      :placeholder="t('crud.all')"
+      :loading="lookupsLoading"
       searchable
       clearable
-      @update:model-value="list.load"
     />
-  </div>
+    <BaseSelect id="warehouse-stock-filter" v-model="filters.has_stock" :label="t('crud.hasStock')" :options="booleanOptions" />
+    <BaseSelect id="warehouse-item-filter" v-model="filters.item_id" :label="t('crud.productItem')" :options="productItemOptions" :placeholder="t('crud.all')" :loading="lookupsLoading" searchable clearable />
+    <BaseSelect id="warehouse-active-filter" v-model="filters.is_active" :label="t('crud.status')" :options="statusOptions" />
+    <BaseSelect id="warehouse-trashed-filter" v-model="filters.trashed" :label="t('crud.deletedRecords')" :options="trashedOptions" />
+    <DateInput id="warehouse-created-from-filter" v-model="filters.created_from" :label="t('crud.fromDate')" />
+    <DateInput id="warehouse-created-to-filter" v-model="filters.created_to" :label="t('crud.toDate')" />
+  </CrudFilterPanel>
 
   <DataTable
     :columns="columns"

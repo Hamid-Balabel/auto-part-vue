@@ -46,7 +46,13 @@ interface NavItem {
 }
 
 interface NavGroup {
-  key: "dataEntry" | "sales" | "reports" | "users" | "settings";
+  key:
+    | "dataEntry"
+    | "warehouses"
+    | "sales"
+    | "reports"
+    | "users"
+    | "settings";
   labelKey: string;
   icon: Component;
   items: NavItem[];
@@ -60,6 +66,7 @@ const { locale, t } = useI18n();
 const sidebarOpen = ref(false);
 const openGroups = ref<Record<NavGroup["key"], boolean>>({
   dataEntry: false,
+  warehouses: false,
   sales: false,
   reports: false,
   users: false,
@@ -167,6 +174,24 @@ const navGroups: NavGroup[] = [
         permission: "read-branch",
       },
       {
+        labelKey: "nav.countries",
+        icon: Flag,
+        route: "countries.index",
+        permission: [
+          "create-country",
+          "update-country",
+          "delete-country",
+          "toggle-active-country",
+        ],
+      },
+    ],
+  },
+  {
+    key: "warehouses",
+    labelKey: "nav.warehouseManagement",
+    icon: Warehouse,
+    items: [
+      {
         labelKey: "nav.warehouses",
         icon: Warehouse,
         route: "warehouses.index",
@@ -197,17 +222,6 @@ const navGroups: NavGroup[] = [
         icon: ClipboardList,
         route: "stock-transfer-logs.index",
         permission: "read-stock-transfer",
-      },
-      {
-        labelKey: "nav.countries",
-        icon: Flag,
-        route: "countries.index",
-        permission: [
-          "create-country",
-          "update-country",
-          "delete-country",
-          "toggle-active-country",
-        ],
       },
     ],
   },

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { RotateCcw, Trash2 } from '@lucide/vue'
+import { RefreshCw, RotateCcw, Trash2 } from '@lucide/vue'
 import { useI18n } from 'vue-i18n'
 import SearchableSelectInput from '@/components/forms/SearchableSelectInput.vue'
 import BaseBadge from '@/components/ui/BaseBadge.vue'
@@ -16,6 +16,7 @@ defineProps<{
   canEditPrice?: boolean
   priceLocked?: boolean
   errors?: Record<string, string[]>
+  syncingStock?: boolean
 }>()
 
 const emit = defineEmits<{
@@ -24,6 +25,7 @@ const emit = defineEmits<{
   price: [lineId: string, price: string]
   resetPrice: [lineId: string]
   remove: [lineId: string]
+  sync: []
 }>()
 
 const { t } = useI18n()
@@ -85,6 +87,13 @@ function fieldError(errors: string[] | undefined) {
   if (value === 'invalidPrice') return t('sales.validation.invalidPrice')
   return value
 }
+
+function hasStockConflict(line: QuickSaleLine) {
+  return (
+    Boolean(line.warehouseId) &&
+    (line.availableQuantity <= 0 || line.quantity > line.availableQuantity)
+  )
+}
 </script>
 
 <template>
@@ -102,9 +111,23 @@ function fieldError(errors: string[] | undefined) {
       class="flex shrink-0 flex-wrap items-center justify-between gap-2 border-b border-border bg-background/60 px-4 py-3"
     >
       <h2 class="font-bold text-text">{{ $t('sales.currentOrder') }}</h2>
-      <BaseBadge variant="primary">{{
-        $t('sales.itemsSelected', { count: lines.length })
-      }}</BaseBadge>
+      <div class="flex items-center gap-2">
+        <BaseButton
+          variant="outline"
+          size="sm"
+          type="button"
+          :loading="syncingStock"
+          :disabled="syncingStock"
+          data-testid="sync-quick-sale-stock"
+          @click="emit('sync')"
+        >
+          <RefreshCw v-if="!syncingStock" class="size-3.5" />
+          {{ $t('sales.syncStock') }}
+        </BaseButton>
+        <BaseBadge variant="primary">{{
+          $t('sales.itemsSelected', { count: lines.length })
+        }}</BaseBadge>
+      </div>
     </div>
 
     <div
@@ -114,6 +137,7 @@ function fieldError(errors: string[] | undefined) {
         v-for="(line, index) in lines"
         :key="line.lineId"
         class="min-w-0 border-b border-border p-3 last:border-0 sm:p-4"
+        :class="hasStockConflict(line) ? 'bg-danger-soft/60' : ''"
         :data-testid="`quick-sale-line-${index}`"
       >
         <div class="flex min-w-0 items-start gap-2">
@@ -135,6 +159,26 @@ function fieldError(errors: string[] | undefined) {
         <div
           class="mt-3 grid min-w-0 gap-3 rounded-[var(--radius-lg)] bg-background p-3"
         >
+          <div
+            v-if="hasStockConflict(line)"
+            class="rounded-[var(--radius-md)] border border-danger/25 bg-danger-soft p-3 text-sm text-danger sm:col-span-2"
+            role="alert"
+          >
+            <p v-if="line.availableQuantity <= 0" class="font-semibold">
+              {{ $t('sales.stockUnavailableNow') }}
+            </p>
+            <p v-else class="font-semibold">
+              {{ $t('sales.stockChanged') }}
+            </p>
+            <p class="mt-1">
+              {{ $t('sales.requestedQuantity', { count: line.quantity }) }} ·
+              {{
+                $t('sales.availableQuantityNow', {
+                  count: line.availableQuantity,
+                })
+              }}
+            </p>
+          </div>
           <div class="min-w-0">
             <SearchableSelectInput
               :id="`order-warehouse-${line.lineId}`"

@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { computed, onMounted, ref } from "vue";
+import { computed, onMounted, reactive, ref } from "vue";
 import { useI18n } from "vue-i18n";
 import ConfirmDialog from "@/components/modals/ConfirmDialog.vue";
 import BaseBadge from "@/components/ui/BaseBadge.vue";
 import BaseButton from "@/components/ui/BaseButton.vue";
 import CrudDetailsModal from "@/components/ui/CrudDetailsModal.vue";
+import CrudFilterPanel from "@/components/ui/CrudFilterPanel.vue";
 import CrudShowButton from "@/components/ui/CrudShowButton.vue";
 import CrudToolbar from "@/components/ui/CrudToolbar.vue";
 import ActiveStatusSwitch from "@/components/ui/ActiveStatusSwitch.vue";
@@ -16,6 +17,7 @@ import PageHeader from "@/components/ui/PageHeader.vue";
 import Pagination from "@/components/ui/Pagination.vue";
 import RowActions from "@/components/ui/RowActions.vue";
 import BaseSelect from "@/components/forms/BaseSelect.vue";
+import DateInput from "@/components/forms/DateInput.vue";
 import { ApiError } from "@/api/http";
 import { useCrudList } from "@/composables/useCrudList";
 import { useResourcePermissions } from "@/composables/useResourcePermissions";
@@ -32,8 +34,15 @@ const { t } = useI18n();
 const toast = useToastStore();
 const permissions = useResourcePermissions("product-option");
 const selectedId = ref<number | null>(null);
-const activeFilter = ref<string>("");
-const valuesFilter = ref<string>("");
+const emptyFilters = () => ({
+  has_values: "",
+  is_active: "",
+  trashed: "",
+  created_from: "",
+  created_to: "",
+});
+const filters = reactive(emptyFilters());
+const appliedFilters = reactive(emptyFilters());
 const detailsOpen = ref(false);
 const detailsLoading = ref(false);
 const detailsError = ref("");
@@ -42,12 +51,31 @@ const list = useCrudList<ProductOption>({
   list: (query) =>
     listProductOptions({
       ...query,
-      ...(activeFilter.value !== "" ? { is_active: activeFilter.value } : {}),
-      ...(valuesFilter.value !== "" ? { has_values: valuesFilter.value } : {}),
+      ...(appliedFilters.has_values ? { has_values: appliedFilters.has_values } : {}),
+      ...(appliedFilters.is_active ? { is_active: appliedFilters.is_active } : {}),
+      ...(appliedFilters.trashed ? { trashed: appliedFilters.trashed as "with" | "only" } : {}),
+      ...(appliedFilters.created_from ? { created_from: appliedFilters.created_from } : {}),
+      ...(appliedFilters.created_to ? { created_to: appliedFilters.created_to } : {}),
     }),
   defaultSortColumn: "id",
   defaultSortDirection: "desc",
 });
+const activeFiltersCount = computed(() => Object.values(appliedFilters).filter(Boolean).length);
+const booleanOptions = computed(() => [
+  { value: "", label: t("crud.all") },
+  { value: "true", label: t("crud.yes") },
+  { value: "false", label: t("crud.no") },
+]);
+const statusOptions = computed(() => [
+  { value: "", label: t("crud.all") },
+  { value: "true", label: t("crud.active") },
+  { value: "false", label: t("crud.inactive") },
+]);
+const trashedOptions = computed(() => [
+  { value: "", label: t("crud.active") },
+  { value: "with", label: t("crud.withDeleted") },
+  { value: "only", label: t("crud.onlyDeleted") },
+]);
 const columns = computed<DataTableColumn<ProductOption>[]>(() => [
   { key: "id", label: t("table.id"), sortable: true },
   { key: "name", label: t("inventory.option"), sortable: true },
@@ -98,6 +126,14 @@ async function confirmDelete() {
 }
 
 function applyFilters() {
+  Object.assign(appliedFilters, filters);
+  list.page.value = 1;
+  void list.load();
+}
+
+function resetFilters() {
+  Object.assign(filters, emptyFilters());
+  Object.assign(appliedFilters, emptyFilters());
   list.page.value = 1;
   void list.load();
 }
@@ -125,30 +161,23 @@ onMounted(list.load);
     @search="list.applySearch"
     @refresh="list.load"
   />
-  <div class="panel mb-5 grid gap-3 p-4 sm:grid-cols-2">
+  <CrudFilterPanel :active-count="activeFiltersCount" :loading="list.loading.value" @apply="applyFilters" @reset="resetFilters">
     <BaseSelect
       id="option_active_filter"
-      v-model="activeFilter"
-      :label="t('table.status')"
-      :options="[
-        { value: '', label: t('inventory.allStatuses') },
-        { value: 'true', label: t('dataEntry.active') },
-        { value: 'false', label: t('dataEntry.inactive') },
-      ]"
-      @update:model-value="applyFilters"
+      v-model="filters.is_active"
+      :label="t('crud.status')"
+      :options="statusOptions"
     />
     <BaseSelect
       id="option_values_filter"
-      v-model="valuesFilter"
-      :label="t('inventory.optionValues')"
-      :options="[
-        { value: '', label: t('inventory.allOptions') },
-        { value: 'true', label: t('inventory.withValues') },
-        { value: 'false', label: t('inventory.withoutValues') },
-      ]"
-      @update:model-value="applyFilters"
+      v-model="filters.has_values"
+      :label="t('crud.hasValues')"
+      :options="booleanOptions"
     />
-  </div>
+    <BaseSelect id="option-trashed-filter" v-model="filters.trashed" :label="t('crud.deletedRecords')" :options="trashedOptions" />
+    <DateInput id="option-created-from-filter" v-model="filters.created_from" :label="t('crud.fromDate')" />
+    <DateInput id="option-created-to-filter" v-model="filters.created_to" :label="t('crud.toDate')" />
+  </CrudFilterPanel>
   <DataTable
     :columns="columns"
     :rows="list.rows.value"

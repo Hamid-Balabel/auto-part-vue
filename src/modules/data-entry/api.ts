@@ -10,8 +10,8 @@ type ResourceMap = {
   brands: Brand
 }
 
-export async function listResource<T extends DataEntryResource>(resource: T, query: ListQuery = {}): Promise<Paginated<ResourceMap[T]>> {
-  const response = await http.get<ApiEnvelope<Paginated<ResourceMap[T]>>>(`/${resource}`, { params: query })
+export async function listResource<T extends DataEntryResource>(resource: T, query: ListQuery = {}): Promise<Paginated<ResourceMap[T]> | ResourceMap[T][]> {
+  const response = await http.get<ApiEnvelope<Paginated<ResourceMap[T]> | ResourceMap[T][]>>(`/${resource}`, { params: query })
 
   return unwrapData(response)
 }

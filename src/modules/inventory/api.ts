@@ -3,6 +3,7 @@ import { toFormData } from "@/api/formData";
 import type { ApiEnvelope, ListQuery, Paginated } from "@/types/api";
 import type {
   Customer,
+  CustomerListQuery,
   CustomerPayload,
   Branch,
   BranchListQuery,
@@ -11,6 +12,7 @@ import type {
   MerchantListQuery,
   MerchantPayload,
   Product,
+  ProductListQuery,
   ProductItem,
   ProductItemListQuery,
   ProductItemPayload,
@@ -88,7 +90,7 @@ export async function deleteBranch(id: number): Promise<void> {
 }
 
 export async function listCustomers(
-  query: ListQuery = {},
+  query: CustomerListQuery = {},
 ): Promise<Paginated<Customer> | Customer[]> {
   const response = await http.get<
     ApiEnvelope<Paginated<Customer> | Customer[]>
@@ -234,7 +236,7 @@ export async function listProductItems(
 }
 
 export async function listProducts(
-  query: ListQuery = {},
+  query: ProductListQuery = {},
 ): Promise<Paginated<Product> | Product[]> {
   const response = await http.get<ApiEnvelope<Paginated<Product> | Product[]>>(
     "/products",

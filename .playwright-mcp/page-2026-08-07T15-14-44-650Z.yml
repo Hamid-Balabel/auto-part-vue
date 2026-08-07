@@ -1,0 +1,148 @@
+- generic [ref=f2e3]:
+  - complementary [ref=f2e4]:
+    - generic [ref=f2e5]:
+      - generic [ref=f2e9]:
+        - paragraph [ref=f2e10]: إدارة قطع الغيار
+        - paragraph [ref=f2e11]: المخزون والمبيعات
+      - button "إغلاق القائمة الجانبية" [ref=f2e256] [cursor=pointer]
+    - navigation [ref=f2e12]:
+      - link "لوحة التحكم" [ref=f2e13] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f2e17]:
+        - button "إدخال البيانات" [expanded] [ref=f2e18] [cursor=pointer]
+        - generic [ref=f2e26]:
+          - link "المنتجات" [ref=f2e27] [cursor=pointer]:
+            - /url: /products
+          - link "عناصر المنتجات" [ref=f2e35] [cursor=pointer]:
+            - /url: /product-items
+          - link "خيارات عناصر المنتجات" [ref=f2e47] [cursor=pointer]:
+            - /url: /product-options
+          - link "التصنيفات" [ref=f2e50] [cursor=pointer]:
+            - /url: /categories
+          - link "العلامات التجارية" [ref=f2e56] [cursor=pointer]:
+            - /url: /brands
+          - link "العملاء" [ref=f2e61] [cursor=pointer]:
+            - /url: /customers
+          - link "التجار" [ref=f2e68] [cursor=pointer]:
+            - /url: /merchants
+          - link "الفروع" [ref=f2e74] [cursor=pointer]:
+            - /url: /branches
+          - link "الدول" [ref=f2e80] [cursor=pointer]:
+            - /url: /countries
+      - button "المخازن" [ref=f2e85] [cursor=pointer]
+      - button "المبيعات" [ref=f2e93] [cursor=pointer]
+      - button "المستخدمين" [ref=f2e102] [cursor=pointer]
+      - button "الإعدادات" [ref=f2e112] [cursor=pointer]
+  - generic [ref=f2e119]:
+    - banner [ref=f2e120]:
+      - generic [ref=f2e121]:
+        - button "فتح القائمة الجانبية" [ref=f2e260] [cursor=pointer]
+        - generic "اللغة" [ref=f2e127]:
+          - button "العربية" [ref=f2e132] [cursor=pointer]
+          - button "English" [ref=f2e133] [cursor=pointer]
+        - button "تسجيل الخروج" [ref=f2e143] [cursor=pointer]
+    - main [ref=f2e144]:
+      - generic [ref=f2e145]:
+        - generic [ref=f2e146]:
+          - heading "المنتجات" [level=1] [ref=f2e147]
+          - paragraph [ref=f2e148]: سجلات المنتجات الرئيسية مرتبطة بالتصنيفات والعلامات التجارية من الخلفية.
+        - generic [ref=f2e149]:
+          - link "منتج مع عناصر" [ref=f2e150] [cursor=pointer]:
+            - /url: /products/create-with-items
+          - link "إنشاء" [ref=f2e151] [cursor=pointer]:
+            - /url: /products/create
+      - generic [ref=f2e152]:
+        - generic [ref=f2e153]:
+          - searchbox "ابحث في الحقول المدعومة من الخلفية..." [ref=f2e154]: test
+          - generic [ref=f2e155]:
+            - button "بحث" [ref=f2e156] [cursor=pointer]
+            - button "مسح" [ref=f2e157] [cursor=pointer]
+        - button "تحديث" [ref=f2e158] [cursor=pointer]
+      - region "التصفية" [ref=f2e159]:
+        - button "التصفية اضغط لعرض خيارات تصفية النتائج" [expanded] [active] [ref=f2e160] [cursor=pointer]:
+          - generic [ref=f2e163]:
+            - generic [ref=f2e164]: التصفية
+            - generic [ref=f2e165]: اضغط لعرض خيارات تصفية النتائج
+        - generic [ref=f2e262]:
+          - generic [ref=f2e263]:
+            - generic [ref=f2e264]:
+              - generic [ref=f2e265]: التصنيف
+              - combobox "التصنيف" [ref=f2e268] [cursor=pointer]:
+                - generic [ref=f2e269]: الكل
+            - generic [ref=f2e272]:
+              - generic [ref=f2e273]: العلامة التجارية
+              - combobox "العلامة التجارية" [ref=f2e276] [cursor=pointer]:
+                - generic [ref=f2e277]: الكل
+            - generic [ref=f2e280]:
+              - generic [ref=f2e281]: لديه عناصر
+              - combobox "لديه عناصر" [ref=f2e284] [cursor=pointer]:
+                - generic [ref=f2e285]: الكل
+            - generic [ref=f2e288]:
+              - generic [ref=f2e289]: SKU
+              - textbox "SKU" [ref=f2e290]
+            - generic [ref=f2e291]:
+              - generic [ref=f2e292]: الباركود
+              - textbox "الباركود" [ref=f2e293]
+            - generic [ref=f2e294]:
+              - generic [ref=f2e295]: الحالة
+              - combobox "الحالة" [ref=f2e298] [cursor=pointer]:
+                - generic [ref=f2e299]: الكل
+            - generic [ref=f2e302]:
+              - generic [ref=f2e303]: السجلات المحذوفة
+              - combobox "السجلات المحذوفة" [ref=f2e306] [cursor=pointer]:
+                - generic [ref=f2e307]: نشط
+            - generic [ref=f2e310]:
+              - generic [ref=f2e311]: تاريخ الإنشاء من
+              - textbox "تاريخ الإنشاء من" [ref=f2e312]
+            - generic [ref=f2e313]:
+              - generic [ref=f2e314]: تاريخ الإنشاء إلى
+              - textbox "تاريخ الإنشاء إلى" [ref=f2e315]
+          - generic [ref=f2e316]:
+            - button "إعادة تعيين الفلاتر" [ref=f2e317] [cursor=pointer]
+            - button "تطبيق الفلاتر" [ref=f2e318] [cursor=pointer]
+      - table [ref=f2e171]:
+        - rowgroup [ref=f2e172]:
+          - row [ref=f2e173]:
+            - columnheader [ref=f2e174]:
+              - button "المعرف" [ref=f2e176] [cursor=pointer]:
+                - generic [ref=f2e178]: DESC
+            - columnheader "الاسم" [ref=f2e179]
+            - columnheader "التصنيف" [ref=f2e181]
+            - columnheader "العلامة التجارية" [ref=f2e183]
+            - columnheader "الحالة" [ref=f2e185]
+            - columnheader "الإجراءات" [ref=f2e187]
+        - rowgroup [ref=f2e189]:
+          - row [ref=f2e190]:
+            - cell "2" [ref=f2e191]
+            - cell "test ars21s" [ref=f2e193]
+            - cell "test ars21" [ref=f2e195]
+            - cell "test ars21e" [ref=f2e197]
+            - cell [ref=f2e199]:
+              - switch "نشط" [checked] [ref=f2e201] [cursor=pointer]
+            - cell [ref=f2e204]:
+              - generic [ref=f2e206]:
+                - button "عرض" [ref=f2e207] [cursor=pointer]
+                - generic [ref=f2e212]:
+                  - link "تعديل" [ref=f2e213] [cursor=pointer]:
+                    - /url: /products/2/edit
+                  - button "حذف" [ref=f2e216] [cursor=pointer]
+          - row [ref=f2e220]:
+            - cell "1" [ref=f2e221]
+            - cell "test ars21" [ref=f2e223]
+            - cell "test ars21" [ref=f2e225]
+            - cell "test ars21e" [ref=f2e227]
+            - cell [ref=f2e229]:
+              - switch "نشط" [checked] [ref=f2e231] [cursor=pointer]
+            - cell [ref=f2e234]:
+              - generic [ref=f2e236]:
+                - button "عرض" [ref=f2e237] [cursor=pointer]
+                - generic [ref=f2e242]:
+                  - link "تعديل" [ref=f2e243] [cursor=pointer]:
+                    - /url: /products/1/edit
+                  - button "حذف" [ref=f2e246] [cursor=pointer]
+      - generic [ref=f2e250]:
+        - paragraph [ref=f2e251]: عرض 1 إلى 2 من 2 سجل
+        - generic [ref=f2e252]:
+          - button "السابق" [disabled] [ref=f2e253]
+          - generic [ref=f2e254]: صفحة 1 من 1
+          - button "التالي" [disabled] [ref=f2e255]
