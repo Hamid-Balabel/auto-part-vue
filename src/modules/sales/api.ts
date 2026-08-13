@@ -7,13 +7,83 @@ import type {
   CartSummary,
   CheckoutPayload,
   Installment,
+  InstallmentListQuery,
+  InstallmentPayload,
+  InstallmentPlanPayload,
+  InstallmentUpdatePayload,
   Order,
   OrderCreatePayload,
   OrderListQuery,
   OrderStatusPayload,
   OrderUpdatePayload,
   PaidInstallmentPayload,
+  PayInstallmentPayload,
 } from './types'
+
+export async function listInstallments(
+  query: InstallmentListQuery = {},
+): Promise<Paginated<Installment> | Installment[]> {
+  const response = await http.get<
+    ApiEnvelope<Paginated<Installment> | Installment[]>
+  >('/installments', { params: query })
+  return unwrapData(response)
+}
+
+export async function listOrderInstallments(
+  orderId: number,
+  query: InstallmentListQuery = {},
+): Promise<Paginated<Installment> | Installment[]> {
+  const response = await http.get<
+    ApiEnvelope<Paginated<Installment> | Installment[]>
+  >(`/orders/${orderId}/installments`, { params: query })
+  return unwrapData(response)
+}
+
+export async function getInstallment(id: number): Promise<Installment> {
+  const response = await http.get<ApiEnvelope<Installment>>(`/installments/${id}`)
+  return unwrapData(response)
+}
+
+export async function createInstallment(
+  payload: InstallmentPayload,
+): Promise<Installment> {
+  const response = await http.post<ApiEnvelope<Installment>>('/installments', payload)
+  return unwrapData(response)
+}
+
+export async function updateInstallment(
+  id: number,
+  payload: InstallmentUpdatePayload,
+): Promise<Installment> {
+  const response = await http.put<ApiEnvelope<Installment>>(`/installments/${id}`, payload)
+  return unwrapData(response)
+}
+
+export async function deleteInstallment(id: number): Promise<void> {
+  await http.delete(`/installments/${id}`)
+}
+
+export async function payInstallment(
+  id: number,
+  payload: PayInstallmentPayload,
+): Promise<Installment> {
+  const response = await http.post<ApiEnvelope<Installment>>(
+    `/installments/${id}/pay`,
+    payload,
+  )
+  return unwrapData(response)
+}
+
+export async function generateInstallmentPlan(
+  orderId: number,
+  payload: InstallmentPlanPayload,
+): Promise<Order> {
+  const response = await http.post<ApiEnvelope<Order>>(
+    `/orders/${orderId}/installments/generate`,
+    payload,
+  )
+  return unwrapData(response)
+}
 
 export async function listMyCart(): Promise<CartLine[]> {
   const response =

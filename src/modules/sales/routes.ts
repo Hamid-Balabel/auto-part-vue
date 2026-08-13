@@ -2,6 +2,12 @@ import type { RouteRecordRaw } from 'vue-router'
 
 export const salesRoutes: RouteRecordRaw[] = [
   {
+    path: 'installments',
+    name: 'installments.index',
+    component: () => import('./pages/InstallmentsIndexPage.vue'),
+    meta: { permission: ['view-all-installment', 'view-own-installment'] },
+  },
+  {
     path: 'orders',
     name: 'orders.index',
     component: () => import('./pages/OrdersIndexPage.vue'),

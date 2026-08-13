@@ -239,11 +239,10 @@ const navGroups: NavGroup[] = [
       {
         labelKey: "nav.installments",
         icon: CreditCard,
-        module: "installments",
+        route: "installments.index",
         permission: [
-          "create-installment",
-          "update-installment",
-          "delete-installment",
+          "view-all-installment",
+          "view-own-installment",
         ],
       },
     ],
@@ -256,7 +255,7 @@ const navGroups: NavGroup[] = [
       {
         labelKey: "nav.reportsPage",
         icon: ReceiptText,
-        module: "reports",
+        route: "reports.index",
         permission: ["read-report", "view-report", "export-report"],
       },
     ],

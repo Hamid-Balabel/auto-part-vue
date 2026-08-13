@@ -43,8 +43,12 @@ function translatedName(
 
 function itemOptions(item: ProductItem) {
   return (item.option_values ?? item.optionValues ?? [])
-    .map((option) => translatedName(option))
-    .filter((value) => value !== '—')
+    .map((option) => {
+      const name = translatedName(option.product_option ?? option.productOption)
+      const value = translatedName(option)
+      return name === '—' ? value : `${name}: ${value}`
+    })
+    .filter((value) => value !== '—' && !value.endsWith(': —'))
     .join(' · ')
 }
 

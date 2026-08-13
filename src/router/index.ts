@@ -3,6 +3,7 @@ import { adminRoutes } from '@/modules/admin/routes'
 import { dataEntryRoutes } from '@/modules/data-entry/routes'
 import { inventoryRoutes } from '@/modules/inventory/routes'
 import { salesRoutes } from '@/modules/sales/routes'
+import { reportRoutes } from '@/modules/reports/routes'
 import { useAuthStore } from '@/stores/auth'
 import { hasPermission } from '@/utils/permissions'
 
@@ -26,6 +27,7 @@ const routes: RouteRecordRaw[] = [
       ...dataEntryRoutes,
       ...inventoryRoutes,
       ...salesRoutes,
+      ...reportRoutes,
       ...adminRoutes,
       {
         path: 'modules/:module',

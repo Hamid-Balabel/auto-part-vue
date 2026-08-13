@@ -60,9 +60,55 @@ export interface Installment {
   paid_at?: string | null
   status: 'pending' | 'paid' | 'overdue'
   payment_method: PaymentMethod
+  order?: Order | null
   creator?: { id?: number; name?: string | null; email?: string | null } | null
   created_at?: string | null
   updated_at?: string | null
+}
+
+export type InstallmentStatus = Installment['status']
+
+export interface InstallmentListQuery extends Pick<
+  ListQuery,
+  'page' | 'per_page' | 'sort_column' | 'sort_direction' | 'search'
+> {
+  order_id?: number
+  customer_id?: number
+  created_by?: number
+  status?: InstallmentStatus
+  payment_method?: PaymentMethod
+  amount_min?: string
+  amount_max?: string
+  due_date_from?: string
+  due_date_to?: string
+  paid_at_from?: string
+  paid_at_to?: string
+  is_paid?: boolean
+  created_from?: string
+  created_to?: string
+}
+
+export interface InstallmentPayload {
+  order_id: number
+  amount: number | string
+  due_date?: string | null
+  status?: InstallmentStatus
+  payment_method?: PaymentMethod
+}
+
+export type InstallmentUpdatePayload = Partial<InstallmentPayload>
+
+export interface PayInstallmentPayload {
+  amount: number | string
+  payment_method: PaymentMethod
+}
+
+export interface InstallmentPlanPayload {
+  installment_count: number
+  initial_paid_amount?: number | string
+  first_due_date: string
+  interval_months?: number
+  payment_method: PaymentMethod
 }
 
 export interface OrderLog {
