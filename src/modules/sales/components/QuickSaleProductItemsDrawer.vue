@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useLocalizedName } from "@/composables/useLocalizedName";
 import { ImageOff, Search, X } from '@lucide/vue'
 import { computed, ref, watch } from 'vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
@@ -12,6 +13,8 @@ const props = defineProps<{
   items: ProductItem[]
   loading?: boolean
 }>()
+
+const translatedName = useLocalizedName()
 
 const emit = defineEmits<{
   close: []
@@ -27,19 +30,6 @@ watch(
   },
 )
 
-function translatedName(
-  value?: {
-    name?: string | null
-    translation_name?: { ar?: string | null; en?: string | null }
-  } | null,
-) {
-  return (
-    value?.name ??
-    value?.translation_name?.ar ??
-    value?.translation_name?.en ??
-    '—'
-  )
-}
 
 function itemOptions(item: ProductItem) {
   return (item.option_values ?? item.optionValues ?? [])

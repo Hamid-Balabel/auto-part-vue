@@ -1,6 +1,9 @@
 <script setup lang="ts">
+import { useLocalizedDisplayName } from '@/composables/useLocalizedName'
 import type { Permission } from '@/modules/admin/types'
 import BaseCheckbox from '@/components/forms/BaseCheckbox.vue'
+
+const localizedDisplayName = useLocalizedDisplayName()
 
 defineProps<{
   permission: Permission
@@ -29,7 +32,7 @@ const emit = defineEmits<{
       @update:model-value="emit('toggle', permission.name)"
     />
     <span class="leading-5">
-      {{ permission.translation_display_name ?? permission.name }}
+      {{ localizedDisplayName(permission) }}
       <span class="mt-1 block text-xs font-normal text-text-muted">{{ permission.name }}</span>
     </span>
   </div>

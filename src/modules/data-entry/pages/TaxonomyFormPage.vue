@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, reactive, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useLocalizedName } from '@/composables/useLocalizedName'
 import { useRouter } from 'vue-router'
 import FormInput from '@/components/forms/FormInput.vue'
 import BooleanField from '@/components/forms/BooleanField.vue'
@@ -10,7 +11,7 @@ import FormPageLayout from '@/components/ui/FormPageLayout.vue'
 import { usePermissions } from '@/composables/usePermissions'
 import { ApiError } from '@/api/http'
 import { createTaxonomy, getResource, listResource, updateTaxonomy } from '../api'
-import type { TaxonomyPayload } from '../types'
+import type { Category, TaxonomyPayload } from '../types'
 import { normalizeBoolean } from '@/utils/boolean'
 
 const props = defineProps<{
@@ -21,12 +22,16 @@ const props = defineProps<{
 
 const router = useRouter()
 const { t } = useI18n()
+const localizedName = useLocalizedName()
 const { can } = usePermissions()
 const saving = ref(false)
 const loading = ref(false)
 const errors = ref<Record<string, string[]>>({})
 const errorMessage = ref('')
-const categoryOptions = ref<{ label: string; value: number }[]>([])
+const categories = ref<Category[]>([])
+const categoryOptions = computed(() => categories.value
+  .filter((category) => String(category.id) !== String(props.id ?? ''))
+  .map((category) => ({ label: localizedName(category, `Category #${category.id}`), value: category.id })))
 
 const form = reactive<TaxonomyPayload>({
   name: { ar: '', en: '' },
@@ -43,11 +48,9 @@ const permissionBase = computed(() => (props.resource === 'categories' ? 'catego
 const canSave = computed(() => can(`${isEdit.value ? 'update' : 'create'}-${permissionBase.value}`))
 async function loadOptions() {
   if (!isCategory.value) return
-  const categories = await listResource('categories', { per_page: -1 })
-  const categoryList = Array.isArray(categories) ? categories : categories.data
-  categoryOptions.value = categoryList
-    .filter((category) => String(category.id) !== String(props.id ?? ''))
-    .map((category) => ({ label: category.name ?? `Category #${category.id}`, value: category.id }))
+  const response = await listResource('categories', { per_page: -1 })
+  const categoryList = Array.isArray(response) ? response : response.data
+  categories.value = categoryList
 }
 
 async function loadRecord() {

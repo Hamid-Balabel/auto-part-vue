@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, reactive, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useLocalizedName } from '@/composables/useLocalizedName'
 import BaseSelect from '@/components/forms/BaseSelect.vue'
 import DateInput from '@/components/forms/DateInput.vue'
 import ConfirmDialog from '@/components/modals/ConfirmDialog.vue'
@@ -38,6 +39,7 @@ const selectedId = ref<number | null>(null)
 const categoryOptionsLoading = ref(false)
 const categories = ref<Category[]>([])
 const { t } = useI18n()
+const localizedName = useLocalizedName()
 const toast = useToastStore()
 const emptyFilters = (): TaxonomyFilters => ({
   has_products: '',
@@ -73,7 +75,7 @@ const activeFiltersCount = computed(() => Object.entries(appliedFilters)
   .length)
 const parentOptions = computed(() => [
   { value: '', label: t('crud.all') },
-  ...categories.value.map((category) => ({ value: category.id, label: category.name ?? `#${category.id}` })),
+  ...categories.value.map((category) => ({ value: category.id, label: localizedName(category, `#${category.id}`) })),
 ])
 
 const columns = computed<DataTableColumn<Row>[]>(() => [
@@ -220,6 +222,7 @@ watch(() => props.resource, () => {
     :empty-message="t('states.emptyMessage')"
     @sort="list.sortBy"
   >
+    <template #cell-name="{ row }">{{ localizedName(row) }}</template>
     <template #cell-is_active="{ row }">
       <ActiveStatusSwitch :row="row" :can-toggle="canToggle" :toggle="toggleStatus" :data-testid="`${props.resource}-status-${row.id}`" />
     </template>

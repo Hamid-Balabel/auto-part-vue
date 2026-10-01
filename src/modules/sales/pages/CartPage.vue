@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ArrowLeft, ShoppingCart, Trash2 } from '@lucide/vue'
-import { computed, onMounted, reactive, ref } from 'vue'
+import { computed, onMounted, reactive, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import ConfirmDialog from '@/components/modals/ConfirmDialog.vue'
@@ -14,6 +14,7 @@ import MoneyDisplay from '@/components/ui/MoneyDisplay.vue'
 import PageHeader from '@/components/ui/PageHeader.vue'
 import { ApiError } from '@/api/http'
 import { usePermissions } from '@/composables/usePermissions'
+import { useLocalizedName } from '@/composables/useLocalizedName'
 import { listCustomers, listProductItems } from '@/modules/inventory/api'
 import type { Customer, ProductItem } from '@/modules/inventory/types'
 import { useToastStore } from '@/stores/toast'
@@ -23,7 +24,8 @@ import OrderSummary from '../components/OrderSummary.vue'
 import ProductItemIdentity from '../components/ProductItemIdentity.vue'
 import QuantityControl from '../components/QuantityControl.vue'
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
+const localizedName = useLocalizedName()
 const router = useRouter()
 const toast = useToastStore()
 const { can } = usePermissions()
@@ -48,7 +50,7 @@ const canAdd = computed(() => can('create-cart'))
 const canCheckout = computed(() => can('create-order'))
 const itemOptions = computed(() => productItems.value.filter((item) => item.is_active && item.product?.is_active !== false && item.current_price !== null).map((item) => ({
   value: item.id,
-  label: `${item.product?.name ?? item.product?.translation_name?.ar ?? item.sku} · ${item.sku}`,
+  label: `${localizedName(item.product, item.sku)} · ${item.sku}`,
 })))
 const customerOptions = computed(() => customers.value.filter((customer) => customer.is_active !== false).map((customer) => ({ value: customer.id, label: `${customer.name}${customer.phone ? ` · ${customer.phone}` : ''}` })))
 const paymentOptions = computed(() => (['cash', 'card', 'transfer'] as PaymentMethod[]).map((value) => ({ value, label: t(`sales.paymentMethods.${value}`) })))
@@ -179,6 +181,9 @@ async function submitCheckout() {
 
 onMounted(async () => {
   await Promise.all([loadCart(), loadOptions()])
+})
+watch(locale, () => {
+  void Promise.allSettled([loadCart(), loadOptions()])
 })
 </script>
 

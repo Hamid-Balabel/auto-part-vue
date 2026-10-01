@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, reactive, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useLocalizedName } from '@/composables/useLocalizedName'
 import ConfirmDialog from '@/components/modals/ConfirmDialog.vue'
 import BaseSelect from '@/components/forms/BaseSelect.vue'
 import DateInput from '@/components/forms/DateInput.vue'
@@ -22,6 +23,7 @@ import { deleteCustomer, listCustomers, toggleCustomer } from '../api'
 import type { Customer } from '../types'
 
 const { t } = useI18n()
+const localizedName = useLocalizedName()
 const toast = useToastStore()
 const permissions = useResourcePermissions('customer')
 const canCreate = permissions.canCreate
@@ -72,7 +74,7 @@ const columns = computed<DataTableColumn<Customer>[]>(() => [
 const activeFiltersCount = computed(() => Object.values(appliedFilters).filter((value) => value !== '' && value !== null).length)
 const countryOptions = computed(() => countries.value.map((country) => ({
   value: country.id,
-  label: `${country.phone_code} - ${country.translation_name ?? country.name.ar ?? country.name.en ?? country.code}`,
+  label: `${country.phone_code} - ${localizedName(country, country.code)}`,
   searchText: [country.phone_code, country.translation_name, country.name.ar, country.name.en, country.code].filter(Boolean).join(' '),
 })))
 const booleanOptions = computed(() => [

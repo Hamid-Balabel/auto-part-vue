@@ -1,6 +1,7 @@
 <script setup lang="ts">
+import { useLocalizedName } from "@/composables/useLocalizedName";
 import { ArrowRightLeft } from '@lucide/vue'
-import { computed, onMounted, reactive, ref } from 'vue'
+import { computed, onMounted, reactive, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import BaseSelect from '@/components/forms/BaseSelect.vue'
@@ -28,6 +29,7 @@ import { getStock, listProductItems, listProducts, listStocks, listWarehouses } 
 import type { Product, ProductItem, Stock, Warehouse } from '../types'
 
 const { t, locale } = useI18n()
+const displayName = useLocalizedName();
 const permissions = useResourcePermissions('stock')
 const { can } = usePermissions()
 const canCreate = permissions.canCreate
@@ -97,9 +99,6 @@ const booleanOptions = computed(() => [
   { value: 'false', label: t('crud.no') },
 ])
 
-function displayName(record?: { name?: string | null; translation_name?: { ar?: string | null; en?: string | null } } | null) {
-  return record?.name ?? record?.translation_name?.ar ?? record?.translation_name?.en ?? '—'
-}
 
 function formatDate(value?: string | null) {
   return value ? new Intl.DateTimeFormat(locale.value, { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(value)) : '—'
@@ -178,6 +177,9 @@ function resetFilters() {
 }
 
 onMounted(() => Promise.all([list.load(), loadLookups()]))
+watch(locale, () => {
+  if (detailsOpen.value && selectedStock.value) void openDetails(selectedStock.value.id)
+})
 </script>
 
 <template>

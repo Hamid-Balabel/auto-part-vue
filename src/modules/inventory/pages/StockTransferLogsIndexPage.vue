@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useLocalizedName } from "@/composables/useLocalizedName";
 import { computed, onMounted, reactive, ref, watch } from "vue";
 import { useI18n } from "vue-i18n";
 import { useRoute, useRouter } from "vue-router";
@@ -34,6 +35,7 @@ import type {
 const route = useRoute();
 const router = useRouter();
 const { t, locale } = useI18n();
+const displayName = useLocalizedName();
 const toast = useToastStore();
 const { can } = usePermissions();
 const rows = ref<StockTransfer[]>([]);
@@ -166,9 +168,6 @@ const userOptions = computed(() =>
   })),
 );
 
-function displayName(record?: { name?: string | null; translation_name?: { ar?: string | null; en?: string | null } } | null) {
-  return record?.name ?? record?.translation_name?.ar ?? record?.translation_name?.en ?? "—";
-}
 
 function sourceWarehouse(log: StockTransfer) {
   return log.source_warehouse ?? log.from_warehouse;
@@ -354,7 +353,7 @@ function openDetails(log: StockTransfer) {
 }
 
 watch(
-  () => route.query,
+  [() => route.query, locale],
   () => {
     hydrateFromQuery();
     void load();

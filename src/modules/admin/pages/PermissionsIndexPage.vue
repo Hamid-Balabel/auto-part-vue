@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import BaseSelect from '@/components/forms/BaseSelect.vue'
 import DateInput from '@/components/forms/DateInput.vue'
@@ -10,6 +10,7 @@ import DataTable, { type DataTableColumn } from '@/components/ui/DataTable.vue'
 import PageHeader from '@/components/ui/PageHeader.vue'
 import Pagination from '@/components/ui/Pagination.vue'
 import { usePermissions } from '@/composables/usePermissions'
+import { useLocalizedDisplayName } from '@/composables/useLocalizedName'
 import type { Paginated } from '@/types/api'
 import { listPermissions, listRoles } from '../api'
 import type { Permission, Role } from '../types'
@@ -30,7 +31,8 @@ const emptyFilters = (): PermissionFilters => ({
   created_to: '',
 })
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
+const localizedDisplayName = useLocalizedDisplayName()
 const loading = ref(false)
 const page = ref(1)
 const pageData = ref<Paginated<Permission> | null>(null)
@@ -57,7 +59,7 @@ const resetDisabled = computed(
 const roleOptions = computed(() =>
   roles.value.map((role) => ({
     value: role.id,
-    label: role.translation_display_name ?? role.name,
+    label: localizedDisplayName(role),
   })),
 )
 
@@ -138,6 +140,10 @@ onMounted(() => {
   void load()
   if (canLoadRoles.value) void loadRoles()
 })
+watch(locale, () => {
+  void load()
+  if (canLoadRoles.value) void loadRoles()
+})
 </script>
 
 <template>
@@ -197,6 +203,8 @@ onMounted(() => {
     :columns="columns"
     :rows="pageData?.data ?? []"
     :loading="loading"
-  />
+  >
+    <template #cell-translation_display_name="{ row }">{{ localizedDisplayName(row) }}</template>
+  </DataTable>
   <Pagination v-if="pageData" :meta="pageData" @change="changePage" />
 </template>

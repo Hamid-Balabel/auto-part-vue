@@ -1,4 +1,5 @@
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 import type { ListQuery, Paginated } from '@/types/api'
 
 interface UseCrudListOptions<T> {
@@ -9,6 +10,7 @@ interface UseCrudListOptions<T> {
 }
 
 export function useCrudList<T>(options: UseCrudListOptions<T>) {
+  const { locale } = useI18n()
   const loading = ref(false)
   const mutating = ref(false)
   const page = ref(1)
@@ -17,6 +19,7 @@ export function useCrudList<T>(options: UseCrudListOptions<T>) {
   const sortDirection = ref<'asc' | 'desc'>(options.defaultSortDirection ?? 'desc')
   const pageData = ref<Paginated<T> | null>(null)
   const rows = ref<T[]>([])
+  let requestId = 0
 
   const query = computed<ListQuery>(() => ({
     page: page.value,
@@ -27,9 +30,11 @@ export function useCrudList<T>(options: UseCrudListOptions<T>) {
   }))
 
   async function load() {
+    const currentRequest = ++requestId
     loading.value = true
     try {
       const response = await options.list(query.value)
+      if (currentRequest !== requestId) return
       if (Array.isArray(response)) {
         rows.value = response
         pageData.value = null
@@ -38,9 +43,11 @@ export function useCrudList<T>(options: UseCrudListOptions<T>) {
         pageData.value = response
       }
     } finally {
-      loading.value = false
+      if (currentRequest === requestId) loading.value = false
     }
   }
+
+  watch(locale, () => { void load() })
 
   function changePage(nextPage: number) {
     page.value = nextPage

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, reactive, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useLocalizedName } from '@/composables/useLocalizedName'
 import { useRouter } from 'vue-router'
 import FormInput from '@/components/forms/FormInput.vue'
 import SearchableSelectInput from '@/components/forms/SearchableSelectInput.vue'
@@ -20,6 +21,7 @@ const props = defineProps<{ id?: string }>()
 
 const router = useRouter()
 const { t } = useI18n()
+const localizedName = useLocalizedName()
 const toast = useToastStore()
 const auth = useAuthStore()
 const permissions = useResourcePermissions('warehouse')
@@ -39,7 +41,7 @@ const isEdit = computed(() => Boolean(props.id))
 const branchOptions = computed(() =>
   auth.branches.map((branch) => ({
     value: branch.id,
-    label: branch.name ?? branch.translation_name?.ar ?? branch.translation_name?.en ?? '—',
+    label: localizedName(branch),
     description: branch.address || undefined,
   })),
 )

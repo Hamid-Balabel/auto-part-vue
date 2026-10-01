@@ -399,6 +399,12 @@ export default {
     optionValues: "قيم الخيارات",
     warehouseQuantities: "كميات المستودعات",
     images: "الصور",
+    chooseImages: "اختيار صور",
+    removeImageNamed: "إزالة الصورة {name}",
+    deleteImageTitle: "حذف الصورة",
+    deleteImageMessage: "هل تريد حذف الصورة {name} نهائياً؟ سيتم حذفها فور التأكيد.",
+    imageDeleted: "تم حذف الصورة.",
+    imageDeleteFailed: "تعذر حذف الصورة. حاول مرة أخرى.",
     imagesHelp:
       "ترفع الصور فقط عند اختيارها. الصور الحالية تبقى حسب استجابة الخلفية.",
     productOptionsTitle: "خيارات عناصر المنتجات",
@@ -761,6 +767,8 @@ export default {
       "سيشمل تنفيذ الوحدة خدمة API، أنواع TypeScript، فلاتر القائمة، التحقق من النماذج، التفاصيل، والإجراءات المدعومة فقط من الخلفية.",
   },
   common: {
+    darkMode: "الوضع الداكن",
+    lightMode: "الوضع الفاتح",
     loading: "جار التحميل...",
     close: "إغلاق",
     closeSidebar: "إغلاق القائمة الجانبية",

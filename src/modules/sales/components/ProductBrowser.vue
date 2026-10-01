@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useLocalizedName } from "@/composables/useLocalizedName";
 import { PackageSearch, Search } from '@lucide/vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import EmptyState from '@/components/ui/EmptyState.vue'
@@ -16,6 +17,8 @@ defineProps<{
   search: string
 }>()
 
+const translatedName = useLocalizedName()
+
 const emit = defineEmits<{
   'update:search': [value: string]
   selectProduct: [product: Product]
@@ -25,19 +28,6 @@ const emit = defineEmits<{
   loadMore: []
 }>()
 
-function translatedName(
-  value?: {
-    name?: string | null
-    translation_name?: { ar?: string | null; en?: string | null }
-  } | null,
-) {
-  return (
-    value?.name ??
-    value?.translation_name?.ar ??
-    value?.translation_name?.en ??
-    '—'
-  )
-}
 </script>
 
 <template>

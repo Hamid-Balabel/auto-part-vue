@@ -1,15 +1,17 @@
 <script setup lang="ts">
 import { Search } from '@lucide/vue'
 import { computed, ref } from 'vue'
+import { useLocalizedName } from '@/composables/useLocalizedName'
 import type { ProductItem } from '@/modules/inventory/types'
 import MoneyDisplay from '@/components/ui/MoneyDisplay.vue'
 
 const props = defineProps<{ products: ProductItem[]; loading?: boolean }>()
 const emit = defineEmits<{ select: [item: ProductItem] }>()
 const query = ref('')
+const localizedName = useLocalizedName()
 
 function productName(item: ProductItem) {
-  return item.product?.name ?? item.product?.translation_name?.ar ?? item.product?.translation_name?.en ?? item.sku
+  return localizedName(item.product, item.sku)
 }
 
 const results = computed(() => {

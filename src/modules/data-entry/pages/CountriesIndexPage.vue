@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, reactive, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useLocalizedName } from '@/composables/useLocalizedName'
 import BaseSelect from '@/components/forms/BaseSelect.vue'
 import DateInput from '@/components/forms/DateInput.vue'
 import FormInput from '@/components/forms/FormInput.vue'
@@ -20,6 +21,7 @@ import type { Country } from '../types'
 const deleting = ref(false)
 const selectedId = ref<number | null>(null)
 const { t } = useI18n()
+const localizedName = useLocalizedName()
 const { can } = usePermissions()
 
 interface CountryFilters {
@@ -144,6 +146,7 @@ onMounted(list.load)
   </CrudFilterPanel>
 
   <DataTable :columns="columns" :rows="list.rows.value" :loading="list.loading.value">
+    <template #cell-translation_name="{ row }">{{ localizedName(row, row.code) }}</template>
     <template #cell-actions="{ row }">
       <RowActions :can-edit="canUpdate" :can-delete="canDelete" :edit-to="{ name: 'countries.edit', params: { id: row.id } }" :delete-disabled="deleting" @delete="selectedId = row.id" />
     </template>

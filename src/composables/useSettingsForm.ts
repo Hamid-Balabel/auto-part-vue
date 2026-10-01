@@ -23,6 +23,17 @@ export function useSettingsForm() {
     })
   }
 
+  function refreshGroups(nextGroups: SettingGroup[]) {
+    flattenGroups(nextGroups).forEach((setting) => {
+      const wasEdited = Object.prototype.hasOwnProperty.call(originalValues, setting.id)
+        && !sameValue(values[setting.id], originalValues[setting.id])
+      const nextValue = cloneSettingValue(setting.value as SettingValue)
+      if (!wasEdited) values[setting.id] = cloneSettingValue(nextValue)
+      originalValues[setting.id] = nextValue
+    })
+    groups.value = nextGroups
+  }
+
   function resetSetting(id: number) {
     values[id] = cloneSettingValue(originalValues[id])
     delete errors[id]
@@ -65,6 +76,7 @@ export function useSettingsForm() {
     flatSettings,
     isDirty,
     setGroups,
+    refreshGroups,
     resetSetting,
     resetAll,
     clearErrors,

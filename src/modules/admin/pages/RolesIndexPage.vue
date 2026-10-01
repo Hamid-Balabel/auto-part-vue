@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import BaseSelect from '@/components/forms/BaseSelect.vue'
 import DateInput from '@/components/forms/DateInput.vue'
@@ -15,6 +15,7 @@ import Pagination from '@/components/ui/Pagination.vue'
 import RowActions from '@/components/ui/RowActions.vue'
 import StatusBadge from '@/components/ui/StatusBadge.vue'
 import { usePermissions } from '@/composables/usePermissions'
+import { useLocalizedDisplayName } from '@/composables/useLocalizedName'
 import type { Paginated } from '@/types/api'
 import { deleteRole, listPermissions, listRoles } from '../api'
 import type { Permission, Role } from '../types'
@@ -35,7 +36,8 @@ const emptyFilters = (): RoleFilters => ({
   created_to: '',
 })
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
+const localizedDisplayName = useLocalizedDisplayName()
 const loading = ref(false)
 const deleting = ref(false)
 const selectedId = ref<number | null>(null)
@@ -67,7 +69,7 @@ const resetDisabled = computed(
 const permissionOptions = computed(() =>
   permissions.value.map((permission) => ({
     value: permission.id,
-    label: permission.translation_display_name ?? permission.name,
+    label: localizedDisplayName(permission),
   })),
 )
 const statusOptions = computed(() => [
@@ -169,6 +171,10 @@ onMounted(() => {
   void load()
   if (canLoadPermissions.value) void loadPermissions()
 })
+watch(locale, () => {
+  void load()
+  if (canLoadPermissions.value) void loadPermissions()
+})
 </script>
 
 <template>
@@ -236,6 +242,7 @@ onMounted(() => {
   </CrudFilterPanel>
 
   <DataTable :columns="columns" :rows="pageData?.data ?? []" :loading="loading">
+    <template #cell-translation_display_name="{ row }">{{ localizedDisplayName(row) }}</template>
     <template #cell-permissions="{ row }">
       <BaseBadge variant="primary">{{
         row.permissions?.length ?? 0

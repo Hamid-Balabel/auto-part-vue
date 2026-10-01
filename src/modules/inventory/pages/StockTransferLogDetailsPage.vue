@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useLocalizedName } from "@/composables/useLocalizedName";
 import { ArrowRightLeft } from "@lucide/vue";
 import { computed, ref, watch } from "vue";
 import { useI18n } from "vue-i18n";
@@ -17,6 +18,7 @@ import type { StockTransfer, StockTransferItem } from "../types";
 const props = defineProps<{ id: string }>();
 const route = useRoute();
 const { t, locale } = useI18n();
+const displayName = useLocalizedName();
 const loading = ref(true);
 const errorMessage = ref("");
 const genericLoadError = ref(false);
@@ -40,9 +42,6 @@ const displayedError = computed(() =>
   genericLoadError.value ? t("stockTransferLogs.loadDetailsFailed") : errorMessage.value,
 );
 
-function displayName(record?: { name?: string | null; translation_name?: { ar?: string | null; en?: string | null } } | null) {
-  return record?.name ?? record?.translation_name?.ar ?? record?.translation_name?.en ?? "—";
-}
 
 function formatNumber(value?: number | string | null) {
   return new Intl.NumberFormat(locale.value).format(Number(value ?? 0));
@@ -83,7 +82,7 @@ async function load() {
   }
 }
 
-watch(() => props.id, load, { immediate: true });
+watch([() => props.id, locale], load, { immediate: true });
 </script>
 
 <template>

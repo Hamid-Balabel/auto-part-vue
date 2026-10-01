@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useLocalizedName } from "@/composables/useLocalizedName";
 import { computed, onMounted, reactive, ref, watch } from "vue";
 import { useI18n } from "vue-i18n";
 import { useRoute } from "vue-router";
@@ -24,6 +25,7 @@ import type {
 
 const route = useRoute();
 const { t, locale } = useI18n();
+const displayName = useLocalizedName();
 const toast = useToastStore();
 const { can } = usePermissions();
 const loading = ref(true);
@@ -64,7 +66,7 @@ const warehouseOptions = computed<SearchableSelectOption<number>[]>(() =>
 const itemOptions = computed<SearchableSelectOption<number>[]>(() =>
   sourceStocks.value.map((stock) => ({
     value: stock.item_id,
-    label: `${stock.item?.product?.name ?? stock.item?.sku ?? `#${stock.item_id}`} · ${stock.item?.sku ?? `#${stock.item_id}`}`,
+    label: `${displayName(stock.item?.product, stock.item?.sku ?? `#${stock.item_id}`)} · ${stock.item?.sku ?? `#${stock.item_id}`}`,
     description: stock.item?.merchant?.name ?? undefined,
     meta: t("inventory.availableCount", {
       count: formatNumber(stock.quantity),
@@ -128,19 +130,6 @@ const cancelRoute = computed(() =>
     : { name: "dashboard" },
 );
 
-function displayName(
-  record?: {
-    name?: string | null;
-    translation_name?: { ar?: string | null; en?: string | null };
-  } | null,
-) {
-  return (
-    record?.name ??
-    record?.translation_name?.ar ??
-    record?.translation_name?.en ??
-    "—"
-  );
-}
 
 function formatNumber(value?: number | string | null) {
   return new Intl.NumberFormat(locale.value).format(Number(value ?? 0));
@@ -243,6 +232,16 @@ watch(
 );
 watch([() => form.to_warehouse_id, () => form.product_item_id], () => {
   if (!loading.value) void loadDestinationStock();
+});
+watch(locale, async () => {
+  try {
+    const response = await listWarehouses({ is_active: true, per_page: -1 });
+    warehouses.value = normalizeList(response).filter((warehouse) => normalizeBoolean(warehouse.is_active));
+    if (form.from_warehouse_id) await loadSourceStocks(true);
+    if (form.to_warehouse_id && form.product_item_id) await loadDestinationStock();
+  } catch (error) {
+    errorMessage.value = error instanceof ApiError ? error.message : t('details.failedToLoad');
+  }
 });
 
 onMounted(async () => {

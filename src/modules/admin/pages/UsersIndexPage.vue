@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import BaseSelect from '@/components/forms/BaseSelect.vue'
 import DateInput from '@/components/forms/DateInput.vue'
@@ -14,6 +14,7 @@ import PageHeader from '@/components/ui/PageHeader.vue'
 import Pagination from '@/components/ui/Pagination.vue'
 import RowActions from '@/components/ui/RowActions.vue'
 import { usePermissions } from '@/composables/usePermissions'
+import { useLocalizedDisplayName } from '@/composables/useLocalizedName'
 import type { Paginated } from '@/types/api'
 import { deleteUser, listRoles, listUsers, toggleUser } from '../api'
 import type { Role, User } from '../types'
@@ -40,7 +41,8 @@ const emptyFilters = (): UserFilters => ({
   created_to: '',
 })
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
+const localizedDisplayName = useLocalizedDisplayName()
 const loading = ref(false)
 const deleting = ref(false)
 const selectedId = ref<number | null>(null)
@@ -73,7 +75,7 @@ const resetDisabled = computed(
 const roleOptions = computed(() =>
   roles.value.map((role) => ({
     value: role.id,
-    label: role.translation_display_name ?? role.name,
+    label: localizedDisplayName(role),
   })),
 )
 const genderOptions = computed(() => [
@@ -177,6 +179,10 @@ onMounted(() => {
   void load()
   if (canLoadRoles.value) void loadRoles()
 })
+watch(locale, () => {
+  void load()
+  if (canLoadRoles.value) void loadRoles()
+})
 </script>
 
 <template>
@@ -268,7 +274,7 @@ onMounted(() => {
           :key="role.id"
           variant="secondary"
         >
-          {{ role.display_name ?? role.name ?? role.id }}
+          {{ localizedDisplayName(role, String(role.id)) }}
         </BaseBadge>
       </div>
     </template>

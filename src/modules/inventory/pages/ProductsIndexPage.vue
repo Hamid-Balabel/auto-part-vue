@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { computed, onMounted, reactive, ref } from 'vue'
+import { useLocalizedName } from "@/composables/useLocalizedName";
+import { computed, onMounted, reactive, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import ConfirmDialog from '@/components/modals/ConfirmDialog.vue'
 import BaseSelect from '@/components/forms/BaseSelect.vue'
@@ -30,6 +31,7 @@ import { deleteProduct, getProduct, listProducts, toggleProduct } from '../api'
 import type { Product, ProductItem } from '../types'
 
 const { t, locale } = useI18n()
+const displayName = useLocalizedName();
 const toast = useToastStore()
 const permissions = useResourcePermissions('product')
 const canCreate = permissions.canCreate
@@ -115,9 +117,6 @@ const trashedOptions = computed(() => [
   { value: 'only', label: t('crud.onlyDeleted') },
 ])
 
-function displayName(record?: { name?: string | null; translation_name?: { ar?: string | null; en?: string | null } } | null) {
-  return record?.name ?? record?.translation_name?.ar ?? record?.translation_name?.en ?? '—'
-}
 
 function formatDate(value?: string | null) {
   return value ? new Intl.DateTimeFormat(locale.value, { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(value)) : '—'
@@ -195,6 +194,9 @@ function resetFilters() {
 }
 
 onMounted(() => Promise.all([list.load(), loadLookups()]))
+watch(locale, () => {
+  if (detailsOpen.value && selectedProduct.value) void openDetails(selectedProduct.value.id)
+})
 </script>
 
 <template>
@@ -220,6 +222,7 @@ onMounted(() => Promise.all([list.load(), loadLookups()]))
   </CrudFilterPanel>
 
   <DataTable :columns="columns" :rows="list.rows.value" :loading="list.loading.value" :sort-column="list.sortColumn.value" :sort-direction="list.sortDirection.value" @sort="list.sortBy">
+    <template #cell-name="{ row }">{{ displayName(row) }}</template>
     <template #cell-category="{ row }">{{ displayName(row.category) }}</template>
     <template #cell-brand="{ row }">{{ displayName(row.brand) }}</template>
     <template #cell-is_active="{ row }"><ActiveStatusSwitch :row="row" :can-toggle="canToggle" :toggle="toggleProduct" :data-testid="`product-status-${row.id}`" /></template>

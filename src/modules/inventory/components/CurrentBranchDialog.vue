@@ -7,17 +7,19 @@ import BaseButton from '@/components/ui/BaseButton.vue'
 import { ApiError } from '@/api/http'
 import { useAuthStore } from '@/stores/auth'
 import { useToastStore } from '@/stores/toast'
+import { useLocalizedName } from '@/composables/useLocalizedName'
 
 const auth = useAuthStore()
 const toast = useToastStore()
 const { t } = useI18n()
+const localizedName = useLocalizedName()
 const selectedBranchId = ref<number | null>(null)
 const errorMessage = ref('')
 
 const branchOptions = computed(() =>
   auth.branches.map((branch) => ({
     value: branch.id,
-    label: branch.name ?? branch.translation_name?.ar ?? branch.translation_name?.en ?? '—',
+    label: localizedName(branch),
     description: branch.address || undefined,
   })),
 )

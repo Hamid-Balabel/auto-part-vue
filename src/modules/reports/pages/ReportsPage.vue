@@ -16,7 +16,7 @@ import {
   UserCheck,
   Warehouse,
 } from '@lucide/vue'
-import { computed, markRaw, onMounted, ref, type Component } from 'vue'
+import { computed, markRaw, onMounted, ref, watch, type Component } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute, useRouter } from 'vue-router'
 import { ApiError } from '@/api/http'
@@ -47,7 +47,7 @@ interface SectionPresentation {
 
 const route = useRoute()
 const router = useRouter()
-const { t } = useI18n()
+const { t, locale } = useI18n()
 const activeTab = ref<ReportPage>(route.query.tab === 'user' ? 'user' : 'product')
 const start = ref(typeof route.query.start === 'string' ? route.query.start : '')
 const end = ref(typeof route.query.end === 'string' ? route.query.end : '')
@@ -163,6 +163,10 @@ async function syncQuery(): Promise<void> {
 }
 
 onMounted(() => loadReport())
+watch(locale, () => {
+  reports.value = {}
+  void loadReport(true)
+})
 </script>
 
 <template>
@@ -175,7 +179,7 @@ onMounted(() => loadReport())
     </template>
   </PageHeader>
 
-  <section class="mb-6 overflow-hidden rounded-[1.75rem] border border-white/70 bg-white shadow-[0_18px_55px_rgba(15,23,42,.09)]">
+  <section class="mb-6 overflow-hidden rounded-[1.75rem] border border-border bg-surface shadow-soft">
     <div class="flex overflow-x-auto border-b border-border bg-background/50 p-2" role="tablist" :aria-label="t('reports.tabsLabel')">
       <button
         v-for="tab in tabs"

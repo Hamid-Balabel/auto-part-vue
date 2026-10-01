@@ -8,6 +8,7 @@ import BaseButton from '@/components/ui/BaseButton.vue'
 import FormPageLayout from '@/components/ui/FormPageLayout.vue'
 import { ApiError } from '@/api/http'
 import { useResourcePermissions } from '@/composables/useResourcePermissions'
+import { useLocalizedName } from '@/composables/useLocalizedName'
 import { useToastStore } from '@/stores/toast'
 import { createStock, getStock, listProductItems, listWarehouses, updateStock } from '../api'
 import type { ProductItem, StockPayload, Warehouse } from '../types'
@@ -16,6 +17,7 @@ const props = defineProps<{ id?: string }>()
 
 const router = useRouter()
 const { t } = useI18n()
+const localizedName = useLocalizedName()
 const toast = useToastStore()
 const permissions = useResourcePermissions('stock')
 const canSave = computed(() => props.id ? permissions.canUpdate.value : permissions.canCreate.value)
@@ -30,7 +32,7 @@ const form = reactive<StockPayload>({ warehouse_id: '', item_id: '', quantity: 0
 const isEdit = computed(() => Boolean(props.id))
 
 const warehouseOptions = computed<SearchableSelectOption<number>[]>(() => warehouses.value.map((warehouse) => ({
-  label: warehouse.name ?? `#${warehouse.id}`,
+  label: localizedName(warehouse, `#${warehouse.id}`),
   value: warehouse.id,
   description: warehouse.address ?? undefined,
   searchText: [warehouse.name, warehouse.translation_name?.ar, warehouse.translation_name?.en, warehouse.address].filter(Boolean).join(' '),

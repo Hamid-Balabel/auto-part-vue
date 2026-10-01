@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { RefreshCw, RotateCcw, Trash2 } from '@lucide/vue'
 import { useI18n } from 'vue-i18n'
+import { useLocalizedName } from '@/composables/useLocalizedName'
 import SearchableSelectInput from '@/components/forms/SearchableSelectInput.vue'
 import BaseBadge from '@/components/ui/BaseBadge.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
@@ -29,6 +30,7 @@ const emit = defineEmits<{
 }>()
 
 const { t } = useI18n()
+const localizedName = useLocalizedName()
 
 function toCents(value: string) {
   const match = value.trim().match(/^(\d+)(?:\.(\d{1,2}))?$/)
@@ -45,21 +47,11 @@ function lineTotal(line: QuickSaleLine) {
 }
 
 function warehouseName(warehouse?: Warehouse | null) {
-  return (
-    warehouse?.name ??
-    warehouse?.translation_name?.ar ??
-    warehouse?.translation_name?.en ??
-    '—'
-  )
+  return localizedName(warehouse)
 }
 
 function branchName(warehouse?: Warehouse | null) {
-  return (
-    warehouse?.branch?.name ??
-    warehouse?.branch?.translation_name?.ar ??
-    warehouse?.branch?.translation_name?.en ??
-    '—'
-  )
+  return localizedName(warehouse?.branch)
 }
 
 function warehouseOptions(line: QuickSaleLine) {

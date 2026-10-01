@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useLocalizedName } from "@/composables/useLocalizedName";
 import { Plus } from "@lucide/vue";
 import { computed, ref } from "vue";
 import { useI18n } from "vue-i18n";
@@ -22,6 +23,7 @@ const emit = defineEmits<{
   valueCreated: [value: ProductOptionValue];
 }>();
 const { t } = useI18n();
+const displayName = useLocalizedName();
 const dialogOpen = ref(false);
 const targetOption = ref<ProductOption | null>(null);
 
@@ -44,19 +46,6 @@ const groups = computed(() =>
     .filter((group) => group.values.length || props.canCreateValue),
 );
 
-function displayName(
-  record?: {
-    name?: string | null;
-    translation_name?: { ar?: string | null; en?: string | null };
-  } | null,
-) {
-  return (
-    record?.name ??
-    record?.translation_name?.ar ??
-    record?.translation_name?.en ??
-    "—"
-  );
-}
 
 function selected(group: { values: ProductOptionValue[] }) {
   const ids = new Set(group.values.map((value) => value.id));

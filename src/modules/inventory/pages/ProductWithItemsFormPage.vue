@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useLocalizedName } from "@/composables/useLocalizedName";
 import { Plus, Trash2 } from "@lucide/vue";
 import { computed, onMounted, reactive, ref } from "vue";
 import { useI18n } from "vue-i18n";
@@ -38,6 +39,7 @@ import ProductItemOptionsField from "../components/ProductItemOptionsField.vue";
 
 const router = useRouter();
 const { t } = useI18n();
+const displayName = useLocalizedName();
 const toast = useToastStore();
 const { can } = usePermissions();
 const optionsLoading = ref(false);
@@ -101,19 +103,6 @@ const brandOptions = computed<SearchableSelectOption<number>[]>(() =>
   })),
 );
 
-function displayName(
-  record?: {
-    name?: string | null;
-    translation_name?: { ar?: string | null; en?: string | null };
-  } | null,
-) {
-  return (
-    record?.name ??
-    record?.translation_name?.ar ??
-    record?.translation_name?.en ??
-    "—"
-  );
-}
 
 function normalizeList<T>(response: T[] | { data: T[] }): T[] {
   return Array.isArray(response) ? response : response.data;

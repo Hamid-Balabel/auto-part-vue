@@ -5,6 +5,7 @@ const props = defineProps<{
   src?: string | null
   alt?: string | null
   contain?: boolean
+  whiteBackground?: boolean
 }>()
 
 const normalizedSrc = computed(() => {
@@ -25,9 +26,9 @@ const normalizedSrc = computed(() => {
 </script>
 
 <template>
-  <div class="overflow-hidden rounded-[var(--radius-lg)] border border-border bg-background">
+  <div class="overflow-hidden rounded-[var(--radius-lg)] border border-border" :class="whiteBackground ? 'bg-white text-ink' : 'bg-background text-text-muted'">
     <img v-if="normalizedSrc" :src="normalizedSrc" :alt="alt ?? ''" class="aspect-video w-full" :class="contain ? 'object-contain p-3' : 'object-cover'" loading="lazy" />
-    <div v-else class="flex aspect-video items-center justify-center px-4 text-center text-sm text-text-muted">
+    <div v-else class="flex aspect-video items-center justify-center px-4 text-center text-sm">
       {{ $t('details.noImage') }}
     </div>
   </div>

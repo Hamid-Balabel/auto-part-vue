@@ -12,15 +12,17 @@ import BaseButton from '@/components/ui/BaseButton.vue'
 import FormPageLayout from '@/components/ui/FormPageLayout.vue'
 import FormSection from '@/components/ui/FormSection.vue'
 import { usePermissions } from '@/composables/usePermissions'
+import { useLocalizedDisplayName } from '@/composables/useLocalizedName'
 import { ApiError } from '@/api/http'
 import { useAdminStore } from '@/stores/admin'
 import { createUser, getUser, listRoles, updateUser } from '../api'
-import type { UserPayload } from '../types'
+import type { Role, UserPayload } from '../types'
 import { normalizeBoolean } from '@/utils/boolean'
 
 const props = defineProps<{ id?: string }>()
 
 const { t } = useI18n()
+const localizedDisplayName = useLocalizedDisplayName()
 const router = useRouter()
 const { can } = usePermissions()
 const adminStore = useAdminStore()
@@ -28,7 +30,8 @@ const loading = ref(false)
 const saving = ref(false)
 const errors = ref<Record<string, string[]>>({})
 const errorMessage = ref('')
-const roleOptions = ref<{ label: string; value: number }[]>([])
+const roles = ref<Role[]>([])
+const roleOptions = computed(() => roles.value.map((role) => ({ label: localizedDisplayName(role), value: role.id })))
 const phoneTouched = ref(false)
 
 const form = reactive<UserPayload>({
@@ -69,9 +72,9 @@ const genderOptions = computed(() => [
 ])
 async function loadOptions() {
   try {
-    const [roles] = await Promise.all([listRoles({ per_page: -1 }), adminStore.loadCountries()])
-    const roleList = Array.isArray(roles) ? roles : roles.data
-    roleOptions.value = roleList.map((role) => ({ label: role.translation_display_name ?? role.name, value: role.id }))
+    const [rolesResponse] = await Promise.all([listRoles({ per_page: -1 }), adminStore.loadCountries()])
+    const roleList = Array.isArray(rolesResponse) ? rolesResponse : rolesResponse.data
+    roles.value = roleList
   } catch (error) {
     if (error instanceof ApiError) errorMessage.value = error.message
   }

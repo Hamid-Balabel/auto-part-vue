@@ -91,7 +91,7 @@ function tooltipText(row: ReportRow): string {
             @mouseenter="hoveredIndex = index"
             @mouseleave="hoveredIndex = null"
           >
-            <div v-if="hoveredIndex === index" class="pointer-events-none absolute left-1/2 top-0 z-10 w-max max-w-48 -translate-x-1/2 rounded-lg bg-text px-3 py-2 text-center text-xs font-semibold text-white shadow-lg">
+            <div v-if="hoveredIndex === index" class="pointer-events-none absolute left-1/2 top-0 z-10 w-max max-w-48 -translate-x-1/2 rounded-lg bg-text px-3 py-2 text-center text-xs font-semibold text-background shadow-lg">
               {{ tooltipText(row) }}
             </div>
             <span class="text-xs font-bold tabular-nums text-text-muted">{{ formatValue(row[metricKey], money) }}</span>
@@ -120,7 +120,7 @@ function tooltipText(row: ReportRow): string {
           </svg>
           <div
             v-if="hoveredIndex !== null && linePoints[hoveredIndex] && chartRows[hoveredIndex]"
-            class="pointer-events-none absolute z-10 w-max max-w-48 -translate-x-1/2 -translate-y-full rounded-lg bg-text px-3 py-2 text-xs font-semibold text-white shadow-lg"
+            class="pointer-events-none absolute z-10 w-max max-w-48 -translate-x-1/2 -translate-y-full rounded-lg bg-text px-3 py-2 text-xs font-semibold text-background shadow-lg"
             :style="{ left: `${linePoints[hoveredIndex]!.x}%`, top: `${linePoints[hoveredIndex]!.y * 0.88}%` }"
           >
             {{ tooltipText(chartRows[hoveredIndex]!) }}
@@ -131,7 +131,7 @@ function tooltipText(row: ReportRow): string {
         </div>
 
         <div v-else class="relative flex h-full items-center justify-center gap-7">
-          <div v-if="hoveredIndex !== null && chartRows[hoveredIndex]" class="pointer-events-none absolute start-1/2 top-0 z-10 w-max max-w-52 -translate-x-1/2 rounded-lg bg-text px-3 py-2 text-xs font-semibold text-white shadow-lg">
+          <div v-if="hoveredIndex !== null && chartRows[hoveredIndex]" class="pointer-events-none absolute start-1/2 top-0 z-10 w-max max-w-52 -translate-x-1/2 rounded-lg bg-text px-3 py-2 text-xs font-semibold text-background shadow-lg">
             {{ tooltipText(chartRows[hoveredIndex]!) }}
           </div>
           <div class="relative aspect-square h-[88%]">

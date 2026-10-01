@@ -1,6 +1,7 @@
 <script setup lang="ts">
+import { useLocalizedName } from "@/composables/useLocalizedName";
 import { History } from '@lucide/vue'
-import { computed, onMounted, reactive, ref } from 'vue'
+import { computed, onMounted, reactive, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import BaseSelect from '@/components/forms/BaseSelect.vue'
 import DateInput from '@/components/forms/DateInput.vue'
@@ -38,6 +39,7 @@ import {
 import type { Branch, ProductItem, Warehouse } from '../types'
 
 const { t, locale } = useI18n()
+const displayName = useLocalizedName();
 const toast = useToastStore()
 const auth = useAuthStore()
 const permissions = useResourcePermissions('warehouse')
@@ -129,9 +131,6 @@ const trashedOptions = computed(() => [
   { value: 'only', label: t('crud.onlyDeleted') },
 ])
 
-function displayName(record?: { name?: string | null; translation_name?: { ar?: string | null; en?: string | null } } | null) {
-  return record?.name ?? record?.translation_name?.ar ?? record?.translation_name?.en ?? '—'
-}
 
 function formatDate(value?: string | null) {
   return value
@@ -221,6 +220,9 @@ function resetFilters() {
 }
 
 onMounted(() => Promise.all([list.load(), loadLookups()]))
+watch(locale, () => {
+  if (detailsOpen.value && selectedWarehouse.value) void openDetails(selectedWarehouse.value.id)
+})
 </script>
 
 <template>
@@ -272,6 +274,7 @@ onMounted(() => Promise.all([list.load(), loadLookups()]))
     :sort-direction="list.sortDirection.value"
     @sort="list.sortBy"
   >
+    <template #cell-name="{ row }">{{ displayName(row) }}</template>
     <template #cell-branch="{ row }">{{ displayName(row.branch) }}</template>
     <template #cell-is_current="{ row }">
       <BaseBadge :variant="row.is_current ? 'primary' : 'neutral'">{{

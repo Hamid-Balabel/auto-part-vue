@@ -2,7 +2,7 @@
 defineOptions({ name: 'QuickSalePage' })
 
 import { ArrowLeft, CheckCircle2, Plus, RotateCcw } from '@lucide/vue'
-import { computed, onMounted, ref } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import FormInput from '@/components/forms/FormInput.vue'
@@ -26,7 +26,7 @@ import SalesStatusBadge from '../components/SalesStatusBadge.vue'
 import { useQuickSale } from '../composables/useQuickSale'
 
 const props = defineProps<{ id?: string }>()
-const { t } = useI18n()
+const { t, locale } = useI18n()
 const router = useRouter()
 const toast = useToastStore()
 const adminStore = useAdminStore()
@@ -144,6 +144,12 @@ onMounted(async () => {
       error instanceof ApiError ? error.message : t('details.failedToLoad'),
     )
   }
+})
+watch(locale, () => {
+  void Promise.allSettled([
+    sale.loadProducts(),
+    ...(sale.selectedProduct.value ? [sale.selectProduct(sale.selectedProduct.value)] : []),
+  ])
 })
 </script>
 

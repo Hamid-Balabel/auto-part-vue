@@ -284,7 +284,7 @@ export interface ProductItem {
   merchant?: Merchant | null;
   option_values?: ProductOptionValue[];
   optionValues?: ProductOptionValue[];
-  images?: Array<{ id: number; name?: string | null; path?: string | null }>;
+  images?: ProductItemImage[];
   total_stock?: number;
   stocks?: Stock[];
   current_price?: number | string | null;
@@ -304,6 +304,12 @@ export interface ProductItem {
     created_at?: string | null;
   } | null;
   created_at?: string | null;
+}
+
+export interface ProductItemImage {
+  id: number;
+  name?: string | null;
+  path?: string | null;
 }
 
 export interface ProductItemListQuery extends ListQuery {

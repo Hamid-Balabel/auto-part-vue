@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import SettingsGroup from '@/components/settings/SettingsGroup.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
@@ -10,7 +10,7 @@ import { usePermissions } from '@/composables/usePermissions'
 import { listSettings, updateSettings } from '../api'
 import type { SettingValue } from '../types'
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
 const loading = ref(false)
 const saving = ref(false)
 const errorMessage = ref('')
@@ -24,6 +24,7 @@ const values = form.values
 const errors = form.errors
 const flatSettings = form.flatSettings
 const isDirty = form.isDirty
+let localeRequestId = 0
 
 async function load() {
   loading.value = true
@@ -67,6 +68,16 @@ function updateValue(id: number, value: SettingValue) {
 }
 
 onMounted(load)
+watch(locale, async () => {
+  const requestId = ++localeRequestId
+  try {
+    const nextGroups = await listSettings()
+    if (requestId === localeRequestId) form.refreshGroups(nextGroups)
+  } catch (error) {
+    if (requestId === localeRequestId)
+      errorMessage.value = error instanceof ApiError ? error.message : t('states.emptyMessage')
+  }
+})
 </script>
 
 <template>

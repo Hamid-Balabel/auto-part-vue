@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { computed, onMounted, reactive, ref } from 'vue'
+import { useLocalizedName } from "@/composables/useLocalizedName";
+import { computed, onMounted, reactive, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import ConfirmDialog from '@/components/modals/ConfirmDialog.vue'
 import BaseSelect from '@/components/forms/BaseSelect.vue'
@@ -32,6 +33,7 @@ import { deleteProductItem, getProductItem, listMerchants, listProductItems, lis
 import type { Merchant, Product, ProductItem, ProductOptionValue, Stock, Warehouse } from '../types'
 
 const { t, locale } = useI18n()
+const displayName = useLocalizedName();
 const toast = useToastStore()
 const permissions = useResourcePermissions('product-item')
 const { can } = usePermissions()
@@ -133,9 +135,6 @@ const trashedOptions = computed(() => [
   { value: 'only', label: t('crud.onlyDeleted') },
 ])
 
-function displayName(record?: { name?: string | null; translation_name?: { ar?: string | null; en?: string | null } } | null) {
-  return record?.name ?? record?.translation_name?.ar ?? record?.translation_name?.en ?? '—'
-}
 
 function groupedOptionValues(item: ProductItem) {
   const groups = new Map<string, { key: string; label: string; values: string[] }>()
@@ -240,6 +239,9 @@ function resetFilters() {
 }
 
 onMounted(() => Promise.all([list.load(), loadLookups()]))
+watch(locale, () => {
+  if (detailsOpen.value && selectedItem.value) void openDetails(selectedItem.value.id)
+})
 </script>
 
 <template>
@@ -308,7 +310,7 @@ onMounted(() => Promise.all([list.load(), loadLookups()]))
 
       <DetailsSection :title="t('table.barcode')">
         <div class="max-w-md">
-          <DetailsImage :src="selectedItem.barcode" :alt="selectedItem.sku" contain />
+          <DetailsImage :src="selectedItem.barcode" :alt="selectedItem.sku" contain white-background />
         </div>
       </DetailsSection>
 

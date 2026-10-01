@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 :root {
+  color-scheme: light;
   --color-primary: #1d4ed8;
   --color-primary-rgb: 29 78 216;
   --color-primary-hover: #1e40af;
@@ -84,6 +85,68 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --color-primary: #60a5fa;
+  --color-primary-rgb: 96 165 250;
+  --color-primary-hover: #93c5fd;
+  --color-primary-hover-rgb: 147 197 253;
+  --color-primary-active: #3b82f6;
+  --color-primary-active-rgb: 59 130 246;
+  --color-primary-soft: #1e3a5f;
+  --color-primary-soft-rgb: 30 58 95;
+  --color-primary-contrast: #0f172a;
+  --color-primary-contrast-rgb: 15 23 42;
+  --color-secondary: #fbbf24;
+  --color-secondary-rgb: 251 191 36;
+  --color-secondary-hover: #fcd34d;
+  --color-secondary-hover-rgb: 252 211 77;
+  --color-secondary-active: #f59e0b;
+  --color-secondary-active-rgb: 245 158 11;
+  --color-secondary-soft: #493513;
+  --color-secondary-soft-rgb: 73 53 19;
+  --color-secondary-contrast: #111827;
+  --color-secondary-contrast-rgb: 17 24 39;
+  --color-success: #4ade80;
+  --color-success-rgb: 74 222 128;
+  --color-success-soft: #143b2a;
+  --color-success-soft-rgb: 20 59 42;
+  --color-warning: #fbbf24;
+  --color-warning-rgb: 251 191 36;
+  --color-warning-soft: #493513;
+  --color-warning-soft-rgb: 73 53 19;
+  --color-danger: #f87171;
+  --color-danger-rgb: 248 113 113;
+  --color-danger-hover: #fca5a5;
+  --color-danger-hover-rgb: 252 165 165;
+  --color-danger-active: #ef4444;
+  --color-danger-active-rgb: 239 68 68;
+  --color-danger-soft: #491f26;
+  --color-danger-soft-rgb: 73 31 38;
+  --color-info: #7dd3fc;
+  --color-info-rgb: 125 211 252;
+  --color-info-soft: #173c50;
+  --color-info-soft-rgb: 23 60 80;
+  --color-neutral: #94a3b8;
+  --color-neutral-rgb: 148 163 184;
+  --color-neutral-soft: #28364a;
+  --color-neutral-soft-rgb: 40 54 74;
+  --color-border: #475569;
+  --color-border-rgb: 71 85 105;
+  --color-background: #0f172a;
+  --color-background-rgb: 15 23 42;
+  --color-surface: #1e293b;
+  --color-surface-rgb: 30 41 59;
+  --color-text: #f1f5f9;
+  --color-text-rgb: 241 245 249;
+  --color-text-muted: #cbd5e1;
+  --color-text-muted-rgb: 203 213 225;
+  --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.22);
+  --shadow-elevated: 0 24px 70px rgba(0, 0, 0, 0.34);
+  --focus-ring: 0 0 0 3px rgba(96, 165, 250, 0.28);
+  --color-sidebar-item-active: rgba(96, 165, 250, 0.22);
 }
 
 html[dir='rtl'] {

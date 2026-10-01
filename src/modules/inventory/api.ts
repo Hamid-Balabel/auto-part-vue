@@ -325,6 +325,10 @@ export async function updateProductItem(
   return unwrapData(response);
 }
 
+export async function deleteProductItemImage(imageId: number): Promise<void> {
+  await http.delete(`/product-items/images/${imageId}`);
+}
+
 export async function deleteProductItem(id: number): Promise<void> {
   await http.delete("/product-items/delete", { data: { id } });
 }

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useLocalizedName } from '@/composables/useLocalizedName'
 import type { Country } from '@/modules/data-entry/types'
 import SearchableSelectInput, { type SearchableSelectOption } from './SearchableSelectInput.vue'
 
@@ -26,7 +27,8 @@ const emit = defineEmits<{
   'update:modelValue': [value: PhoneInputValue]
 }>()
 
-const { locale, t } = useI18n()
+const { t } = useI18n()
+const localizedName = useLocalizedName()
 
 const selectedCountry = computed(() => props.countries.find((country) => String(country.id) === String(props.modelValue.phone_code_id ?? '')))
 const maxLength = computed(() => selectedCountry.value?.phone_length ? Number(selectedCountry.value.phone_length) : undefined)
@@ -37,9 +39,7 @@ const localError = computed(() => {
   return ''
 })
 const countryOptions = computed<SearchableSelectOption<number>[]>(() => props.countries.map((country) => {
-  const localizedName = locale.value === 'ar' ? country.name?.ar : country.name?.en
-  const fallbackName = country.translation_name ?? country.name?.en ?? country.name?.ar ?? country.code
-  const label = localizedName ?? fallbackName ?? country.code
+  const label = localizedName(country, country.code)
   return {
     label,
     value: country.id,

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, reactive, ref } from 'vue'
+import { computed, onMounted, reactive, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import FormInput from '@/components/forms/FormInput.vue'
@@ -15,7 +15,7 @@ import type { Permission, RolePayload } from '../types'
 
 const props = defineProps<{ id?: string }>()
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
 const router = useRouter()
 const { can } = usePermissions()
 const adminStore = useAdminStore()
@@ -133,6 +133,7 @@ async function submit() {
 onMounted(async () => {
   await Promise.all([loadOptions(), loadRecord()])
 })
+watch(locale, () => { void adminStore.loadPermissions(true) })
 </script>
 
 <template>

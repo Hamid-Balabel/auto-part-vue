@@ -9,6 +9,7 @@ import BaseButton from '@/components/ui/BaseButton.vue'
 import FormPageLayout from '@/components/ui/FormPageLayout.vue'
 import { ApiError } from '@/api/http'
 import { useResourcePermissions } from '@/composables/useResourcePermissions'
+import { useLocalizedName } from '@/composables/useLocalizedName'
 import { listResource } from '@/modules/data-entry/api'
 import { useToastStore } from '@/stores/toast'
 import { createProduct, getProduct, updateProduct } from '../api'
@@ -18,6 +19,7 @@ import { normalizeBoolean } from '@/utils/boolean'
 const props = defineProps<{ id?: string }>()
 const router = useRouter()
 const { t } = useI18n()
+const localizedName = useLocalizedName()
 const toast = useToastStore()
 const permissions = useResourcePermissions('product')
 const loading = ref(false)
@@ -38,12 +40,12 @@ const form = reactive<ProductPayload>({
 })
 
 const categoryOptions = computed<SearchableSelectOption<number>[]>(() => categories.value.map((category) => ({
-  label: category.name ?? `#${category.id}`,
+  label: localizedName(category, `#${category.id}`),
   value: category.id,
   searchText: [category.name, category.translation_name?.ar, category.translation_name?.en].filter(Boolean).join(' '),
 })))
 const brandOptions = computed<SearchableSelectOption<number>[]>(() => brands.value.map((brand) => ({
-  label: brand.name ?? `#${brand.id}`,
+  label: localizedName(brand, `#${brand.id}`),
   value: brand.id,
   searchText: [brand.name, brand.translation_name?.ar, brand.translation_name?.en].filter(Boolean).join(' '),
 })))

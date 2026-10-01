@@ -31,8 +31,10 @@ import { useI18n } from "vue-i18n";
 import { RouterLink, RouterView, useRoute, useRouter } from "vue-router";
 import BaseButton from "@/components/ui/BaseButton.vue";
 import LanguageSwitcher from "@/components/ui/LanguageSwitcher.vue";
+import ThemeSwitcher from "@/components/ui/ThemeSwitcher.vue";
 import CurrentBranchDialog from "@/modules/inventory/components/CurrentBranchDialog.vue";
 import { usePermissions } from "@/composables/usePermissions";
+import { useLocalizedName } from "@/composables/useLocalizedName";
 import { useAuthStore } from "@/stores/auth";
 import type { PermissionRequirement } from "@/utils/permissions";
 
@@ -63,6 +65,7 @@ const route = useRoute();
 const auth = useAuthStore();
 const { can } = usePermissions();
 const { locale, t } = useI18n();
+const localizedName = useLocalizedName();
 const sidebarOpen = ref(false);
 const openGroups = ref<Record<NavGroup["key"], boolean>>({
   dataEntry: false,
@@ -74,6 +77,12 @@ const openGroups = ref<Record<NavGroup["key"], boolean>>({
 });
 
 const isRtl = computed(() => locale.value === "ar");
+const currentBranchName = computed(() => {
+  return localizedName(auth.currentBranch, t("inventory.selectCurrentBranch"));
+});
+const currentUserName = computed(() => {
+  return auth.user?.name ?? t("common.user");
+});
 
 const navGroups: NavGroup[] = [
   {
@@ -484,9 +493,10 @@ async function handleLogout() {
               t("app.searchHint")
             }}</span>
           </div>
-          <LanguageSwitcher
-            :class="isRtl ? 'mr-auto sm:mr-0' : 'ml-auto sm:ml-0'"
-          />
+          <div class="flex items-center gap-2" :class="isRtl ? 'mr-auto sm:mr-0' : 'ml-auto sm:ml-0'">
+            <LanguageSwitcher />
+            <ThemeSwitcher />
+          </div>
           <BaseButton
             v-if="auth.canReadBranches && auth.canSetCurrentBranch"
             class="hidden max-w-52 sm:inline-flex"
@@ -497,12 +507,12 @@ async function handleLogout() {
           >
             <GitBranch class="size-4 shrink-0" />
             <span class="truncate">{{
-              auth.currentBranch?.name ?? t("inventory.selectCurrentBranch")
+              currentBranchName
             }}</span>
           </BaseButton>
           <div class="hidden text-end sm:block">
             <p class="text-sm font-semibold text-text">
-              {{ auth.user?.name ?? t("common.user") }}
+              {{ currentUserName }}
             </p>
             <p class="text-xs text-text-muted">{{ auth.user?.email }}</p>
           </div>

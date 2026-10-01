@@ -10,12 +10,15 @@ import SearchableSelectInput, {
 import BooleanField from "@/components/forms/BooleanField.vue";
 import BaseButton from "@/components/ui/BaseButton.vue";
 import FormPageLayout from "@/components/ui/FormPageLayout.vue";
+import ConfirmDialog from "@/components/modals/ConfirmDialog.vue";
 import { ApiError } from "@/api/http";
 import { useResourcePermissions } from "@/composables/useResourcePermissions";
 import { usePermissions } from "@/composables/usePermissions";
+import { useLocalizedName } from "@/composables/useLocalizedName";
 import { useToastStore } from "@/stores/toast";
 import {
   createProductItem,
+  deleteProductItemImage,
   getProductItem,
   listMerchants,
   listOptionValues,
@@ -28,6 +31,7 @@ import type {
   Merchant,
   Product,
   ProductItemPayload,
+  ProductItemImage,
   ProductOption,
   ProductOptionValue,
   Warehouse,
@@ -39,6 +43,7 @@ import ProductItemOptionsField from "../components/ProductItemOptionsField.vue";
 const props = defineProps<{ id?: string }>();
 const router = useRouter();
 const { t } = useI18n();
+const localizedName = useLocalizedName();
 const toast = useToastStore();
 const permissions = useResourcePermissions("product-item");
 const { can } = usePermissions();
@@ -53,11 +58,24 @@ const optionValues = ref<ProductOptionValue[]>([]);
 const warehouses = ref<Warehouse[]>([]);
 const merchants = ref<Merchant[]>([]);
 const images = ref<File[]>([]);
+const existingImages = ref<ProductItemImage[]>([]);
+const imageToDelete = ref<ProductItemImage | null>(null);
+const deletingImage = ref(false);
 const generatedSku = ref("");
 const isEdit = computed(() => Boolean(props.id));
 const canSave = computed(() =>
   props.id ? permissions.canUpdate.value : permissions.canCreate.value,
 );
+const displayedImages = computed(() => [
+  ...existingImages.value.map((image) => ({
+    key: `existing:${image.id}`,
+    name: image.name?.trim() || `#${image.id}`,
+  })),
+  ...images.value.map((file, index) => ({
+    key: `new:${index}`,
+    name: file.name,
+  })),
+]);
 const form = reactive<ProductItemPayload>({
   product_id: null,
   merchant_id: null,
@@ -70,7 +88,7 @@ const form = reactive<ProductItemPayload>({
 
 const productOptions = computed<SearchableSelectOption<number>[]>(() =>
   products.value.map((product) => ({
-    label: product.name ?? `#${product.id}`,
+    label: localizedName(product, `#${product.id}`),
     value: product.id,
     searchText: [
       product.name,
@@ -125,6 +143,7 @@ async function loadRecord() {
   try {
     const item = await getProductItem(props.id);
     generatedSku.value = item.sku ?? "";
+    existingImages.value = item.images ?? [];
     if (
       item.merchant &&
       !merchants.value.some((merchant) => merchant.id === item.merchant?.id)
@@ -178,8 +197,39 @@ function addOptionValue(value: ProductOptionValue) {
 }
 
 function setImages(files: File[]) {
-  images.value = files;
+  images.value = [...images.value, ...files];
   form.images = images.value;
+}
+
+function removeImage(key: string) {
+  if (key.startsWith("new:")) {
+    images.value.splice(Number(key.slice(4)), 1);
+    form.images = images.value;
+    return;
+  }
+
+  const image = existingImages.value.find((item) => item.id === Number(key.slice(9)));
+  if (image) imageToDelete.value = image;
+}
+
+async function confirmDeleteImage() {
+  const image = imageToDelete.value;
+  if (!image || deletingImage.value) return;
+  deletingImage.value = true;
+  errorMessage.value = "";
+  try {
+    await deleteProductItemImage(image.id);
+    existingImages.value = existingImages.value.filter((item) => item.id !== image.id);
+    imageToDelete.value = null;
+    toast.success(t("inventory.imageDeleted"));
+  } catch (error) {
+    errorMessage.value = error instanceof ApiError
+      ? error.message
+      : t("inventory.imageDeleteFailed");
+    toast.error(errorMessage.value);
+  } finally {
+    deletingImage.value = false;
+  }
 }
 
 async function submit() {
@@ -296,9 +346,9 @@ onMounted(async () => {
             :key="stock.warehouse_id"
             v-model="stock.quantity"
             :label="
-              warehouses.find(
+              localizedName(warehouses.find(
                 (warehouse) => warehouse.id === Number(stock.warehouse_id),
-              )?.name ?? `#${stock.warehouse_id}`
+              ), `#${stock.warehouse_id}`)
             "
             type="number"
             :error="errors[`stocks.${index}.quantity`]?.[0]"
@@ -311,17 +361,29 @@ onMounted(async () => {
         :label="t('inventory.images')"
         accept="image/jpeg,image/png,image/webp"
         multiple
+        :managed-files="displayedImages"
+        :disabled="saving || deletingImage"
         :error="errors['images.0']?.[0]"
         @change="setImages"
+        @remove="removeImage"
       />
     </div>
     <template #actions>
       <BaseButton variant="secondary" :to="{ name: 'product-items.index' }">{{
         t("actions.cancel")
       }}</BaseButton>
-      <BaseButton v-if="canSave" type="submit" :loading="saving">{{
+      <BaseButton v-if="canSave" type="submit" :loading="saving" :disabled="deletingImage">{{
         saving ? t("actions.saving") : t("actions.save")
       }}</BaseButton>
     </template>
   </FormPageLayout>
+  <ConfirmDialog
+    :open="imageToDelete !== null"
+    :title="t('inventory.deleteImageTitle')"
+    :message="t('inventory.deleteImageMessage', { name: imageToDelete?.name || `#${imageToDelete?.id}` })"
+    :confirm-label="t('actions.delete')"
+    :loading="deletingImage"
+    @close="imageToDelete = null"
+    @confirm="confirmDeleteImage"
+  />
 </template>

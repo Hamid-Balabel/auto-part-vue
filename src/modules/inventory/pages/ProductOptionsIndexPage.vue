@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { computed, onMounted, reactive, ref } from "vue";
+import { useLocalizedName } from "@/composables/useLocalizedName";
+import { computed, onMounted, reactive, ref, watch } from "vue";
 import { useI18n } from "vue-i18n";
 import ConfirmDialog from "@/components/modals/ConfirmDialog.vue";
 import BaseBadge from "@/components/ui/BaseBadge.vue";
@@ -30,7 +31,8 @@ import {
 } from "../api";
 import type { ProductOption } from "../types";
 
-const { t } = useI18n();
+const { t, locale } = useI18n();
+const displayName = useLocalizedName();
 const toast = useToastStore();
 const permissions = useResourcePermissions("product-option");
 const selectedId = ref<number | null>(null);
@@ -84,19 +86,6 @@ const columns = computed<DataTableColumn<ProductOption>[]>(() => [
   { key: "actions", label: t("table.actions"), align: "right" },
 ]);
 
-function displayName(
-  record?: {
-    name?: string | null;
-    translation_name?: { ar?: string | null; en?: string | null };
-  } | null,
-) {
-  return (
-    record?.name ??
-    record?.translation_name?.ar ??
-    record?.translation_name?.en ??
-    "—"
-  );
-}
 
 async function openDetails(id: number) {
   detailsOpen.value = true;
@@ -139,6 +128,9 @@ function resetFilters() {
 }
 
 onMounted(list.load);
+watch(locale, () => {
+  if (detailsOpen.value && selectedOption.value) void openDetails(selectedOption.value.id);
+});
 </script>
 
 <template>

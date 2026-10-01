@@ -7,7 +7,7 @@ import {
   RotateCcw,
   XCircle,
 } from '@lucide/vue'
-import { computed, onMounted, ref } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import BaseButton from '@/components/ui/BaseButton.vue'
@@ -19,6 +19,7 @@ import MoneyDisplay from '@/components/ui/MoneyDisplay.vue'
 import PageHeader from '@/components/ui/PageHeader.vue'
 import { ApiError } from '@/api/http'
 import { usePermissions } from '@/composables/usePermissions'
+import { useLocalizedName } from '@/composables/useLocalizedName'
 import { useToastStore } from '@/stores/toast'
 import { changeOrderStatus, createPaidInstallment, getOrder } from '../api'
 import type { OrderActionStatus } from '../orderWorkflow'
@@ -33,6 +34,7 @@ import PaymentsHistory from '../components/PaymentsHistory.vue'
 
 const props = defineProps<{ id: string }>()
 const { t, locale } = useI18n()
+const localizedName = useLocalizedName()
 const router = useRouter()
 const toast = useToastStore()
 const { can } = usePermissions()
@@ -146,6 +148,7 @@ async function addPayment(payload: {
 }
 
 onMounted(load)
+watch(locale, () => { void load() })
 </script>
 
 <template>
@@ -302,9 +305,7 @@ onMounted(load)
                 </td>
                 <td class="px-3 py-3">
                   {{
-                    item.warehouse?.name ??
-                    item.warehouse?.translation_name?.ar ??
-                    '—'
+                    localizedName(item.warehouse)
                   }}
                 </td>
                 <td class="px-3 py-3">

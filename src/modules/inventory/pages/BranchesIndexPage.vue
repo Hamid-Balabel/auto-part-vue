@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { computed, onMounted, reactive, ref } from 'vue'
+import { useLocalizedName } from "@/composables/useLocalizedName";
+import { computed, onMounted, reactive, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import BaseSelect from '@/components/forms/BaseSelect.vue'
 import DateInput from '@/components/forms/DateInput.vue'
@@ -35,6 +36,7 @@ import {
 import type { Branch } from '../types'
 
 const { t, locale } = useI18n()
+const displayName = useLocalizedName();
 const { can } = usePermissions()
 const toast = useToastStore()
 const auth = useAuthStore()
@@ -117,9 +119,6 @@ function resetFilters() {
   void list.load()
 }
 
-function displayName(branch?: Branch | null) {
-  return branch?.name ?? branch?.translation_name?.ar ?? branch?.translation_name?.en ?? '—'
-}
 
 function formatDate(value?: string | null) {
   return value
@@ -222,6 +221,9 @@ async function confirmDelete() {
 }
 
 onMounted(list.load)
+watch(locale, () => {
+  if (detailsOpen.value && selectedBranch.value) void openDetails(selectedBranch.value.id)
+})
 </script>
 
 <template>
@@ -277,6 +279,7 @@ onMounted(list.load)
     :empty-title="t('inventory.noBranchesAvailable')"
     @sort="list.sortBy"
   >
+    <template #cell-name="{ row }">{{ displayName(row) }}</template>
     <template #cell-is_active="{ row }">
       <SwitchInput
         :model-value="row.is_active"

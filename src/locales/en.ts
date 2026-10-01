@@ -409,6 +409,12 @@ export default {
     optionValues: "Option values",
     warehouseQuantities: "Warehouse quantities",
     images: "Images",
+    chooseImages: "Choose files",
+    removeImageNamed: "Remove image {name}",
+    deleteImageTitle: "Delete image",
+    deleteImageMessage: "Delete {name} permanently? It will be removed as soon as you confirm.",
+    imageDeleted: "Image deleted.",
+    imageDeleteFailed: "Could not delete the image. Please try again.",
     imagesHelp:
       "Images are uploaded only when selected. Existing images remain managed by the backend response.",
     productOptionsTitle: "Product Item Options",
@@ -783,6 +789,8 @@ export default {
       "Module implementation will include API service, TypeScript resource types, list filters, form validation, details, and supported backend actions only.",
   },
   common: {
+    darkMode: "Dark mode",
+    lightMode: "Light mode",
     loading: "Loading...",
     close: "Close",
     closeSidebar: "Close sidebar",

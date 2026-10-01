@@ -1,16 +1,14 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import { useLocalizedName } from '@/composables/useLocalizedName'
 import type { ProductItem } from '@/modules/inventory/types'
 
 const props = defineProps<{ item?: ProductItem | null }>()
+const localizedName = useLocalizedName()
 
 const name = computed(
   () =>
-    props.item?.product?.name ??
-    props.item?.product?.translation_name?.ar ??
-    props.item?.product?.translation_name?.en ??
-    props.item?.sku ??
-    '—',
+    localizedName(props.item?.product, props.item?.sku ?? '—'),
 )
 const image = computed(() => {
   const path = props.item?.images?.[0]?.path
@@ -21,9 +19,7 @@ const options = computed(() =>
   (props.item?.option_values ?? props.item?.optionValues ?? [])
     .map(
       (option) =>
-        option.name ??
-        option.translation_name?.ar ??
-        option.translation_name?.en,
+        localizedName(option, ''),
     )
     .filter(Boolean)
     .join(' · '),
