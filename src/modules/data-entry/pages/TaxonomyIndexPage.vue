@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, reactive, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { ChevronDown } from '@lucide/vue'
 import BaseSelect from '@/components/forms/BaseSelect.vue'
 import DateInput from '@/components/forms/DateInput.vue'
 import ConfirmDialog from '@/components/modals/ConfirmDialog.vue'
@@ -15,8 +16,9 @@ import RowActions from '@/components/ui/RowActions.vue'
 import { useCrudList } from '@/composables/useCrudList'
 import { usePermissions } from '@/composables/usePermissions'
 import { useToastStore } from '@/stores/toast'
-import { deleteResource, listResource, toggleResource } from '../api'
-import type { Brand, Category } from '../types'
+import { deleteResource, listCategoryTree, listResource, toggleResource } from '../api'
+import type { Brand, Category, CategoryTreeNode } from '../types'
+import { categoryDisplayName, filterCategoryTreeRowsByCollapsed, flattenCategoryTree } from '../utils/categoryTree'
 
 const props = defineProps<{
   resource: 'categories' | 'brands'
@@ -24,6 +26,7 @@ const props = defineProps<{
 }>()
 
 type Row = Brand | Category
+type CategoryTreeTableRow = Category & { depth: number; path: string; parentName: string; ancestorIds: number[]; hasChildren: boolean }
 interface TaxonomyFilters {
   has_products: string
   is_active: string
@@ -37,7 +40,13 @@ interface TaxonomyFilters {
 const selectedId = ref<number | null>(null)
 const categoryOptionsLoading = ref(false)
 const categories = ref<Category[]>([])
-const { t } = useI18n()
+const categoryTree = ref<CategoryTreeNode[]>([])
+const categoryTreeLoading = ref(false)
+const categoryTreeError = ref('')
+const categoryView = ref<'tree' | 'list'>('tree')
+const collapsedCategoryIds = ref<Set<number>>(new Set())
+const { locale, t } = useI18n()
+const isRtl = computed(() => locale.value === 'ar')
 const toast = useToastStore()
 const emptyFilters = (): TaxonomyFilters => ({
   has_products: '',
@@ -54,6 +63,8 @@ const appliedFilters = reactive<TaxonomyFilters>(emptyFilters())
 const createRoute = computed(() => `${props.resource}.create`)
 const editRoute = computed(() => `${props.resource}.edit`)
 const displayTitle = computed(() => t(props.resource === 'categories' ? 'dataEntry.categoriesTitle' : 'dataEntry.brandsTitle'))
+const isCategory = computed(() => props.resource === 'categories')
+const showTreeMode = computed(() => isCategory.value && categoryView.value === 'tree')
 const { can } = usePermissions()
 const permissionBase = computed(() => props.resource === 'categories' ? 'category' : 'brand')
 const canCreate = computed(() => can(`create-${permissionBase.value}`))
@@ -75,14 +86,28 @@ const parentOptions = computed(() => [
   { value: '', label: t('crud.all') },
   ...categories.value.map((category) => ({ value: category.id, label: category.name ?? `#${category.id}` })),
 ])
+const flattenedTreeRows = computed(() => flattenCategoryTree(categoryTree.value, locale.value, t('dataEntry.rootCategory')))
+const treeTableRows = computed<CategoryTreeTableRow[]>(() => filterCategoryTreeRowsByCollapsed(flattenedTreeRows.value, collapsedCategoryIds.value).map((row) => ({
+  ...row.category,
+  depth: row.depth,
+  path: row.path,
+  parentName: row.parentName,
+  ancestorIds: row.ancestorIds,
+  hasChildren: row.hasChildren,
+})))
 
-const columns = computed<DataTableColumn<Row>[]>(() => [
-  { key: 'id', label: t('table.id'), sortable: true },
-  { key: 'name', label: t('table.name') },
-  { key: 'description', label: t('table.description') },
-  { key: 'is_active', label: t('table.status') },
-  { key: 'actions', label: t('table.actions'), align: 'right' },
-])
+const columns = computed<DataTableColumn<Row>[]>(() => {
+  const tableColumns: DataTableColumn<Row>[] = [
+    { key: 'id', label: t('table.id'), sortable: !showTreeMode.value },
+    { key: 'name', label: t('table.name') },
+    { key: 'description', label: t('table.description') },
+  ]
+
+  if (isCategory.value) tableColumns.push({ key: 'parent', label: t('dataEntry.parentCategory') })
+  tableColumns.push({ key: 'is_active', label: t('table.status') }, { key: 'actions', label: t('table.actions'), align: 'right' })
+
+  return tableColumns
+})
 
 async function confirmDelete() {
   if (!selectedId.value) return
@@ -90,11 +115,18 @@ async function confirmDelete() {
     await deleteResource(props.resource, selectedId.value as number)
     toast.success(t('crud.deleted'))
   })
+  await refreshCategoryData()
   selectedId.value = null
 }
 
 async function toggleStatus(id: number) {
   await toggleResource(props.resource, id)
+  await refreshCategoryData()
+}
+
+async function refreshCategoryData() {
+  if (!isCategory.value) return
+  await Promise.all([list.load(), loadCategoryOptions(), loadCategoryTree()])
 }
 
 function applyFilters() {
@@ -111,7 +143,7 @@ function resetFilters() {
 }
 
 async function loadCategoryOptions() {
-  if (props.resource !== 'categories') return
+  if (!isCategory.value) return
   categoryOptionsLoading.value = true
   try {
     const response = await listResource('categories', { per_page: -1 })
@@ -121,8 +153,58 @@ async function loadCategoryOptions() {
   }
 }
 
+async function loadCategoryTree() {
+  if (!isCategory.value) return
+  categoryTreeLoading.value = true
+  categoryTreeError.value = ''
+  try {
+    categoryTree.value = await listCategoryTree()
+  } catch (error) {
+    categoryTreeError.value = error instanceof Error ? error.message : t('states.emptyMessage')
+  } finally {
+    categoryTreeLoading.value = false
+  }
+}
+
+function refreshCurrentView() {
+  if (showTreeMode.value) void loadCategoryTree()
+  else void list.load()
+}
+
+function treeIndentStyle(row: Row) {
+  return showTreeMode.value && 'depth' in row && typeof row.depth === 'number' && row.depth > 0
+    ? { paddingInlineStart: `${row.depth * 1.25}rem` }
+    : undefined
+}
+
+function isTreeParent(row: Row) {
+  return showTreeMode.value && 'hasChildren' in row && row.hasChildren === true
+}
+
+function isTreeCollapsed(row: Row) {
+  return collapsedCategoryIds.value.has(row.id as number)
+}
+
+function toggleTreeRow(row: Row) {
+  const next = new Set(collapsedCategoryIds.value)
+  const id = row.id as number
+  if (next.has(id)) next.delete(id)
+  else next.add(id)
+  collapsedCategoryIds.value = next
+}
+
+function displayRowName(row: Row) {
+  return categoryDisplayName(row as Category, locale.value)
+}
+
+function displayParentName(row: Row) {
+  if (showTreeMode.value && 'parentName' in row && typeof row.parentName === 'string') return row.parentName
+  return (row as Category).parent?.name ?? t('dataEntry.rootCategory')
+}
+
 onMounted(() => {
-  void list.load()
+  if (showTreeMode.value) void loadCategoryTree()
+  else void list.load()
   void loadCategoryOptions()
 })
 
@@ -132,7 +214,11 @@ watch(() => props.resource, () => {
   list.page.value = 1
   list.search.value = ''
   categories.value = []
-  void list.load()
+  categoryTree.value = []
+  collapsedCategoryIds.value = new Set()
+  categoryView.value = props.resource === 'categories' ? 'tree' : 'list'
+  if (showTreeMode.value) void loadCategoryTree()
+  else void list.load()
   void loadCategoryOptions()
 })
 </script>
@@ -145,13 +231,27 @@ watch(() => props.resource, () => {
   </PageHeader>
 
   <CrudToolbar
+    v-if="!showTreeMode"
     :loading="list.loading.value"
     :search="list.search.value"
     @search="list.applySearch"
     @refresh="list.load"
   />
 
+  <div v-if="isCategory" class="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-[var(--radius-xl)] border border-border bg-surface p-3 shadow-sm">
+    <div>
+      <p class="text-sm font-semibold text-text">{{ t('dataEntry.categoryHierarchy') }}</p>
+      <p class="text-xs text-text-muted">{{ showTreeMode ? t('dataEntry.treeViewHint') : t('dataEntry.listViewHint') }}</p>
+    </div>
+    <div class="flex flex-wrap items-center gap-2">
+      <BaseButton :variant="categoryView === 'tree' ? 'primary' : 'outline'" size="sm" type="button" @click="categoryView = 'tree'; loadCategoryTree()">{{ t('dataEntry.treeView') }}</BaseButton>
+      <BaseButton :variant="categoryView === 'list' ? 'primary' : 'outline'" size="sm" type="button" @click="categoryView = 'list'; list.load()">{{ t('dataEntry.listView') }}</BaseButton>
+      <BaseButton variant="ghost" size="sm" type="button" :loading="showTreeMode ? categoryTreeLoading : list.loading.value" @click="refreshCurrentView">{{ t('actions.refresh') }}</BaseButton>
+    </div>
+  </div>
+
   <CrudFilterPanel
+    v-if="!showTreeMode"
     :active-count="activeFiltersCount"
     :loading="list.loading.value"
     @apply="applyFilters"
@@ -212,14 +312,36 @@ watch(() => props.resource, () => {
 
   <DataTable
     :columns="columns"
-    :rows="list.rows.value"
-    :loading="list.loading.value"
+    :rows="showTreeMode ? treeTableRows : list.rows.value"
+    :loading="showTreeMode ? categoryTreeLoading : list.loading.value"
     :sort-column="list.sortColumn.value"
     :sort-direction="list.sortDirection.value"
     :empty-title="t('states.emptyTitle')"
     :empty-message="t('states.emptyMessage')"
     @sort="list.sortBy"
   >
+    <template #cell-name="{ row }">
+      <div class="min-w-48" :style="treeIndentStyle(row)">
+        <span class="inline-flex min-w-0 items-center gap-2 align-middle">
+          <button
+            v-if="isTreeParent(row)"
+            class="inline-flex size-7 shrink-0 items-center justify-center rounded-full text-text-muted transition hover:bg-primary-soft hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+            type="button"
+            :aria-expanded="!isTreeCollapsed(row)"
+            :aria-label="isTreeCollapsed(row) ? t('dataEntry.expandCategory') : t('dataEntry.collapseCategory')"
+            @click.stop="toggleTreeRow(row)"
+          >
+            <ChevronDown class="size-4 transition-transform duration-200" :class="isTreeCollapsed(row) ? (isRtl ? '-rotate-90' : 'rotate-90') : ''" aria-hidden="true" />
+          </button>
+          <span v-else-if="showTreeMode" class="inline-block size-7 shrink-0" aria-hidden="true"></span>
+          <span class="truncate font-semibold">{{ displayRowName(row) }}</span>
+        </span>
+        <span v-if="showTreeMode && 'path' in row" class="mt-0.5 block text-xs text-text-muted">{{ row.path }}</span>
+      </div>
+    </template>
+    <template #cell-parent="{ row }">
+      {{ displayParentName(row) }}
+    </template>
     <template #cell-is_active="{ row }">
       <ActiveStatusSwitch :row="row" :can-toggle="canToggle" :toggle="toggleStatus" :data-testid="`${props.resource}-status-${row.id}`" />
     </template>
@@ -234,7 +356,11 @@ watch(() => props.resource, () => {
     </template>
   </DataTable>
 
-  <Pagination v-if="list.pageData.value" :meta="list.pageData.value" @change="list.changePage" />
+  <div v-if="showTreeMode && categoryTreeError" class="mt-3 rounded-[var(--radius-lg)] border border-danger/30 bg-danger/10 px-4 py-3 text-sm text-danger">
+    {{ categoryTreeError }}
+  </div>
+
+  <Pagination v-if="!showTreeMode && list.pageData.value" :meta="list.pageData.value" @change="list.changePage" />
 
   <ConfirmDialog
     :open="selectedId !== null"

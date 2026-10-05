@@ -12,6 +12,7 @@ export interface BaseSelectOption<T extends SelectValue = SelectValue> {
   icon?: string
   searchText?: string
   disabled?: boolean
+  depth?: number
 }
 
 const props = withDefaults(defineProps<{
@@ -67,6 +68,7 @@ const normalizedOptions = computed<BaseSelectOption[]>(() => props.options.map((
     icon: option.icon ? String(option.icon) : undefined,
     searchText: option.searchText ? String(option.searchText) : undefined,
     disabled: Boolean(option.disabled),
+    depth: Number.isFinite(option.depth) && (option.depth as number) >= 0 ? (option.depth as number) : 0,
   }
 }))
 const selectedValues = computed<SelectValue[]>(() => {
@@ -197,7 +199,7 @@ onBeforeUnmount(() => {
       <button
         :id="id"
         ref="trigger"
-        class="form-control flex min-h-11 items-center gap-2 text-start transition"
+        class="select-control flex min-h-11 items-center gap-2 text-start transition"
         :class="[error ? 'border-danger focus:border-danger focus:ring-danger' : '', disabled ? 'cursor-not-allowed opacity-[var(--disabled-opacity)]' : 'hover:border-primary/60', clearable && selectedValues.length ? 'pe-16' : '']"
         type="button"
         role="combobox"
@@ -300,7 +302,7 @@ onBeforeUnmount(() => {
               @click="selectOption(option)"
             >
               <span v-if="option.icon" class="shrink-0">{{ option.icon }}</span>
-              <span class="min-w-0 flex-1">
+              <span class="min-w-0 flex-1" :style="option.depth ? { paddingInlineStart: `${option.depth * 1.125}rem` } : undefined">
                 <span class="block truncate font-semibold">{{ option.label }} <span v-if="option.meta" class="font-normal text-text-muted">{{ option.meta }}</span></span>
                 <span v-if="option.description" class="block truncate text-xs text-text-muted">{{ option.description }}</span>
               </span>

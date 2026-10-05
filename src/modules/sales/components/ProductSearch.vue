@@ -15,7 +15,7 @@ function productName(item: ProductItem) {
 const results = computed(() => {
   const value = query.value.trim().toLowerCase()
   if (!value) return []
-  return props.products.filter((item) => [productName(item), item.sku].some((field) => String(field ?? '').toLowerCase().includes(value))).slice(0, 12)
+  return props.products.filter((item) => [productName(item), item.sku, item.barcode, item.movement_code].some((field) => String(field ?? '').toLowerCase().includes(value))).slice(0, 12)
 })
 
 function select(item: ProductItem) {
@@ -33,7 +33,7 @@ function select(item: ProductItem) {
     </div>
     <div v-if="query" class="absolute z-40 mt-2 max-h-96 w-full overflow-y-auto rounded-[var(--radius-xl)] border border-border bg-surface p-2 shadow-elevated">
       <button v-for="item in results" :key="item.id" class="flex w-full items-center justify-between gap-4 rounded-[var(--radius-lg)] px-3 py-3 text-start transition hover:bg-primary-soft" type="button" @click="select(item)">
-        <span class="min-w-0"><span class="block truncate font-bold text-text">{{ productName(item) }}</span><span class="block text-xs text-text-muted">{{ item.sku }}</span></span>
+        <span class="min-w-0"><span class="block truncate font-bold text-text">{{ productName(item) }}</span><span class="block text-xs text-text-muted">{{ [item.sku, item.movement_code].filter(Boolean).join(' · ') }}</span></span>
         <span class="shrink-0 text-end"><MoneyDisplay :value="item.current_price" currency="EGP" /><span class="block text-xs text-text-muted">{{ $t('sales.stockAvailable', { count: item.total_stock ?? 0 }) }}</span></span>
       </button>
       <p v-if="!results.length" class="px-3 py-6 text-center text-sm text-text-muted">{{ $t('sales.noProductsFound') }}</p>

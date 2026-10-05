@@ -1,7 +1,7 @@
 <script setup lang="ts">
 defineOptions({ name: 'QuickSalePage' })
 
-import { ArrowLeft, CheckCircle2, Plus, RotateCcw } from '@lucide/vue'
+import { ArrowLeft, CheckCircle2, Plus, Printer, RotateCcw } from '@lucide/vue'
 import { computed, onMounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
@@ -12,10 +12,10 @@ import MoneyDisplay from '@/components/ui/MoneyDisplay.vue'
 import PageHeader from '@/components/ui/PageHeader.vue'
 import { ApiError } from '@/api/http'
 import { usePermissions } from '@/composables/usePermissions'
-import { createCustomer } from '@/modules/inventory/api'
-import type { CustomerPayload } from '@/modules/inventory/types'
+import { createParty } from '@/modules/inventory/api'
+import type { PartyPayload } from '@/modules/inventory/types'
 import { useToastStore } from '@/stores/toast'
-import { useAdminStore } from '@/stores/admin'
+import InvoicePreviewModal from '../components/InvoicePreviewModal.vue'
 import OrderSummary from '../components/OrderSummary.vue'
 import PartialPaymentForm from '../components/PartialPaymentForm.vue'
 import PaymentMethodSelector from '../components/PaymentMethodSelector.vue'
@@ -29,16 +29,16 @@ const props = defineProps<{ id?: string }>()
 const { t } = useI18n()
 const router = useRouter()
 const toast = useToastStore()
-const adminStore = useAdminStore()
 const { can } = usePermissions()
 const orderId = props.id ? Number(props.id) : null
 const editing = computed(() => orderId !== null)
 const canOverridePrice = computed(() => can('override-price-order'))
 const sale = useQuickSale(orderId, canOverridePrice.value)
 const customerDialogOpen = ref(false)
+const invoicePreviewOpen = ref(false)
 const creatingCustomer = ref(false)
 const customerErrors = ref<Record<string, string[]>>({})
-const canCreateCustomer = computed(() => can('create-customer'))
+const canCreateCustomer = computed(() => can('create-party'))
 const canRecordPayment = computed(() => can('create-installment'))
 const customerOptions = computed(() =>
   sale.customers.value.map((customer) => ({
@@ -71,6 +71,7 @@ function firstError(field: string) {
   if (value === 'positive') return t('sales.validation.positivePayment')
   if (value === 'exceeds') return t('sales.validation.paymentExceedsTotal')
   if (value === 'invalidPrice') return t('sales.validation.invalidPrice')
+  if (value === 'netTotalPositive') return t('sales.validation.netTotalPositive')
   return value
 }
 
@@ -116,11 +117,11 @@ async function synchronizeStock() {
   }
 }
 
-async function createQuickCustomer(payload: CustomerPayload) {
+async function createQuickCustomer(payload: PartyPayload) {
   creatingCustomer.value = true
   customerErrors.value = {}
   try {
-    const customer = await createCustomer(payload)
+    const customer = await createParty(payload)
     sale.selectCustomer(customer)
     customerDialogOpen.value = false
     toast.success(t('sales.customerCreated'))
@@ -138,7 +139,7 @@ async function createQuickCustomer(payload: CustomerPayload) {
 
 onMounted(async () => {
   try {
-    await Promise.all([sale.loadDependencies(), adminStore.loadCountries()])
+    await sale.loadDependencies()
   } catch (error) {
     toast.error(
       error instanceof ApiError ? error.message : t('details.failedToLoad'),
@@ -212,7 +213,11 @@ onMounted(async () => {
           params: { id: sale.completedOrder.value.id },
         }"
         >{{ t('actions.view') }}</BaseButton
-      ><BaseButton variant="secondary" type="button" @click="sale.reset"
+      >
+      <BaseButton variant="outline" type="button" @click="invoicePreviewOpen = true">
+        <Printer class="size-4" />{{ t('sales.printInvoice') }}
+      </BaseButton>
+      <BaseButton variant="secondary" type="button" @click="sale.reset"
         ><RotateCcw class="size-4" />{{ t('sales.newSale') }}</BaseButton
       >
     </div>
@@ -276,7 +281,7 @@ onMounted(async () => {
               v-model="sale.form.customer_id"
               :label="t('sales.customer')"
               :options="customerOptions"
-              :error="firstError('customer_id')"
+              :error="firstError('party_id') || firstError('customer_id')"
               required
             />
             <BaseButton
@@ -340,7 +345,8 @@ onMounted(async () => {
         </div>
       </form>
       <OrderSummary
-        :subtotal="sale.previewTotal.value"
+        :subtotal="sale.previewSubtotal.value"
+        :discount="sale.previewDiscount.value"
         :total="sale.previewTotal.value"
         :paid="
           editing
@@ -373,10 +379,13 @@ onMounted(async () => {
   <QuickCustomerDialog
     :open="customerDialogOpen"
     :loading="creatingCustomer"
-    :countries-loading="adminStore.countriesLoading"
-    :countries="adminStore.countries"
     :errors="customerErrors"
     @close="customerDialogOpen = false"
     @submit="createQuickCustomer"
+  />
+  <InvoicePreviewModal
+    :open="invoicePreviewOpen"
+    :order="sale.completedOrder.value"
+    @close="invoicePreviewOpen = false"
   />
 </template>

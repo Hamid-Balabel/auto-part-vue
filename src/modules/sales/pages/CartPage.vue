@@ -14,8 +14,8 @@ import MoneyDisplay from '@/components/ui/MoneyDisplay.vue'
 import PageHeader from '@/components/ui/PageHeader.vue'
 import { ApiError } from '@/api/http'
 import { usePermissions } from '@/composables/usePermissions'
-import { listCustomers, listProductItems } from '@/modules/inventory/api'
-import type { Customer, ProductItem } from '@/modules/inventory/types'
+import { listParties, listProductItems } from '@/modules/inventory/api'
+import type { Party, ProductItem } from '@/modules/inventory/types'
 import { useToastStore } from '@/stores/toast'
 import { addCartLine, checkout, clearCart, deleteCartLine, getCartSummary, listMyCart, updateCartLine } from '../api'
 import type { CartLine, CartSummary, CheckoutPayload, PaymentMethod } from '../types'
@@ -33,7 +33,7 @@ const checkingOut = ref(false)
 const lines = ref<CartLine[]>([])
 const summary = ref<CartSummary>({ count: 0, total: 0 })
 const productItems = ref<ProductItem[]>([])
-const customers = ref<Customer[]>([])
+const customers = ref<Party[]>([])
 const selectedItemId = ref<number | string>('')
 const addQuantity = ref<number | string>(1)
 const confirmDeleteId = ref<number | null>(null)
@@ -42,7 +42,7 @@ const deleting = ref(false)
 const errors = ref<Record<string, string[]>>({})
 const updatingIds = ref(new Set<number>())
 const desiredQuantities = reactive<Record<number, number>>({})
-const checkoutForm = reactive<CheckoutPayload>({ invoice_no: '', customer_id: 0, payment_method: 'cash' })
+const checkoutForm = reactive<CheckoutPayload>({ invoice_no: '', party_id: 0, payment_method: 'cash' })
 
 const canAdd = computed(() => can('create-cart'))
 const canCheckout = computed(() => can('create-order'))
@@ -79,7 +79,7 @@ async function loadCart() {
 async function loadOptions() {
   const [itemsResult, customersResult] = await Promise.all([
     listProductItems({ per_page: -1 }),
-    listCustomers({ per_page: -1 }),
+    listParties({ per_page: -1, is_active: true }),
   ])
   productItems.value = Array.isArray(itemsResult) ? itemsResult : itemsResult.data
   customers.value = Array.isArray(customersResult) ? customersResult : customersResult.data
@@ -166,7 +166,7 @@ async function submitCheckout() {
   checkingOut.value = true
   errors.value = {}
   try {
-    const order = await checkout({ ...checkoutForm, customer_id: Number(checkoutForm.customer_id) })
+    const order = await checkout({ ...checkoutForm, party_id: Number(checkoutForm.party_id) })
     toast.success(t('sales.checkoutSuccess'))
     await router.push({ name: 'orders.show', params: { id: order.id } })
   } catch (error) {
@@ -219,10 +219,10 @@ onMounted(async () => {
         <p class="mt-1 text-sm text-text-muted">{{ t('sales.checkoutDescription') }}</p>
         <div class="mt-4 grid gap-4">
           <FormInput id="invoice-no" v-model="checkoutForm.invoice_no" :label="t('sales.invoiceNo')" :error="firstError('invoice_no')" required />
-          <SearchableSelectInput id="checkout-customer" v-model="checkoutForm.customer_id" :label="t('sales.customer')" :options="customerOptions" :error="firstError('customer_id')" required />
+          <SearchableSelectInput id="checkout-customer" v-model="checkoutForm.party_id" :label="t('sales.customer')" :options="customerOptions" :error="firstError('party_id') || firstError('customer_id')" required />
           <SelectInput id="payment-method" v-model="checkoutForm.payment_method" :label="t('sales.paymentMethod')" :options="paymentOptions" :error="firstError('payment_method')" />
           <p v-if="firstError('cart') || firstError('items')" class="form-error">{{ firstError('cart') ?? firstError('items') }}</p>
-          <BaseButton type="submit" full-width :loading="checkingOut" :disabled="!checkoutForm.invoice_no || !checkoutForm.customer_id || updatingIds.size > 0">
+          <BaseButton type="submit" full-width :loading="checkingOut" :disabled="!checkoutForm.invoice_no || !checkoutForm.party_id || updatingIds.size > 0">
             {{ t('sales.completeCheckout') }}<ArrowLeft class="size-4 rtl:rotate-0 ltr:rotate-180" />
           </BaseButton>
         </div>

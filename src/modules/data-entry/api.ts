@@ -1,7 +1,7 @@
 import { http, unwrapData } from '@/api/http'
 import { toFormData } from '@/api/formData'
 import type { ApiEnvelope, ListQuery, Paginated } from '@/types/api'
-import type { Brand, Category, Country, CountryPayload, TaxonomyPayload } from './types'
+import type { Brand, Category, CategoryTreeNode, Country, CountryPayload, TaxonomyPayload } from './types'
 
 type DataEntryResource = 'countries' | 'categories' | 'brands'
 type ResourceMap = {
@@ -18,6 +18,12 @@ export async function listResource<T extends DataEntryResource>(resource: T, que
 
 export async function listCountries(query: ListQuery = {}): Promise<Paginated<Country> | Country[]> {
   const response = await http.get<ApiEnvelope<Paginated<Country> | Country[]>>('/countries', { params: query })
+
+  return unwrapData(response)
+}
+
+export async function listCategoryTree(): Promise<CategoryTreeNode[]> {
+  const response = await http.get<ApiEnvelope<CategoryTreeNode[]>>('/categories/tree')
 
   return unwrapData(response)
 }

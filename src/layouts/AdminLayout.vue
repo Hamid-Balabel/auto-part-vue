@@ -34,6 +34,7 @@ import LanguageSwitcher from "@/components/ui/LanguageSwitcher.vue";
 import CurrentBranchDialog from "@/modules/inventory/components/CurrentBranchDialog.vue";
 import { usePermissions } from "@/composables/usePermissions";
 import { useAuthStore } from "@/stores/auth";
+import { isRootOrAdmin } from "@/utils/authNavigation";
 import type { PermissionRequirement } from "@/utils/permissions";
 
 interface NavItem {
@@ -74,6 +75,8 @@ const openGroups = ref<Record<NavGroup["key"], boolean>>({
 });
 
 const isRtl = computed(() => locale.value === "ar");
+const canAccessDashboard = computed(() => isRootOrAdmin(auth.user));
+const canAccessQuickSale = computed(() => can("create-order"));
 
 const navGroups: NavGroup[] = [
   {
@@ -147,6 +150,13 @@ const navGroups: NavGroup[] = [
         ],
       },
       {
+        labelKey: "nav.parties",
+        icon: Users,
+        route: "parties.index",
+        permission: ["view-all-party", "view-own-party"],
+        permissionAll: ["read-party"],
+      },
+      {
         labelKey: "nav.customers",
         icon: Users,
         route: "customers.index",
@@ -216,6 +226,7 @@ const navGroups: NavGroup[] = [
         icon: ArrowRightLeft,
         route: "stocks.transfer",
         permission: "transfer-stock",
+        permissionAll: ["read-stock"],
       },
       {
         labelKey: "nav.stockTransferLogs",
@@ -237,6 +248,12 @@ const navGroups: NavGroup[] = [
         permission: ["view-all-order", "view-own-order"],
       },
       {
+        labelKey: "nav.purchases",
+        icon: ReceiptText,
+        route: "purchases.index",
+        permission: ["read-purchase", "view-all-purchase", "view-own-purchase"],
+      },
+      {
         labelKey: "nav.installments",
         icon: CreditCard,
         route: "installments.index",
@@ -244,6 +261,12 @@ const navGroups: NavGroup[] = [
           "view-all-installment",
           "view-own-installment",
         ],
+      },
+      {
+        labelKey: "nav.installmentOffsets",
+        icon: ArrowRightLeft,
+        route: "installment-offsets.index",
+        permission: ["read-installment-offset", "view-all-installment-offset", "view-own-installment-offset"],
       },
     ],
   },
@@ -256,7 +279,7 @@ const navGroups: NavGroup[] = [
         labelKey: "nav.reportsPage",
         icon: ReceiptText,
         route: "reports.index",
-        permission: ["read-report", "view-report", "export-report"],
+        permission: "report",
       },
     ],
   },
@@ -391,14 +414,28 @@ async function handleLogout() {
         data-testid="sidebar-nav"
         class="sidebar-scroll h-[calc(100vh-5rem)] space-y-4 overflow-y-auto overflow-x-hidden px-3 py-5"
       >
-        <RouterLink
-          :to="{ name: 'dashboard' }"
-          class="nav-item py-3 font-semibold"
-          active-class="nav-item-active"
-        >
-          <PanelsTopLeft class="nav-icon-accent size-4" />
-          <span>{{ t("nav.dashboard") }}</span>
-        </RouterLink>
+        <div class="space-y-2">
+          <RouterLink
+            v-if="canAccessDashboard"
+            :to="{ name: 'dashboard' }"
+            class="nav-item py-3 font-semibold"
+            active-class="nav-item-active"
+            @click="sidebarOpen = false"
+          >
+            <PanelsTopLeft class="nav-icon-accent size-4" />
+            <span>{{ t("nav.dashboard") }}</span>
+          </RouterLink>
+          <RouterLink
+            v-if="canAccessQuickSale"
+            :to="{ name: 'orders.quick-sale' }"
+            class="nav-item py-3 font-semibold"
+            active-class="nav-item-active"
+            @click="sidebarOpen = false"
+          >
+            <ShoppingCart class="nav-icon-accent size-4" />
+            <span>{{ t("sales.quickSaleTitle") }}</span>
+          </RouterLink>
+        </div>
         <section
           v-for="group in visibleNavGroups"
           :key="group.key"

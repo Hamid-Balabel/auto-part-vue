@@ -8,6 +8,25 @@ export const salesRoutes: RouteRecordRaw[] = [
     meta: { permission: ['view-all-installment', 'view-own-installment'] },
   },
   {
+    path: 'installment-offsets',
+    name: 'installment-offsets.index',
+    component: () => import('./pages/InstallmentOffsetsPage.vue'),
+    meta: { permission: ['view-all-installment-offset', 'view-own-installment-offset'] },
+  },
+  {
+    path: 'purchases',
+    name: 'purchases.index',
+    component: () => import('./pages/PurchasesIndexPage.vue'),
+    meta: { permission: ['view-all-purchase', 'view-own-purchase'], permissionAll: ['read-purchase'] },
+  },
+  {
+    path: 'purchases/:id',
+    name: 'purchases.show',
+    component: () => import('./pages/PurchaseDetailsPage.vue'),
+    props: true,
+    meta: { permission: ['view-all-purchase', 'view-own-purchase'], permissionAll: ['read-purchase'], sidebarRoute: 'purchases.index' },
+  },
+  {
     path: 'orders',
     name: 'orders.index',
     component: () => import('./pages/OrdersIndexPage.vue'),

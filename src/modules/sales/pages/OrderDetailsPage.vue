@@ -28,6 +28,8 @@ import OrderSummary from '../components/OrderSummary.vue'
 import ProductItemIdentity from '../components/ProductItemIdentity.vue'
 import SalesStatusBadge from '../components/SalesStatusBadge.vue'
 import AddPaymentDialog from '../components/AddPaymentDialog.vue'
+import InvoicePreviewModal from '../components/InvoicePreviewModal.vue'
+import InstallmentPlanDialog from '../components/InstallmentPlanDialog.vue'
 import PaymentSummary from '../components/PaymentSummary.vue'
 import PaymentsHistory from '../components/PaymentsHistory.vue'
 
@@ -42,6 +44,8 @@ const order = ref<Order | null>(null)
 const errorMessage = ref('')
 const pendingAction = ref<NonNullable<Order['buttons']>[number] | null>(null)
 const paymentDialogOpen = ref(false)
+const planDialogOpen = ref(false)
+const invoicePreviewOpen = ref(false)
 const paymentError = ref('')
 const canAddPayment = computed(
   () =>
@@ -52,9 +56,26 @@ const canAddPayment = computed(
     Number(order.value!.remaining_amount) > 0,
 )
 const statusButtons = computed(() => order.value?.buttons ?? [])
+const canGeneratePlan = computed(() => Boolean(order.value) && can('create-installment') && !order.value!.installments?.length && !['cancelled', 'refunded'].includes(order.value!.status) && Number(order.value!.total) > 0)
 const canEditOrder = computed(
   () => order.value?.status === 'pending' && can('update-order'),
 )
+const orderGrossSubtotal = computed(() =>
+  (order.value?.items ?? []).reduce(
+    (total, item) => total + Number(item.subtotal ?? 0),
+    0,
+  ),
+)
+const orderDiscountTotal = computed(() =>
+  (order.value?.items ?? []).reduce(
+    (total, item) => total + Number(item.discount ?? 0),
+    0,
+  ),
+)
+
+function netLineTotal(item: NonNullable<Order['items']>[number]) {
+  return item.line_total ?? item.total ?? item.subtotal
+}
 
 function formatDate(value?: string | null) {
   return value
@@ -82,7 +103,7 @@ function isCustomPrice(item: NonNullable<Order['items']>[number]) {
 }
 
 function printInvoice() {
-  window.print()
+  invoicePreviewOpen.value = true
 }
 
 async function load() {
@@ -126,7 +147,8 @@ async function addPayment(payload: {
   paymentError.value = ''
   try {
     await createPaidInstallment({
-      order_id: order.value.id,
+      source_type: 'order',
+      source_id: order.value.id,
       amount: payload.amount,
       status: 'paid',
       payment_method: payload.payment_method,
@@ -194,6 +216,13 @@ onMounted(load)
           }}
         </BaseButton>
         <BaseButton
+          v-if="canGeneratePlan"
+          variant="outline"
+          type="button"
+          @click="planDialogOpen = true"
+          ><Plus class="size-4" />{{ t('sales.generateInstallmentPlan') }}</BaseButton
+        >
+        <BaseButton
           v-if="canAddPayment"
           variant="secondary"
           type="button"
@@ -251,25 +280,26 @@ onMounted(load)
             <dl class="grid gap-3 md:grid-cols-3">
               <DetailsField
                 :label="t('sales.customer')"
-                :value="order.customer?.name"
+                :value="order.party?.name ?? order.customer?.name"
               />
               <DetailsField
                 :label="t('admin.phone')"
                 :value="
-                  [order.customer?.phone_code, order.customer?.phone]
+                  order.party?.phone ?? [order.customer?.phone_code, order.customer?.phone]
                     .filter(Boolean)
                     .join(' ')
                 "
               />
               <DetailsField
                 :label="t('admin.email')"
-                :value="order.customer?.email"
+                :value="order.party?.email ?? order.customer?.email"
               />
             </dl>
           </DetailsSection>
         </div>
         <OrderSummary
-          :subtotal="order.total"
+          :subtotal="orderGrossSubtotal"
+          :discount="orderDiscountTotal"
           :total="order.total"
           :paid="order.paid_amount"
           :remaining="order.remaining_amount"
@@ -278,7 +308,7 @@ onMounted(load)
 
       <DetailsSection class="min-w-0" :title="t('sales.orderItems')">
         <div class="w-full max-w-full overflow-x-auto">
-          <table class="min-w-[680px] divide-y divide-border text-sm">
+          <table class="min-w-[820px] divide-y divide-border text-sm">
             <thead>
               <tr class="text-text-muted">
                 <th class="px-3 py-3 text-start">
@@ -292,7 +322,9 @@ onMounted(load)
                   {{ t('sales.orderSellingPrice') }}
                 </th>
                 <th class="px-3 py-3 text-start">{{ t('table.quantity') }}</th>
-                <th class="px-3 py-3 text-start">{{ t('sales.lineTotal') }}</th>
+                <th class="px-3 py-3 text-start">{{ t('sales.grossSubtotal') }}</th>
+                <th class="px-3 py-3 text-start">{{ t('sales.discount') }}</th>
+                <th class="px-3 py-3 text-start">{{ t('sales.netLineTotal') }}</th>
               </tr>
             </thead>
             <tbody class="divide-y divide-border">
@@ -334,6 +366,12 @@ onMounted(load)
                 </td>
                 <td class="px-3 py-3">
                   <MoneyDisplay :value="item.subtotal" currency="EGP" />
+                </td>
+                <td class="px-3 py-3">
+                  <MoneyDisplay :value="item.discount ?? 0" currency="EGP" />
+                </td>
+                <td class="px-3 py-3">
+                  <MoneyDisplay :value="netLineTotal(item)" currency="EGP" />
                 </td>
               </tr>
             </tbody>
@@ -403,20 +441,18 @@ onMounted(load)
       @close="paymentDialogOpen = false"
       @confirm="addPayment"
     />
+    <InstallmentPlanDialog
+      :open="planDialogOpen"
+      source-type="order"
+      :source-id="order?.id ?? null"
+      :total="order?.total ?? 0"
+      @close="planDialogOpen = false"
+      @success="async () => { toast.success(t('sales.installmentPlanCreated')); planDialogOpen = false; await load() }"
+    />
+    <InvoicePreviewModal
+      :open="invoicePreviewOpen"
+      :order="order"
+      @close="invoicePreviewOpen = false"
+    />
   </div>
 </template>
-
-<style>
-@media print {
-  .nav-shell,
-  .order-details-print > header button,
-  .order-details-print > header a,
-  .order-details-print [role='dialog'] {
-    display: none !important;
-  }
-
-  .order-details-print {
-    color: #000;
-  }
-}
-</style>

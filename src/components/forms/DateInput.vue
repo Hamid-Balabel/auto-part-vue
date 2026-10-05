@@ -5,6 +5,7 @@ defineProps<{
   modelValue: string | null
   error?: string
   required?: boolean
+  min?: string
 }>()
 
 const emit = defineEmits<{
@@ -19,6 +20,7 @@ const emit = defineEmits<{
       :id="id"
       class="form-control mt-1.5"
       type="date"
+      :min="min"
       :value="modelValue ?? ''"
       @input="emit('update:modelValue', ($event.target as HTMLInputElement).value)"
     />

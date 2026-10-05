@@ -14,8 +14,8 @@ import PageHeader from '@/components/ui/PageHeader.vue'
 import Pagination from '@/components/ui/Pagination.vue'
 import { useCrudList } from '@/composables/useCrudList'
 import { usePermissions } from '@/composables/usePermissions'
-import { listCustomers } from '@/modules/inventory/api'
-import type { Customer } from '@/modules/inventory/types'
+import { listParties } from '@/modules/inventory/api'
+import type { Party } from '@/modules/inventory/types'
 import { listOrders } from '../api'
 import type {
   Order,
@@ -28,12 +28,12 @@ import SalesStatusBadge from '../components/SalesStatusBadge.vue'
 
 const { t, locale } = useI18n()
 const { can } = usePermissions()
-const customers = ref<Customer[]>([])
+const customers = ref<Party[]>([])
 const customersLoading = ref(false)
 
 interface OrderFilters {
   invoice_no: string
-  customer_id: number | null
+  party_id: number | null
   status: OrderStatus | null
   payment_method: PaymentMethod | null
   payment_status: PaymentStatus | null
@@ -49,7 +49,7 @@ interface OrderFilters {
 
 const emptyFilters = (): OrderFilters => ({
   invoice_no: '',
-  customer_id: null,
+  party_id: null,
   status: null,
   payment_method: null,
   payment_status: null,
@@ -142,7 +142,7 @@ function resetFilters() {
 async function loadCustomers() {
   customersLoading.value = true
   try {
-    const response = await listCustomers({ per_page: -1 })
+    const response = await listParties({ per_page: -1, is_active: true })
     customers.value = Array.isArray(response) ? response : response.data
   } finally {
     customersLoading.value = false
@@ -198,7 +198,7 @@ onMounted(() => {
     />
     <BaseSelect
       id="order-customer-filter"
-      v-model="filters.customer_id"
+      v-model="filters.party_id"
       :label="t('sales.customer')"
       :options="customerOptions"
       :placeholder="t('crud.all')"
@@ -288,9 +288,9 @@ onMounted(() => {
   >
     <template #cell-customer="{ row }"
       ><div>
-        <p class="font-semibold">{{ row.customer?.name ?? '—' }}</p>
+        <p class="font-semibold">{{ row.party?.name ?? row.customer?.name ?? '—' }}</p>
         <p class="text-xs text-text-muted">
-          {{ row.customer?.phone ?? row.customer?.email ?? '' }}
+          {{ row.party?.phone ?? row.party?.email ?? row.customer?.phone ?? row.customer?.email ?? '' }}
         </p>
       </div></template
     >

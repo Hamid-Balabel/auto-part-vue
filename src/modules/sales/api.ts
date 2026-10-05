@@ -10,6 +10,8 @@ import type {
   InstallmentListQuery,
   InstallmentPayload,
   InstallmentPlanPayload,
+  InstallmentOffset,
+  InstallmentOffsetListQuery,
   InstallmentUpdatePayload,
   Order,
   OrderCreatePayload,
@@ -18,6 +20,8 @@ import type {
   OrderUpdatePayload,
   PaidInstallmentPayload,
   PayInstallmentPayload,
+  Purchase,
+  PurchaseListQuery,
 } from './types'
 
 export async function listInstallments(
@@ -82,6 +86,54 @@ export async function generateInstallmentPlan(
     `/orders/${orderId}/installments/generate`,
     payload,
   )
+  return unwrapData(response)
+}
+
+export async function generatePurchaseInstallmentPlan(
+  purchaseId: number,
+  payload: InstallmentPlanPayload,
+): Promise<Purchase> {
+  const response = await http.post<ApiEnvelope<Purchase>>(
+    `/purchases/${purchaseId}/installments/generate`,
+    payload,
+  )
+  return unwrapData(response)
+}
+
+export async function listPurchases(
+  query: PurchaseListQuery = {},
+): Promise<Paginated<Purchase> | Purchase[]> {
+  const response = await http.get<ApiEnvelope<Paginated<Purchase> | Purchase[]>>(
+    '/purchases',
+    { params: query },
+  )
+  return unwrapData(response)
+}
+
+export async function getPurchase(id: number | string): Promise<Purchase> {
+  const response = await http.get<ApiEnvelope<Purchase>>(`/purchases/${id}`)
+  return unwrapData(response)
+}
+
+export async function listInstallmentOffsets(
+  query: InstallmentOffsetListQuery = {},
+): Promise<Paginated<InstallmentOffset> | InstallmentOffset[]> {
+  const response = await http.get<ApiEnvelope<Paginated<InstallmentOffset> | InstallmentOffset[]>>('/installment-offsets', { params: query })
+  return unwrapData(response)
+}
+
+export async function getInstallmentOffset(id: number | string): Promise<InstallmentOffset> {
+  const response = await http.get<ApiEnvelope<InstallmentOffset>>(`/installment-offsets/${id}`)
+  return unwrapData(response)
+}
+
+export async function createInstallmentOffset(payload: { receivable_installment_id: number; payable_installment_id: number }): Promise<InstallmentOffset> {
+  const response = await http.post<ApiEnvelope<InstallmentOffset>>('/installment-offsets', payload)
+  return unwrapData(response)
+}
+
+export async function reverseInstallmentOffset(id: number | string): Promise<InstallmentOffset> {
+  const response = await http.post<ApiEnvelope<InstallmentOffset>>(`/installment-offsets/${id}/reverse`)
   return unwrapData(response)
 }
 

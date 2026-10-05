@@ -268,7 +268,7 @@ onMounted(() => {
           :key="role.id"
           variant="secondary"
         >
-          {{ role.display_name ?? role.name ?? role.id }}
+          {{ role.translation_display_name ?? role.name ?? role.id }}
         </BaseBadge>
       </div>
     </template>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, reactive, ref } from "vue";
 import { useI18n } from "vue-i18n";
-import { useRouter } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import FileUpload from "@/components/forms/FileUpload.vue";
 import FormInput from "@/components/forms/FormInput.vue";
 import SearchableSelectInput, {
@@ -17,27 +17,25 @@ import { useToastStore } from "@/stores/toast";
 import {
   createProductItem,
   getProductItem,
-  listMerchants,
   listOptionValues,
   listProductOptions,
   listProducts,
-  listWarehouses,
   updateProductItem,
 } from "../api";
 import type {
-  Merchant,
   Product,
+  ProductItem,
   ProductItemPayload,
   ProductOption,
   ProductOptionValue,
-  Warehouse,
 } from "../types";
 import { normalizeBoolean } from "@/utils/boolean";
-import MerchantSelectField from "../components/MerchantSelectField.vue";
+import AddStockDialog from "../components/AddStockDialog.vue";
 import ProductItemOptionsField from "../components/ProductItemOptionsField.vue";
 
 const props = defineProps<{ id?: string }>();
 const router = useRouter();
+const route = useRoute();
 const { t } = useI18n();
 const toast = useToastStore();
 const permissions = useResourcePermissions("product-item");
@@ -50,8 +48,9 @@ const errorMessage = ref("");
 const products = ref<Product[]>([]);
 const productOptionTypes = ref<ProductOption[]>([]);
 const optionValues = ref<ProductOptionValue[]>([]);
-const warehouses = ref<Warehouse[]>([]);
-const merchants = ref<Merchant[]>([]);
+const currentItem = ref<ProductItem | null>(null);
+const addStockOpen = ref(false);
+const isAutoOpenFlow = ref(false);
 const images = ref<File[]>([]);
 const generatedSku = ref("");
 const isEdit = computed(() => Boolean(props.id));
@@ -60,11 +59,10 @@ const canSave = computed(() =>
 );
 const form = reactive<ProductItemPayload>({
   product_id: null,
-  merchant_id: null,
+  movement_code: '',
   is_active: true,
   option_value_ids: [],
   price: 0,
-  stocks: [],
   images: [],
 });
 
@@ -89,31 +87,18 @@ function normalizeList<T>(response: T[] | { data: T[] }): T[] {
 async function loadOptions() {
   optionsLoading.value = true;
   try {
-    const canListMerchants =
-      can("read-merchant") && can(["view-all-merchant", "view-own-merchant"]);
     const [
       productResponse,
       productOptionResponse,
       optionResponse,
-      warehouseResponse,
-      merchantResponse,
     ] = await Promise.all([
       listProducts({ per_page: -1 }),
       listProductOptions({ per_page: -1 }),
       listOptionValues({ per_page: -1 }),
-      listWarehouses({ per_page: -1 }),
-      canListMerchants ? listMerchants({ per_page: -1 }) : Promise.resolve([]),
     ]);
     products.value = normalizeList(productResponse);
     productOptionTypes.value = normalizeList(productOptionResponse);
     optionValues.value = normalizeList(optionResponse);
-    warehouses.value = normalizeList(warehouseResponse);
-    merchants.value = normalizeList(merchantResponse);
-    if (!form.stocks?.length)
-      form.stocks = warehouses.value.map((warehouse) => ({
-        warehouse_id: warehouse.id,
-        quantity: 0,
-      }));
   } finally {
     optionsLoading.value = false;
   }
@@ -124,34 +109,18 @@ async function loadRecord() {
   loading.value = true;
   try {
     const item = await getProductItem(props.id);
+    currentItem.value = item;
     generatedSku.value = item.sku ?? "";
-    if (
-      item.merchant &&
-      !merchants.value.some((merchant) => merchant.id === item.merchant?.id)
-    )
-      merchants.value.unshift(item.merchant);
     form.product_id = item.product_id ?? item.product?.id ?? null;
-    form.merchant_id = item.merchant_id ?? item.merchant?.id ?? null;
+    form.movement_code = item.movement_code ?? "";
     form.is_active = normalizeBoolean(item.is_active, true);
     form.price = item.current_price ?? 0;
+    form.max_discount = item.max_discount ?? '';
     form.option_value_ids =
       (item.option_values ?? item.optionValues)?.map((value) => value.id) ?? [];
-    const quantities = new Map(
-      item.stocks?.map((stock) => [stock.warehouse_id, stock.quantity]) ?? [],
-    );
-    form.stocks = warehouses.value.map((warehouse) => ({
-      warehouse_id: warehouse.id,
-      quantity: quantities.get(warehouse.id) ?? 0,
-    }));
   } finally {
     loading.value = false;
   }
-}
-
-function addMerchant(merchant: Merchant) {
-  if (!merchants.value.some((item) => item.id === merchant.id))
-    merchants.value.push(merchant);
-  toast.success(t("inventory.merchantCreatedSelected"));
 }
 
 function addProductOption(option: ProductOption) {
@@ -182,16 +151,38 @@ function setImages(files: File[]) {
   form.images = images.value;
 }
 
+function onAddStockClose() {
+  if (isAutoOpenFlow.value) {
+    isAutoOpenFlow.value = false;
+    void router.push({ name: "product-items.index" });
+  } else {
+    addStockOpen.value = false;
+  }
+}
+
+function onAddStockSuccess() {
+  if (isAutoOpenFlow.value) {
+    isAutoOpenFlow.value = false;
+    void router.push({ name: "product-items.index" });
+  } else {
+    addStockOpen.value = false;
+    void loadRecord();
+  }
+}
+
 async function submit() {
   saving.value = true;
   errors.value = {};
   errorMessage.value = "";
   try {
-    const payload = { ...form, images: images.value };
-    if (props.id) await updateProductItem(props.id, payload);
-    else await createProductItem(payload);
+    const payload: ProductItemPayload = { ...form, images: images.value };
+    let saved: ProductItem | undefined;
+    if (props.id) saved = await updateProductItem(props.id, payload);
+    else saved = await createProductItem(payload);
     toast.success(t("crud.saved"));
-    await router.push({ name: "product-items.index" });
+    if (props.id) currentItem.value = saved ?? currentItem.value;
+    if (props.id) await router.push({ name: "product-items.index" });
+    else await router.push({ name: "product-items.edit", params: { id: saved?.id }, query: { add_stock: "1" } });
   } catch (error) {
     if (error instanceof ApiError) {
       errors.value = error.errors ?? {};
@@ -205,6 +196,10 @@ async function submit() {
 onMounted(async () => {
   await loadOptions();
   await loadRecord();
+  if (props.id && route.query.add_stock === "1" && can("create-stock")) {
+    isAutoOpenFlow.value = true;
+    addStockOpen.value = true;
+  }
 });
 </script>
 
@@ -248,22 +243,38 @@ onMounted(async () => {
         :error="errors.product_id?.[0]"
         required
       />
-      <MerchantSelectField
-        id="item_merchant"
-        v-model="form.merchant_id"
-        :merchants="merchants"
-        :loading="optionsLoading"
-        :error="errors.merchant_id?.[0]"
-        :can-create="can('create-merchant')"
-        @created="addMerchant"
+      <FormInput
+        id="item_movement_code"
+        v-model="form.movement_code"
+        :label="t('table.movementCode')"
+        required
+        :error="errors.movement_code?.[0]"
       />
       <FormInput
         id="item_price"
         v-model="form.price"
         :label="t('table.price')"
         type="number"
+        min="0.01"
+        step="0.01"
         required
         :error="errors.price?.[0]"
+      />
+      <FormInput
+        id="item_max_discount"
+        v-model="form.max_discount"
+        :label="t('inventory.maxDiscountEgp')"
+        type="number"
+        min="0"
+        step="0.01"
+        :help="
+          currentItem
+            ? t('inventory.maxDiscountHelpWithEffective', {
+                effective: currentItem.effective_max_discount ?? '0.00',
+              })
+            : t('inventory.maxDiscountHelp')
+        "
+        :error="errors.max_discount?.[0]"
       />
       <BooleanField
         id="item_status"
@@ -287,22 +298,10 @@ onMounted(async () => {
         @option-created="addProductOption"
         @value-created="addOptionValue"
       />
-      <div class="md:col-span-2">
-        <span class="form-label">{{ t("inventory.warehouseQuantities") }}</span>
-        <div class="mt-2 grid gap-3 md:grid-cols-2">
-          <FormInput
-            v-for="(stock, index) in form.stocks"
-            :id="`stock_${stock.warehouse_id}`"
-            :key="stock.warehouse_id"
-            v-model="stock.quantity"
-            :label="
-              warehouses.find(
-                (warehouse) => warehouse.id === Number(stock.warehouse_id),
-              )?.name ?? `#${stock.warehouse_id}`
-            "
-            type="number"
-            :error="errors[`stocks.${index}.quantity`]?.[0]"
-          />
+      <div v-if="isEdit && can('create-stock')" class="md:col-span-2 rounded-[var(--radius-lg)] border border-border bg-background/70 p-4">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <p class="text-sm text-text-muted">{{ t('inventory.addStockAfterItemSaved') }}</p>
+          <BaseButton type="button" variant="secondary" @click="addStockOpen = true">{{ t('inventory.addStock') }}</BaseButton>
         </div>
       </div>
       <FileUpload
@@ -324,4 +323,5 @@ onMounted(async () => {
       }}</BaseButton>
     </template>
   </FormPageLayout>
+  <AddStockDialog :open="addStockOpen" :product-item="currentItem" :product-item-id="props.id ? Number(props.id) : null" @close="onAddStockClose" @success="onAddStockSuccess" />
 </template>

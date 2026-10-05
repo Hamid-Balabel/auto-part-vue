@@ -17,13 +17,13 @@ import DetailsSection from '@/components/ui/DetailsSection.vue'
 import PageHeader from '@/components/ui/PageHeader.vue'
 import Pagination from '@/components/ui/Pagination.vue'
 import RelationshipCard from '@/components/ui/RelationshipCard.vue'
-import RowActions from '@/components/ui/RowActions.vue'
 import { ApiError } from '@/api/http'
 import { useCrudList } from '@/composables/useCrudList'
 import { useResourcePermissions } from '@/composables/useResourcePermissions'
 import { usePermissions } from '@/composables/usePermissions'
-import { listResource } from '@/modules/data-entry/api'
-import type { Brand, Category } from '@/modules/data-entry/types'
+import { listCategoryTree, listResource } from '@/modules/data-entry/api'
+import { categoryTreeRowsToOptions, flattenCategoryTree } from '@/modules/data-entry/utils/categoryTree'
+import type { Brand, CategoryTreeNode } from '@/modules/data-entry/types'
 import { getStock, listProductItems, listProducts, listStocks, listWarehouses } from '../api'
 import type { Product, ProductItem, Stock, Warehouse } from '../types'
 
@@ -31,7 +31,6 @@ const { t, locale } = useI18n()
 const permissions = useResourcePermissions('stock')
 const { can } = usePermissions()
 const canCreate = permissions.canCreate
-const canUpdate = permissions.canUpdate
 const canView = computed(() => true)
 const detailsOpen = ref(false)
 const detailsLoading = ref(false)
@@ -41,7 +40,7 @@ const selectedStock = ref<Stock | null>(null)
 const warehouses = ref<Warehouse[]>([])
 const productItems = ref<ProductItem[]>([])
 const products = ref<Product[]>([])
-const categories = ref<Category[]>([])
+const categories = ref<CategoryTreeNode[]>([])
 const brands = ref<Brand[]>([])
 const lookupsLoading = ref(false)
 const emptyFilters = () => ({
@@ -89,7 +88,7 @@ const activeFiltersCount = computed(() => Object.values(appliedFilters).filter((
 const warehouseOptions = computed(() => warehouses.value.map((warehouse) => ({ value: warehouse.id, label: displayName(warehouse), description: warehouse.address ?? undefined })))
 const productItemOptions = computed(() => productItems.value.map((item) => ({ value: item.id, label: `${displayName(item.product)} - ${item.sku}` })))
 const productOptions = computed(() => products.value.map((product) => ({ value: product.id, label: displayName(product) })))
-const categoryOptions = computed(() => categories.value.map((category) => ({ value: category.id, label: displayName(category) })))
+const categoryOptions = computed(() => categoryTreeRowsToOptions(flattenCategoryTree(categories.value, locale.value, t('dataEntry.rootCategory')), locale.value))
 const brandOptions = computed(() => brands.value.map((brand) => ({ value: brand.id, label: displayName(brand) })))
 const booleanOptions = computed(() => [
   { value: '', label: t('crud.all') },
@@ -151,13 +150,13 @@ async function loadLookups() {
       listWarehouses({ per_page: -1 }),
       listProductItems({ per_page: -1 }),
       listProducts({ per_page: -1 }),
-      listResource('categories', { per_page: -1 }),
+      listCategoryTree(),
       listResource('brands', { per_page: -1 }),
     ])
     warehouses.value = normalizeList(warehouseResponse)
     productItems.value = normalizeList(itemResponse)
     products.value = normalizeList(productResponse)
-    categories.value = normalizeList(categoryResponse)
+    categories.value = categoryResponse
     brands.value = normalizeList(brandResponse)
   } finally {
     lookupsLoading.value = false
@@ -183,8 +182,8 @@ onMounted(() => Promise.all([list.load(), loadLookups()]))
 <template>
   <PageHeader :title="t('inventory.stocksTitle')" :description="t('inventory.stocksDescription')">
     <template #actions>
-      <BaseButton v-if="can('transfer-stock')" variant="secondary" :to="{ name: 'stocks.transfer' }"><ArrowRightLeft class="size-4" />{{ t('inventory.stockTransfer') }}</BaseButton>
-      <BaseButton v-if="canCreate" :to="{ name: 'stocks.create' }">{{ t('actions.create') }}</BaseButton>
+      <BaseButton v-if="can('transfer-stock') && can('read-stock')" variant="secondary" :to="{ name: 'stocks.transfer' }"><ArrowRightLeft class="size-4" />{{ t('inventory.stockTransfer') }}</BaseButton>
+      <BaseButton v-if="canCreate" :to="{ name: 'stocks.create' }">{{ t('inventory.addStock') }}</BaseButton>
     </template>
   </PageHeader>
 
@@ -223,12 +222,8 @@ onMounted(() => Promise.all([list.load(), loadLookups()]))
     <template #cell-quantity="{ value }">{{ formatNumber(value as string | number | null) }}</template>
     <template #cell-actions="{ row }">
       <div class="flex flex-wrap justify-end gap-2">
-        <BaseButton v-if="can('transfer-stock')" variant="ghost" size="sm" :to="{ name: 'stocks.transfer', query: { from_warehouse_id: row.warehouse_id, product_item_id: row.item_id } }" :aria-label="t('inventory.stockTransfer')" :title="t('inventory.stockTransfer')"><ArrowRightLeft class="size-4" /></BaseButton>
+        <BaseButton v-if="can('transfer-stock') && can('read-stock')" variant="ghost" size="sm" :to="{ name: 'stocks.transfer', query: { from_warehouse_id: row.warehouse_id, product_item_id: row.item_id } }" :aria-label="t('inventory.stockTransfer')" :title="t('inventory.stockTransfer')"><ArrowRightLeft class="size-4" /></BaseButton>
         <CrudShowButton v-if="canView" :loading="detailsLoadingId === row.id" :disabled="detailsLoading" @click="openDetails(row.id)" />
-        <RowActions
-          :can-edit="canUpdate"
-          :edit-to="{ name: 'stocks.edit', params: { id: row.id } }"
-        />
       </div>
     </template>
   </DataTable>
@@ -251,7 +246,7 @@ onMounted(() => Promise.all([list.load(), loadLookups()]))
           <RelationshipCard :title="displayName(selectedStock.warehouse)" :subtitle="selectedStock.warehouse?.address ?? selectedStock.warehouse?.description ?? t('details.noRelatedData')">
             <template #badge><DetailsBadge :value="selectedStock.warehouse?.is_active" /></template>
           </RelationshipCard>
-          <RelationshipCard :title="selectedStock.item?.sku ?? '—'" :subtitle="selectedStock.item?.merchant?.name">
+          <RelationshipCard :title="selectedStock.item?.sku ?? '—'">
             <template #badge><DetailsBadge :value="selectedStock.item?.is_active" /></template>
             <DetailsField :label="t('table.price')" :value="formatNumber(selectedStock.item?.current_price)" />
           </RelationshipCard>

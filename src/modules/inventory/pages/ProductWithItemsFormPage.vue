@@ -14,26 +14,22 @@ import BaseButton from "@/components/ui/BaseButton.vue";
 import DetailsSection from "@/components/ui/DetailsSection.vue";
 import FormPageLayout from "@/components/ui/FormPageLayout.vue";
 import { ApiError } from "@/api/http";
-import { listResource } from "@/modules/data-entry/api";
+import { listCategoryTree, listResource } from "@/modules/data-entry/api";
+import CategoryTreeSelect from "@/modules/data-entry/components/CategoryTreeSelect.vue";
 import { useToastStore } from "@/stores/toast";
 import { usePermissions } from "@/composables/usePermissions";
 import {
   createProductWithItems,
-  listMerchants,
   listOptionValues,
   listProductOptions,
-  listWarehouses,
 } from "../api";
 import type {
   Brand,
-  Category,
-  Merchant,
   ProductOption,
   ProductOptionValue,
   ProductWithItemsPayload,
-  Warehouse,
 } from "../types";
-import MerchantSelectField from "../components/MerchantSelectField.vue";
+import type { CategoryTreeNode } from "@/modules/data-entry/types";
 import ProductItemOptionsField from "../components/ProductItemOptionsField.vue";
 
 const router = useRouter();
@@ -44,22 +40,17 @@ const optionsLoading = ref(false);
 const saving = ref(false);
 const errors = ref<Record<string, string[]>>({});
 const errorMessage = ref("");
-const categories = ref<Category[]>([]);
+const categories = ref<CategoryTreeNode[]>([]);
 const brands = ref<Brand[]>([]);
 const productOptions = ref<ProductOption[]>([]);
 const optionValues = ref<ProductOptionValue[]>([]);
-const warehouses = ref<Warehouse[]>([]);
-const merchants = ref<Merchant[]>([]);
 
 function createEmptyItem(): ProductWithItemsPayload["items"][number] {
   return {
+    movement_code: '',
     price: 0,
-    merchant_id: null,
+    max_discount: '',
     option_value_ids: [],
-    stocks: warehouses.value.map((warehouse) => ({
-      warehouse_id: warehouse.id,
-      quantity: 0,
-    })),
     images: [],
   };
 }
@@ -72,20 +63,6 @@ const form = reactive<ProductWithItemsPayload>({
   is_active: true,
   items: [createEmptyItem()],
 });
-
-const categoryOptions = computed<SearchableSelectOption<number>[]>(() =>
-  categories.value.map((category) => ({
-    label: displayName(category),
-    value: category.id,
-    searchText: [
-      category.name,
-      category.translation_name?.ar,
-      category.translation_name?.en,
-    ]
-      .filter(Boolean)
-      .join(" "),
-  })),
-);
 
 const brandOptions = computed<SearchableSelectOption<number>[]>(() =>
   brands.value.map((brand) => ({
@@ -122,35 +99,21 @@ function normalizeList<T>(response: T[] | { data: T[] }): T[] {
 async function loadOptions() {
   optionsLoading.value = true;
   try {
-    const canListMerchants =
-      can("read-merchant") && can(["view-all-merchant", "view-own-merchant"]);
     const [
       categoryResponse,
       brandResponse,
       productOptionResponse,
       optionResponse,
-      warehouseResponse,
-      merchantResponse,
     ] = await Promise.all([
-      listResource("categories", { per_page: -1 }),
+      listCategoryTree(),
       listResource("brands", { per_page: -1 }),
       listProductOptions({ per_page: -1 }),
       listOptionValues({ per_page: -1 }),
-      listWarehouses({ per_page: -1 }),
-      canListMerchants ? listMerchants({ per_page: -1 }) : Promise.resolve([]),
     ]);
-    categories.value = normalizeList(categoryResponse);
+    categories.value = categoryResponse;
     brands.value = normalizeList(brandResponse);
     productOptions.value = normalizeList(productOptionResponse);
     optionValues.value = normalizeList(optionResponse);
-    warehouses.value = normalizeList(warehouseResponse);
-    merchants.value = normalizeList(merchantResponse);
-    form.items.forEach((item) => {
-      item.stocks = warehouses.value.map((warehouse) => ({
-        warehouse_id: warehouse.id,
-        quantity: 0,
-      }));
-    });
   } finally {
     optionsLoading.value = false;
   }
@@ -162,12 +125,6 @@ function addItem() {
 
 function removeItem(index: number) {
   if (form.items.length > 1) form.items.splice(index, 1);
-}
-
-function addMerchant(merchant: Merchant) {
-  if (!merchants.value.some((item) => item.id === merchant.id))
-    merchants.value.push(merchant);
-  toast.success(t("inventory.merchantCreatedSelected"));
 }
 
 function addProductOption(option: ProductOption) {
@@ -242,14 +199,11 @@ onMounted(loadOptions);
             :error-ar="errors['description.ar']?.[0]"
             :error-en="errors['description.en']?.[0]"
           />
-          <SearchableSelectInput
+          <CategoryTreeSelect
             id="bulk_product_category"
             v-model="form.category_id"
             :label="t('table.category')"
-            :options="categoryOptions"
-            :placeholder="t('common.select')"
-            :search-placeholder="t('crud.searchPlaceholder')"
-            :empty-text="t('states.emptyTitle')"
+            :nodes="categories"
             :loading="optionsLoading"
             :error="errors.category_id?.[0]"
             required
@@ -334,21 +288,31 @@ onMounted(loadOptions);
 
             <div class="grid gap-4 md:grid-cols-3">
               <FormInput
+                :id="`bulk_item_${itemIndex}_movement_code`"
+                v-model="item.movement_code"
+                :label="t('table.movementCode')"
+                :error="errors[`items.${itemIndex}.movement_code`]?.[0]"
+                required
+              />
+              <FormInput
                 :id="`bulk_item_${itemIndex}_price`"
                 v-model="item.price"
                 :label="t('table.price')"
                 type="number"
+                min="0.01"
+                step="0.01"
                 :error="errors[`items.${itemIndex}.price`]?.[0]"
                 required
               />
-              <MerchantSelectField
-                :id="`bulk_item_${itemIndex}_merchant`"
-                v-model="item.merchant_id"
-                :merchants="merchants"
-                :loading="optionsLoading"
-                :error="errors[`items.${itemIndex}.merchant_id`]?.[0]"
-                :can-create="can('create-merchant')"
-                @created="addMerchant"
+              <FormInput
+                :id="`bulk_item_${itemIndex}_max_discount`"
+                v-model="item.max_discount"
+                :label="t('inventory.maxDiscountEgp')"
+                type="number"
+                min="0"
+                step="0.01"
+                :help="t('inventory.maxDiscountHelp')"
+                :error="errors[`items.${itemIndex}.max_discount`]?.[0]"
               />
             </div>
 
@@ -363,34 +327,6 @@ onMounted(loadOptions);
               @option-created="addProductOption"
               @value-created="addOptionValue"
             />
-
-            <div v-if="item.stocks.length" class="grid gap-3">
-              <span class="form-label">{{
-                t("inventory.warehouseQuantities")
-              }}</span>
-              <div class="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
-                <FormInput
-                  v-for="(stock, stockIndex) in item.stocks"
-                  :id="`bulk_item_${itemIndex}_stock_${stock.warehouse_id}`"
-                  :key="stock.warehouse_id"
-                  v-model="stock.quantity"
-                  :label="
-                    displayName(
-                      warehouses.find(
-                        (warehouse) =>
-                          warehouse.id === Number(stock.warehouse_id),
-                      ),
-                    )
-                  "
-                  type="number"
-                  :error="
-                    errors[
-                      `items.${itemIndex}.stocks.${stockIndex}.quantity`
-                    ]?.[0]
-                  "
-                />
-              </div>
-            </div>
 
             <FileUpload
               :id="`bulk_item_${itemIndex}_images`"
