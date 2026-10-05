@@ -107,6 +107,7 @@ onMounted(list.load)
   <CrudToolbar
     :search="list.search.value"
     :loading="list.loading.value"
+    :search-placeholder="t('dataEntry.searchCountries')"
     @search="list.applySearch"
     @refresh="list.load"
   />

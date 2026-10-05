@@ -292,7 +292,6 @@ onMounted(async () => {
         :label="t('table.product')"
         :options="productOptions"
         :placeholder="t('common.select')"
-        :search-placeholder="t('crud.searchPlaceholder')"
         :empty-text="t('states.emptyTitle')"
         :loading="optionsLoading"
         :error="errors.product_id?.[0]"

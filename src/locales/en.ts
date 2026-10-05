@@ -121,6 +121,7 @@ export default {
   },
   dataEntry: {
     countriesTitle: "Countries",
+    searchCountries: "Search by country name...",
     countriesDescription:
       "Country records use translatable name and nationality fields from the backend request.",
     createCountry: "Create country",
@@ -129,7 +130,9 @@ export default {
     countryHint:
       "Arabic is required by backend language validation; English is optional.",
     categoriesTitle: "Categories",
+    searchCategories: "Search by category name...",
     brandsTitle: "Brands",
+    searchBrands: "Search by brand name...",
     taxonomyDescription:
       "Translatable name and optional description fields are mapped from Laravel resources.",
     taxonomyFormHint:
@@ -161,6 +164,7 @@ export default {
   },
   admin: {
     usersTitle: "Users",
+    searchUsers: "Search by name, email, or phone...",
     usersDescription:
       "Manage system users according to Laravel policies and permissions.",
     createUser: "Create user",
@@ -172,6 +176,7 @@ export default {
     deleteUser: "Delete user",
     deleteUserMessage: "This uses the backend bulk delete endpoint for users.",
     rolesTitle: "Roles",
+    searchRoles: "Search by role name...",
     rolesDescription:
       "Manage roles and attach them to backend-registered permissions.",
     createRole: "Create role",
@@ -184,6 +189,7 @@ export default {
     deleteRoleMessage:
       "Roles assigned to users cannot be deleted according to backend guards.",
     permissionsTitle: "Permissions",
+    searchPermissionsIndex: "Search by permission name...",
     permissionsDescription:
       "Read-only list of registered permissions. Create/update permission routes are not registered in the API file.",
     settingsTitle: "System Settings",
@@ -207,7 +213,7 @@ export default {
     clearSelected: "Clear selected",
     clearGroup: "Clear group",
     noPermissionsAvailable: "No Permissions Available",
-    searchPermissions: "Search Permissions",
+    searchPermissions: "Search by permission name or group...",
     permissionGroup: "Permission Group",
     rolePermissions: "Role Permissions",
     userStatus: "User Status",
@@ -228,7 +234,7 @@ export default {
   phone: {
     countryCode: "Country code",
     selectCountry: "Select a country code.",
-    searchCountry: "Search by country, code, or phone code",
+    searchCountry: "Search by country name, code, or phone code...",
     noCountries: "No countries found",
     exactLength: "The phone number must contain exactly {length} digits.",
     rangeLength: "The phone number must be between {min} and {max} digits.",
@@ -246,7 +252,7 @@ export default {
     enabled: "Enabled",
     disabled: "Disabled",
     selectValue: "Select a value",
-    searchOptions: "Search options",
+    searchOptions: "Search options...",
     noOptions: "No options available",
     invalidJson: "Enter valid JSON before saving.",
     currentFile: "Current file",
@@ -262,7 +268,7 @@ export default {
     loadingBranch: "Loading branch...",
     branchFormDescription:
       "Arabic name is required. Address is optional, and only an active branch can be current.",
-    searchBranches: "Search branches by Arabic or English name...",
+    searchBranches: "Search by branch name...",
     selectBranch: "Select branch",
     allBranches: "All branches",
     noBranchesAvailable: "No active branches are available.",
@@ -285,6 +291,7 @@ export default {
     currentBranchWarehouse: "Current-branch warehouse",
     otherBranchWarehouse: "Other-branch warehouse",
     customersTitle: "Customers",
+    searchCustomers: "Search by name, email, or phone...",
     customersDescription:
       "Customer records follow the backend CustomerRequest. Status is changed only through the toggle endpoint.",
     createCustomer: "Create customer",
@@ -304,7 +311,7 @@ export default {
     loadingMerchant: "Loading merchant...",
     merchantFormDescription:
       "Name is required. Email and phone are optional; email must be unique when provided.",
-    searchMerchants: "Search merchants by name, email, or phone...",
+    searchMerchants: "Search by merchant name, email, or phone...",
     deleteMerchant: "Delete merchant",
     deleteMerchantMessage:
       "The merchant will be soft deleted. Existing product-item links remain until force deletion.",
@@ -335,7 +342,7 @@ export default {
     loadingWarehouse: "Loading warehouse...",
     warehouseFormDescription:
       "Branch and Arabic name are required by backend validation; address and description are optional.",
-    searchWarehouses: "Search warehouses by name...",
+    searchWarehouses: "Search by warehouse name...",
     warehouseDeleteFailed: "Unable to delete the warehouse.",
     deleteWarehouse: "Delete warehouse",
     deleteWarehouseMessage:
@@ -350,7 +357,7 @@ export default {
       "Select a warehouse and product item, then set the absolute available quantity.",
     stockOverwriteNotice:
       "Saving stock overwrites the quantity for this warehouse and product item. It does not add a movement or increment stock.",
-    searchStocks: "Search by SKU, barcode, product, warehouse, or address...",
+    searchStocks: "Search by SKU, barcode, product, or warehouse...",
     stockTransfer: "Stock transfer",
     stockTransferDescription:
       "Move an available product-item quantity between two existing warehouse stock balances.",
@@ -426,7 +433,9 @@ export default {
     optionDetails: "Option details",
     optionFormDescription:
       "Arabic name and at least one value are required. Editing submits the complete value list.",
-    searchOptions: "Search options...",
+    searchOptions: "Search by option name...",
+    searchProducts: "Search by product name...",
+    searchProductItems: "Search by SKU, barcode, product, or option...",
     deleteOption: "Delete option",
     deleteOptionMessage:
       "The option will be soft deleted according to the backend lifecycle.",
@@ -481,7 +490,7 @@ export default {
     applyFilters: "Apply Filters",
     resetFilters: "Reset Filters",
     searchPlaceholder:
-      "Search reference, warehouse, product, SKU, user, or notes...",
+      "Search by transfer number, warehouse, product, or notes...",
     referencePlaceholder: "Example: TRF-...",
     emptyTitle: "No stock transfers found",
     emptyMessage: "Recorded warehouse transfers will appear here.",
@@ -500,6 +509,7 @@ export default {
     filtersLoadFailed: "Unable to load transfer filter options.",
   },
   sales: {
+    searchOrders: "Search by invoice, customer, or order creator...",
     cartTitle: "Current Cart",
     cartDescription:
       "Manage your cart lines. Prices and stock are revalidated by the backend at checkout.",
@@ -581,16 +591,15 @@ export default {
     orderUpdated: "Order updated successfully.",
     orderUpdateFailed: "Unable to update the order.",
     searchProducts: "Product search",
-    searchProductsPlaceholder:
-      "Search by product, SKU, barcode, option name, or option value...",
+    searchProductsPlaceholder: "Search by product name or SKU...",
+    searchQuickSaleProducts: "Search product name or enter SKU...",
     noProductsFound: "No matching products found.",
     noProducts: "No available products were returned by the backend.",
     loadMoreProducts: "Load more products",
     selectProductItems: "Select to browse available items",
     productItems: "Product items",
     searchProductItems: "Search product items",
-    searchProductItemsPlaceholder:
-      "Search by SKU, option name, option value, or merchant...",
+    searchProductItemsPlaceholder: "Search by SKU, option, or merchant...",
     noProductItems: "No available items",
     noProductItemsMessage:
       "This product has no active, priced items matching your search.",
@@ -609,7 +618,7 @@ export default {
     quantity: "Quantity",
     warehouse: "Warehouse",
     selectWarehouse: "Select warehouse",
-    searchWarehouses: "Search warehouses...",
+    searchWarehouses: "Search for a warehouse...",
     warehouseOptionLabel:
       "{warehouse} — {branch} — Available: {count}",
     selectedWarehouseStock: "Available in selected warehouse: {count}",
@@ -669,7 +678,7 @@ export default {
     installmentsDescription:
       "Manage installments, scheduled payments, and payment plans using backend permissions and rules.",
     searchInstallments:
-      "Search invoice, customer, email, phone, or creator...",
+      "Search by invoice, customer, or creator...",
     installmentDetails: "Installment details",
     createInstallment: "Create installment",
     editInstallment: "Edit installment",
@@ -860,7 +869,8 @@ export default {
     paidMax: "Maximum paid amount",
     remainingMin: "Minimum remaining amount",
     remainingMax: "Maximum remaining amount",
-    searchPlaceholder: "Search backend-supported fields...",
+    searchPlaceholder: "Search...",
+    searchSelect: "Search {label}...",
     searchUnavailable:
       "Search is not supported reliably by this backend endpoint.",
     saved: "Record saved successfully.",

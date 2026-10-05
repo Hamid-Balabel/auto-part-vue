@@ -204,6 +204,7 @@ watch(locale, () => {
   <CrudToolbar
     :search="search"
     :loading="loading"
+    :search-placeholder="t('admin.searchUsers')"
     @search="applySearch"
     @refresh="load"
   />

@@ -149,6 +149,7 @@ watch(() => props.resource, () => {
   <CrudToolbar
     :loading="list.loading.value"
     :search="list.search.value"
+    :search-placeholder="t(props.resource === 'categories' ? 'dataEntry.searchCategories' : 'dataEntry.searchBrands')"
     @search="list.applySearch"
     @refresh="list.load"
   />

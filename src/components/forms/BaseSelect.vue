@@ -86,7 +86,7 @@ const displayValue = computed(() => props.multiple
   ? selectedOptions.value.map((option) => option.label).join(', ')
   : selectedOptions.value[0]?.label)
 const effectivePlaceholder = computed(() => props.placeholder || t('common.select'))
-const effectiveSearchPlaceholder = computed(() => props.searchPlaceholder || t('crud.searchPlaceholder'))
+const effectiveSearchPlaceholder = computed(() => props.searchPlaceholder || t('crud.searchSelect', { label: props.label }))
 const effectiveEmptyText = computed(() => props.emptyText || t('states.emptyTitle'))
 
 async function openDropdown() {

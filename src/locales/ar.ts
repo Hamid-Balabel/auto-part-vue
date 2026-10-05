@@ -120,6 +120,7 @@ export default {
   },
   dataEntry: {
     countriesTitle: "الدول",
+    searchCountries: "ابحث باسم الدولة...",
     countriesDescription:
       "سجلات الدول تستخدم حقول الاسم والجنسية متعددة اللغات حسب طلب الخلفية.",
     createCountry: "إنشاء دولة",
@@ -128,7 +129,9 @@ export default {
     countryHint:
       "العربية مطلوبة حسب تحقق اللغات في الخلفية، والإنجليزية اختيارية.",
     categoriesTitle: "التصنيفات",
+    searchCategories: "ابحث باسم التصنيف...",
     brandsTitle: "العلامات التجارية",
+    searchBrands: "ابحث باسم العلامة التجارية...",
     taxonomyDescription:
       "حقول الاسم والوصف متعددة اللغات مطابقة لموارد Laravel.",
     taxonomyFormHint:
@@ -159,6 +162,7 @@ export default {
   },
   admin: {
     usersTitle: "المستخدمون",
+    searchUsers: "ابحث بالاسم أو البريد الإلكتروني أو الهاتف...",
     usersDescription: "إدارة مستخدمي النظام حسب قواعد وصلاحيات Laravel.",
     createUser: "إنشاء مستخدم",
     newUser: "إنشاء مستخدم",
@@ -169,6 +173,7 @@ export default {
     deleteUser: "حذف المستخدم",
     deleteUserMessage: "سيتم استخدام نقطة حذف المستخدمين الجماعية في الخلفية.",
     rolesTitle: "الأدوار",
+    searchRoles: "ابحث باسم الدور...",
     rolesDescription: "إدارة الأدوار وربطها بالصلاحيات المسجلة في الخلفية.",
     createRole: "إنشاء دور",
     newRole: "إنشاء دور",
@@ -179,6 +184,7 @@ export default {
     deleteRole: "حذف الدور",
     deleteRoleMessage: "لا يمكن حذف دور مرتبط بمستخدمين حسب حماية الخلفية.",
     permissionsTitle: "الصلاحيات",
+    searchPermissionsIndex: "ابحث باسم الصلاحية...",
     permissionsDescription:
       "عرض الصلاحيات المسجلة فقط. لا توجد مسارات إنشاء أو تعديل صلاحيات مسجلة حالياً في API.",
     settingsTitle: "إعدادات النظام",
@@ -202,7 +208,7 @@ export default {
     clearSelected: "إلغاء المحدد",
     clearGroup: "إلغاء المجموعة",
     noPermissionsAvailable: "لا توجد صلاحيات متاحة",
-    searchPermissions: "ابحث في الصلاحيات",
+    searchPermissions: "ابحث باسم الصلاحية أو مجموعتها...",
     permissionGroup: "مجموعة الصلاحيات",
     rolePermissions: "صلاحيات الدور",
     userStatus: "حالة المستخدم",
@@ -223,7 +229,7 @@ export default {
   phone: {
     countryCode: "كود الدولة",
     selectCountry: "اختر كود الدولة.",
-    searchCountry: "ابحث باسم الدولة أو الكود أو كود الهاتف",
+    searchCountry: "ابحث باسم الدولة أو كودها أو كود الهاتف...",
     noCountries: "لا توجد دول مطابقة",
     exactLength: "رقم الهاتف يجب أن يتكون من {length} أرقام.",
     rangeLength: "رقم الهاتف يجب أن يكون بين {min} و {max} أرقام.",
@@ -241,7 +247,7 @@ export default {
     enabled: "مفعل",
     disabled: "معطل",
     selectValue: "اختر قيمة",
-    searchOptions: "ابحث في الخيارات",
+    searchOptions: "ابحث في الخيارات...",
     noOptions: "لا توجد خيارات متاحة",
     invalidJson: "أدخل JSON صحيحاً قبل الحفظ.",
     currentFile: "الملف الحالي",
@@ -257,7 +263,7 @@ export default {
     loadingBranch: "جار تحميل الفرع...",
     branchFormDescription:
       "الاسم العربي مطلوب والعنوان اختياري، ولا يمكن تحديد فرع غير نشط كفرع حالي.",
-    searchBranches: "ابحث باسم الفرع بالعربية أو الإنجليزية...",
+    searchBranches: "ابحث باسم الفرع...",
     selectBranch: "اختر الفرع",
     allBranches: "كل الفروع",
     noBranchesAvailable: "لا توجد فروع نشطة متاحة.",
@@ -280,6 +286,7 @@ export default {
     currentBranchWarehouse: "مستودع تابع للفرع الحالي",
     otherBranchWarehouse: "مستودع تابع لفرع آخر",
     customersTitle: "العملاء",
+    searchCustomers: "ابحث بالاسم أو البريد الإلكتروني أو الهاتف...",
     customersDescription:
       "سجلات العملاء مطابقة لـ CustomerRequest. الحالة تتغير فقط من نقطة تبديل الحالة.",
     createCustomer: "إنشاء عميل",
@@ -298,7 +305,7 @@ export default {
     loadingMerchant: "جار تحميل التاجر...",
     merchantFormDescription:
       "الاسم مطلوب. البريد الإلكتروني والهاتف اختياريان، ويجب أن يكون البريد فريداً عند إدخاله.",
-    searchMerchants: "ابحث باسم التاجر أو البريد أو الهاتف...",
+    searchMerchants: "ابحث باسم التاجر أو البريد الإلكتروني أو الهاتف...",
     deleteMerchant: "حذف التاجر",
     deleteMerchantMessage:
       "سيتم حذف التاجر حذفاً مؤقتاً، وستبقى روابط عناصر المنتجات حتى الحذف النهائي.",
@@ -328,7 +335,7 @@ export default {
     loadingWarehouse: "جار تحميل المستودع...",
     warehouseFormDescription:
       "الفرع والاسم العربي مطلوبان حسب تحقق الخلفية، والعنوان والوصف اختياريان.",
-    searchWarehouses: "ابحث باسم المستودع...",
+    searchWarehouses: "ابحث باسم المخزن...",
     warehouseDeleteFailed: "تعذر حذف المستودع.",
     deleteWarehouse: "حذف المستودع",
     deleteWarehouseMessage:
@@ -343,7 +350,7 @@ export default {
       "اختر المستودع وعنصر المنتج ثم عيّن الكمية المتاحة المطلقة.",
     stockOverwriteNotice:
       "حفظ المخزون يستبدل الكمية لهذا المستودع وعنصر المنتج. لا يضيف حركة ولا يزيد المخزون.",
-    searchStocks: "ابحث بـ SKU أو الباركود أو المنتج أو المستودع أو العنوان...",
+    searchStocks: "ابحث بـ SKU أو الباركود أو المنتج أو المخزن...",
     stockTransfer: "تحويل مخزون",
     stockTransferDescription:
       "تحويل كمية متاحة من عنصر منتج بين رصيدين موجودين في مستودعين.",
@@ -415,7 +422,9 @@ export default {
     optionDetails: "تفاصيل الخيار",
     optionFormDescription:
       "الاسم العربي وقيمة واحدة على الأقل مطلوبان، ويرسل التعديل قائمة القيم كاملة.",
-    searchOptions: "ابحث في الخيارات...",
+    searchOptions: "ابحث باسم الخيار...",
+    searchProducts: "ابحث باسم المنتج...",
+    searchProductItems: "ابحث بـ SKU أو الباركود أو اسم المنتج أو الخيار...",
     deleteOption: "حذف الخيار",
     deleteOptionMessage:
       "سيتم حذف الخيار حذفاً مؤقتاً حسب دورة الحفظ في الخلفية.",
@@ -470,7 +479,7 @@ export default {
     applyFilters: "تطبيق الفلاتر",
     resetFilters: "إعادة تعيين الفلاتر",
     searchPlaceholder:
-      "ابحث برقم التحويل أو المخزن أو المنتج أو SKU أو المستخدم أو الملاحظات...",
+      "ابحث برقم التحويل أو المخزن أو المنتج أو الملاحظات...",
     referencePlaceholder: "مثال: TRF-...",
     emptyTitle: "لا توجد تحويلات مخزون مسجلة",
     emptyMessage: "ستظهر هنا التحويلات المسجلة بين المخازن.",
@@ -489,6 +498,7 @@ export default {
     filtersLoadFailed: "تعذر تحميل خيارات فلاتر التحويلات.",
   },
   sales: {
+    searchOrders: "ابحث برقم الفاتورة أو بيانات العميل أو منشئ الطلب...",
     cartTitle: "السلة الحالية",
     cartDescription:
       "إدارة عناصر سلتك. تعيد الخلفية التحقق من الأسعار والمخزون عند إتمام الطلب.",
@@ -569,16 +579,15 @@ export default {
     orderUpdated: "تم تحديث الطلب بنجاح.",
     orderUpdateFailed: "تعذر تحديث الطلب.",
     searchProducts: "البحث عن منتج",
-    searchProductsPlaceholder:
-      "ابحث باسم المنتج أو SKU أو الباركود أو اسم الخيار أو قيمته...",
+    searchProductsPlaceholder: "ابحث باسم المنتج أو SKU...",
+    searchQuickSaleProducts: "ابحث باسم المنتج أو أدخل SKU...",
     noProductsFound: "لا توجد منتجات مطابقة.",
     noProducts: "لم تُرجع الخلفية منتجات متاحة.",
     loadMoreProducts: "عرض المزيد من المنتجات",
     selectProductItems: "اختر لعرض عناصر المنتج المتاحة",
     productItems: "عناصر المنتج",
     searchProductItems: "البحث في عناصر المنتج",
-    searchProductItemsPlaceholder:
-      "ابحث بـ SKU أو اسم الخيار أو قيمته أو التاجر...",
+    searchProductItemsPlaceholder: "ابحث بـ SKU أو الخيار أو التاجر...",
     noProductItems: "لا توجد عناصر متاحة",
     noProductItemsMessage: "لا توجد عناصر نشطة ومسعرة مطابقة لهذا المنتج.",
     addToOrder: "أضف إلى الطلب",
@@ -595,7 +604,7 @@ export default {
     quantity: "الكمية",
     warehouse: "المخزن",
     selectWarehouse: "اختر المخزن",
-    searchWarehouses: "ابحث في المخازن...",
+    searchWarehouses: "ابحث عن المخزن...",
     warehouseOptionLabel:
       "{warehouse} — {branch} — المتاح: {count}",
     selectedWarehouseStock: "المتاح في المخزن المحدد: {count}",
@@ -649,7 +658,7 @@ export default {
     installmentsDescription:
       "إدارة الأقساط والمدفوعات المجدولة وخطط السداد حسب صلاحيات وقواعد الخلفية.",
     searchInstallments:
-      "ابحث برقم الفاتورة أو العميل أو البريد أو الهاتف أو المستخدم...",
+      "ابحث برقم الفاتورة أو بيانات العميل أو منشئ الطلب...",
     installmentDetails: "تفاصيل القسط",
     createInstallment: "إنشاء قسط",
     editInstallment: "تعديل القسط",
@@ -838,7 +847,8 @@ export default {
     paidMax: "أكبر مبلغ مدفوع",
     remainingMin: "أقل مبلغ متبقٍ",
     remainingMax: "أكبر مبلغ متبقٍ",
-    searchPlaceholder: "ابحث في الحقول المدعومة من الخلفية...",
+    searchPlaceholder: "ابحث...",
+    searchSelect: "ابحث عن {label}...",
     searchUnavailable: "البحث غير مدعوم بشكل موثوق في نقطة الخلفية هذه.",
     saved: "تم حفظ السجل بنجاح.",
     deleted: "تم حذف السجل بنجاح.",

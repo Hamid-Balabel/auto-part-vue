@@ -51,7 +51,7 @@ const emit = defineEmits<{
           type="search"
           autocomplete="off"
           :value="search"
-          :placeholder="$t('sales.searchProductsPlaceholder')"
+          :placeholder="$t('sales.searchQuickSaleProducts')"
           data-testid="order-product-search"
           :aria-busy="scanning"
           @input="
@@ -67,7 +67,7 @@ const emit = defineEmits<{
       </p>
     </div>
 
-    <div class="min-h-0 flex-1 overflow-y-auto overscroll-contain">
+    <div class="min-h-0 flex-1 overflow-y-auto">
       <div
         v-if="loading && !products.length"
         class="grid gap-3 p-4 sm:grid-cols-2 lg:grid-cols-3"

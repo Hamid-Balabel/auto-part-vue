@@ -155,6 +155,7 @@ watch(locale, () => {
   <CrudToolbar
     :search="search"
     :loading="loading"
+    :search-placeholder="t('admin.searchPermissionsIndex')"
     @search="applySearch"
     @refresh="load"
   />

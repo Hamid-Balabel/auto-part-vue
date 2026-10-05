@@ -207,7 +207,7 @@ watch(locale, () => {
     </template>
   </PageHeader>
 
-  <CrudToolbar :search="list.search.value" :loading="list.loading.value" :search-placeholder="t('crud.searchPlaceholder')" @search="list.applySearch" @refresh="list.load" />
+  <CrudToolbar :search="list.search.value" :loading="list.loading.value" :search-placeholder="t('inventory.searchProducts')" @search="list.applySearch" @refresh="list.load" />
 
   <CrudFilterPanel :active-count="activeFiltersCount" :loading="list.loading.value" @apply="applyFilters" @reset="resetFilters">
     <BaseSelect id="product-category-filter" v-model="filters.category_id" :label="t('crud.category')" :options="categoryOptions" :placeholder="t('crud.all')" :loading="lookupsLoading" searchable clearable />

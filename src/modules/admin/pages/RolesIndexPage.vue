@@ -196,6 +196,7 @@ watch(locale, () => {
   <CrudToolbar
     :search="search"
     :loading="loading"
+    :search-placeholder="t('admin.searchRoles')"
     @search="applySearch"
     @refresh="load"
   />

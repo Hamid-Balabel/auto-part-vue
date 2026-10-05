@@ -178,7 +178,6 @@ onMounted(async () => {
         :label="t('admin.roles')"
         :options="roleOptions"
         :placeholder="t('common.select')"
-        :search-placeholder="t('crud.searchPlaceholder')"
         :empty-text="t('states.emptyTitle')"
         :loading="loading"
         :error="errors.roles?.[0] ?? errors['roles.0']?.[0]"

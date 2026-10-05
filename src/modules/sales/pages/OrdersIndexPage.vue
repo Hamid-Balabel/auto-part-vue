@@ -180,7 +180,7 @@ onMounted(() => {
   <CrudToolbar
     :search="list.search.value"
     :loading="list.loading.value"
-    :search-placeholder="t('crud.searchPlaceholder')"
+    :search-placeholder="t('sales.searchOrders')"
     @search="list.applySearch"
     @refresh="list.load"
   />

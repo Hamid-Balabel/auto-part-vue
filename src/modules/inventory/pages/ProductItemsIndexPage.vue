@@ -250,7 +250,7 @@ watch(locale, () => {
       <BaseButton v-if="canCreate" :to="{ name: 'product-items.create' }">{{ t('actions.create') }}</BaseButton>
     </template>
   </PageHeader>
-  <CrudToolbar :search="list.search.value" :loading="list.loading.value" :search-placeholder="t('sales.searchProductsPlaceholder')" @search="list.applySearch" @refresh="list.load" />
+  <CrudToolbar :search="list.search.value" :loading="list.loading.value" :search-placeholder="t('inventory.searchProductItems')" @search="list.applySearch" @refresh="list.load" />
   <CrudFilterPanel :active-count="activeFiltersCount" :loading="list.loading.value" @apply="applyFilters" @reset="resetFilters">
     <FormInput id="item-sku-filter" v-model="filters.sku" :label="t('crud.sku')" />
     <FormInput id="item-barcode-filter" v-model="filters.barcode" :label="t('crud.barcode')" />

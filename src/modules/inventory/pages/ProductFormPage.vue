@@ -112,8 +112,8 @@ onMounted(async () => {
     <div class="grid gap-4 md:grid-cols-2">
       <TranslatableFields id="product_name" v-model="form.name" :label-ar="t('dataEntry.nameAr')" :label-en="t('dataEntry.nameEn')" :error-ar="errors['name.ar']?.[0]" :error-en="errors['name.en']?.[0]" required-ar />
       <TranslatableFields id="product_description" v-model="form.description" :label-ar="t('dataEntry.descriptionAr')" :label-en="t('dataEntry.descriptionEn')" :error-ar="errors['description.ar']?.[0]" :error-en="errors['description.en']?.[0]" />
-      <SearchableSelectInput id="product_category" v-model="form.category_id" :label="t('table.category')" :options="categoryOptions" :placeholder="t('common.select')" :search-placeholder="t('crud.searchPlaceholder')" :empty-text="t('states.emptyTitle')" :loading="optionsLoading" :error="errors.category_id?.[0]" required />
-      <SearchableSelectInput id="product_brand" v-model="form.brand_id" :label="t('table.brand')" :options="brandOptions" :placeholder="t('common.select')" :search-placeholder="t('crud.searchPlaceholder')" :empty-text="t('states.emptyTitle')" :loading="optionsLoading" :error="errors.brand_id?.[0]" required />
+      <SearchableSelectInput id="product_category" v-model="form.category_id" :label="t('table.category')" :options="categoryOptions" :placeholder="t('common.select')" :empty-text="t('states.emptyTitle')" :loading="optionsLoading" :error="errors.category_id?.[0]" required />
+      <SearchableSelectInput id="product_brand" v-model="form.brand_id" :label="t('table.brand')" :options="brandOptions" :placeholder="t('common.select')" :empty-text="t('states.emptyTitle')" :loading="optionsLoading" :error="errors.brand_id?.[0]" required />
       <BooleanField id="product_status" v-model="form.is_active" class="md:col-span-2" :label="t('dataEntry.status')" :on-label="t('dataEntry.active')" :off-label="t('dataEntry.inactive')" :error="errors.is_active?.[0]" data-testid="product-active-field" />
     </div>
     <template #actions>

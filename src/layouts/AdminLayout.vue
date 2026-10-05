@@ -17,7 +17,6 @@ import {
   SlidersHorizontal,
   PanelsTopLeft,
   ReceiptText,
-  Search,
   Settings,
   ShieldCheck,
   ShoppingCart,
@@ -374,7 +373,7 @@ async function handleLogout() {
             : '-translate-x-full',
       ]"
     >
-      <div class="flex h-20 items-center gap-3 border-b border-white/10 px-5">
+      <div class="flex h-20 items-center gap-3 border-b border-border px-5">
         <div
           class="rounded-[var(--radius-md)] bg-secondary p-2.5 text-secondary-contrast shadow-lg shadow-secondary/20"
         >
@@ -471,10 +470,10 @@ async function handleLogout() {
 
     <div :class="isRtl ? 'lg:pr-[19rem]' : 'lg:pl-[19rem]'">
       <header
-        class="sticky top-0 z-30 border-b border-border bg-surface/90 shadow-sm backdrop-blur-xl"
+        class="sticky top-0 z-30 bg-surface/90 shadow-sm backdrop-blur-xl"
       >
         <div
-          class="flex h-[4.5rem] items-center gap-4 px-4 py-3 sm:px-6 lg:px-8"
+          class="flex h-20 items-center gap-4 border-b border-border px-4 py-3 sm:px-6 lg:px-8"
         >
           <BaseButton
             class="px-3 lg:hidden"
@@ -485,15 +484,7 @@ async function handleLogout() {
           >
             <Menu class="size-5" />
           </BaseButton>
-          <div
-            class="hidden flex-1 items-center gap-2 rounded-[var(--radius-lg)] border border-border bg-background/80 px-4 py-2.5 shadow-inner md:flex"
-          >
-            <Search class="size-4 text-text-muted" />
-            <span class="text-sm text-text-muted">{{
-              t("app.searchHint")
-            }}</span>
-          </div>
-          <div class="flex items-center gap-2" :class="isRtl ? 'mr-auto sm:mr-0' : 'ml-auto sm:ml-0'">
+          <div class="flex items-center gap-2" :class="isRtl ? 'mr-auto' : 'ml-auto'">
             <LanguageSwitcher />
             <ThemeSwitcher />
           </div>

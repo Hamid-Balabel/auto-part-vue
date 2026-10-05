@@ -50,8 +50,8 @@ function alignmentClass(column: DataTableColumn<T>) {
                   type="button"
                   @click="emit('sort', String(column.key))"
                 >
+                  <span v-if="sortColumn === column.key" aria-hidden="true">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
                   <span>{{ column.label }}</span>
-                  <span v-if="sortColumn === column.key" aria-hidden="true">{{ sortDirection === 'asc' ? 'ASC' : 'DESC' }}</span>
                 </button>
                 <span v-else>{{ column.label }}</span>
               </div>

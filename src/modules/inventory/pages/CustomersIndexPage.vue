@@ -135,7 +135,7 @@ onMounted(() => Promise.all([list.load(), loadLookups()]))
     </template>
   </PageHeader>
 
-  <CrudToolbar :search="list.search.value" :loading="list.loading.value" :search-placeholder="t('crud.searchPlaceholder')" @search="list.applySearch" @refresh="list.load" />
+  <CrudToolbar :search="list.search.value" :loading="list.loading.value" :search-placeholder="t('inventory.searchCustomers')" @search="list.applySearch" @refresh="list.load" />
 
   <CrudFilterPanel :active-count="activeFiltersCount" :loading="list.loading.value" @apply="applyFilters" @reset="resetFilters">
     <FormInput id="customer-name-filter" v-model="filters.name" :label="t('table.name')" />
