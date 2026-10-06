@@ -12,6 +12,12 @@ defineProps<{
   help?: string
   dataTestid?: string
   autocomplete?: string
+  min?: string | number
+  max?: string | number
+  step?: string | number
+  maxlength?: string | number
+  inputmode?: 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url'
+  pattern?: string
 }>()
 
 const emit = defineEmits<{
@@ -31,6 +37,12 @@ const emit = defineEmits<{
       :value="modelValue ?? ''"
       :placeholder="placeholder"
       :autocomplete="autocomplete"
+      :min="min"
+      :max="max"
+      :step="step"
+      :maxlength="maxlength"
+      :inputmode="inputmode"
+      :pattern="pattern"
       :disabled="disabled"
       :readonly="readonly"
       :aria-invalid="error ? 'true' : 'false'"

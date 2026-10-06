@@ -16,6 +16,8 @@ const props = defineProps<{
   loading?: boolean;
   error?: string;
   canCreate?: boolean;
+  disabled?: boolean;
+  required?: boolean;
 }>();
 const emit = defineEmits<{
   "update:modelValue": [value: number | null];
@@ -52,6 +54,8 @@ function created(merchant: Merchant) {
       :search-placeholder="t('inventory.searchMerchants')"
       :empty-text="t('states.emptyTitle')"
       :loading="loading"
+      :disabled="disabled"
+      :required="required"
       :error="error"
       clearable
       @update:model-value="emit('update:modelValue', $event as number | null)"

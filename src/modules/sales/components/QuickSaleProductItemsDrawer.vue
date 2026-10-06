@@ -30,6 +30,9 @@ watch(
   },
 )
 
+function itemProduct(item: ProductItem) {
+  return item.product ?? props.product
+}
 
 function itemOptions(item: ProductItem) {
   return (item.option_values ?? item.optionValues ?? [])
@@ -56,14 +59,19 @@ function availableStocks(item: ProductItem): Stock[] {
   )
 }
 
+function effectiveMaxDiscount(item: ProductItem) {
+  return item.effective_max_discount ?? '0.00'
+}
+
 const filteredItems = computed(() => {
   const query = itemSearch.value.trim().toLocaleLowerCase()
   if (!query) return props.items
   return props.items.filter((item) =>
     [
       item.sku,
+      item.movement_code,
+      item.barcode,
       itemOptions(item),
-      translatedName(item.merchant),
     ].some((value) =>
       String(value ?? '')
         .toLocaleLowerCase()
@@ -77,7 +85,7 @@ function addExactSku() {
   if (!sku) return
 
   const item = props.items.find(
-    (candidate) => candidate.sku.toLocaleLowerCase() === sku,
+    (candidate) => [candidate.sku, candidate.movement_code, candidate.barcode].some((value) => value?.toLocaleLowerCase() === sku),
   )
   if (!item || !availableStocks(item).length) return
 
@@ -174,17 +182,16 @@ function addExactSku() {
                   <ImageOff v-else class="size-5 text-text-muted" />
                 </div>
                 <div class="min-w-0 flex-1">
-                  <p class="truncate font-bold text-text">
-                    {{ itemOptions(item) || item.sku }}
+                  <p class="flex min-w-0 items-baseline gap-2 font-bold text-text">
+                    <span class="truncate">{{ translatedName(itemProduct(item)) }}</span>
+                    <span
+                      v-if="item.movement_code"
+                      class="shrink-0 text-xs font-semibold text-text-muted"
+                      >{{ item.movement_code }}</span
+                    >
                   </p>
                   <p class="mt-0.5 truncate text-xs text-text-muted">
-                    {{ item.sku }}
-                  </p>
-                  <p
-                    v-if="item.merchant"
-                    class="mt-1 truncate text-xs text-secondary"
-                  >
-                    {{ translatedName(item.merchant) }}
+                    {{ [item.sku, itemOptions(item)].filter(Boolean).join(' · ') }}
                   </p>
                 </div>
               </div>
@@ -229,7 +236,13 @@ function addExactSku() {
               <div
                 class="mt-3 flex flex-wrap items-center justify-between gap-3"
               >
-                <MoneyDisplay :value="item.current_price" currency="EGP" />
+                <div class="min-w-0">
+                  <MoneyDisplay :value="item.current_price" currency="EGP" />
+                  <p class="mt-1 text-xs text-text-muted">
+                    {{ $t('sales.effectiveMaxDiscount') }}:
+                    <MoneyDisplay :value="effectiveMaxDiscount(item)" currency="EGP" />
+                  </p>
+                </div>
                 <BaseButton
                   size="sm"
                   type="button"

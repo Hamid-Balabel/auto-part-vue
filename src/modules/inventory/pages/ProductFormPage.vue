@@ -10,10 +10,12 @@ import FormPageLayout from '@/components/ui/FormPageLayout.vue'
 import { ApiError } from '@/api/http'
 import { useResourcePermissions } from '@/composables/useResourcePermissions'
 import { useLocalizedName } from '@/composables/useLocalizedName'
-import { listResource } from '@/modules/data-entry/api'
+import { listCategoryTree, listResource } from '@/modules/data-entry/api'
+import CategoryTreeSelect from '@/modules/data-entry/components/CategoryTreeSelect.vue'
 import { useToastStore } from '@/stores/toast'
 import { createProduct, getProduct, updateProduct } from '../api'
-import type { Brand, Category, ProductPayload } from '../types'
+import type { Brand, ProductPayload } from '../types'
+import type { CategoryTreeNode } from '@/modules/data-entry/types'
 import { normalizeBoolean } from '@/utils/boolean'
 
 const props = defineProps<{ id?: string }>()
@@ -27,7 +29,7 @@ const optionsLoading = ref(false)
 const saving = ref(false)
 const errors = ref<Record<string, string[]>>({})
 const errorMessage = ref('')
-const categories = ref<Category[]>([])
+const categories = ref<CategoryTreeNode[]>([])
 const brands = ref<Brand[]>([])
 const isEdit = computed(() => Boolean(props.id))
 const canSave = computed(() => props.id ? permissions.canUpdate.value : permissions.canCreate.value)
@@ -39,11 +41,6 @@ const form = reactive<ProductPayload>({
   is_active: true,
 })
 
-const categoryOptions = computed<SearchableSelectOption<number>[]>(() => categories.value.map((category) => ({
-  label: localizedName(category, `#${category.id}`),
-  value: category.id,
-  searchText: [category.name, category.translation_name?.ar, category.translation_name?.en].filter(Boolean).join(' '),
-})))
 const brandOptions = computed<SearchableSelectOption<number>[]>(() => brands.value.map((brand) => ({
   label: localizedName(brand, `#${brand.id}`),
   value: brand.id,
@@ -58,10 +55,10 @@ async function loadOptions() {
   optionsLoading.value = true
   try {
     const [categoryResponse, brandResponse] = await Promise.all([
-      listResource('categories', { per_page: -1 }),
+      listCategoryTree(),
       listResource('brands', { per_page: -1 }),
     ])
-    categories.value = normalizeList(categoryResponse)
+    categories.value = categoryResponse
     brands.value = normalizeList(brandResponse)
   } finally {
     optionsLoading.value = false
@@ -112,8 +109,8 @@ onMounted(async () => {
     <div class="grid gap-4 md:grid-cols-2">
       <TranslatableFields id="product_name" v-model="form.name" :label-ar="t('dataEntry.nameAr')" :label-en="t('dataEntry.nameEn')" :error-ar="errors['name.ar']?.[0]" :error-en="errors['name.en']?.[0]" required-ar />
       <TranslatableFields id="product_description" v-model="form.description" :label-ar="t('dataEntry.descriptionAr')" :label-en="t('dataEntry.descriptionEn')" :error-ar="errors['description.ar']?.[0]" :error-en="errors['description.en']?.[0]" />
-      <SearchableSelectInput id="product_category" v-model="form.category_id" :label="t('table.category')" :options="categoryOptions" :placeholder="t('common.select')" :empty-text="t('states.emptyTitle')" :loading="optionsLoading" :error="errors.category_id?.[0]" required />
-      <SearchableSelectInput id="product_brand" v-model="form.brand_id" :label="t('table.brand')" :options="brandOptions" :placeholder="t('common.select')" :empty-text="t('states.emptyTitle')" :loading="optionsLoading" :error="errors.brand_id?.[0]" required />
+      <CategoryTreeSelect id="product_category" v-model="form.category_id" :label="t('table.category')" :nodes="categories" :loading="optionsLoading" :error="errors.category_id?.[0]" required />
+      <SearchableSelectInput id="product_brand" v-model="form.brand_id" :label="t('table.brand')" :options="brandOptions" :placeholder="t('common.select')" :search-placeholder="t('crud.searchPlaceholder')" :empty-text="t('states.emptyTitle')" :loading="optionsLoading" :error="errors.brand_id?.[0]" required />
       <BooleanField id="product_status" v-model="form.is_active" class="md:col-span-2" :label="t('dataEntry.status')" :on-label="t('dataEntry.active')" :off-label="t('dataEntry.inactive')" :error="errors.is_active?.[0]" data-testid="product-active-field" />
     </div>
     <template #actions>

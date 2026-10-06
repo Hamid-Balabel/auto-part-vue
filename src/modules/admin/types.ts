@@ -36,7 +36,7 @@ export interface User {
   display_gender?: string | null
   is_active?: boolean
   avatar?: string | null
-  roles?: Array<{ id: number; name?: string; display_name?: string | null }>
+  roles?: Array<{ id: number; name?: string; translation_display_name?: string | null; display_name?: string | null }>
   created_at?: string | null
   updated_at?: string | null
 }

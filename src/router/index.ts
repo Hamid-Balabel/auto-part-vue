@@ -5,6 +5,7 @@ import { inventoryRoutes } from '@/modules/inventory/routes'
 import { salesRoutes } from '@/modules/sales/routes'
 import { reportRoutes } from '@/modules/reports/routes'
 import { useAuthStore } from '@/stores/auth'
+import { defaultAuthenticatedRoute, isRootOrAdmin } from '@/utils/authNavigation'
 import { hasPermission } from '@/utils/permissions'
 
 const routes: RouteRecordRaw[] = [
@@ -65,7 +66,11 @@ router.beforeEach(async (to) => {
   }
 
   if (to.meta.guestOnly && auth.isAuthenticated) {
-    return { name: 'dashboard' }
+    return defaultAuthenticatedRoute(auth.user)
+  }
+
+  if (to.name === 'dashboard' && !isRootOrAdmin(auth.user)) {
+    return defaultAuthenticatedRoute(auth.user)
   }
 
   const requiredPermission = to.meta.permission as string | string[] | undefined

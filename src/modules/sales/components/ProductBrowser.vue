@@ -32,7 +32,7 @@ const emit = defineEmits<{
 
 <template>
   <section
-    class="panel relative isolate flex h-[min(72vh,48rem)] min-h-[32rem] min-w-0 flex-col overflow-hidden"
+    class="panel relative isolate flex h-[calc(100dvh-12rem)] min-h-[32rem] min-w-0 flex-col overflow-hidden"
     data-testid="quick-sale-product-browser"
   >
     <div
@@ -117,13 +117,25 @@ const emit = defineEmits<{
           >
             {{ translatedName(product) }}
           </h3>
-          <p class="mt-2 truncate text-xs text-text-muted">
-            {{
-              [translatedName(product.category), translatedName(product.brand)]
-                .filter((value) => value !== '—')
-                .join(' · ') || $t('sales.selectProductItems')
-            }}
-          </p>
+          <div class="mt-2 flex min-w-0 flex-wrap items-center gap-1.5">
+            <span
+              v-if="translatedName(product.category) !== '—'"
+              class="max-w-full truncate rounded-full bg-primary-soft px-2 py-0.5 text-[0.625rem] font-semibold leading-4 text-primary"
+              :title="translatedName(product.category)"
+            >
+              {{ translatedName(product.category) }}
+            </span>
+            <span
+              v-if="translatedName(product.brand) !== '—'"
+              class="min-w-0 truncate text-xs text-text-muted"
+              :title="translatedName(product.brand)"
+            >
+              {{ translatedName(product.brand) }}
+            </span>
+            <span v-if="translatedName(product.category) === '—' && translatedName(product.brand) === '—'" class="truncate text-xs text-text-muted">
+              {{ $t('sales.selectProductItems') }}
+            </span>
+          </div>
         </button>
       </div>
       <div v-if="hasMore" class="border-t border-border p-4 text-center">

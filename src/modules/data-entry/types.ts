@@ -29,7 +29,11 @@ export interface Brand {
 export interface Category extends Brand {
   parent_id?: number | null
   parent?: Category | null
-  children?: Category[]
+  children?: CategoryTreeNode[]
+}
+
+export interface CategoryTreeNode extends Category {
+  children?: CategoryTreeNode[]
 }
 
 export interface CountryPayload {

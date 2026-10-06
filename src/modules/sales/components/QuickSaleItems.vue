@@ -32,8 +32,8 @@ const emit = defineEmits<{
 const { t } = useI18n()
 const localizedName = useLocalizedName()
 
-function toCents(value: string) {
-  const match = value.trim().match(/^(\d+)(?:\.(\d{1,2}))?$/)
+function toCents(value: string | number) {
+  const match = String(value).trim().match(/^(\d+)(?:\.(\d{1,2}))?$/)
   if (!match) return null
   return Number(match[1]) * 100 + Number((match[2] ?? '').padEnd(2, '0'))
 }
@@ -43,7 +43,15 @@ function isCustomPrice(line: QuickSaleLine) {
 }
 
 function lineTotal(line: QuickSaleLine) {
-  return ((toCents(line.unitPrice) ?? 0) * line.quantity) / 100
+  return Math.max(0, grossLineTotal(line) - (toCents(line.discount) ?? 0)) / 100
+}
+
+function grossLineTotal(line: QuickSaleLine) {
+  return (toCents(line.unitPrice) ?? 0) * line.quantity
+}
+
+function maxDiscount(line: QuickSaleLine) {
+  return ((toCents(line.item.effective_max_discount ?? 0) ?? 0) / 100).toFixed(2)
 }
 
 function warehouseName(warehouse?: Warehouse | null) {
@@ -77,6 +85,10 @@ function fieldError(errors: string[] | undefined) {
     return t('sales.validation.warehouseUnavailable')
   if (value === 'stockExceeded') return t('sales.validation.stockExceeded')
   if (value === 'invalidPrice') return t('sales.validation.invalidPrice')
+  if (value === 'invalidDiscount') return t('sales.validation.invalidDiscount')
+  if (value === 'discountExceedsMax') return t('sales.validation.discountExceedsMax')
+  if (value === 'discountExceedsSubtotal')
+    return t('sales.validation.discountExceedsSubtotal')
   return value
 }
 
@@ -134,7 +146,7 @@ function hasStockConflict(line: QuickSaleLine) {
       >
         <div class="flex min-w-0 items-start gap-2">
           <div class="min-w-0 flex-1">
-            <ProductItemIdentity :item="line.item" />
+            <ProductItemIdentity :item="line.item" quick-sale-title />
           </div>
           <BaseButton
             class="shrink-0"
@@ -253,6 +265,19 @@ function hasStockConflict(line: QuickSaleLine) {
                 "
               />
               <p
+                class="mt-1 inline-flex items-center gap-1 text-xs font-medium leading-normal text-text-muted"
+              >
+                {{ $t('sales.effectiveMaxDiscount') }}:
+                <MoneyDisplay
+                  :value="maxDiscount(line)"
+                  currency="EGP"
+                  class="!text-xs !font-semibold !text-text"
+                />
+              </p>
+              <p v-if="fieldError(errors?.[`items.${index}.discount`])" class="form-error">
+                {{ fieldError(errors?.[`items.${index}.discount`]) }}
+              </p>
+              <p
                 v-if="fieldError(errors?.[`items.${index}.price`])"
                 class="form-error"
               >
@@ -277,7 +302,7 @@ function hasStockConflict(line: QuickSaleLine) {
               <RotateCcw class="size-3.5" />{{ $t('sales.resetSystemPrice') }}
             </button>
             <div class="ms-auto min-w-0 text-end">
-              <p class="text-xs text-text-muted">{{ $t('sales.lineTotal') }}</p>
+              <p class="text-xs text-text-muted">{{ $t('sales.netLineTotal') }}</p>
               <MoneyDisplay
                 class="text-lg"
                 :value="lineTotal(line)"

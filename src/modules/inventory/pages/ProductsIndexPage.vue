@@ -25,8 +25,9 @@ import { ApiError } from '@/api/http'
 import { useCrudList } from '@/composables/useCrudList'
 import { useResourcePermissions } from '@/composables/useResourcePermissions'
 import { useToastStore } from '@/stores/toast'
-import { listResource } from '@/modules/data-entry/api'
-import type { Brand, Category } from '@/modules/data-entry/types'
+import { listCategoryTree, listResource } from '@/modules/data-entry/api'
+import { categoryPathFromMap, categoryTreeRowsToOptions, categoryTreeRowsToPathMap, flattenCategoryTree } from '@/modules/data-entry/utils/categoryTree'
+import type { Brand, CategoryTreeNode } from '@/modules/data-entry/types'
 import { deleteProduct, getProduct, listProducts, toggleProduct } from '../api'
 import type { Product, ProductItem } from '../types'
 
@@ -45,7 +46,7 @@ const detailsLoading = ref(false)
 const detailsLoadingId = ref<number | null>(null)
 const detailsError = ref('')
 const selectedProduct = ref<Product | null>(null)
-const categories = ref<Category[]>([])
+const categories = ref<CategoryTreeNode[]>([])
 const brands = ref<Brand[]>([])
 const lookupsLoading = ref(false)
 const emptyFilters = () => ({
@@ -89,7 +90,6 @@ const columns = computed<DataTableColumn<Product>[]>(() => [
 ])
 const itemColumns = computed<DetailsTableColumn<ProductItem>[]>(() => [
   { key: 'sku', label: t('table.sku') },
-  { key: 'merchant', label: t('inventory.merchant') },
   { key: 'current_price', label: t('table.price') },
   { key: 'total_stock', label: t('table.stock') },
   { key: 'option_values', label: t('details.attributes') },
@@ -99,7 +99,9 @@ const itemColumns = computed<DetailsTableColumn<ProductItem>[]>(() => [
   { key: 'created_at', label: t('table.createdAt') },
 ])
 const activeFiltersCount = computed(() => Object.values(appliedFilters).filter((value) => value !== '' && value !== null).length)
-const categoryOptions = computed(() => categories.value.map((category) => ({ value: category.id, label: displayName(category) })))
+const categoryRows = computed(() => flattenCategoryTree(categories.value, locale.value, t('dataEntry.rootCategory')))
+const categoryPathMap = computed(() => categoryTreeRowsToPathMap(categoryRows.value))
+const categoryOptions = computed(() => categoryTreeRowsToOptions(categoryRows.value, locale.value))
 const brandOptions = computed(() => brands.value.map((brand) => ({ value: brand.id, label: displayName(brand) })))
 const booleanOptions = computed(() => [
   { value: '', label: t('crud.all') },
@@ -117,6 +119,10 @@ const trashedOptions = computed(() => [
   { value: 'only', label: t('crud.onlyDeleted') },
 ])
 
+
+function categoryPath(category?: Product['category'] | null) {
+  return categoryPathFromMap(category, categoryPathMap.value, locale.value)
+}
 
 function formatDate(value?: string | null) {
   return value ? new Intl.DateTimeFormat(locale.value, { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(value)) : '—'
@@ -170,10 +176,10 @@ async function loadLookups() {
   lookupsLoading.value = true
   try {
     const [categoryResponse, brandResponse] = await Promise.all([
-      listResource('categories', { per_page: -1 }),
+      listCategoryTree(),
       listResource('brands', { per_page: -1 }),
     ])
-    categories.value = Array.isArray(categoryResponse) ? categoryResponse : categoryResponse.data
+    categories.value = categoryResponse
     brands.value = Array.isArray(brandResponse) ? brandResponse : brandResponse.data
   } finally {
     lookupsLoading.value = false
@@ -223,7 +229,9 @@ watch(locale, () => {
 
   <DataTable :columns="columns" :rows="list.rows.value" :loading="list.loading.value" :sort-column="list.sortColumn.value" :sort-direction="list.sortDirection.value" @sort="list.sortBy">
     <template #cell-name="{ row }">{{ displayName(row) }}</template>
-    <template #cell-category="{ row }">{{ displayName(row.category) }}</template>
+    <template #cell-category="{ row }">
+      <span class="block max-w-72 truncate text-sm font-medium text-text" :title="categoryPath(row.category)">{{ categoryPath(row.category) }}</span>
+    </template>
     <template #cell-brand="{ row }">{{ displayName(row.brand) }}</template>
     <template #cell-is_active="{ row }"><ActiveStatusSwitch :row="row" :can-toggle="canToggle" :toggle="toggleProduct" :data-testid="`product-status-${row.id}`" /></template>
     <template #cell-actions="{ row }">
@@ -251,7 +259,7 @@ watch(locale, () => {
 
       <DetailsSection :title="t('details.relatedInformation')">
         <div class="grid gap-3 md:grid-cols-2">
-          <RelationshipCard :title="displayName(selectedProduct.category)" :subtitle="selectedProduct.category?.description ?? t('details.noRelatedData')">
+          <RelationshipCard :title="categoryPath(selectedProduct.category)" :subtitle="selectedProduct.category?.description ?? t('details.noRelatedData')">
             <template #badge><DetailsBadge :value="selectedProduct.category?.is_active" /></template>
           </RelationshipCard>
           <RelationshipCard :title="displayName(selectedProduct.brand)" :subtitle="selectedProduct.brand?.description ?? t('details.noRelatedData')">
@@ -263,7 +271,6 @@ watch(locale, () => {
       <DetailsSection :title="t('inventory.productItemsTitle')">
         <DetailsTable :columns="itemColumns" :rows="selectedProduct.product_items ?? []" :empty-text="t('details.noRelatedData')">
           <template #cell-current_price="{ value }">{{ formatNumber(value as string | number | null) }}</template>
-          <template #cell-merchant="{ row }">{{ row.merchant?.name ?? '—' }}</template>
           <template #cell-total_stock="{ value }">{{ formatNumber(value as string | number | null) }}</template>
           <template #cell-option_values="{ value }">{{ Array.isArray(value) && value.length ? ((value as ProductItem['option_values']) ?? []).map((item) => displayName(item)).join(', ') : t('details.noRelatedData') }}</template>
           <template #cell-images="{ value }">{{ Array.isArray(value) ? formatNumber(value.length) : '—' }}</template>

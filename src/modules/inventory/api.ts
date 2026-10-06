@@ -5,6 +5,9 @@ import type {
   Customer,
   CustomerListQuery,
   CustomerPayload,
+  Party,
+  PartyListQuery,
+  PartyPayload,
   Branch,
   BranchListQuery,
   BranchPayload,
@@ -16,6 +19,7 @@ import type {
   ProductItem,
   ProductItemListQuery,
   ProductItemPayload,
+  ProductItemBatch,
   ProductOption,
   ProductOptionListQuery,
   ProductOptionPayload,
@@ -25,7 +29,8 @@ import type {
   StandaloneOptionValuePayload,
   Stock,
   StockListQuery,
-  StockPayload,
+  PurchaseStockPayload,
+  PurchaseBulkStockPayload,
   StockTransfer,
   StockTransferLogListQuery,
   StockTransferPayload,
@@ -175,6 +180,50 @@ export async function toggleMerchant(id: number): Promise<void> {
   await http.put("/merchants/toggle-active", { id });
 }
 
+export async function listParties(
+  query: PartyListQuery = {},
+): Promise<Paginated<Party> | Party[]> {
+  const response = await http.get<ApiEnvelope<Paginated<Party> | Party[]>>(
+    "/parties",
+    { params: query },
+  );
+  return unwrapData(response);
+}
+
+export async function getParty(id: string | number): Promise<Party> {
+  const response = await http.get<ApiEnvelope<Party>>(`/parties/${id}`);
+  return unwrapData(response);
+}
+
+export async function createParty(payload: PartyPayload): Promise<Party> {
+  const response = await http.post<ApiEnvelope<Party>>("/parties", payload);
+  return unwrapData(response);
+}
+
+export async function updateParty(
+  id: string | number,
+  payload: PartyPayload,
+): Promise<Party> {
+  const response = await http.put<ApiEnvelope<Party>>(`/parties/${id}`, payload);
+  return unwrapData(response);
+}
+
+export async function deleteParty(id: number): Promise<void> {
+  await http.delete("/parties/delete", { data: { id } });
+}
+
+export async function toggleParty(id: number): Promise<void> {
+  await http.put("/parties/toggle-active", { id });
+}
+
+export async function restoreParty(id: number): Promise<void> {
+  await http.post("/parties/restore", { id });
+}
+
+export async function forceDeleteParty(id: number): Promise<void> {
+  await http.delete("/parties/force-delete", { data: { id } });
+}
+
 export async function restoreMerchant(id: number): Promise<void> {
   await http.post("/merchants/restore", { id });
 }
@@ -314,7 +363,9 @@ export async function updateProductItem(
   payload: ProductItemPayload,
 ): Promise<ProductItem> {
   const formData = toFormData({ ...payload, _method: "PUT" });
-  if (payload.merchant_id === null) formData.append("merchant_id", "");
+  if (payload.max_discount === null || payload.max_discount === '') {
+    formData.set('max_discount', '')
+  }
   const response = await http.post<ApiEnvelope<ProductItem>>(
     `/product-items/${id}`,
     formData,
@@ -335,6 +386,17 @@ export async function deleteProductItem(id: number): Promise<void> {
 
 export async function toggleProductItem(id: number): Promise<void> {
   await http.put("/product-items/toggle-active", { id });
+}
+
+export async function listAvailableBatches(
+  itemId: string | number,
+  warehouseId: string | number,
+): Promise<ProductItemBatch[]> {
+  const response = await http.get<ApiEnvelope<ProductItemBatch[]>>(
+    `/product-items/${itemId}/batches`,
+    { params: { warehouse_id: warehouseId } },
+  );
+  return unwrapData(response);
 }
 
 export async function listOptionValues(
@@ -446,15 +508,22 @@ export async function getStock(id: string | number): Promise<Stock> {
   return unwrapData(response);
 }
 
-export async function createStock(payload: StockPayload): Promise<Stock> {
-  const response = await http.post<ApiEnvelope<Stock>>("/stocks", payload);
+export async function purchaseStock(
+  payload: PurchaseStockPayload,
+): Promise<ProductItemBatch> {
+  const response = await http.post<ApiEnvelope<ProductItemBatch>>(
+    "/stocks/purchase",
+    payload,
+  );
   return unwrapData(response);
 }
 
-export async function updateStock(
-  id: string | number,
-  payload: StockPayload,
-): Promise<Stock> {
-  const response = await http.put<ApiEnvelope<Stock>>(`/stocks/${id}`, payload);
+export async function purchaseStockBulk(
+  payload: PurchaseBulkStockPayload,
+): Promise<ProductItemBatch> {
+  const response = await http.post<ApiEnvelope<ProductItemBatch>>(
+    "/stocks/purchase-bulk",
+    payload,
+  );
   return unwrapData(response);
 }

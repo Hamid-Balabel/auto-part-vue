@@ -13,7 +13,7 @@ import LoadingState from "@/components/ui/LoadingState.vue";
 import PageHeader from "@/components/ui/PageHeader.vue";
 import { ApiError } from "@/api/http";
 import { getStockTransferLog } from "../api";
-import type { StockTransfer, StockTransferItem } from "../types";
+import type { StockTransfer, StockTransferBatchAllocation, StockTransferCompactBatch, StockTransferItem } from "../types";
 
 const props = defineProps<{ id: string }>();
 const route = useRoute();
@@ -51,6 +51,35 @@ function formatDate(value?: string | null) {
   return value
     ? new Intl.DateTimeFormat(locale.value, { dateStyle: "medium", timeStyle: "short" }).format(new Date(value))
     : "—";
+}
+
+function formatCurrency(value?: number | string | null, legacy = false) {
+  if (value === null || value === undefined || legacy) return t("inventory.unknown");
+  return new Intl.NumberFormat(locale.value, { style: "currency", currency: "EGP" }).format(Number(value));
+}
+
+function allocations(item: StockTransferItem) {
+  return item.batch_allocations ?? item.batchAllocations ?? [];
+}
+
+function allocationBatch(allocation: StockTransferBatchAllocation): StockTransferCompactBatch | null | undefined {
+  return allocation.batch ?? allocation.product_item_batch ?? allocation.productItemBatch ?? allocation.source_batch ?? allocation.sourceBatch ?? allocation.destination_batch ?? allocation.destinationBatch;
+}
+
+function batchLabel(batch?: StockTransferCompactBatch | null, fallback?: number | null) {
+  return batch?.id ? `#${batch.id}` : fallback ? `#${fallback}` : "—";
+}
+
+function allocationBatchId(allocation: StockTransferBatchAllocation) {
+  return allocation.batch_id ?? allocation.source_batch_id ?? allocation.destination_batch_id;
+}
+
+function batchDate(allocation: StockTransferBatchAllocation) {
+  return allocationBatch(allocation)?.purchased_at ?? null;
+}
+
+function batchLegacy(allocation: StockTransferBatchAllocation) {
+  return Boolean(allocationBatch(allocation)?.is_legacy_unknown);
 }
 
 function optionNames(item: StockTransferItem) {
@@ -155,6 +184,44 @@ watch([() => props.id, locale], load, { immediate: true });
           <div class="mt-1 text-xs text-success">{{ delta(row.destination_quantity_before, row.destination_quantity_after) }}</div>
         </template>
       </DataTable>
+
+      <div v-if="log.items?.some((item) => allocations(item).length)" class="mt-5 grid gap-4">
+        <article
+          v-for="item in log.items.filter((entry) => allocations(entry).length)"
+          :key="`batch-breakdown-${item.id}`"
+          class="rounded-[var(--radius-lg)] border border-border bg-background p-4"
+        >
+          <div class="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
+            <h3 class="font-semibold text-text">
+              {{ displayName(item.product_item?.product) }} · <span class="font-mono">{{ item.product_item?.sku ?? `#${item.product_item_id}` }}</span>
+            </h3>
+            <span class="text-sm text-text-muted">{{ t("stockTransferLogs.batchBreakdown") }}</span>
+          </div>
+          <div class="mt-3 overflow-x-auto rounded-[var(--radius-lg)] border border-border">
+            <table class="min-w-full divide-y divide-border text-sm">
+              <thead class="bg-neutral-soft text-xs font-semibold uppercase text-text-muted">
+                <tr>
+                  <th class="px-3 py-2 text-start">{{ t("stockTransferLogs.sourceBatch") }}</th>
+                  <th class="px-3 py-2 text-center">{{ t("stockTransferLogs.transferredQuantity") }}</th>
+                  <th class="px-3 py-2 text-start">{{ t("inventory.purchasePrice") }}</th>
+                  <th class="px-3 py-2 text-start">{{ t("inventory.purchaseDate") }}</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-border bg-surface">
+                <tr v-for="allocation in allocations(item)" :key="allocation.id">
+                  <td class="px-3 py-2 font-mono">{{ batchLabel(allocationBatch(allocation), allocationBatchId(allocation)) }}</td>
+                  <td class="px-3 py-2 text-center font-semibold">{{ formatNumber(allocation.quantity) }}</td>
+                  <td class="px-3 py-2">{{ formatCurrency(allocation.purchase_price, batchLegacy(allocation)) }}</td>
+                  <td class="px-3 py-2">
+                    <span>{{ formatDate(batchDate(allocation)) }}</span>
+                    <span v-if="batchLegacy(allocation)" class="ms-2 text-xs text-text-muted">{{ t("inventory.legacyBatch") }}</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </div>
     </DetailsSection>
   </div>
 </template>

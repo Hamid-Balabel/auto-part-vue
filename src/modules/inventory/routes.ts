@@ -2,6 +2,25 @@ import type { RouteRecordRaw } from "vue-router";
 
 export const inventoryRoutes: RouteRecordRaw[] = [
   {
+    path: "parties",
+    name: "parties.index",
+    component: () => import("./pages/PartiesIndexPage.vue"),
+    meta: { permission: ["view-all-party", "view-own-party"], permissionAll: ["read-party"] },
+  },
+  {
+    path: "parties/create",
+    name: "parties.create",
+    component: () => import("./pages/PartyFormPage.vue"),
+    meta: { permission: "create-party" },
+  },
+  {
+    path: "parties/:id/edit",
+    name: "parties.edit",
+    component: () => import("./pages/PartyFormPage.vue"),
+    props: true,
+    meta: { permission: "update-party" },
+  },
+  {
     path: "branches",
     name: "branches.index",
     component: () => import("./pages/BranchesIndexPage.vue"),
@@ -203,7 +222,7 @@ export const inventoryRoutes: RouteRecordRaw[] = [
     path: "stocks",
     name: "stocks.index",
     component: () => import("./pages/StocksIndexPage.vue"),
-    meta: { permission: ["read-stock", "create-stock", "update-stock"] },
+    meta: { permission: ["read-stock", "create-stock"] },
   },
   {
     path: "stocks/create",
@@ -215,7 +234,7 @@ export const inventoryRoutes: RouteRecordRaw[] = [
     path: "stocks/transfer",
     name: "stocks.transfer",
     component: () => import("./pages/StockTransferPage.vue"),
-    meta: { permission: "transfer-stock" },
+    meta: { permission: "transfer-stock", permissionAll: ["read-stock"] },
   },
   {
     path: "stock-transfer-logs",
@@ -239,12 +258,5 @@ export const inventoryRoutes: RouteRecordRaw[] = [
       breadcrumbKey: "stockTransferLogs.detailsTitle",
       sidebarRoute: "stock-transfer-logs.index",
     },
-  },
-  {
-    path: "stocks/:id/edit",
-    name: "stocks.edit",
-    component: () => import("./pages/StockFormPage.vue"),
-    props: true,
-    meta: { permission: ["read-stock", "update-stock"] },
   },
 ];

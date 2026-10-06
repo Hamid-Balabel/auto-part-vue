@@ -1,17 +1,16 @@
 <script setup lang="ts">
 import { computed, onMounted, reactive, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useLocalizedName } from '@/composables/useLocalizedName'
 import { useRouter } from 'vue-router'
 import FormInput from '@/components/forms/FormInput.vue'
 import BooleanField from '@/components/forms/BooleanField.vue'
-import SearchableSelectInput from '@/components/forms/SearchableSelectInput.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import FormPageLayout from '@/components/ui/FormPageLayout.vue'
 import { usePermissions } from '@/composables/usePermissions'
 import { ApiError } from '@/api/http'
-import { createTaxonomy, getResource, listResource, updateTaxonomy } from '../api'
-import type { Category, TaxonomyPayload } from '../types'
+import { createTaxonomy, getResource, listCategoryTree, updateTaxonomy } from '../api'
+import CategoryTreePicker from '../components/CategoryTreePicker.vue'
+import type { CategoryTreeNode, TaxonomyPayload } from '../types'
 import { normalizeBoolean } from '@/utils/boolean'
 
 const props = defineProps<{
@@ -22,16 +21,13 @@ const props = defineProps<{
 
 const router = useRouter()
 const { t } = useI18n()
-const localizedName = useLocalizedName()
 const { can } = usePermissions()
 const saving = ref(false)
 const loading = ref(false)
 const errors = ref<Record<string, string[]>>({})
 const errorMessage = ref('')
-const categories = ref<Category[]>([])
-const categoryOptions = computed(() => categories.value
-  .filter((category) => String(category.id) !== String(props.id ?? ''))
-  .map((category) => ({ label: localizedName(category, `Category #${category.id}`), value: category.id })))
+const categoryTree = ref<CategoryTreeNode[]>([])
+const categoryTreeLoading = ref(false)
 
 const form = reactive<TaxonomyPayload>({
   name: { ar: '', en: '' },
@@ -48,9 +44,12 @@ const permissionBase = computed(() => (props.resource === 'categories' ? 'catego
 const canSave = computed(() => can(`${isEdit.value ? 'update' : 'create'}-${permissionBase.value}`))
 async function loadOptions() {
   if (!isCategory.value) return
-  const response = await listResource('categories', { per_page: -1 })
-  const categoryList = Array.isArray(response) ? response : response.data
-  categories.value = categoryList
+  categoryTreeLoading.value = true
+  try {
+    categoryTree.value = await listCategoryTree()
+  } finally {
+    categoryTreeLoading.value = false
+  }
 }
 
 async function loadRecord() {
@@ -77,7 +76,7 @@ async function submit() {
       name: form.name,
       description: form.description,
       is_active: form.is_active,
-       ...(isCategory.value ? { parent_id: form.parent_id ?? null } : {}),
+      ...(isCategory.value ? { parent_id: form.parent_id ?? null } : {}),
     }
 
     if (props.id) {
@@ -115,7 +114,7 @@ onMounted(async () => {
       <FormInput id="name_en" v-model="form.name.en" :label="t('dataEntry.nameEn')" :error="errors['name.en']?.[0]" />
       <FormInput id="description_ar" v-model="form.description.ar" :label="t('dataEntry.descriptionAr')" :error="errors['description.ar']?.[0]" />
       <FormInput id="description_en" v-model="form.description.en" :label="t('dataEntry.descriptionEn')" :error="errors['description.en']?.[0]" />
-      <SearchableSelectInput v-if="isCategory" id="parent_id" v-model="form.parent_id" :label="t('dataEntry.parentCategory')" :options="categoryOptions" :error="errors.parent_id?.[0]" clearable />
+      <CategoryTreePicker v-if="isCategory" id="parent_id" v-model="form.parent_id" class="md:col-span-2" :label="t('dataEntry.parentCategory')" :nodes="categoryTree" :current-id="props.id" :loading="categoryTreeLoading" :error="errors.parent_id?.[0]" />
       <BooleanField id="is_active" v-model="form.is_active" :label="t('dataEntry.status')" :on-label="t('dataEntry.active')" :off-label="t('dataEntry.inactive')" :error="errors.is_active?.[0]" :data-testid="`${resource}-active-field`" />
     </div>
 

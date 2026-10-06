@@ -7,6 +7,7 @@ import BaseButton from '@/components/ui/BaseButton.vue'
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher.vue'
 import { ApiError } from '@/api/http'
 import { useAuthStore } from '@/stores/auth'
+import { defaultAuthenticatedRoute } from '@/utils/authNavigation'
 
 const route = useRoute()
 const router = useRouter()
@@ -21,7 +22,7 @@ const form = reactive({
 const errors = ref<Record<string, string[]>>({})
 const errorMessage = ref('')
 
-const redirectTo = computed(() => String(route.query.redirect ?? '/'))
+const redirectTo = computed(() => route.query.redirect)
 
 async function submit() {
   errors.value = {}
@@ -32,7 +33,11 @@ async function submit() {
       email: form.email,
       password: form.password,
     })
-    await router.push(redirectTo.value)
+    await router.push(
+      redirectTo.value === undefined
+        ? defaultAuthenticatedRoute(auth.user)
+        : String(redirectTo.value),
+    )
   } catch (error) {
     if (error instanceof ApiError) {
       errors.value = error.errors ?? {}

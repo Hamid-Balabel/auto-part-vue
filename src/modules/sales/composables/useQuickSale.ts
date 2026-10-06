@@ -2,13 +2,13 @@ import { computed, reactive, ref, watch } from 'vue'
 import { ApiError } from '@/api/http'
 import {
   getProduct,
-  listCustomers,
+  listParties,
   listProductItems,
   listProducts,
   listWarehouses,
 } from '@/modules/inventory/api'
 import type {
-  Customer,
+  Party,
   Product,
   ProductItem,
   Stock,
@@ -69,7 +69,7 @@ export function useQuickSale(
   const selectedProduct = ref<Product | null>(null)
   const selectedItems = ref<ProductItem[]>([])
   const warehouses = ref<Warehouse[]>([])
-  const customers = ref<Customer[]>([])
+  const customers = ref<Party[]>([])
   const lines = ref<QuickSaleLine[]>([])
   const errors = ref<Record<string, string[]>>({})
   const originalOrder = ref<Order | null>(null)
@@ -80,6 +80,8 @@ export function useQuickSale(
   let lineSequence = 0
   let warehousesLoaded = false
   let searchTimer: ReturnType<typeof setTimeout> | undefined
+  const productCache = new Map<number, Product>()
+  const productLookups = new Map<number, Promise<Product | null>>()
 
   const form = reactive({
     invoice_no: newInvoiceNumber(),
@@ -89,13 +91,38 @@ export function useQuickSale(
     initial_paid_amount: '' as number | string,
   })
 
+  function maxDiscountCents(line: QuickSaleLine) {
+    return toCents(line.item.effective_max_discount ?? 0) ?? 0
+  }
+
+  function grossLineCents(line: QuickSaleLine) {
+    return (toCents(line.unitPrice) ?? 0) * line.quantity
+  }
+
+  function lineDiscountCents(line: QuickSaleLine) {
+    return toCents(line.discount) ?? 0
+  }
+
+  function lineTotalCents(line: QuickSaleLine) {
+    return Math.max(0, grossLineCents(line) - lineDiscountCents(line))
+  }
+
   const previewTotalCents = computed(() =>
     lines.value.reduce(
-      (total, line) => total + (toCents(line.unitPrice) ?? 0) * line.quantity,
+      (total, line) => total + lineTotalCents(line),
       0,
     ),
   )
   const previewTotal = computed(() => previewTotalCents.value / 100)
+  const previewSubtotal = computed(
+    () =>
+      lines.value.reduce((total, line) => total + grossLineCents(line), 0) / 100,
+  )
+  const previewDiscount = computed(
+    () =>
+      lines.value.reduce((total, line) => total + lineDiscountCents(line), 0) /
+      100,
+  )
   const previewPaid = computed(() =>
     form.payment_mode === 'partial'
       ? Math.max(0, Number(form.initial_paid_amount) || 0)
@@ -122,6 +149,67 @@ export function useQuickSale(
   function nextLineId(itemId: number, warehouseId: number | null) {
     lineSequence += 1
     return `${itemId}:${warehouseId ?? 'pending'}:${lineSequence}`
+  }
+
+  function rememberProduct(product?: Product | null) {
+    if (!product?.id) return
+    productCache.set(product.id, product)
+  }
+
+  function cachedProduct(productId?: number | null) {
+    return productId ? productCache.get(productId) : undefined
+  }
+
+  async function resolveProductForItem(
+    item: ProductItem,
+  ): Promise<Product | null> {
+    if (item.product) {
+      rememberProduct(item.product)
+      return item.product
+    }
+
+    const cached = cachedProduct(item.product_id)
+    if (cached) {
+      item.product = cached
+      return cached
+    }
+
+    if (!item.product_id) return null
+
+    let lookup = productLookups.get(item.product_id)
+    if (!lookup) {
+      lookup = getProduct(item.product_id)
+        .then((product) => {
+          rememberProduct(product)
+          return product
+        })
+        .catch(() => null)
+        .finally(() => {
+          productLookups.delete(item.product_id)
+        })
+      productLookups.set(item.product_id, lookup)
+    }
+
+    const product = await lookup
+    if (product) item.product = product
+    return product
+  }
+
+  function enrichItemWithKnownProduct(item: ProductItem) {
+    if (item.product) {
+      rememberProduct(item.product)
+      return
+    }
+
+    const selected = selectedProduct.value
+    if (selected?.id === item.product_id) {
+      item.product = selected
+      rememberProduct(selected)
+      return
+    }
+
+    const cached = cachedProduct(item.product_id)
+    if (cached) item.product = cached
   }
 
   function activeWarehouseStocks(
@@ -191,6 +279,7 @@ export function useQuickSale(
       const pageProducts = Array.isArray(productResult)
         ? productResult
         : productResult.data
+      pageProducts.forEach(rememberProduct)
       let merged = pageProducts
 
       if (search && page === 1) {
@@ -207,7 +296,13 @@ export function useQuickSale(
           pageProducts.map((product) => [product.id, product]),
         )
         matchingItems.forEach((item) => {
-          if (item.product) byId.set(item.product.id, item.product)
+          if (item.product) {
+            rememberProduct(item.product)
+            byId.set(item.product.id, item.product)
+          } else {
+            const product = cachedProduct(item.product_id)
+            if (product) byId.set(product.id, product)
+          }
         })
         merged = [...byId.values()]
       }
@@ -240,8 +335,10 @@ export function useQuickSale(
     try {
       const detailed = await getProduct(product.id)
       if (request !== itemRequest) return
+      rememberProduct(detailed)
       selectedProduct.value = detailed
       detailed.product_items?.forEach((item) => {
+        item.product = detailed
         item.stocks = activeWarehouseStocks(item)
       })
       selectedItems.value = (detailed.product_items ?? []).filter(
@@ -270,7 +367,7 @@ export function useQuickSale(
     try {
       const [, customersResult, , order] = await Promise.all([
         loadProducts(),
-        listCustomers({ per_page: -1 }),
+        listParties({ per_page: -1, is_active: true }),
         refreshWarehouses(),
         orderId ? getOrder(orderId) : Promise.resolve(null),
       ])
@@ -281,49 +378,56 @@ export function useQuickSale(
       if (order) {
         originalOrder.value = order
         form.invoice_no = order.invoice_no
-        form.customer_id = order.customer_id
+        form.customer_id = order.party_id ?? order.customer_id ?? 0
         form.payment_mode = order.payment_method === 'card' ? 'card' : 'cash'
-        lines.value = (order.items ?? []).flatMap((orderItem) => {
-          if (!orderItem.product_item) return []
-          const systemPrice = moneyString(
-            orderItem.product_item.current_price ?? orderItem.price,
-          )
-          const persistedPrice = moneyString(orderItem.price)
-          const warehouseStocks = activeWarehouseStocks(
-            orderItem.product_item,
-            orderItem.warehouse_id,
-          ).map((stock) =>
-            stock.warehouse_id === orderItem.warehouse_id
-              ? {
-                  ...stock,
-                  quantity: Number(stock.quantity) + orderItem.quantity,
-                }
-              : stock,
-          )
-          const selectedStock = warehouseStocks.find(
-            (stock) => stock.warehouse_id === orderItem.warehouse_id,
-          )
-          return [
-            {
-              lineId: nextLineId(
-                orderItem.product_item.id,
-                orderItem.warehouse_id ?? null,
-              ),
-              item: orderItem.product_item,
-              quantity: orderItem.quantity,
-              systemPrice,
-              unitPrice: persistedPrice,
-              persistedPrice,
-              priceDirty: false,
-              warehouseId: orderItem.warehouse_id ?? null,
-              warehouseStocks,
-              availableQuantity: Number(selectedStock?.quantity ?? 0),
-              reservedWarehouseId: orderItem.warehouse_id ?? null,
-              reservedQuantity: orderItem.quantity,
-              stockChanged: false,
+        const hydratedLines = await Promise.all(
+          (order.items ?? []).map(
+            async (orderItem): Promise<QuickSaleLine | null> => {
+              if (!orderItem.product_item) return null
+              await resolveProductForItem(orderItem.product_item)
+              const systemPrice = moneyString(
+                orderItem.product_item.current_price ?? orderItem.price,
+              )
+              const persistedPrice = moneyString(orderItem.price)
+              const warehouseStocks = activeWarehouseStocks(
+                orderItem.product_item,
+                orderItem.warehouse_id,
+              ).map((stock) =>
+                stock.warehouse_id === orderItem.warehouse_id
+                  ? {
+                      ...stock,
+                      quantity: Number(stock.quantity) + orderItem.quantity,
+                    }
+                  : stock,
+              )
+              const selectedStock = warehouseStocks.find(
+                (stock) => stock.warehouse_id === orderItem.warehouse_id,
+              )
+              return {
+                lineId: nextLineId(
+                  orderItem.product_item.id,
+                  orderItem.warehouse_id ?? null,
+                ),
+                item: orderItem.product_item,
+                quantity: orderItem.quantity,
+                systemPrice,
+                unitPrice: persistedPrice,
+                discount: moneyString(orderItem.discount),
+                persistedPrice,
+                priceDirty: false,
+                warehouseId: orderItem.warehouse_id ?? null,
+                warehouseStocks,
+                availableQuantity: Number(selectedStock?.quantity ?? 0),
+                reservedWarehouseId: orderItem.warehouse_id ?? null,
+                reservedQuantity: orderItem.quantity,
+                stockChanged: false,
+              }
             },
-          ]
-        })
+          ),
+        )
+        lines.value = hydratedLines.filter((line): line is QuickSaleLine =>
+          Boolean(line),
+        )
       }
     } finally {
       loading.value = false
@@ -331,6 +435,8 @@ export function useQuickSale(
   }
 
   function addProduct(item: ProductItem) {
+    enrichItemWithKnownProduct(item)
+    if (!item.product) void resolveProductForItem(item)
     const warehouseStocks = activeWarehouseStocks(item)
     const currentStocks = warehouseStocks.filter(
       (stock) => stock.warehouse?.is_current,
@@ -362,6 +468,7 @@ export function useQuickSale(
         quantity: 1,
         systemPrice,
         unitPrice: systemPrice,
+        discount: '0.00',
         priceDirty: false,
         warehouseId,
         warehouseStocks,
@@ -385,12 +492,19 @@ export function useQuickSale(
         is_active: 1,
       })
       const items = Array.isArray(result) ? result : result.data
+      items.forEach((candidate) => {
+        if (candidate.product) rememberProduct(candidate.product)
+      })
       const item = items.find(
-        (candidate) => candidate.sku.toLocaleLowerCase() === sku.toLocaleLowerCase(),
+        (candidate) =>
+          [candidate.sku, candidate.movement_code, candidate.barcode].some(
+            (field) => field?.toLocaleLowerCase() === sku.toLocaleLowerCase(),
+          ),
       )
 
       if (!item || item.current_price === null) return false
 
+      await resolveProductForItem(item)
       item.stocks = activeWarehouseStocks(item)
       addProduct(item)
       productSearch.value = ''
@@ -459,7 +573,7 @@ export function useQuickSale(
     lines.value = lines.value.filter((line) => line.lineId !== lineId)
   }
 
-  function selectCustomer(customer: Customer) {
+  function selectCustomer(customer: Party) {
     if (!customers.value.some((item) => item.id === customer.id))
       customers.value.unshift(customer)
     form.customer_id = customer.id
@@ -533,7 +647,16 @@ export function useQuickSale(
       const cents = toCents(line.unitPrice)
       if (cents === null || cents > 9_999_999_999)
         errors.value[`items.${index}.price`] = ['invalidPrice']
+      const discountCents = toCents(line.discount)
+      if (discountCents === null)
+        errors.value[`items.${index}.discount`] = ['invalidDiscount']
+      else if (discountCents > maxDiscountCents(line))
+        errors.value[`items.${index}.discount`] = ['discountExceedsMax']
+      else if (discountCents > grossLineCents(line))
+        errors.value[`items.${index}.discount`] = ['discountExceedsSubtotal']
     })
+    if (lines.value.length && previewTotalCents.value <= 0)
+      errors.value.items = ['netTotalPositive']
     if (!orderId && form.payment_mode === 'partial') {
       const paid = Number(form.initial_paid_amount)
       if (!Number.isFinite(paid) || paid <= 0)
@@ -549,6 +672,7 @@ export function useQuickSale(
       item_id: line.item.id,
       quantity: line.quantity,
       warehouse_id: Number(line.warehouseId),
+      discount: moneyString(line.discount),
       ...(line.priceDirty && canOverridePrice && !priceLocked.value
         ? { price: line.unitPrice }
         : {}),
@@ -572,7 +696,7 @@ export function useQuickSale(
       if (orderId) {
         completedOrder.value = await updateOrder(orderId, {
           invoice_no: form.invoice_no,
-          customer_id: Number(form.customer_id),
+          party_id: Number(form.customer_id),
           items: lines.value.map(itemPayload),
         })
         return completedOrder.value
@@ -580,21 +704,20 @@ export function useQuickSale(
 
       const order = await createOrder({
         invoice_no: form.invoice_no,
-        customer_id: Number(form.customer_id),
+        party_id: Number(form.customer_id),
         payment_method: paymentMethod,
         items: lines.value.map(itemPayload),
       })
       createdOrder.value = order
-      const amount =
-        form.payment_mode === 'partial'
-          ? Number(form.initial_paid_amount)
-          : Number(order.total)
-      await createPaidInstallment({
-        order_id: order.id,
-        amount,
-        status: 'paid',
-        payment_method: paymentMethod,
-      })
+      if (form.payment_mode === 'partial') {
+        await createPaidInstallment({
+          source_type: 'order',
+          source_id: order.id,
+          amount: Number(form.initial_paid_amount),
+          status: 'paid',
+          payment_method: paymentMethod,
+        })
+      }
       completedOrder.value = await getOrder(order.id)
       return completedOrder.value
     } catch (error) {
@@ -648,6 +771,8 @@ export function useQuickSale(
     createdOrder,
     completedOrder,
     previewTotal,
+    previewSubtotal,
+    previewDiscount,
     previewPaid,
     previewRemaining,
     hasMoreProducts,

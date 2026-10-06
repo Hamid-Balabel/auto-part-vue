@@ -1,10 +1,16 @@
+export interface AuthRole {
+  id: number
+  name: string
+  description?: string | null
+}
+
 export interface AuthUser {
   id: number
   name: string
   email: string
   phone?: string | null
   avatar?: string | null
-  roles?: unknown
+  roles?: (AuthRole | string)[]
   permissions?: unknown
 }
 

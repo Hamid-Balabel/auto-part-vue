@@ -230,8 +230,12 @@ body {
   }
 
   .form-control {
-    @apply block w-full rounded-[var(--radius-md)] border-border bg-surface text-sm text-text shadow-sm transition placeholder:text-text-muted/70 focus:border-primary focus:ring-primary disabled:cursor-not-allowed disabled:bg-neutral/5 disabled:opacity-[var(--disabled-opacity)];
+    @apply block w-full rounded-[var(--radius-md)] border border-border bg-surface text-sm text-text shadow-sm transition placeholder:text-text-muted/70 focus:border-primary focus:ring-2 focus:ring-primary/20 disabled:cursor-not-allowed disabled:bg-neutral/5 disabled:opacity-[var(--disabled-opacity)];
     min-height: var(--control-height-md);
+  }
+
+  .select-control {
+    @apply form-control px-4;
   }
 
   .form-label {

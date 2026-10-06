@@ -53,6 +53,9 @@ http.interceptors.response.use(
   },
 )
 
-export function unwrapData<T>(response: { data: { data: T } }): T {
-  return response.data.data
+export function unwrapData<T>(response: { data: { data?: T } | T }): T {
+  const payload = response.data as { data?: T } | T
+  return typeof payload === 'object' && payload !== null && 'data' in payload
+    ? (payload as { data: T }).data
+    : (payload as T)
 }

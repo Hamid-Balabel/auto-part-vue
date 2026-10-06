@@ -3,6 +3,7 @@ import type { Country } from "@/modules/data-entry/types";
 import type { Brand, Category } from "@/modules/data-entry/types";
 import type { ListQuery } from "@/types/api";
 import type { User } from "@/modules/admin/types";
+import type { PaymentMethod } from "@/modules/sales/types";
 
 export interface Merchant {
   id: number;
@@ -34,6 +35,46 @@ export interface MerchantListQuery extends ListQuery {
   phone?: string;
   created_by?: number;
   has_product_items?: boolean | string;
+  is_active?: boolean | number | string;
+  trashed?: "with" | "only";
+  created_from?: string;
+  created_to?: string;
+}
+
+export type PartyClassification = "customer" | "supplier";
+
+export interface Party {
+  id: number;
+  name: string;
+  phone?: string | null;
+  email?: string | null;
+  is_active: boolean;
+  classifications: PartyClassification[];
+  creator?: {
+    id?: number | null;
+    name?: string | null;
+    email?: string | null;
+    is_active?: boolean;
+    created_at?: string | null;
+  } | null;
+  created_at?: string | null;
+  updated_at?: string | null;
+  deleted_at?: string | null;
+}
+
+export interface PartyPayload {
+  name: string;
+  phone?: string | null;
+  email?: string | null;
+  is_active: boolean;
+  classifications: PartyClassification[];
+}
+
+export interface PartyListQuery extends ListQuery {
+  name?: string;
+  email?: string;
+  phone?: string;
+  classification?: PartyClassification | "";
   is_active?: boolean | number | string;
   trashed?: "with" | "only";
   created_from?: string;
@@ -164,6 +205,8 @@ export interface ProductItemOption {
   product_id: number;
   product?: Product | null;
   current_price?: number | string | null;
+  max_discount?: number | string | null;
+  effective_max_discount?: number | string | null;
   total_stock?: number;
 }
 
@@ -276,6 +319,7 @@ export interface StandaloneOptionValuePayload {
 export interface ProductItem {
   id: number;
   sku: string;
+  movement_code: string;
   barcode?: string | null;
   is_active?: boolean;
   product_id: number;
@@ -288,6 +332,8 @@ export interface ProductItem {
   total_stock?: number;
   stocks?: Stock[];
   current_price?: number | string | null;
+  max_discount?: number | string | null;
+  effective_max_discount?: number | string | null;
   prices?: Array<{
     id: number;
     price?: number | string | null;
@@ -314,9 +360,9 @@ export interface ProductItemImage {
 
 export interface ProductItemListQuery extends ListQuery {
   sku?: string;
+  movement_code?: string;
   barcode?: string;
   product_id?: number;
-  merchant_id?: number;
   category_id?: number;
   brand_id?: number;
   warehouse_id?: number;
@@ -328,28 +374,78 @@ export interface ProductItemListQuery extends ListQuery {
 
 export interface ProductItemPayload {
   product_id: number | null;
-  merchant_id?: number | null;
+  movement_code: string;
   is_active: boolean;
   option_value_ids?: number[];
   price: number | string;
-  stocks?: Array<{ warehouse_id: number | string; quantity: number | string }>;
+  max_discount?: number | string | null;
   images?: File[];
 }
 
 export interface ProductWithItemsPayload extends ProductPayload {
   items: Array<{
+    movement_code: string;
     price: number | string;
-    merchant_id: number | null;
+    max_discount?: number | string | null;
     option_value_ids: number[];
-    stocks: Array<{ warehouse_id: number | string; quantity: number | string }>;
     images: File[];
   }>;
 }
 
-export interface StockPayload {
-  warehouse_id: number | string;
-  item_id: number | string;
+export interface ProductItemBatch {
+  id: number;
+  product_item_id: number;
+  product_item?: ProductItem | null;
+  warehouse_id?: number | null;
+  merchant_id: number | null;
+  merchant?: Merchant | null;
+  supplier_party_id?: number | null;
+  supplier_party?: Party | null;
+  purchase_id?: number | null;
+  purchase?: import('@/modules/sales/types').Purchase | null;
+  purchase_price: string | null;
+  original_quantity?: number;
+  remaining_quantity?: number;
+  total_original_quantity: number;
+  total_remaining_quantity: number;
+  purchased_at?: string | null;
+  is_legacy_unknown?: boolean;
+  warehouse_stocks?: ProductItemBatchStock[];
+}
+
+export interface ProductItemBatchStock {
+  id?: number | null;
+  warehouse_id: number;
+  original_quantity: number;
+  remaining_quantity: number;
+}
+
+export interface PurchaseStockPayload {
+  product_item_id: number;
+  warehouse_id: number;
+  supplier_party_id: number;
   quantity: number | string;
+  purchase_price: number | string;
+  purchased_at?: string | null;
+  payment_method?: PaymentMethod;
+  settlement_mode?: PurchaseSettlementMode;
+}
+
+export type PurchaseSettlementMode = "paid" | "plan" | "unpaid";
+
+export interface PurchaseBulkStockLinePayload {
+  warehouse_id: number;
+  quantity: number;
+}
+
+export interface PurchaseBulkStockPayload {
+  product_item_id: number;
+  supplier_party_id: number;
+  purchase_price: number | string;
+  purchased_at?: string | null;
+  payment_method?: PaymentMethod;
+  settlement_mode?: PurchaseSettlementMode;
+  warehouses: PurchaseBulkStockLinePayload[];
 }
 
 export interface StockListQuery extends ListQuery {
@@ -371,6 +467,12 @@ export interface StockTransferPayload {
   product_item_id: number | null;
   quantity: number | string;
   notes?: string | null;
+  batches?: StockTransferBatchPayload[];
+}
+
+export interface StockTransferBatchPayload {
+  batch_id: number;
+  quantity: number;
 }
 
 export interface StockTransfer {
@@ -407,6 +509,32 @@ export interface StockTransferItem {
   source_quantity_after: number;
   destination_quantity_before: number;
   destination_quantity_after: number;
+  batch_allocations?: StockTransferBatchAllocation[];
+  batchAllocations?: StockTransferBatchAllocation[];
+}
+
+export interface StockTransferCompactBatch {
+  id: number;
+  merchant_id?: number | null;
+  purchase_price: string | null;
+  purchased_at?: string | null;
+  is_legacy_unknown?: boolean;
+}
+
+export interface StockTransferBatchAllocation {
+  id: number;
+  batch_id?: number | null;
+  source_batch_id: number | null;
+  destination_batch_id: number | null;
+  quantity: number;
+  purchase_price: string | null;
+  batch?: StockTransferCompactBatch | null;
+  product_item_batch?: StockTransferCompactBatch | null;
+  productItemBatch?: StockTransferCompactBatch | null;
+  source_batch?: StockTransferCompactBatch | null;
+  destination_batch?: StockTransferCompactBatch | null;
+  sourceBatch?: StockTransferCompactBatch | null;
+  destinationBatch?: StockTransferCompactBatch | null;
 }
 
 export interface StockTransferLogListQuery extends ListQuery {
