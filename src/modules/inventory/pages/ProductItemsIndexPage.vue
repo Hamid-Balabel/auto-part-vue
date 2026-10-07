@@ -330,19 +330,19 @@ watch(locale, () => {
     <DateInput id="item-created-from-filter" v-model="filters.created_from" :label="t('crud.fromDate')" />
     <DateInput id="item-created-to-filter" v-model="filters.created_to" :label="t('crud.toDate')" />
   </CrudFilterPanel>
-  <DataTable :columns="columns" :rows="list.rows.value" :loading="list.loading.value" :sort-column="list.sortColumn.value" :sort-direction="list.sortDirection.value" @sort="list.sortBy">
-    <template #cell-product="{ row }">{{ displayName(row.product) }}</template>
+  <DataTable :columns="columns" :rows="list.rows.value" :loading="list.loading.value" :sort-column="list.sortColumn.value" :sort-direction="list.sortDirection.value" compact @sort="list.sortBy">
+    <template #cell-product="{ row }"><span class="block min-w-32 max-w-44 whitespace-normal break-words">{{ displayName(row.product) }}</span></template>
     <template #cell-option_values="{ row }">
-      <div v-if="groupedOptionValues(row).length" class="flex min-w-48 max-w-80 flex-wrap gap-1.5">
+      <div v-if="groupedOptionValues(row).length" class="flex w-36 max-w-52 flex-wrap gap-1.5">
         <div
           v-for="group in groupedOptionValues(row)"
           :key="group.key"
-          class="inline-flex max-w-full items-center overflow-hidden rounded-full border border-primary/15 bg-background shadow-sm"
+          class="flex w-full min-w-0 flex-col overflow-hidden rounded-xl border border-primary/15 bg-background shadow-sm"
         >
-          <span class="shrink-0 bg-primary-soft px-2.5 py-1 text-xs font-bold text-primary">
+          <span class="min-w-0 whitespace-normal break-words bg-primary-soft px-2.5 py-1 text-xs font-bold text-primary">
             {{ group.label }}
           </span>
-          <span class="truncate border-s border-primary/10 px-2.5 py-1 text-xs font-medium text-text">
+          <span class="min-w-0 whitespace-normal break-words border-t border-primary/10 px-2.5 py-1 text-xs font-medium text-text">
             {{ group.values.join(' - ') }}
           </span>
         </div>
@@ -351,14 +351,14 @@ watch(locale, () => {
     </template>
     <template #cell-current_price="{ value }">{{ formatNumber(value as string | number | null) }}</template>
     <template #cell-effective_max_discount="{ row }">
-      <div class="min-w-36">
+      <div class="w-28">
         <span>{{ formatMoney(row.effective_max_discount) }}</span>
         <span class="block text-xs text-text-muted">{{ row.max_discount === null || row.max_discount === undefined ? t('inventory.usesDefaultMaxDiscount') : t('inventory.configuredMaxDiscount') }}</span>
       </div>
     </template>
     <template #cell-is_active="{ row }"><ActiveStatusSwitch :row="row" :can-toggle="canToggle" :toggle="toggleProductItem" :data-testid="`product-item-status-${row.id}`" /></template>
     <template #cell-actions="{ row }">
-      <div class="inline-flex items-center justify-end gap-1.5">
+      <div class="inline-flex w-max items-center justify-end gap-1.5 whitespace-nowrap">
         <BaseButton v-if="canAddStock" variant="ghost" size="sm" type="button" :aria-label="t('inventory.addStock')" :title="t('inventory.addStock')" @click="addStockItem = row"><Plus class="size-4" /></BaseButton>
         <CrudShowButton v-if="canView" :loading="detailsLoadingId === row.id" :disabled="detailsLoading" @click="openDetails(row.id)" />
         <RowActions :can-edit="canUpdate" :can-delete="canDelete" :edit-to="{ name: 'product-items.edit', params: { id: row.id } }" :delete-disabled="list.mutating.value" @delete="selectedId = row.id" />
