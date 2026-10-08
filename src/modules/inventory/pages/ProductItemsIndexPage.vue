@@ -330,19 +330,19 @@ watch(locale, () => {
     <DateInput id="item-created-from-filter" v-model="filters.created_from" :label="t('crud.fromDate')" />
     <DateInput id="item-created-to-filter" v-model="filters.created_to" :label="t('crud.toDate')" />
   </CrudFilterPanel>
-  <DataTable :columns="columns" :rows="list.rows.value" :loading="list.loading.value" :sort-column="list.sortColumn.value" :sort-direction="list.sortDirection.value" compact @sort="list.sortBy">
-    <template #cell-product="{ row }"><span class="block min-w-32 max-w-44 whitespace-normal break-words">{{ displayName(row.product) }}</span></template>
+  <DataTable :columns="columns" :rows="list.rows.value" :loading="list.loading.value" :sort-column="list.sortColumn.value" :sort-direction="list.sortDirection.value" compact panel-class="product-items-table" @sort="list.sortBy">
+    <template #cell-product="{ row }"><span class="block w-[5.5rem] whitespace-normal break-words [overflow-wrap:anywhere]">{{ displayName(row.product) }}</span></template>
     <template #cell-option_values="{ row }">
-      <div v-if="groupedOptionValues(row).length" class="flex w-36 max-w-52 flex-wrap gap-1.5">
+      <div v-if="groupedOptionValues(row).length" class="flex w-max min-w-40 flex-col gap-1.5">
         <div
           v-for="group in groupedOptionValues(row)"
           :key="group.key"
-          class="flex w-full min-w-0 flex-col overflow-hidden rounded-xl border border-primary/15 bg-background shadow-sm"
+          class="inline-flex shrink-0 overflow-hidden whitespace-nowrap rounded-full bg-background"
         >
-          <span class="min-w-0 whitespace-normal break-words bg-primary-soft px-2.5 py-1 text-xs font-bold text-primary">
+          <span class="bg-primary-soft px-2.5 py-1 text-xs font-bold text-primary">
             {{ group.label }}
           </span>
-          <span class="min-w-0 whitespace-normal break-words border-t border-primary/10 px-2.5 py-1 text-xs font-medium text-text">
+          <span class="px-2.5 py-1 text-xs font-medium text-text">
             {{ group.values.join(' - ') }}
           </span>
         </div>
@@ -358,7 +358,7 @@ watch(locale, () => {
     </template>
     <template #cell-is_active="{ row }"><ActiveStatusSwitch :row="row" :can-toggle="canToggle" :toggle="toggleProductItem" :data-testid="`product-item-status-${row.id}`" /></template>
     <template #cell-actions="{ row }">
-      <div class="inline-flex w-max items-center justify-end gap-1.5 whitespace-nowrap">
+      <div class="inline-flex w-max items-center justify-end gap-1 whitespace-nowrap">
         <BaseButton v-if="canAddStock" variant="ghost" size="sm" type="button" :aria-label="t('inventory.addStock')" :title="t('inventory.addStock')" @click="addStockItem = row"><Plus class="size-4" /></BaseButton>
         <CrudShowButton v-if="canView" :loading="detailsLoadingId === row.id" :disabled="detailsLoading" @click="openDetails(row.id)" />
         <RowActions :can-edit="canUpdate" :can-delete="canDelete" :edit-to="{ name: 'product-items.edit', params: { id: row.id } }" :delete-disabled="list.mutating.value" @delete="selectedId = row.id" />
@@ -439,3 +439,14 @@ watch(locale, () => {
   </CrudDetailsModal>
   <AddStockDialog :open="addStockItem !== null" :product-item="addStockItem" @close="addStockItem = null" @success="list.load" />
 </template>
+
+<style>
+.product-items-table th:nth-child(1),
+.product-items-table td:nth-child(1),
+.product-items-table th:nth-child(2),
+.product-items-table td:nth-child(2),
+.product-items-table th:nth-child(10),
+.product-items-table td:nth-child(10) {
+  padding-inline: 0.375rem;
+}
+</style>

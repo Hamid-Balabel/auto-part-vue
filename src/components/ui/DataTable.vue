@@ -20,6 +20,7 @@ defineProps<{
   sortColumn?: string
   sortDirection?: 'asc' | 'desc'
   compact?: boolean
+  panelClass?: string
 }>()
 
 const emit = defineEmits<{
@@ -38,7 +39,7 @@ function alignmentClass(column: DataTableColumn<T>) {
 
 <template>
   <LoadingState v-if="loading" />
-  <div v-else class="panel w-full max-w-full overflow-hidden">
+  <div v-else class="panel w-full max-w-full overflow-hidden" :class="panelClass">
     <div v-if="rows.length" class="overflow-x-auto [contain:inline-size]" :dir="textDirection">
       <table class="min-w-full divide-y divide-border text-sm" :dir="textDirection">
         <thead class="bg-background text-xs font-semibold uppercase tracking-wide text-text-muted">
