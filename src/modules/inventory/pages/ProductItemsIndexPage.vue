@@ -333,7 +333,7 @@ watch(locale, () => {
   <DataTable :columns="columns" :rows="list.rows.value" :loading="list.loading.value" :sort-column="list.sortColumn.value" :sort-direction="list.sortDirection.value" compact panel-class="product-items-table" @sort="list.sortBy">
     <template #cell-product="{ row }"><span class="block w-[5.5rem] whitespace-normal break-words [overflow-wrap:anywhere]">{{ displayName(row.product) }}</span></template>
     <template #cell-option_values="{ row }">
-      <div v-if="groupedOptionValues(row).length" class="flex w-max min-w-40 flex-col gap-1.5">
+      <div v-if="groupedOptionValues(row).length" class="grid w-max min-w-40 grid-cols-[repeat(2,max-content)] gap-1.5">
         <div
           v-for="group in groupedOptionValues(row)"
           :key="group.key"
